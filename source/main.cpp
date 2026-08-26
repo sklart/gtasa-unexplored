@@ -407,7 +407,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     const int cy = 444;
     text.draw(tr(a, "Управление", "Controls"), 980, cy, 18, kColors.text);
     text.draw(tr(a, "L/R — масштаб", "L/R — zoom"), 980, cy + 26, 14, kColors.muted, 290);
-    text.draw(tr(a, "Левый стик — карта", "Left stick — pan"), 980, cy + 45, 14, kColors.muted, 290);
+    text.draw(tr(a, "Стик / экран — карта", "Stick / touch — pan"), 980, cy + 45, 14, kColors.muted, 290);
     text.draw(tr(a, "↑/↓ — подложка", "↑/↓ — map layer"), 980, cy + 64, 14, kColors.muted, 290);
     text.draw(tr(a, "←/→ — слот", "←/→ — slot"), 980, cy + 83, 14, kColors.muted, 290);
     text.draw(tr(a, "− — перечитать профиль", "− — reload profile"), 980, cy + 102, 14, kColors.muted, 290);
@@ -433,8 +433,8 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         SDL_Rect row{195, y - 8, 555, 44};
         if (i == a.legendIndex) fill(r, row, SDL_Color{45, 53, 61, 255});
         drawCollectibleIcon(r, 223, y + 10, static_cast<gtasa::CollectibleType>(i));
-        text.draw(a.filters[i] ? "✓" : "—", 246, y - 2, 20, a.filters[i] ? kColors.text : kColors.muted);
-        text.draw(typeName(a, static_cast<gtasa::CollectibleType>(i)), 278, y - 2, 20, kColors.text);
+        text.draw(typeName(a, static_cast<gtasa::CollectibleType>(i)), 250, y - 2, 20,
+                  a.filters[i] ? kColors.text : kColors.muted);
         y += 58;
     }
 }
@@ -560,6 +560,11 @@ int main(int, char**) {
     padInitializeDefault(&pad);
 
     bool running = true;
+    bool touchActive = false;
+    bool touchMoved = false;
+    SDL_FingerID activeFinger{};
+    float touchLastX = 0.0f;
+    float touchLastY = 0.0f;
     while (running && appletMainLoop()) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
@@ -567,7 +572,38 @@ int main(int, char**) {
             if (event.type == SDL_FINGERDOWN && !app.legendOpen) {
                 const int x = static_cast<int>(event.tfinger.x * kScreenW);
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
-                if (insideMap(x, y)) selectNearest(app, x, y, 34.0f);
+                if (insideMap(x, y) && !touchActive) {
+                    touchActive = true;
+                    touchMoved = false;
+                    activeFinger = event.tfinger.fingerId;
+                    touchLastX = static_cast<float>(x);
+                    touchLastY = static_cast<float>(y);
+                }
+            }
+            if (event.type == SDL_FINGERMOTION && touchActive &&
+                event.tfinger.fingerId == activeFinger && !app.legendOpen) {
+                const float x = event.tfinger.x * kScreenW;
+                const float y = event.tfinger.y * kScreenH;
+                const float dx = x - touchLastX;
+                const float dy = y - touchLastY;
+                if (std::abs(dx) >= 1.0f || std::abs(dy) >= 1.0f) {
+                    // Move the map with the finger. The conversion matches the
+                    // texture viewport: its X and Y screen scales differ.
+                    app.centerX -= dx * 6000.0f / (app.zoom * kMapRect.w);
+                    app.centerY += dy * 6000.0f / (app.zoom * kMapRect.h);
+                    clampCamera(app);
+                    touchMoved = true;
+                }
+                touchLastX = x;
+                touchLastY = y;
+            }
+            if (event.type == SDL_FINGERUP && touchActive && event.tfinger.fingerId == activeFinger) {
+                const int x = static_cast<int>(event.tfinger.x * kScreenW);
+                const int y = static_cast<int>(event.tfinger.y * kScreenH);
+                if (!touchMoved && !app.legendOpen && insideMap(x, y)) {
+                    selectNearest(app, x, y, 34.0f);
+                }
+                touchActive = false;
             }
         }
 
