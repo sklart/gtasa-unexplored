@@ -1,0 +1,158 @@
+# GTASA Unexplored
+
+Nintendo Switch homebrew-companion для **Grand Theft Auto: San Andreas — The Definitive Edition**. Приложение читает сохранение выбранного пользователя **только для чтения** и показывает на интерактивной карте состояние пяти типов коллекционных объектов.
+
+## Целевая версия
+
+- Nintendo Switch title ID: `010065A014024000`.
+- GTA: San Andreas — The Definitive Edition, семейство сохранений **1.1x / 1.112+**.
+- Классическая GTA SA и старый DE 1.0x не поддерживаются.
+- Игровой save монтируется только через `fsdevMountSaveDataReadOnly()`.
+- Если GTA удерживает save archive открытым, используется последняя резервная копия на SD.
+
+## Объекты
+
+Всего **320** объектов:
+
+- 100 Gang Tags;
+- 50 Snapshots;
+- 50 Horseshoes;
+- 50 Oysters;
+- 70 Unique Stunt Jumps.
+
+Поддерживаются режимы отображения:
+
+- **Missing** — только ненайденные;
+- **Completed** — только найденные;
+- **All** — полный набор.
+
+Для Tags и Stunt Jumps состояние хранится непосредственно в save. Для Snapshots/Horseshoes/Oysters активные `PICKUPS` являются точным списком Missing; Completed восстанавливается через встроенный канонический каталог 50+50+50 координат. Сопоставление работает fail-closed: если хотя бы одна активная запись не сопоставляется однозначно, приложение не придумывает координаты Completed для этой категории и продолжает показывать достоверный Missing.
+
+## Возможности
+
+- Pan/zoom контроллером и touch drag/tap.
+- Фильтры пяти категорий.
+- `Missing / Completed / All` с сохранением выбранного режима.
+- Стабильные номера 1–50 для трёх pickup-категорий при подтверждённом сопоставлении.
+- Быстрый переход к предыдущему/следующему видимому объекту.
+- Выбор Nintendo-профиля и GTA save slot.
+- RU/EN интерфейс.
+- DE-header diagnostics и проверка complemented-MD5 для 1.112+.
+- Автоматический `diagnostics.txt` при ошибках обнаружения/разбора save.
+- Временные отметки при работе со stale backup, раздельные по профилю и слоту.
+- Внешние map-pack'и; карты Rockstar/Fandom не входят в NRO/исходный архив.
+- Переключение подложки ZL/ZR без изменения центра и масштаба.
+- Горячая перезагрузка `maps.ini` и файлов карт без перезапуска homebrew.
+
+## Map-pack v1
+
+Подготовленные отдельно карты копируются в:
+
+```text
+sdmc:/switch/gtasa-unexplored/maps/
+```
+
+`maps.ini` для format 1 обязан содержать:
+
+```ini
+[pack]
+format=1
+projection=sa-world-v1
+canvas=2048
+```
+
+Для map-pack v1 размер **строго 2048×2048**. Все подложки должны быть north-up и зарегистрированы на один мир:
+
+- left = X -3000;
+- right = X +3000;
+- top = Y +3000;
+- bottom = Y -3000.
+
+Шаблон содержит пять записей: Terrain, Official High-Res, Mobile, Definitive Edition и Geographic Regions. Самих изображений в шаблоне нет.
+
+Проверка готового пакета на PC:
+
+```bash
+python tools/validate_map_pack.py path/to/maps
+```
+
+Валидатор проверяет manifest и фактические размеры каждого установленного изображения.
+
+## Управление
+
+### Карта
+
+- **левый stick / touch drag** — перемещение;
+- **L / R** — масштаб;
+- **ZL / ZR** — предыдущая / следующая подложка;
+- **↑** — `Missing → Completed → All`;
+- **← / →** — предыдущий / следующий save slot;
+- **L3 / R3** — предыдущий / следующий видимый объект;
+- **A / touch tap** — выбрать ближайший объект;
+- **B** — снять выбор; при backup — временно отметить выбранный ненайденный объект найденным;
+- **X** — открыть фильтры;
+- **Y** — перечитать map-pack;
+- **↓** — экспортировать `diagnostics.txt` и `saveinfo.json`;
+- **B + ↓** — очистить временные отметки backup;
+- **−** — заново выбрать профиль;
+- **+** — выход.
+
+### Фильтры
+
+- **↑ / ↓** — категория;
+- **A** — включить/выключить категорию;
+- **ZL** — RU/EN;
+- **X** — закрыть.
+
+## PC-инспектор save
+
+После host-сборки доступен инструмент `inspect-save`. Из исходников его можно собрать тем же набором файлов, который использует `tools/run_host_tests.sh`.
+
+Краткий отчёт:
+
+```bash
+inspect-save GTASAsf1
+```
+
+Полный список объектов:
+
+```bash
+inspect-save GTASAsf1 --objects
+```
+
+Машиночитаемый отчёт со всеми объектами и reliability-флагами (тот же schema=1 формат, который Switch пишет в `saveinfo.json`):
+
+```bash
+inspect-save GTASAsf1 --json > save-report.json
+```
+
+## Сборка
+
+Требуются devkitPro/devkitA64, libnx и portlibs:
+
+```text
+switch-sdl2
+switch-sdl2_ttf
+switch-sdl2_image
+```
+
+Сборка:
+
+```bash
+make -j2
+```
+
+Host regression:
+
+```bash
+./tools/run_host_tests.sh
+./tools/run_sanitizer_tests.sh
+```
+
+GitHub Actions сначала запускает host + ASan/UBSan, затем выполняет devkitA64-сборку.
+
+## Статус проверки
+
+Parser, checksum, corrupted-save cases, полный каталог объектов, save-order Tags, map math, map-pack tooling, source invariants и Switch UI syntax проверяются host-тестами. Версия остаётся **hardware RC**, пока конкретный NRO не будет собран devkitA64 и проверен на физическом Nintendo Switch с актуальным DE 1.112+ save.
+
+См. также: [`docs/FORMAT.md`](docs/FORMAT.md), [`docs/COLLECTIBLE_DATA.md`](docs/COLLECTIBLE_DATA.md), [`docs/GAME_MAP.md`](docs/GAME_MAP.md), [`docs/FIRST_SWITCH_TEST.md`](docs/FIRST_SWITCH_TEST.md).
