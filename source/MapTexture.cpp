@@ -289,4 +289,22 @@ bool MapTexture::render(SDL_Renderer* renderer, const MapView& inputView, const 
     return SDL_RenderCopy(renderer, texture_, &src, &dst) == 0;
 }
 
+bool MapTexture::projectWorldPoint(const MapView& inputView, const SDL_Rect& dst,
+                                   float x, float y, int& screenX, int& screenY) const {
+    if (!texture_ || width_ <= 0 || height_ <= 0 || dst.w <= 0 || dst.h <= 0) return false;
+    MapView view = inputView;
+    clampMapView(view, 8.0f);
+    const int sw = std::clamp(static_cast<int>(std::lround(static_cast<double>(width_) / view.zoom)), 1, width_);
+    const int sh = std::clamp(static_cast<int>(std::lround(static_cast<double>(height_) / view.zoom)), 1, height_);
+    const double centerPxX = worldToMapPixelX(view.centerX, static_cast<float>(width_));
+    const double centerPxY = worldToMapPixelY(view.centerY, static_cast<float>(height_));
+    const int srcX = std::clamp(static_cast<int>(std::lround(centerPxX - sw * 0.5)), 0, width_ - sw);
+    const int srcY = std::clamp(static_cast<int>(std::lround(centerPxY - sh * 0.5)), 0, height_ - sh);
+    const double pointX = worldToMapPixelX(x, static_cast<float>(width_));
+    const double pointY = worldToMapPixelY(y, static_cast<float>(height_));
+    screenX = dst.x + static_cast<int>(std::lround((pointX - srcX) * dst.w / sw));
+    screenY = dst.y + static_cast<int>(std::lround((pointY - srcY) * dst.h / sh));
+    return true;
+}
+
 } // namespace gtasa

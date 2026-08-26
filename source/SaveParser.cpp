@@ -5,6 +5,8 @@
 #include <array>
 #include <cmath>
 #include <cstring>
+#include <cstdio>
+#include <cerrno>
 #include <fstream>
 #include <limits>
 #include <sstream>
@@ -103,25 +105,30 @@ const char* typeKey(CollectibleType type) {
 }
 
 ParseResult SaveParser::parseFile(const std::string& path) const {
-    std::ifstream f(path, std::ios::binary);
+    // libnx fsdev paths (for example gtasa:/GTASAsf1) are exposed through the
+    // C/POSIX file API. std::ifstream fails to resolve that virtual device even
+    // though directory enumeration succeeds.
+    std::FILE* f = std::fopen(path.c_str(), "rb");
     if (!f) {
         ParseResult r;
-        r.error = "Cannot open save file";
+        r.error = "Cannot open save file (errno " + std::to_string(errno) + ")";
         r.saveName = path;
         return r;
     }
-    f.seekg(0, std::ios::end);
-    const auto size = f.tellg();
+    std::fseek(f, 0, SEEK_END);
+    const long size = std::ftell(f);
     if (size <= 0 || size > 4 * 1024 * 1024) {
+        std::fclose(f);
         ParseResult r;
         r.error = "Unexpected save file size";
         r.saveName = path;
         return r;
     }
-    f.seekg(0, std::ios::beg);
+    std::rewind(f);
     std::vector<std::uint8_t> bytes(static_cast<std::size_t>(size));
-    f.read(reinterpret_cast<char*>(bytes.data()), static_cast<std::streamsize>(bytes.size()));
-    if (!f) {
+    const auto read = std::fread(bytes.data(), 1, bytes.size(), f);
+    std::fclose(f);
+    if (read != bytes.size()) {
         ParseResult r;
         r.error = "Failed to read save file";
         r.saveName = path;
@@ -235,6 +242,8 @@ ParseResult SaveParser::parseBytes(const std::vector<std::uint8_t>& data, const 
         const auto p = r.pickupsOffset + i * kPickupSize;
         const auto model = readU16(data, p + 0x18);
         const auto type = data[p + 0x1C];
+        const bool disabled = (data[p + 0x1D] & 0x01u) != 0;
+        if (disabled) continue;
 
         CollectibleType collectibleType;
         bool isCollectible = false;

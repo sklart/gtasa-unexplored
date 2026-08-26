@@ -220,6 +220,72 @@ std::pair<int, int> worldToScreen(const AppState& a, float x, float y) {
     return {sx, sy};
 }
 
+std::pair<int, int> collectibleToScreen(const AppState& a, float x, float y) {
+    const gtasa::MapView view{a.centerX, a.centerY, a.zoom};
+    int sx = 0, sy = 0;
+    if (a.mapTexture.projectWorldPoint(view, kMapRect, x, y, sx, sy)) return {sx, sy};
+    return worldToScreen(a, x, y);
+}
+
+void drawIconRing(SDL_Renderer* r, int cx, int cy, int radius, SDL_Color c) {
+    SDL_SetRenderDrawColor(r, c.r, c.g, c.b, c.a);
+    int x = radius, y = 0, err = 1 - x;
+    while (x >= y) {
+        SDL_RenderDrawPoint(r, cx + x, cy + y); SDL_RenderDrawPoint(r, cx + y, cy + x);
+        SDL_RenderDrawPoint(r, cx - y, cy + x); SDL_RenderDrawPoint(r, cx - x, cy + y);
+        SDL_RenderDrawPoint(r, cx - x, cy - y); SDL_RenderDrawPoint(r, cx - y, cy - x);
+        SDL_RenderDrawPoint(r, cx + y, cy - x); SDL_RenderDrawPoint(r, cx + x, cy - y);
+        ++y;
+        if (err < 0) err += 2 * y + 1;
+        else { --x; err += 2 * (y - x) + 1; }
+    }
+}
+
+// Compact map pictograms modelled after the GTA collectible symbols, rather
+// than using indistinguishable coloured squares.
+void drawCollectibleIcon(SDL_Renderer* r, int x, int y, gtasa::CollectibleType type) {
+    const SDL_Color c = typeColor(type);
+    const SDL_Color shade{10, 14, 18, 230};
+    drawIconRing(r, x, y, 7, shade);
+    switch (type) {
+        case gtasa::CollectibleType::Tag:
+            fill(r, SDL_Rect{x - 3, y - 3, 6, 8}, c);       // spray-can body
+            fill(r, SDL_Rect{x - 2, y - 5, 4, 2}, c);       // cap
+            line(r, x + 3, y - 1, x + 5, y - 1, c);         // nozzle
+            break;
+        case gtasa::CollectibleType::Snapshot:
+            fill(r, SDL_Rect{x - 6, y - 4, 12, 9}, c);      // camera body
+            fill(r, SDL_Rect{x - 3, y - 6, 5, 2}, c);       // viewfinder
+            drawIconRing(r, x, y, 3, shade);                // lens
+            break;
+        case gtasa::CollectibleType::Horseshoe:
+            line(r, x - 4, y - 4, x - 4, y + 3, c);
+            line(r, x - 4, y + 3, x - 2, y + 5, c);
+            line(r, x - 2, y + 5, x + 2, y + 5, c);
+            line(r, x + 2, y + 5, x + 4, y + 3, c);
+            line(r, x + 4, y + 3, x + 4, y - 4, c);
+            line(r, x - 5, y - 4, x - 3, y - 4, c);
+            line(r, x + 3, y - 4, x + 5, y - 4, c);
+            break;
+        case gtasa::CollectibleType::Oyster:
+            line(r, x - 6, y + 4, x + 6, y + 4, c);
+            line(r, x - 5, y + 3, x - 3, y - 4, c);
+            line(r, x - 3, y - 4, x, y + 3, c);
+            line(r, x, y + 3, x + 3, y - 4, c);
+            line(r, x + 3, y - 4, x + 5, y + 3, c);
+            break;
+        case gtasa::CollectibleType::StuntJump:
+            line(r, x, y - 6, x + 5, y, c);
+            line(r, x + 5, y, x, y + 6, c);
+            line(r, x, y + 6, x - 5, y, c);
+            line(r, x - 5, y, x, y - 6, c);
+            line(r, x - 2, y + 1, x + 3, y - 4, c);
+            line(r, x + 3, y - 4, x + 3, y, c);
+            break;
+        default: break;
+    }
+}
+
 void clampCamera(AppState& a) {
     a.zoom = std::max(0.85f, std::min(8.0f, a.zoom));
     a.centerX = std::max(-kWorldHalf, std::min(kWorldHalf, a.centerX));
@@ -243,7 +309,7 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
     for (std::size_t i = 0; i < p->missing.size(); ++i) {
         const auto& c = p->missing[i];
         if (!a.filters[static_cast<int>(c.type)]) continue;
-        const auto [sx, sy] = worldToScreen(a, c.x, c.y);
+        const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
         if (!insideMap(sx, sy)) continue;
         const float dx = static_cast<float>(sx - px);
         const float dy = static_cast<float>(sy - py);
@@ -253,14 +319,7 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
     a.selected = bestIndex;
 }
 
-void drawCityHint(SDL_Renderer*, TextRenderer& t, const AppState& a,
-                  const std::string& name, float x, float y) {
-    const auto [sx, sy] = worldToScreen(a, x, y);
-    if (!insideMap(sx, sy)) return;
-    t.draw(name, sx, sy, 18, SDL_Color{105, 116, 126, 255}, 0, true);
-}
-
-void drawMap(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
+void drawMap(SDL_Renderer* r, const AppState& a) {
     fill(r, kMapRect, kColors.mapBg);
 
     const gtasa::MapView view{a.centerX, a.centerY, a.zoom};
@@ -276,25 +335,16 @@ void drawMap(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         }
     }
 
-    drawCityHint(r, text, a, tr(a, "ЛОС-САНТОС", "LOS SANTOS"), 1750.0f, -1750.0f);
-    drawCityHint(r, text, a, tr(a, "САН-ФИЕРРО", "SAN FIERRO"), -1900.0f, 550.0f);
-    drawCityHint(r, text, a, tr(a, "ЛАС-ВЕНТУРАС", "LAS VENTURAS"), 1700.0f, 1500.0f);
-
     const auto* p = currentParse(a);
     if (p) {
         for (std::size_t i = 0; i < p->missing.size(); ++i) {
             const auto& c = p->missing[i];
             if (!a.filters[static_cast<int>(c.type)]) continue;
-            const auto [sx, sy] = worldToScreen(a, c.x, c.y);
+            const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
             if (!insideMap(sx, sy)) continue;
-            SDL_Color col = typeColor(c.type);
-            const int rad = (static_cast<int>(i) == a.selected) ? 7 : 4;
-            SDL_Rect marker{sx - rad, sy - rad, rad * 2 + 1, rad * 2 + 1};
-            fill(r, marker, col);
+            drawCollectibleIcon(r, sx, sy, c.type);
             if (static_cast<int>(i) == a.selected) {
-                SDL_SetRenderDrawColor(r, 255, 255, 255, 255);
-                SDL_Rect outline{sx - rad - 2, sy - rad - 2, rad * 2 + 5, rad * 2 + 5};
-                SDL_RenderDrawRect(r, &outline);
+                drawIconRing(r, sx, sy, 10, kColors.selected);
             }
         }
     }
@@ -322,19 +372,18 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         std::ostringstream ss;
         ss << tr(a, "Слот: ", "Slot: ") << (save->slot > 0 ? std::to_string(save->slot) : save->displayName);
         text.draw(ss.str(), 980, y, 19, kColors.text, 285);
-        text.draw(save->fromBackup ? tr(a, "Резервная копия (игра запущена)", "Backup (game is running)")
+        text.draw(save->fromBackup ? tr(a, "Локальная копия сохранения", "Local save snapshot")
                                    : tr(a, "Актуальное сохранение", "Live save"),
                   980, y + 28, 15, save->fromBackup ? kColors.warning : kColors.muted, 285);
         y += 66;
 
         for (int i = 0; i < static_cast<int>(gtasa::CollectibleType::Count); ++i) {
             const auto type = static_cast<gtasa::CollectibleType>(i);
-            SDL_Rect box{980, y + 5, 10, 10};
-            fill(r, box, typeColor(type));
+            drawCollectibleIcon(r, 987, y + 10, type);
             std::ostringstream row;
             row << typeName(a, type) << ": " << completedFor(p->summary, type)
                 << "/" << totalFor(p->summary, type);
-            text.draw(row.str(), 998, y, 17, a.filters[i] ? kColors.text : kColors.muted, 270);
+            text.draw(row.str(), 1002, y, 17, a.filters[i] ? kColors.text : kColors.muted, 265);
             y += 27;
         }
 
@@ -353,13 +402,21 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         }
     }
 
-    const int cy = 548;
+    // Keep one control/action pair per line.  The panel has enough vertical
+    // space and this avoids wrapping or visually joining unrelated shortcuts.
+    const int cy = 444;
     text.draw(tr(a, "Управление", "Controls"), 980, cy, 18, kColors.text);
-    text.draw(tr(a, "L/R — масштаб   левый стик — карта", "L/R — zoom   Left stick — pan"), 980, cy + 28, 14, kColors.muted, 290);
-    text.draw(tr(a, "↑/↓ — подложка   Y — перечитать", "↑/↓ — map layer   Y — reload"), 980, cy + 50, 14, kColors.muted, 290);
-    text.draw(tr(a, "←/→ — слот   − — профиль   ZL — язык", "←/→ — slot   − — profile   ZL — language"), 980, cy + 72, 14, kColors.muted, 290);
-    text.draw(tr(a, "ZR — диагностика   + — выход", "ZR — diagnostics   + — exit"), 980, cy + 94, 14, kColors.muted, 290);
-    if (!a.status.empty()) text.draw(a.status, 980, 674, 13, kColors.warning, 285);
+    text.draw(tr(a, "L/R — масштаб", "L/R — zoom"), 980, cy + 26, 14, kColors.muted, 290);
+    text.draw(tr(a, "Левый стик — карта", "Left stick — pan"), 980, cy + 45, 14, kColors.muted, 290);
+    text.draw(tr(a, "↑/↓ — подложка", "↑/↓ — map layer"), 980, cy + 64, 14, kColors.muted, 290);
+    text.draw(tr(a, "←/→ — слот", "←/→ — slot"), 980, cy + 83, 14, kColors.muted, 290);
+    text.draw(tr(a, "− — перечитать профиль", "− — reload profile"), 980, cy + 102, 14, kColors.muted, 290);
+    text.draw(tr(a, "Y — перечитать карты", "Y — reload maps"), 980, cy + 121, 14, kColors.muted, 290);
+    text.draw(tr(a, "X — фильтры", "X — filters"), 980, cy + 140, 14, kColors.muted, 290);
+    text.draw(tr(a, "ZL — язык", "ZL — language"), 980, cy + 159, 14, kColors.muted, 290);
+    text.draw(tr(a, "ZR — диагностика", "ZR — diagnostics"), 980, cy + 178, 14, kColors.muted, 290);
+    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 197, 14, kColors.muted, 290);
+    if (!a.status.empty()) text.draw(a.status, 980, 664, 13, kColors.warning, 285);
 }
 
 void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
@@ -375,8 +432,7 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     for (int i = 0; i < static_cast<int>(gtasa::CollectibleType::Count); ++i) {
         SDL_Rect row{195, y - 8, 555, 44};
         if (i == a.legendIndex) fill(r, row, SDL_Color{45, 53, 61, 255});
-        SDL_Rect swatch{215, y + 2, 16, 16};
-        fill(r, swatch, typeColor(static_cast<gtasa::CollectibleType>(i)));
+        drawCollectibleIcon(r, 223, y + 10, static_cast<gtasa::CollectibleType>(i));
         text.draw(a.filters[i] ? "✓" : "—", 246, y - 2, 20, a.filters[i] ? kColors.text : kColors.muted);
         text.draw(typeName(a, static_cast<gtasa::CollectibleType>(i)), 278, y - 2, 20, kColors.text);
         y += 58;
@@ -496,7 +552,7 @@ int main(int, char**) {
         if (!app.mapTexture.discoverAndLoad(renderer, "", mapStatus)) {
             app.mapTexture.loadFallback(renderer, mapStatus);
         }
-        if (!mapStatus.empty()) app.status = mapStatus;
+        if (app.status.empty() && !mapStatus.empty()) app.status = mapStatus;
     }
 
     padConfigureInput(1, HidNpadStyleSet_NpadStandard);
@@ -567,7 +623,7 @@ int main(int, char**) {
 
         SDL_SetRenderDrawColor(renderer, kColors.bg.r, kColors.bg.g, kColors.bg.b, 255);
         SDL_RenderClear(renderer);
-        drawMap(renderer, text, app);
+        drawMap(renderer, app);
         drawPanel(renderer, text, app);
         drawLegend(renderer, text, app);
         SDL_RenderPresent(renderer);

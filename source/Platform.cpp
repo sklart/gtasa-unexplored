@@ -1,6 +1,7 @@
 #include "Platform.hpp"
 
 #include <algorithm>
+#include <array>
 #include <cctype>
 #include <cerrno>
 #include <cstdio>
@@ -238,11 +239,21 @@ SaveDiscovery Platform::discoverSaves(const AppConfig& cfg, bool forceProfilePic
         collectCandidateFiles("gtasa:/", false, out.saves, 0);
         const auto uidDir = uidFolder(uid.uid[0], uid.uid[1]);
         ensureDir(std::string(kAppDir) + "/saves/" + uidDir);
+        // A fsdev mount is valid only until unmountTargetSave().  Do not keep
+        // gtasa:/ paths in the result: parsing happens after the mount is
+        // released, so those paths would invariably fail to open.
+        std::vector<SaveEntry> snapshots;
         for (const auto& save : out.saves) {
             const auto dst = std::string(kAppDir) + "/saves/" + uidDir + "/" + baseName(save.path);
-            copyFile(save.path, dst);
+            if (copyFile(save.path, dst)) {
+                snapshots.push_back({save.slot, dst, save.displayName, true});
+            } else {
+                log("Could not copy save snapshot: " + save.path);
+            }
         }
         unmountTargetSave();
+        out.saves = std::move(snapshots);
+        out.usingBackup = true;
     } else {
         out.gameRunningOrBusy = true;
         out.usingBackup = true;
@@ -358,11 +369,32 @@ bool Platform::ensureDir(const std::string& path) {
 
 bool Platform::copyFile(const std::string& src, const std::string& dst) {
     ensureDir(parentDir(dst));
-    std::ifstream in(src, std::ios::binary);
-    std::ofstream out(dst, std::ios::binary | std::ios::trunc);
-    if (!in || !out) return false;
-    out << in.rdbuf();
-    return static_cast<bool>(out);
+    // Use the C file API for fsdev paths. It works with an active fsdev mount
+    // and does not leave a C++ stream buffering a virtual-device handle.
+    std::FILE* in = std::fopen(src.c_str(), "rb");
+    if (!in) return false;
+    std::FILE* out = std::fopen(dst.c_str(), "wb");
+    if (!out) {
+        std::fclose(in);
+        return false;
+    }
+
+    std::array<char, 64 * 1024> buffer{};
+    bool ok = true;
+    while (true) {
+        const std::size_t read = std::fread(buffer.data(), 1, buffer.size(), in);
+        if (read != 0 && std::fwrite(buffer.data(), 1, read, out) != read) {
+            ok = false;
+            break;
+        }
+        if (read < buffer.size()) {
+            if (std::ferror(in)) ok = false;
+            break;
+        }
+    }
+    if (std::fclose(out) != 0) ok = false;
+    std::fclose(in);
+    return ok;
 }
 
 std::string Platform::uidFolder(std::uint64_t uid0, std::uint64_t uid1) {

@@ -9,14 +9,14 @@ include $(DEVKITPRO)/libnx/switch_rules
 
 APP_TITLE   := GTASA Unexplored
 APP_AUTHOR  := sklart
-APP_VERSION := 0.1.0
+APP_VERSION := 0.1.1
 
 TARGET      := gtasa-unexplored
 BUILD       := build
 SOURCES     := source
 DATA        := assets
 INCLUDES    := include
-ICON        := $(DEVKITPRO)/libnx/default_icon.jpg
+ICON        := ../icon.jpg
 
 ARCH := -march=armv8-a+crc+crypto -mtune=cortex-a57 -mtp=soft -fPIE
 
