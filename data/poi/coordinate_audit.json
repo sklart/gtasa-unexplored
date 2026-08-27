@@ -1,0 +1,1294 @@
+{
+  "schema": "gtasa-unexplored-poi-coordinate-audit-v1",
+  "policy": "conservative-v2",
+  "items": [
+    {
+      "id": 1,
+      "name_en": "Grove Street",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 2,
+      "name_en": "Big Smoke's House",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 3,
+      "name_en": "Sweet's House",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 4,
+      "name_en": "Vinewood Sign",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 5,
+      "name_en": "Los Santos Observatory",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 6,
+      "name_en": "Los Santos City Hall",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 7,
+      "name_en": "Los Santos Forum",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 8,
+      "name_en": "Los Santos International Airport",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 9,
+      "name_en": "Unity Station",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 10,
+      "name_en": "Santa Maria Beach",
+      "region": "los_santos",
+      "world": {
+        "x": 360.0,
+        "y": -1929.0,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Santa_Maria_Beach",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Santa Maria Beach"
+      },
+      "accuracy_note": "Map marker for a beach area, not a teleport coordinate."
+    },
+    {
+      "id": 11,
+      "name_en": "Los Santos Lighthouse",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 12,
+      "name_en": "Vinewood Movie Studios",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 13,
+      "name_en": "Vinewood Walk of Fame",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 14,
+      "name_en": "Los Santos Storm Drain",
+      "region": "los_santos",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 15,
+      "name_en": "Gant Bridge",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 16,
+      "name_en": "Garver Bridge",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 17,
+      "name_en": "Kincaid Bridge",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 18,
+      "name_en": "Big Pointy Building",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 19,
+      "name_en": "Pier 69",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 20,
+      "name_en": "Jizzy's Pleasure Domes",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 21,
+      "name_en": "Zombotech Corporation",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 22,
+      "name_en": "Wang Cars",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 23,
+      "name_en": "Cranberry Station",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 24,
+      "name_en": "Missionary Hill Radio Tower",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 25,
+      "name_en": "Ocean Flats Cathedral",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 26,
+      "name_en": "Easter Basin Naval Station",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 27,
+      "name_en": "Windy Windy Windy Windy Street",
+      "region": "san_fierro",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 28,
+      "name_en": "Downtown Square",
+      "region": "san_fierro",
+      "world": {
+        "x": -1906.66,
+        "y": 518.58,
+        "z": 61.71
+      },
+      "coordinate_kind": "feature_xyz",
+      "coordinate_status": "cross_checked_xyz",
+      "confidence": "high",
+      "sources": [
+        {
+          "kind": "local_collectible_catalogue",
+          "reference": "Snapshot #50",
+          "note": "Independent authored point whose description names this POI."
+        },
+        {
+          "kind": "info_zon",
+          "reference": "Downtown, San Fierro",
+          "note": "Spatial membership check only; not a coordinate source."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Downtown, San Fierro"
+      }
+    },
+    {
+      "id": 29,
+      "name_en": "The Four Dragons Casino",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 30,
+      "name_en": "Caligula's Palace",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 31,
+      "name_en": "The Camel's Toe",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 32,
+      "name_en": "The Clown's Pocket",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 33,
+      "name_en": "The Emerald Isle",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 34,
+      "name_en": "The Visage",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 35,
+      "name_en": "Pirates in Men's Pants",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 36,
+      "name_en": "V-Rock Hotel",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 37,
+      "name_en": "Las Venturas Welcome Sign",
+      "region": "las_venturas",
+      "world": {
+        "x": 1224.0,
+        "y": 2617.0,
+        "z": 11.0
+      },
+      "coordinate_kind": "feature_xyz",
+      "coordinate_status": "cross_checked_xyz",
+      "confidence": "high",
+      "sources": [
+        {
+          "kind": "local_collectible_catalogue",
+          "reference": "Horseshoe #1",
+          "note": "Independent authored point whose description names this POI."
+        },
+        {
+          "kind": "info_zon",
+          "reference": "Las Venturas",
+          "note": "Spatial membership check only; not a coordinate source."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Las Venturas"
+      }
+    },
+    {
+      "id": 38,
+      "name_en": "Las Venturas Airport",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 39,
+      "name_en": "Blackfield Stadium",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 40,
+      "name_en": "K.A.C.C. Military Aviation Fuel Depot",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 41,
+      "name_en": "Old Venturas Strip",
+      "region": "las_venturas",
+      "world": {
+        "x": 2423.8,
+        "y": 2107.5,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Old_Venturas_Strip",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Old Venturas Strip"
+      },
+      "accuracy_note": "Map marker for a casino district, not a teleport coordinate."
+    },
+    {
+      "id": 42,
+      "name_en": "Yellow Bell Golf Course",
+      "region": "las_venturas",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 43,
+      "name_en": "Area 69",
+      "region": "bone_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 44,
+      "name_en": "The Big Ear",
+      "region": "bone_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 45,
+      "name_en": "Regular Tom",
+      "region": "bone_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 46,
+      "name_en": "Lil' Probe'Inn",
+      "region": "bone_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 47,
+      "name_en": "Verdant Meadows",
+      "region": "bone_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 48,
+      "name_en": "Las Brujas",
+      "region": "bone_county",
+      "world": {
+        "x": -286.9,
+        "y": 2170.3,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Las_Brujas",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Las Brujas"
+      },
+      "accuracy_note": "Map marker for a ghost-town area, not a teleport coordinate."
+    },
+    {
+      "id": 49,
+      "name_en": "Mass Grave",
+      "region": "bone_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 50,
+      "name_en": "Snake Farm",
+      "region": "bone_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 51,
+      "name_en": "Hunter Quarry",
+      "region": "bone_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 52,
+      "name_en": "Octane Springs",
+      "region": "bone_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 53,
+      "name_en": "Green Palms",
+      "region": "bone_county",
+      "world": {
+        "x": 257.6,
+        "y": 1413.1,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Green_Palms",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Green Palms"
+      },
+      "accuracy_note": "Map marker for a settlement area, not a teleport coordinate."
+    },
+    {
+      "id": 54,
+      "name_en": "Sherman Reservoir",
+      "region": "bone_county",
+      "world": {
+        "x": -694.6,
+        "y": 1794.5,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Sherman_Reservoir",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Sherman Reservoir"
+      },
+      "accuracy_note": "Map marker for a reservoir water area, not a teleport coordinate."
+    },
+    {
+      "id": 55,
+      "name_en": "Cock Rock",
+      "region": "bone_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 56,
+      "name_en": "Las Payasadas",
+      "region": "bone_county",
+      "world": {
+        "x": -244.0,
+        "y": 2698.6,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Las_Payasadas",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Las Payasadas"
+      },
+      "accuracy_note": "Map marker for a settlement area, not a teleport coordinate."
+    },
+    {
+      "id": 57,
+      "name_en": "Sherman Dam",
+      "region": "tierra_robada",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 58,
+      "name_en": "Mike Toreno's Ranch",
+      "region": "tierra_robada",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 59,
+      "name_en": "Bayside",
+      "region": "tierra_robada",
+      "world": {
+        "x": -2547.1,
+        "y": 2449.0,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Bayside",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Bayside"
+      },
+      "accuracy_note": "Map marker for a town area, not a teleport coordinate."
+    },
+    {
+      "id": 60,
+      "name_en": "Bayside Marina",
+      "region": "tierra_robada",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 61,
+      "name_en": "Aldea Malvada",
+      "region": "tierra_robada",
+      "world": {
+        "x": -1324.9,
+        "y": 2556.9,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Aldea_Malvada",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Aldea Malvada"
+      },
+      "accuracy_note": "Map marker for a settlement area, not a teleport coordinate."
+    },
+    {
+      "id": 62,
+      "name_en": "Arco del Oeste",
+      "region": "tierra_robada",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 63,
+      "name_en": "Las Barrancas",
+      "region": "tierra_robada",
+      "world": {
+        "x": -822.7,
+        "y": 1516.7,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Las_Barrancas",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Las Barrancas"
+      },
+      "accuracy_note": "Map marker for a town area, not a teleport coordinate."
+    },
+    {
+      "id": 64,
+      "name_en": "Valle Ocultado",
+      "region": "tierra_robada",
+      "world": {
+        "x": -826.3,
+        "y": 2729.7,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Valle_Ocultado",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Valle Ocultado"
+      },
+      "accuracy_note": "Map marker for a town area, not a teleport coordinate."
+    },
+    {
+      "id": 65,
+      "name_en": "The Panopticon",
+      "region": "red_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 66,
+      "name_en": "Palomino Creek Bank",
+      "region": "red_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 67,
+      "name_en": "Blueberry Acres",
+      "region": "red_county",
+      "world": {
+        "x": -107.6,
+        "y": 36.6,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Blueberry_Acres",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Blueberry Acres"
+      },
+      "accuracy_note": "Map marker for a agricultural district, not a teleport coordinate."
+    },
+    {
+      "id": 68,
+      "name_en": "FleischBerg",
+      "region": "red_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 69,
+      "name_en": "Biowaste Well",
+      "region": "red_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 70,
+      "name_en": "Fern Ridge",
+      "region": "red_county",
+      "world": {
+        "x": 907.4,
+        "y": -9.9,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Fern_Ridge",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Fern Ridge"
+      },
+      "accuracy_note": "Map marker for a settlement area, not a teleport coordinate."
+    },
+    {
+      "id": 71,
+      "name_en": "EasterBoard Farm",
+      "region": "red_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 72,
+      "name_en": "Northstar Rock",
+      "region": "red_county",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 73,
+      "name_en": "The Farm",
+      "region": "flint_whetstone",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    },
+    {
+      "id": 74,
+      "name_en": "Back o Beyond",
+      "region": "flint_whetstone",
+      "world": {
+        "x": -744.4,
+        "y": -2248.6,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Back_o_Beyond",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Back o Beyond"
+      },
+      "accuracy_note": "Map marker for a backcountry area, not a teleport coordinate."
+    },
+    {
+      "id": 75,
+      "name_en": "Back O' Beyond Lake",
+      "region": "flint_whetstone",
+      "world": {
+        "x": -744.4,
+        "y": -2248.6,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Back_o_Beyond_Lake",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Back o Beyond"
+      },
+      "accuracy_note": "Map marker for a lake area, not a teleport coordinate."
+    },
+    {
+      "id": 76,
+      "name_en": "Mount Chiliad",
+      "region": "flint_whetstone",
+      "world": {
+        "x": -2057.4,
+        "y": -1720.4,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Mount_Chiliad_(3D_Universe)",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Mount Chiliad"
+      },
+      "accuracy_note": "Map marker for a mountain area, not a teleport coordinate."
+    },
+    {
+      "id": 77,
+      "name_en": "San Fierro Scenic Route",
+      "region": "flint_whetstone",
+      "world": {
+        "x": 1249.0,
+        "y": -2687.0,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/San_Fierro_Scenic_Route",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": false,
+        "expected_zone": null
+      },
+      "accuracy_note": "Map marker for a route marker, not a teleport coordinate."
+    },
+    {
+      "id": 78,
+      "name_en": "Shady Creeks",
+      "region": "flint_whetstone",
+      "world": {
+        "x": -1925.4,
+        "y": -1973.3,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Shady_Creeks",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Shady Creeks"
+      },
+      "accuracy_note": "Map marker for a rural area, not a teleport coordinate."
+    },
+    {
+      "id": 79,
+      "name_en": "Angel Pine",
+      "region": "flint_whetstone",
+      "world": {
+        "x": -2144.6,
+        "y": -2398.2,
+        "z": null
+      },
+      "coordinate_kind": "representative_2d",
+      "coordinate_status": "representative_2d",
+      "confidence": "medium",
+      "sources": [
+        {
+          "kind": "project_curated_map_marker_v1",
+          "reference": "https://gta.fandom.com/wiki/Angel_Pine",
+          "note": "Curated presentation marker for an extended POI; it is explicitly not XYZ."
+        }
+      ],
+      "info_zon_check": {
+        "checked": true,
+        "expected_zone": "Angel Pine"
+      },
+      "accuracy_note": "Map marker for a town area, not a teleport coordinate."
+    },
+    {
+      "id": 80,
+      "name_en": "Easter Bay Chemicals",
+      "region": "flint_whetstone",
+      "world": null,
+      "coordinate_kind": "none",
+      "coordinate_status": "pending_verification",
+      "confidence": "none",
+      "sources": [],
+      "info_zon_check": {
+        "checked": false
+      }
+    }
+  ]
+}

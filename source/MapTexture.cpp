@@ -65,6 +65,16 @@ bool parseIntStrict(const std::string& value, int& out) {
     return true;
 }
 
+bool parseFloatStrict(const std::string& value, float& out) {
+    if (value.empty()) return false;
+    char* end = nullptr;
+    errno = 0;
+    const float parsed = std::strtof(value.c_str(), &end);
+    if (errno != 0 || end == value.c_str() || *end != '\0' || !std::isfinite(parsed)) return false;
+    out = parsed;
+    return true;
+}
+
 } // namespace
 
 MapTexture::~MapTexture() { unload(); }
@@ -97,6 +107,10 @@ std::string MapTexture::currentDescription(bool russian) const {
 std::string MapTexture::currentCredit() const {
     if (index_ < 0 || index_ >= static_cast<int>(maps_.size())) return {};
     return maps_[static_cast<std::size_t>(index_)].credit;
+}
+
+MapEntry MapTexture::activeCalibration() const {
+    return index_ >= 0 && index_ < static_cast<int>(maps_.size()) ? maps_[static_cast<std::size_t>(index_)] : MapEntry{};
 }
 
 void MapTexture::unload() {
@@ -164,6 +178,10 @@ bool MapTexture::parseManifest(const std::string& path, std::string& error) {
             else if (key == "credit") current.credit = value;
             else if (key == "file") current.path = joinPath(dir, value);
             else if (key == "kind") mapUsable = lower(value) == "base";
+            else if (key == "world_left") parseFloatStrict(value, current.left);
+            else if (key == "world_right") parseFloatStrict(value, current.right);
+            else if (key == "world_top") parseFloatStrict(value, current.top);
+            else if (key == "world_bottom") parseFloatStrict(value, current.bottom);
         }
         if (!error.empty()) break;
     }
@@ -275,36 +293,69 @@ bool MapTexture::cycle(SDL_Renderer* renderer, int delta, std::string& status) {
     return false;
 }
 
+SDL_Rect MapTexture::contentRect(const SDL_Rect& viewport) const {
+    const int side = std::max(0, std::min(viewport.w, viewport.h));
+    return SDL_Rect{viewport.x + (viewport.w - side) / 2, viewport.y + (viewport.h - side) / 2, side, side};
+}
+
+namespace {
+struct SourceWindow { int x{}, y{}, w{}, h{}; };
+
+SourceWindow sourceWindow(const MapView& input, int width, int height, const MapEntry& calibration) {
+    MapView view = input;
+    clampMapView(view, 8.0f);
+    const int sw = std::clamp(static_cast<int>(std::lround(static_cast<double>(width) / view.zoom)), 1, width);
+    const int sh = std::clamp(static_cast<int>(std::lround(static_cast<double>(height) / view.zoom)), 1, height);
+    const float px = (view.centerX - calibration.left) * width / (calibration.right - calibration.left);
+    const float py = (calibration.top - view.centerY) * height / (calibration.top - calibration.bottom);
+    const int sx = std::clamp(static_cast<int>(std::lround(px - sw * 0.5)), 0, width - sw);
+    const int sy = std::clamp(static_cast<int>(std::lround(py - sh * 0.5)), 0, height - sh);
+    return SourceWindow{sx, sy, sw, sh};
+}
+} // namespace
+
 bool MapTexture::render(SDL_Renderer* renderer, const MapView& inputView, const SDL_Rect& dst) const {
     if (!texture_ || width_ <= 0 || height_ <= 0 || dst.w <= 0 || dst.h <= 0) return false;
-    MapView view = inputView;
-    clampMapView(view, 8.0f);
-    int sw = std::clamp(static_cast<int>(std::lround(static_cast<double>(width_) / view.zoom)), 1, width_);
-    int sh = std::clamp(static_cast<int>(std::lround(static_cast<double>(height_) / view.zoom)), 1, height_);
-    const double centerPxX = worldToMapPixelX(view.centerX, static_cast<float>(width_));
-    const double centerPxY = worldToMapPixelY(view.centerY, static_cast<float>(height_));
-    int sx = std::clamp(static_cast<int>(std::lround(centerPxX - sw * 0.5)), 0, width_ - sw);
-    int sy = std::clamp(static_cast<int>(std::lround(centerPxY - sh * 0.5)), 0, height_ - sh);
-    const SDL_Rect src{sx, sy, sw, sh};
-    return SDL_RenderCopy(renderer, texture_, &src, &dst) == 0;
+    const SDL_Rect content = contentRect(dst);
+    const SourceWindow source = sourceWindow(inputView, width_, height_, activeCalibration());
+    const SDL_Rect src{source.x, source.y, source.w, source.h};
+    return SDL_RenderCopy(renderer, texture_, &src, &content) == 0;
 }
 
 bool MapTexture::projectWorldPoint(const MapView& inputView, const SDL_Rect& dst,
                                    float x, float y, int& screenX, int& screenY) const {
     if (!texture_ || width_ <= 0 || height_ <= 0 || dst.w <= 0 || dst.h <= 0) return false;
-    MapView view = inputView;
-    clampMapView(view, 8.0f);
-    const int sw = std::clamp(static_cast<int>(std::lround(static_cast<double>(width_) / view.zoom)), 1, width_);
-    const int sh = std::clamp(static_cast<int>(std::lround(static_cast<double>(height_) / view.zoom)), 1, height_);
-    const double centerPxX = worldToMapPixelX(view.centerX, static_cast<float>(width_));
-    const double centerPxY = worldToMapPixelY(view.centerY, static_cast<float>(height_));
-    const int srcX = std::clamp(static_cast<int>(std::lround(centerPxX - sw * 0.5)), 0, width_ - sw);
-    const int srcY = std::clamp(static_cast<int>(std::lround(centerPxY - sh * 0.5)), 0, height_ - sh);
-    const double pointX = worldToMapPixelX(x, static_cast<float>(width_));
-    const double pointY = worldToMapPixelY(y, static_cast<float>(height_));
-    screenX = dst.x + static_cast<int>(std::lround((pointX - srcX) * dst.w / sw));
-    screenY = dst.y + static_cast<int>(std::lround((pointY - srcY) * dst.h / sh));
+    const SDL_Rect content = contentRect(dst);
+    if (content.w <= 0 || content.h <= 0) return false;
+    const MapEntry calibration = activeCalibration();
+    const SourceWindow source = sourceWindow(inputView, width_, height_, calibration);
+    const double pointX = (x - calibration.left) * width_ / (calibration.right - calibration.left);
+    const double pointY = (calibration.top - y) * height_ / (calibration.top - calibration.bottom);
+    screenX = content.x + static_cast<int>(std::lround((pointX - source.x) * content.w / source.w));
+    screenY = content.y + static_cast<int>(std::lround((pointY - source.y) * content.h / source.h));
     return true;
+}
+
+bool MapTexture::screenToWorld(const MapView& inputView, const SDL_Rect& dst, int screenX, int screenY,
+                               float& worldX, float& worldY) const {
+    if (!texture_ || width_ <= 0 || height_ <= 0) return false;
+    const SDL_Rect content = contentRect(dst);
+    if (screenX < content.x || screenX >= content.x + content.w || screenY < content.y || screenY >= content.y + content.h) return false;
+    const MapEntry calibration = activeCalibration();
+    const SourceWindow source = sourceWindow(inputView, width_, height_, calibration);
+    const float px = source.x + static_cast<float>(screenX - content.x) * source.w / content.w;
+    const float py = source.y + static_cast<float>(screenY - content.y) * source.h / content.h;
+    worldX = calibration.left + px * (calibration.right - calibration.left) / width_;
+    worldY = calibration.top - py * (calibration.top - calibration.bottom) / height_;
+    return true;
+}
+
+void MapTexture::panByScreenDelta(MapView& view, const SDL_Rect& dst, float dx, float dy) const {
+    const SDL_Rect content = contentRect(dst);
+    if (content.w <= 0 || content.h <= 0) return;
+    view.centerX -= dx * 6000.0f / (view.zoom * content.w);
+    view.centerY += dy * 6000.0f / (view.zoom * content.h);
+    clampMapView(view, 8.0f);
 }
 
 } // namespace gtasa

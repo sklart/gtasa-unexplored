@@ -1,0 +1,7964 @@
+[
+  {
+    "id": 1,
+    "name_en": "Grove Street",
+    "page_title": "Grove Street (3D Universe)",
+    "chosen": "File:GroveStreet-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:GroveStreet-GTASA.jpg",
+        "score": 477,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:street",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 500,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GroveStreet-GTASA-Overview.jpg",
+        "score": 407,
+        "why": [
+          "gtasa",
+          "good:overview",
+          "good:street",
+          "good:view",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GroveStreet-GTASA-Panorama.gif",
+        "score": 378,
+        "why": [
+          "gif_penalty",
+          "gtasa",
+          "good:street",
+          "large",
+          "landscape"
+        ],
+        "width": 3053,
+        "height": 1201,
+        "mime": "image/gif"
+      },
+      {
+        "file": "File:GroveSteet-GTASA-Map.png",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1000,
+        "height": 1000,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Site-logo.png",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 400,
+        "height": 400,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name_en": "Big Smoke's House",
+    "page_title": "Big Smoke's House",
+    "chosen": "File:BigSmoke'sHouse-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:BigSmoke'sHouse-GTASA.jpg",
+        "score": 495,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BigSmoke'sHouse-GTASA-Exterior.jpg",
+        "score": 423,
+        "why": [
+          "gtasa",
+          "good:exterior",
+          "medium_large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1264,
+        "height": 610,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BigSmoke'sHouse-GTASA-Location.png",
+        "score": 411,
+        "why": [
+          "gtasa",
+          "good:location",
+          "large",
+          "landscape"
+        ],
+        "width": 1334,
+        "height": 900,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BigSmokesHouse-GTASA-CutsceneProps.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:RunningDog-GTASA-SS2.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheAmericanDream-GTASA-Trophy.png",
+        "score": 120,
+        "why": [
+          "gtasa",
+          "tiny_penalty"
+        ],
+        "width": 240,
+        "height": 240,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Site-logo.png",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 400,
+        "height": 400,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name_en": "Sweet's House",
+    "page_title": "Sweet's House",
+    "chosen": "File:SweetJohnsons'house-GTASA-exterior.jpg",
+    "top_candidates": [
+      {
+        "file": "File:SweetJohnsons'house-GTASA-exterior.jpg",
+        "score": 548,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "article_pageimage",
+          "good:exterior",
+          "medium_large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1280,
+        "height": 603,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Sweet'sHouse-GTASA-Bathroom.jpg",
+        "score": 440,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Sweet'sHouse-GTASA-Bedroom.jpg",
+        "score": 440,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Sweet'sHouse-GTASA-Kitchen.jpg",
+        "score": 440,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Sweet'sHouse-GTASA-Hallway.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:SweetsHouse-GTASA-location.png",
+        "score": 411,
+        "why": [
+          "gtasa",
+          "good:location",
+          "large",
+          "landscape"
+        ],
+        "width": 1334,
+        "height": 904,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:SweetsHouse-GTASA-Entrance.jpg",
+        "score": 409,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 768,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:SweetJohnson'sHouse-GTASA-Interior.jpg",
+        "score": 348,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape",
+          "interior_penalty"
+        ],
+        "width": 1000,
+        "height": 625,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Site-logo.png",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 400,
+        "height": 400,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name_en": "Vinewood Sign",
+    "page_title": "Vinewood Sign (3D Universe)",
+    "chosen": "File:VinewoodSign-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:VinewoodSign-GTASA.png",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodSign-GTASA-RearView1.png",
+        "score": 425,
+        "why": [
+          "gtasa",
+          "good:view",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodSign-GTASA-RearView2.png",
+        "score": 425,
+        "why": [
+          "gtasa",
+          "good:view",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodSign-GTASA-Antenna.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodSign-GTASA-AtNight.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodSign-GTASA-DistancefromLS-DowntownSkyline.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodSign-GTASA-DistancefromLS.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodSign-GTASA-SeenfromLS.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodSign-GTASA-SeenfromMaddDoggsCrib.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodSign-GTASA-Mulholland.png",
+        "score": 413,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name_en": "Los Santos Observatory",
+    "page_title": "Los Santos Observatory",
+    "chosen": "File:LosSantosObservatory-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:LosSantosObservatory-GTASA.jpg",
+        "score": 468,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 610,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name_en": "Los Santos City Hall",
+    "page_title": "Los Santos City Hall",
+    "chosen": "File:LosSantosCityHall-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:LosSantosCityHall-GTASA.jpg",
+        "score": 454,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "medium_large"
+        ],
+        "width": 900,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LosSantosCityHall-GTASA-Entrance.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LosSantosCityHall-GTASA-Front.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:front",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LosSantosCityHall-GTASA-Street.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:street",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LosSantosCityHall-GTASA-Street2.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:street",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LosSantosCityHall-GTASA-exterior.jpg",
+        "score": 410,
+        "why": [
+          "gtasa",
+          "good:exterior",
+          "medium_large",
+          "exterior_bonus"
+        ],
+        "width": 1125,
+        "height": 1024,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LosSantosCityHall-GTASA-Alleyway.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LosSantosCityHall-GTASA-Doors.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LosSantosCityHall-GTASA-Flowerbeds.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LosSantosCityHall-GTASA-Rear2.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name_en": "Los Santos Forum",
+    "page_title": "Los Santos Forum",
+    "chosen": "File:LosSantosForum-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:LosSantosForum-GTASA.jpg",
+        "score": 468,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 575,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name_en": "Los Santos International Airport",
+    "page_title": "Los Santos International Airport (3D Universe)",
+    "chosen": "File:LSIA-GTASA-Entrance.jpg",
+    "top_candidates": [
+      {
+        "file": "File:LSIA-GTASA-Entrance.jpg",
+        "score": 411,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 1024,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LosSantosInternationalAirport-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LSIA-GTASA-ControlTower.jpg",
+        "score": 401,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 1024,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LSX-GTASA-Night.jpg",
+        "score": 399,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 768,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LSXLevel1-ZR350-GTASA.png",
+        "score": 399,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 768,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LSX-GTASA-ViewFromVerdantBluffs.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:view",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LosSantosInternationalAirport-GTASA-NightTime.jpeg",
+        "score": 378,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 590,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LSX-GTASA-Pilot&FlightAttendant.jpg",
+        "score": 377,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LSX-GTASA-Tarmac.jpg",
+        "score": 377,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:AirportManual-GTASA.png",
+        "score": 301,
+        "why": [
+          "gtasa"
+        ],
+        "width": 406,
+        "height": 839,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name_en": "Unity Station",
+    "page_title": "Unity Station",
+    "chosen": "File:UnityStation-GTASA-ElCorona.jpg",
+    "top_candidates": [
+      {
+        "file": "File:UnityStation-GTASA-ElCorona.jpg",
+        "score": 477,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:station",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1000,
+        "height": 569,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:UnityStation-GTASA-Sign.jpg",
+        "score": 397,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "good:station",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:UnityStation-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:UnityStation-GTASA-LosSantosMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1548,
+        "height": 1228,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:UnityStation-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-UnityStation.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name_en": "Santa Maria Beach",
+    "page_title": "Santa Maria Beach",
+    "chosen": "File:SantaMariaBeach-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:SantaMariaBeach-GTASA.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:beach",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:SantaMariaBeach-GTASA-Sunny.jpg",
+        "score": 388,
+        "why": [
+          "gtasa",
+          "good:beach",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1024,
+        "height": 768,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:SantaMariaBeach-GTASA-Sidewalk.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:beach",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:SantaMariaBeach-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:SantaMariaBeach-GTASA-LosSantosMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1548,
+        "height": 1228,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:SantaMariaBeach-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Site-logo.png",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 400,
+        "height": 400,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name_en": "Los Santos Lighthouse",
+    "page_title": "Los Santos Lighthouse",
+    "chosen": "File:LosSantosLighthouse-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:LosSantosLighthouse-GTASA.jpg",
+        "score": 490,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "large",
+          "landscape"
+        ],
+        "width": 1366,
+        "height": 768,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name_en": "Vinewood Movie Studios",
+    "page_title": "Vinewood Movie Studios",
+    "chosen": "File:VinewoodFilmStudios-GTASA-Overview.png",
+    "top_candidates": [
+      {
+        "file": "File:VinewoodFilmStudios-GTASA-Overview.png",
+        "score": 515,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:overview",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodFilmStudios-GTASA-Entrance.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodFilmStudios-GTASA-AStage.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodFilmStudios-GTASA-BStage.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodFilmStudios-GTASA-Offices.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodFilmStudios-GTASA-Security.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodFilmStudios-GTASA-Stage.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodFilmStudios-GTASA-MapLocation.png",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodFilmStudios-GTASA-Map.png",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 800,
+        "height": 450,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name_en": "Vinewood Walk of Fame",
+    "page_title": "Vinewood Walk of Fame",
+    "chosen": "File:Vinewood Walk of Fame GTASA North Side.png",
+    "top_candidates": [
+      {
+        "file": "File:Vinewood Walk of Fame GTASA North Side.png",
+        "score": 510,
+        "why": [
+          "gtasa",
+          "name_overlap=3",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:WalkOfFame Blank Icon.png",
+        "score": -180,
+        "why": [
+          "tiny_penalty"
+        ],
+        "width": 296,
+        "height": 255,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:WalkOfFame Music Icon.png",
+        "score": -180,
+        "why": [
+          "tiny_penalty"
+        ],
+        "width": 258,
+        "height": 257,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:WalkOfFame Drama Icon.png",
+        "score": -180,
+        "why": [
+          "tiny_penalty"
+        ],
+        "width": 241,
+        "height": 241,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:WalkOfFame Film Icon.png",
+        "score": -180,
+        "why": [
+          "tiny_penalty"
+        ],
+        "width": 241,
+        "height": 241,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:WalkOfFame TV Icon.png",
+        "score": -180,
+        "why": [
+          "tiny_penalty"
+        ],
+        "width": 226,
+        "height": 224,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:WalkOfFame Radio Icon.png",
+        "score": -180,
+        "why": [
+          "tiny_penalty"
+        ],
+        "width": 213,
+        "height": 212,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VinewoodWalkofFame-GTAV-PCScreenshot.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 2640,
+        "height": 1485,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Vinewood Walk of Fame GTASA Map.png",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 658,
+        "height": 447,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Vinewood Walk Of Fame GTAV Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 603,
+        "height": 380,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name_en": "Los Santos Storm Drain",
+    "page_title": "Los Santos Storm Drain (3D Universe)",
+    "chosen": "File:LosSantosStormDrain-GTASA-Downtown.jpg",
+    "top_candidates": [
+      {
+        "file": "File:LosSantosStormDrain-GTASA-Downtown.jpg",
+        "score": 1000000,
+        "why": [
+          "explicit_override"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name_en": "Gant Bridge",
+    "page_title": "Gant Bridge",
+    "chosen": "File:GantBridge-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:GantBridge-GTASA.jpg",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:bridge",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GantBridge-GTASA-Sunrise.jpg",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:bridge",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BatteryPoint-GTASA-Aerial.jpg",
+        "score": 410,
+        "why": [
+          "gtasa",
+          "good:aerial",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 788,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GantBridge-GTASA-VisitorCenter.jpg",
+        "score": 388,
+        "why": [
+          "gtasa",
+          "good:bridge",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 589,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GantBridge-GTASA-BridgeFacts.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:bridge",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GantBridge-GTASA-Cable.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:bridge",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GantBridge-GTASA-EasterEgg.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:bridge",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GantBridge-GTASA-Hunter.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:bridge",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GantBridge-GTASAde-BridgeFacts.png",
+        "score": 373,
+        "why": [
+          "gtasa",
+          "good:bridge",
+          "medium_large"
+        ],
+        "width": 825,
+        "height": 967,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:GantBridge-GTASA-tollbooth.jpg",
+        "score": 327,
+        "why": [
+          "gtasa",
+          "good:bridge",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 356,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name_en": "Garver Bridge",
+    "page_title": "Garver Bridge",
+    "chosen": "File:GarverBridge-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:GarverBridge-GTASA.jpg",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:bridge",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GarverBridge-GTASA-SanFierroView.jpg",
+        "score": 421,
+        "why": [
+          "gtasa",
+          "good:view",
+          "good:bridge",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 1024,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GarverBridge-GTASA-EarthquakeDamage.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:bridge",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 500,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-GarverBridge.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name_en": "Kincaid Bridge",
+    "page_title": "Kincaid Bridge",
+    "chosen": "File:KincaidBridge-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:KincaidBridge-GTASA.jpg",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:bridge",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-KincaidBridge.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name_en": "Big Pointy Building",
+    "page_title": "Big Pointy Building",
+    "chosen": "File:BigPointyBuilding-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:BigPointyBuilding-GTASA.jpg",
+        "score": 465,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:building",
+          "medium_large"
+        ],
+        "width": 1080,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BigPointyBuilding-GTASA-Overview.png",
+        "score": 435,
+        "why": [
+          "gtasa",
+          "good:overview",
+          "good:view",
+          "good:building",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BigPointyBuilding-GTASA-Entrance.png",
+        "score": 425,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "good:building",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BigPointyBuilding-GTASA-Sign-BigPrickJokes.png",
+        "score": 425,
+        "why": [
+          "gtasa",
+          "good:building",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BigPointyBuilding-GTASA-Sign-NoBasejumping.png",
+        "score": 425,
+        "why": [
+          "gtasa",
+          "good:building",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BigPointyBuilding-GTASA-Sign-PointiestBuilding.png",
+        "score": 425,
+        "why": [
+          "gtasa",
+          "good:building",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BigPointyBuilding-GTASA-Sign-VisitorsWelcome.png",
+        "score": 425,
+        "why": [
+          "gtasa",
+          "good:building",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BigPointyBuilding-GTASA-Base.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:building",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BigPointyBuilding-GTASA-LookingUp.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:building",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BigPointyBuilding-GTASA-Top.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:building",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name_en": "Pier 69",
+    "page_title": "Pier 69",
+    "chosen": "File:Pier69-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:Pier69-GTASA.jpg",
+        "score": 1000000,
+        "why": [
+          "explicit_override"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name_en": "Jizzy's Pleasure Domes",
+    "page_title": "Jizzy's Pleasure Domes",
+    "chosen": "File:Jizzy'sPleasureDomes-GTASA-exterior.jpg",
+    "top_candidates": [
+      {
+        "file": "File:Jizzy'sPleasureDomes-GTASA-exterior.jpg",
+        "score": 549,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "article_pageimage",
+          "good:exterior",
+          "medium_large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1255,
+        "height": 764,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BatteryPoint-GTASA-Aerial.jpg",
+        "score": 410,
+        "why": [
+          "gtasa",
+          "good:aerial",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 788,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Jizzy'sPleasureDomes-GTASAde-NeonJizzy.png",
+        "score": 400,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "medium_large"
+        ],
+        "width": 1024,
+        "height": 1024,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Jizzy'sPleasureDomes-GTASA-interior.jpg",
+        "score": 356,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "medium",
+          "landscape",
+          "interior_penalty"
+        ],
+        "width": 640,
+        "height": 448,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:PromotionalWebsite-GTASA-Flash-juniper jizzys.jpg",
+        "score": 351,
+        "why": [
+          "gtasa",
+          "medium",
+          "landscape"
+        ],
+        "width": 640,
+        "height": 448,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BatteryPoint.jpg",
+        "score": 100,
+        "why": [
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 788,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name_en": "Zombotech Corporation",
+    "page_title": "Zombotech Corporation",
+    "chosen": "File:ZombotechCorporation-GTASA-exterior.jpg",
+    "top_candidates": [
+      {
+        "file": "File:ZombotechCorporation-GTASA-exterior.jpg",
+        "score": 450,
+        "why": [
+          "gtasa",
+          "good:exterior",
+          "large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ZombotechCorporation-GTASA-Building.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:building",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:ZombotechCorporation-GTASA-DNASculpture-LowerView.jpg",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ZombotechCorporation-GTASA-DNASculpture-TopView.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:ZombotechCorporation-GTASA-Rooftop.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:ZombotechCorporation-GTASA-Visitors.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:ZombotechCorporation-GTASA-laboratory.jpg",
+        "score": 377,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ZombotechCorporation-GTASA-signage.jpg",
+        "score": 361,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "medium",
+          "landscape"
+        ],
+        "width": 640,
+        "height": 480,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Zombotech-GTASA-TextureFile(zombotech2.png).png",
+        "score": 155,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "tiny_penalty"
+        ],
+        "width": 256,
+        "height": 256,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Zombotech-GTASA-TextureFile(zombotech3.png).png",
+        "score": 155,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "tiny_penalty"
+        ],
+        "width": 256,
+        "height": 256,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name_en": "Wang Cars",
+    "page_title": "Wang Cars (GTA San Andreas)",
+    "chosen": "File:WangCars-GTASA-exterior.jpg",
+    "top_candidates": [
+      {
+        "file": "File:WangCars-GTASA-exterior.jpg",
+        "score": 540,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:exterior",
+          "large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name_en": "Cranberry Station",
+    "page_title": "Cranberry Station",
+    "chosen": "File:CranberryStation-GTASA-exterior.jpg",
+    "top_candidates": [
+      {
+        "file": "File:CranberryStation-GTASA-exterior.jpg",
+        "score": 461,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:exterior",
+          "good:station",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1000,
+        "height": 325,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:CranberryStation-GTASA-concourse.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:station",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1000,
+        "height": 500,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:CranberryStation-GTASA-platforms.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:station",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1000,
+        "height": 470,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:CranberryStation-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:CranberryStation-GTASA-SanFierroMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:CranberryStation-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-CranberryStation.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name_en": "Missionary Hill Radio Tower",
+    "page_title": "Missionary Hill Radio Tower",
+    "chosen": "File:MissionaryHillTransmitterBuilding-GTASA-RadioTower.jpg",
+    "top_candidates": [
+      {
+        "file": "File:MissionaryHillTransmitterBuilding-GTASA-RadioTower.jpg",
+        "score": 502,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:building",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name_en": "Ocean Flats Cathedral",
+    "page_title": "Ocean Flats Cathedral",
+    "chosen": "File:OceanFlats-GTASA-Church.jpg",
+    "top_candidates": [
+      {
+        "file": "File:OceanFlats-GTASA-Church.jpg",
+        "score": 492,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:OceanFlats-GTASA-Church-Entrance.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:OceanFlats-GTASA-Church-GreenFields.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:OceanFlats-GTASA-Church-ParkingLot.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:OceanFlats-GTASA-Church-Rear.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:OceanFlats-GTASA-Church-Map.png",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 477,
+        "height": 502,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "name_en": "Easter Basin Naval Station",
+    "page_title": "Easter Basin Naval Station",
+    "chosen": "File:EasterBasinNavalStation-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:EasterBasinNavalStation-GTASA.jpg",
+        "score": 502,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:station",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:EasterBasinNavalStation-GTASA-DockExterior.jpg",
+        "score": 457,
+        "why": [
+          "gtasa",
+          "good:exterior",
+          "good:station",
+          "large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:EasterBasinNavalStation-GTASA-DockExterior2.jpg",
+        "score": 457,
+        "why": [
+          "gtasa",
+          "good:exterior",
+          "good:station",
+          "large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:EasterBasinNavalStation-GTASA-Entrance.jpg",
+        "score": 422,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "good:station",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:EasterBasinNavalStation-GTASA-Barracks.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:station",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:EasterBasinNavalStation-GTASA-BaseRear.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:station",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:EasterBasinNavalStation-GTASA-Dock1.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:station",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:EasterBasinNavalStation-GTASA-Dock2.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:station",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:EasterBasinNavalStation-GTASA-Dock3.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:station",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:EasterBasinNavalStation-GTASA-DockSouth.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:station",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name_en": "Windy Windy Windy Windy Street",
+    "page_title": "Windy Windy Windy Windy Street",
+    "chosen": "File:WindyWindyWindyWindyStreet-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:WindyWindyWindyWindyStreet-GTASA.jpg",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:street",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:WindyWindyWindyWindyStreet-GTASAde-StreetSign.png",
+        "score": 397,
+        "why": [
+          "gtasa",
+          "good:street",
+          "good:sign",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1024,
+        "height": 512,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:WindyWindyWindyWindyStreet-GTASA-Map.png",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 800,
+        "height": 450,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name_en": "Downtown Square",
+    "page_title": "Downtown Square",
+    "chosen": "File:DowntownSquare-Intro-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:DowntownSquare-Intro-GTASA.jpg",
+        "score": 495,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:DowntownSquare-Intro2-GTASA.jpg",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:DowntownSquare-Intro3-GTASA.jpg",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:DowntownSquare-Intro4-GTASA.jpg",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:DowntownSquare-Monument1-GTASA.jpg",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:DowntownSquare-Monument2-GTASA.jpg",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:DowntownSquare-Monument3-GTASA.jpg",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:DowntownSquare-PolicePatrol-GTASA.jpg",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:DowntownSquare-Visitior1-GTASA.jpg",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:DowntownSquare-Visitor2-GTASA.jpg",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name_en": "The Four Dragons Casino",
+    "page_title": "The Four Dragons Hotel & Casino",
+    "chosen": "File:TheFourDragonsCasino-GTASA-Day.jpg",
+    "top_candidates": [
+      {
+        "file": "File:TheFourDragonsCasino-GTASA-Day.jpg",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:day",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheFourDragonsCasino-GTASA-Night.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheFourDragonsCasino-GTASA-casinofloor.jpg",
+        "score": 379,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 650,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheFourDragonsCasino-GTASA-managementroom.jpg",
+        "score": 351,
+        "why": [
+          "gtasa",
+          "medium",
+          "landscape"
+        ],
+        "width": 640,
+        "height": 448,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheFourDragonsCasino-GTASA-Interior.jpg",
+        "score": 321,
+        "why": [
+          "gtasa",
+          "medium",
+          "landscape",
+          "interior_penalty"
+        ],
+        "width": 640,
+        "height": 480,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheFourDragonsCasino-GTASA-janitorscloset.jpg",
+        "score": 135,
+        "why": [
+          "gtasa",
+          "tiny_penalty",
+          "landscape"
+        ],
+        "width": 180,
+        "height": 135,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:FourDragonsCasino-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:FourDragonsCasino-GTASA-LasVenturasMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheFourDragonsCasino-GTASA-Logo.png",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 1024,
+        "height": 512,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:FourDragonsCasino-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "name_en": "Caligula's Palace",
+    "page_title": "Caligula's Palace",
+    "chosen": "File:CaligulasPalace-GTASA-Day.jpg",
+    "top_candidates": [
+      {
+        "file": "File:CaligulasPalace-GTASA-Day.jpg",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:day",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Caligula'sCasino-GTASA-3DModel.jpg",
+        "score": 436,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "large",
+          "landscape"
+        ],
+        "width": 1440,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Caligula'sCasino-GTASA-Driveway.jpg",
+        "score": 436,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "large",
+          "landscape"
+        ],
+        "width": 1440,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:CaligulasPalace-GTASA-Night.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:ArchitecturalEspionage-GTASA3.jpg",
+        "score": 377,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:CaligulasPalace-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:CaligulasPalace-GTASA-LasVenturasMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:OGLocTourPoster-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 845,
+        "height": 861,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:CaligulasPalace-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name_en": "The Camel's Toe",
+    "page_title": "The Camel's Toe",
+    "chosen": "File:TheCamel'sToe-GTASA-Day.jpg",
+    "top_candidates": [
+      {
+        "file": "File:TheCamel'sToe-GTASA-Day.jpg",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:day",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheCamelsToe-GTASA-GeneralView.png",
+        "score": 409,
+        "why": [
+          "gtasa",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 720,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheCamel'sToe-GTASA-Night.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheCamel'sToe-GTASA-Light.jpg",
+        "score": 377,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheCamelsToe-GTASA-advert.jpg",
+        "score": 135,
+        "why": [
+          "gtasa",
+          "tiny_penalty",
+          "landscape"
+        ],
+        "width": 358,
+        "height": 237,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheCamelsToe-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheCamelsToe-GTASA-LasVenturasMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheCamelsToe-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "name_en": "The Clown's Pocket",
+    "page_title": "The Clown's Pocket",
+    "chosen": "File:TheClown'sPocket-GTASA-Day.jpg",
+    "top_candidates": [
+      {
+        "file": "File:TheClown'sPocket-GTASA-Day.jpg",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:day",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheClown'sPocket-GTASA-exterior.jpg",
+        "score": 422,
+        "why": [
+          "gtasa",
+          "good:exterior",
+          "medium_large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ClownsPocket-GTASA-GeneralView.png",
+        "score": 409,
+        "why": [
+          "gtasa",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 720,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheClown'sPocket-GTASA-Night.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheClownsPocket-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheClownsPocket-GTASA-LasVenturasMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheClownsPocket-GTASA-Logo.png",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 1800,
+        "height": 820,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheClownsPocket-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "name_en": "The Emerald Isle",
+    "page_title": "The Emerald Isle",
+    "chosen": "File:TheEmeraldIsle-GTASA-Day.jpg",
+    "top_candidates": [
+      {
+        "file": "File:TheEmeraldIsle-GTASA-Day.jpg",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:day",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheEmeraldIsle-GTASA-Night.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheEmeraldIsle-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheEmeraldIsle-GTASAde-Logo.png",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 2048,
+        "height": 1024,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheEmeraldIsle-GTASA-LasVenturasMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheEmeraldIsle-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name_en": "The Visage",
+    "page_title": "The Visage",
+    "chosen": "File:TheVisage-GTASA-Day.jpg",
+    "top_candidates": [
+      {
+        "file": "File:TheVisage-GTASA-Day.jpg",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:day",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheVisage-GTASA-Entrance.jpg",
+        "score": 409,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 768,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheVisage-GTASA-Night.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheVisage-GTASA-mainbuilding.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:building",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheVisage-GTASA-rooftopview.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:view",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheVisage-GTASA-SignPS2.png",
+        "score": 373,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "medium_large"
+        ],
+        "width": 865,
+        "height": 808,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheVisage-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheVisage-GTASA-LasVenturasMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheVisage-GTASAde-Logo.png",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 1024,
+        "height": 512,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheVisage-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "name_en": "Pirates in Men's Pants",
+    "page_title": "Pirates in Men's Pants",
+    "chosen": "File:PiratesinMen'sPants-GTASA-Day.jpg",
+    "top_candidates": [
+      {
+        "file": "File:PiratesinMen'sPants-GTASA-Day.jpg",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:day",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:PiratesinMen'sPants-GTASA-Night.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PiratesinMensPants-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:PiratesinMensPants-GTASA-LasVenturasMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:PiratesinMensPants-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-PiratesinMensPants.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "name_en": "V-Rock Hotel",
+    "page_title": "V-Rock Hotel",
+    "chosen": "File:V-RockHotel-GTASA-exterior.jpg",
+    "top_candidates": [
+      {
+        "file": "File:V-RockHotel-GTASA-exterior.jpg",
+        "score": 424,
+        "why": [
+          "gtasa",
+          "good:exterior",
+          "medium_large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1280,
+        "height": 640,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Horseshoes-GTASA-Locations-31.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:location",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PromotionalWebsite-GTASA-Flash-rocaescalante vrock.jpg",
+        "score": 351,
+        "why": [
+          "gtasa",
+          "medium",
+          "landscape"
+        ],
+        "width": 640,
+        "height": 448,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:VRockHotel-GTASA-Logo.svg",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 507,
+        "height": 476,
+        "mime": "image/svg+xml"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "name_en": "Las Venturas Welcome Sign",
+    "page_title": "Las Venturas Welcome Sign",
+    "chosen": "File:LasVenturasWelcomeSign-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:LasVenturasWelcomeSign-GTASA.png",
+        "score": 505,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LasVenturasWelcomeSign-GTASA-Night.jpg",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:GTAV-LasVenturasScratch.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 189,
+        "height": 111,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name_en": "Las Venturas Airport",
+    "page_title": "Las Venturas Airport",
+    "chosen": "File:LasVenturasAirport-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:LasVenturasAirport-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LVRingroad-GTASA.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:road",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasVenturasAirport-GTASA-WelcomeSign.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LVA-GTASA-EarlyScreenshot.jpg",
+        "score": 351,
+        "why": [
+          "gtasa",
+          "medium",
+          "landscape"
+        ],
+        "width": 640,
+        "height": 448,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:AirportManual-GTASA.png",
+        "score": 301,
+        "why": [
+          "gtasa"
+        ],
+        "width": 406,
+        "height": 839,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LVA-GTASA-Entrance.jpg",
+        "score": 145,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "tiny_penalty",
+          "landscape"
+        ],
+        "width": 150,
+        "height": 94,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasVenturasAirport-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasVenturasAirport-GTASA-LasVenturasMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasVenturasAirport-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name_en": "Blackfield Stadium",
+    "page_title": "Blackfield Stadium",
+    "chosen": "File:BlackfieldStadium-GTASA-ExteriorFront.png",
+    "top_candidates": [
+      {
+        "file": "File:BlackfieldStadium-GTASA-ExteriorFront.png",
+        "score": 550,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:exterior",
+          "good:front",
+          "large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BlackfieldStadium-GTASA-ExteriorRear.png",
+        "score": 450,
+        "why": [
+          "gtasa",
+          "good:exterior",
+          "large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BlackfieldStadium-GTASA-ExteriorSide.png",
+        "score": 450,
+        "why": [
+          "gtasa",
+          "good:exterior",
+          "large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BlackfieldStadium-GTASA-DirtringBillboard.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name_en": "K.A.C.C. Military Aviation Fuel Depot",
+    "page_title": "K.A.C.C. Military Aviation Fuel Depot",
+    "chosen": "File:KACC-GTASA-MainBuildingSign.jpg",
+    "top_candidates": [
+      {
+        "file": "File:KACC-GTASA-MainBuildingSign.jpg",
+        "score": 422,
+        "why": [
+          "gtasa",
+          "good:building",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:KACC-GTASA-Overview.jpg",
+        "score": 422,
+        "why": [
+          "gtasa",
+          "good:overview",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:KACC-GTASA-Overview2.jpg",
+        "score": 422,
+        "why": [
+          "gtasa",
+          "good:overview",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:KACC-GTASA-1.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:KACC-GTASA-10.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:KACC-GTASA-11.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:KACC-GTASA-12.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:KACC-GTASA-13.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:KACC-GTASA-14.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:KACC-GTASA-15.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "name_en": "Old Venturas Strip",
+    "page_title": "Old Venturas Strip",
+    "chosen": "File:OldVenturasStrip-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:OldVenturasStrip-GTASA.png",
+        "score": 1000000,
+        "why": [
+          "explicit_override"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "name_en": "Yellow Bell Golf Course",
+    "page_title": "Yellow Bell Golf Course",
+    "chosen": "File:YellowBellGolfCourse-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:YellowBellGolfCourse-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:YellowBellGolfCourse-GTASA-Wideshot.jpg",
+        "score": 352,
+        "why": [
+          "gtasa",
+          "medium",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 371,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:YellowBellGolfClub-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:YellowBellGolfClub-GTASA-LasVenturasMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:YellowBellGolfClub-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-YellowBellGolfCourse.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "name_en": "Area 69",
+    "page_title": "Area 69 (3D Universe)",
+    "chosen": "File:Area69-GTASA-Airstrip-AlternativeEntrance.png",
+    "top_candidates": [
+      {
+        "file": "File:Area69-GTASA-Airstrip-AlternativeEntrance.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Area69-GTASA-ApproachRoad-DirtTrack.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:road",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Area69-GTASA-ApproachRoad-End.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:road",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Area69-GTASA-ApproachRoad-GroomLake.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:road",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Area69-GTASA-ApproachRoad-North.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:road",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Area69-GTASA-ApproachRoad-RockFormations.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:road",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Area69-GTASA-ApproachRoad-SeenFromAfar.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:road",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Area69-GTASA-ApproachRoad-South.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:road",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Area69-GTASA-Buildings.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:building",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Area69-GTASA-FacilityEntrance-Locked.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "name_en": "The Big Ear",
+    "page_title": "The Big Ear",
+    "chosen": "File:TheBigEar-GTASAde.png",
+    "top_candidates": [
+      {
+        "file": "File:TheBigEar-GTASAde.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheBigEar-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheBigEar-GTASA-ParkingLot.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheBigEar-GTASA-ParkingLot2.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheBigEar-GTASA-Rear.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheBigEar-GTASA-Sandking.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheBigEar-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheBigEar-GTASA-BoneCountyMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:TheBigEar-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "name_en": "Regular Tom",
+    "page_title": "Regular Tom",
+    "chosen": "File:RegularTom-GTASAde.png",
+    "top_candidates": [
+      {
+        "file": "File:RegularTom-GTASAde.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:RegularTom-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:RegularTom-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:RegularTom-GTASA-BoneCountyMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:RegularTom-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-RegularTom.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "name_en": "Lil' Probe'Inn",
+    "page_title": "Lil' Probe'Inn",
+    "chosen": "File:LilProbeInn-GTASA-RearView.png",
+    "top_candidates": [
+      {
+        "file": "File:LilProbeInn-GTASA-RearView.png",
+        "score": 1000000,
+        "why": [
+          "explicit_override"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "name_en": "Verdant Meadows",
+    "page_title": "Verdant Meadows Airfield",
+    "chosen": "File:VerdantMeadows-GTASA-Overview.png",
+    "top_candidates": [
+      {
+        "file": "File:VerdantMeadows-GTASA-Overview.png",
+        "score": 423,
+        "why": [
+          "gtasa",
+          "good:overview",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:StuntJumps-GTASA-Jump58-BoneCountyVerdantMeadows-Jump.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VerdantMeadows-GTASA.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:VerdantMeadowsAirfield-GTASA-Garage.jpg",
+        "score": 401,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 1024,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:VerdantMeadowsAirfield-GTASA-Jetpack.jpg",
+        "score": 401,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 1024,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:VerdantMeadowsAirfield-GTASA-MainHangar.jpg",
+        "score": 401,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 1024,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:VerdantMeadowsAirfield-GTASA-SideHangars.jpg",
+        "score": 401,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 1024,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:VerdantMeadowsAirfield-GTASA-SideRunwayHelipad.jpg",
+        "score": 401,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 1024,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:VerdantMeadowsSafehouse-GTASA.jpg",
+        "score": 399,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 768,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:VerdantMeadowsAirfield-GTASA-MainHangarInterior.jpg",
+        "score": 371,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape",
+          "interior_penalty"
+        ],
+        "width": 1280,
+        "height": 1024,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "name_en": "Las Brujas",
+    "page_title": "Las Brujas",
+    "chosen": "File:LasBrujas-GTASAde.png",
+    "top_candidates": [
+      {
+        "file": "File:LasBrujas-GTASAde.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LasBrujas-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LasBrujas-GTASA-northwestwards.jpg",
+        "score": 399,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 760,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasBrujas-GTASA-NightThunderstorm.jpg",
+        "score": 377,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasBrujas-GTASA-southeastwards.jpg",
+        "score": 351,
+        "why": [
+          "gtasa",
+          "medium",
+          "landscape"
+        ],
+        "width": 640,
+        "height": 480,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasBrujas-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasBrujas-GTASA-BoneCountyMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasBrujas-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "name_en": "Mass Grave",
+    "page_title": "Mass Grave",
+    "chosen": "File:Massgrave-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:Massgrave-GTASA.jpg",
+        "score": 489,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 740,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:MassGrave-GTASA-Bodies.jpg",
+        "score": 399,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 772,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MassGrave-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 205,
+        "height": 200,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "name_en": "Snake Farm",
+    "page_title": "Snake Farm",
+    "chosen": "File:SnakeFarm-GTASA-Overview.jpg",
+    "top_candidates": [
+      {
+        "file": "File:SnakeFarm-GTASA-Overview.jpg",
+        "score": 425,
+        "why": [
+          "gtasa",
+          "good:overview",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:SnakeFirm-Sign-GTASA.jpg",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:sign",
+          "landscape"
+        ],
+        "width": 512,
+        "height": 256,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "name_en": "Hunter Quarry",
+    "page_title": "Hunter Quarry",
+    "chosen": "File:HunterQuarry-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:HunterQuarry-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:HunterQuarry-GTASA-View4.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:view",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:HunterQuarry-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:HunterQuarry-GTASA-BoneCountyMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:HunterQuarry-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Site-logo.png",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 400,
+        "height": 400,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "name_en": "Octane Springs",
+    "page_title": "Octane Springs",
+    "chosen": "File:OctaneSprings-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:OctaneSprings-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:OctaneSprings-GTASA-Sunrise.jpg",
+        "score": 399,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 768,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:OctaneSprings-GTASA-Derricks.jpg",
+        "score": 378,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 556,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:OctaneSprings-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:OctaneSprings-GTASA-BoneCountyMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:OctaneSprings-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "name_en": "Green Palms",
+    "page_title": "Green Palms",
+    "chosen": "File:GreenPalms-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:GreenPalms-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:GreenPalms-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GreenPalms-GTASA-BoneCountyMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:GreenPalms-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-GreenPalms.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "name_en": "Sherman Reservoir",
+    "page_title": "Sherman Reservoir",
+    "chosen": "File:ShermanReservoir-GTASA-Daylight.jpg",
+    "top_candidates": [
+      {
+        "file": "File:ShermanReservoir-GTASA-Daylight.jpg",
+        "score": 489,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:day",
+          "good:daylight",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 660,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ShermanReservoir-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:ShermanReservoir-GTASA-MapLocation.png",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 876,
+        "height": 876,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-ShermanReservoir.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "name_en": "Cock Rock",
+    "page_title": "Cock Rock",
+    "chosen": "File:CockRock-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:CockRock-GTASA.jpg",
+        "score": 495,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:CockRock-GTACW.png",
+        "score": 100,
+        "why": [
+          "large",
+          "landscape"
+        ],
+        "width": 1366,
+        "height": 768,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:CockRock-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "name_en": "Las Payasadas",
+    "page_title": "Las Payasadas",
+    "chosen": "File:LasPayasadas-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:LasPayasadas-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LasPayasadas-GTASA-Collage.png",
+        "score": 400,
+        "why": [
+          "gtasa",
+          "large"
+        ],
+        "width": 1920,
+        "height": 2160,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LasPayasadas-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasPayasadas-GTASA-BoneCountyMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasPayasadas-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-LasPayasadas.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "name_en": "Sherman Dam",
+    "page_title": "Sherman Dam",
+    "chosen": "File:ShermanDam-GTASAde.png",
+    "top_candidates": [
+      {
+        "file": "File:ShermanDam-GTASAde.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:ShermanDam-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:ShermanReservoir-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PromotionalWebsite-GTASA-Flash-lasbarrancas shermandam.jpg",
+        "score": 351,
+        "why": [
+          "gtasa",
+          "medium",
+          "landscape"
+        ],
+        "width": 640,
+        "height": 448,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ShermanDam-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ShermanDam-GTASA-TierraRobadaMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ShermanDam-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Site-logo.png",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 400,
+        "height": 400,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "name_en": "Mike Toreno's Ranch",
+    "page_title": "Mike Toreno's Ranch",
+    "chosen": "File:MikeToreno'sRanch-GTASA-Exterior.png",
+    "top_candidates": [
+      {
+        "file": "File:MikeToreno'sRanch-GTASA-Exterior.png",
+        "score": 540,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:exterior",
+          "large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MikeToreno'sRanch-GTASA-Entrance1.png",
+        "score": 413,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MikeToreno'sRanch-GTASA-Entrance2.png",
+        "score": 413,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MikeToreno'sRanch-GTASA-Dock1.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MikeToreno'sRanch-GTASA-Dock2.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MikeToreno'sRanch-GTASA-Floor1-1.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MikeToreno'sRanch-GTASA-Floor1-2.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MikeToreno'sRanch-GTASA-Floor2.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MikeToreno'sRanch-GTASA-Garage&SavePoint.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MikeToreno'sRanch-GTASA-Pickups.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "name_en": "Bayside",
+    "page_title": "Bayside",
+    "chosen": "File:Bayside-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:Bayside-GTASA.png",
+        "score": 438,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bayside-GTASA-Collage.png",
+        "score": 435,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "large"
+        ],
+        "width": 1920,
+        "height": 2160,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bayside-GTASA-Street.jpg",
+        "score": 423,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "good:street",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 560,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Bayside-GTASA-MainStreet.jpg",
+        "score": 422,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "good:street",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Bayside-GTASA-TheBeach.jpg",
+        "score": 422,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "good:beach",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Bayside-GTASA-Campsite.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Bayside-GTASA-Central.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Bayside-GTASA-EastSuburb.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Bayside-GTASA-WestSuburb.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BaysideMarina-GTASA-Aerial.jpg",
+        "score": 388,
+        "why": [
+          "gtasa",
+          "good:aerial",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 614,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "name_en": "Bayside Marina",
+    "page_title": "Bayside Marina",
+    "chosen": "File:BaysideMarina-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:BaysideMarina-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BaysideMarina-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BaysideMarina-GTASA-TierraRobadaMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BaysideMarina-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-BaysideMarina.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "name_en": "Aldea Malvada",
+    "page_title": "Aldea Malvada",
+    "chosen": "File:AldeaMalvada-GTASA-Overview.jpg",
+    "top_candidates": [
+      {
+        "file": "File:AldeaMalvada-GTASA-Overview.jpg",
+        "score": 1000000,
+        "why": [
+          "explicit_override"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "name_en": "Arco del Oeste",
+    "page_title": "Arco del Oeste",
+    "chosen": "File:ArcodelOeste-GTASA-RockFormation.jpg",
+    "top_candidates": [
+      {
+        "file": "File:ArcodelOeste-GTASA-RockFormation.jpg",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ArcodelOeste-GTASA-mine.jpg",
+        "score": 379,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 680,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ArcoDelOeste-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ArcoDelOeste-GTASA-TierraRobadaMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ArcoDelOeste-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-ArcoDelOeste.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "name_en": "Las Barrancas",
+    "page_title": "Las Barrancas",
+    "chosen": "File:LasBarrancas-GTASA-PuebloRuins.png",
+    "top_candidates": [
+      {
+        "file": "File:LasBarrancas-GTASA-PuebloRuins.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LasBarrancas-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LasBarrancas-GTASA-Collage.png",
+        "score": 400,
+        "why": [
+          "gtasa",
+          "large"
+        ],
+        "width": 1920,
+        "height": 2160,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:LasBarrancas-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasBarrancas-GTASA-TierraRobadaMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:LasBarrancas-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "name_en": "Valle Ocultado",
+    "page_title": "Valle Ocultado",
+    "chosen": "File:ValleOcultado-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:ValleOcultado-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:ValleOcultado-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ValleOcultado-GTASA-TierraRobadaMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ValleOcultado-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-ValleOcultado.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "name_en": "The Panopticon",
+    "page_title": "The Panopticon",
+    "chosen": "File:ThePanopticon-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:ThePanopticon-GTASA.png",
+        "score": 1000000,
+        "why": [
+          "explicit_override"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "name_en": "Palomino Creek Bank",
+    "page_title": "Palomino Creek Bank",
+    "chosen": "File:PalominoCreekBank-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:PalominoCreekBank-GTASA.jpg",
+        "score": 492,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:PalominoCreekBank-GTASA-Rear.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:PalominoCreekBank-GTASA-Interior1.jpg",
+        "score": 372,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape",
+          "interior_penalty"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:PalominoCreekBank-GTASA-Interior2.jpg",
+        "score": 372,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape",
+          "interior_penalty"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:PalominoCreekBank-GTASA-Map.png",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 616,
+        "height": 294,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "name_en": "Blueberry Acres",
+    "page_title": "Blueberry Acres",
+    "chosen": "File:BlueberryAcres-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:BlueberryAcres-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BlueberryAcres-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BlueberryAcres-GTASA-RedCountyMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1548,
+        "height": 1228,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BlueberryAcres-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-BlueberryAcres.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "name_en": "FleischBerg",
+    "page_title": "FleischBerg",
+    "chosen": "File:FleischBerg-GTASA-front-exterior.jpg",
+    "top_candidates": [
+      {
+        "file": "File:FleischBerg-GTASA-front-exterior.jpg",
+        "score": 469,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "good:exterior",
+          "good:front",
+          "medium_large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1280,
+        "height": 700,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:FleischBerg-GTASA-rear-exterior.jpg",
+        "score": 457,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "good:exterior",
+          "medium_large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:FleischBerg-GTASA-FactorySign.png",
+        "score": 450,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:FleischBerg-GTASAde-FactorySign.png",
+        "score": 446,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1518,
+        "height": 821,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:FleischBerg-GTASA-Barrels.png",
+        "score": 436,
+        "why": [
+          "gtasa",
+          "name_overlap=1",
+          "large",
+          "landscape"
+        ],
+        "width": 1472,
+        "height": 828,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Strorepalomino.jpg",
+        "score": 99,
+        "why": [
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 768,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Fleischberg-GTASA-Logo.svg",
+        "score": -100000,
+        "why": [
+          "hard_bad_artwork"
+        ],
+        "width": 1284,
+        "height": 314,
+        "mime": "image/svg+xml"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "name_en": "Biowaste Well",
+    "page_title": "Biowaste Well",
+    "chosen": "File:BiowasteWell-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:BiowasteWell-GTASA.jpg",
+        "score": 492,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BiowasteWell-GTASA-Signs.jpg",
+        "score": 412,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BiowasteWell-GTASA-Night.jpg",
+        "score": 402,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1600,
+        "height": 900,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BiowasteWell-GTASA-Map.png",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 520,
+        "height": 440,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "name_en": "Fern Ridge",
+    "page_title": "Fern Ridge",
+    "chosen": "File:Catalina'sHideout-GTASA-Exterior.png",
+    "top_candidates": [
+      {
+        "file": "File:Catalina'sHideout-GTASA-Exterior.png",
+        "score": 450,
+        "why": [
+          "gtasa",
+          "good:exterior",
+          "large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Catalina'sHideout-GTASA-RustedWalton.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Catalina'sHideout-GTASA-ThreeGraves.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:FernRidge-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:FernRidge-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:FernRidge-GTASA-RedCountyMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1548,
+        "height": 1228,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:FernRidge-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "name_en": "EasterBoard Farm",
+    "page_title": "EasterBoard Farm",
+    "chosen": "File:EasterBoardFarm-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:EasterBoardFarm-GTASA.png",
+        "score": 495,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:EasterBoardFarm-GTASA-Overview.png",
+        "score": 425,
+        "why": [
+          "gtasa",
+          "good:overview",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:EasterBoardFarm-GTASA-NorthView.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:EasterBoardFarm-GTASA-NorthernEntrance.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:EasterBoardFarm-GTASA-CombineHarvesters.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:EasterBoardFarm-GTASA-StuntJumps.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:EasterBoardFarm-GTASA-ZeroPoint.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:EasterBoardFarm-GTASA-Sign.png",
+        "score": 145,
+        "why": [
+          "gtasa",
+          "good:sign",
+          "tiny_penalty",
+          "landscape"
+        ],
+        "width": 128,
+        "height": 32,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "name_en": "Northstar Rock",
+    "page_title": "Northstar Rock",
+    "chosen": "File:BloodyShack-GTASA-Exterior.jpg",
+    "top_candidates": [
+      {
+        "file": "File:BloodyShack-GTASA-Exterior.jpg",
+        "score": 422,
+        "why": [
+          "gtasa",
+          "good:exterior",
+          "medium_large",
+          "landscape",
+          "exterior_bonus"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:NorthstarRock-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:NorthstarRock-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:NorthstarRock-GTASA-RedCountyMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1548,
+        "height": 1228,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:NorthstarRock-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-NorthstarRock.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "name_en": "The Farm",
+    "page_title": "The Farm",
+    "chosen": "File:TheFarm-GTASA-EntranceView.png",
+    "top_candidates": [
+      {
+        "file": "File:TheFarm-GTASA-EntranceView.png",
+        "score": 425,
+        "why": [
+          "gtasa",
+          "good:view",
+          "good:entrance",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheFarm-GTASA-FarmhouseFrontDay.png",
+        "score": 425,
+        "why": [
+          "gtasa",
+          "good:day",
+          "good:front",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheFarm-GTASA-FarmhouseFrontNight.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:front",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheFarm-GTASA-FarmhouseRearDay.png",
+        "score": 415,
+        "why": [
+          "gtasa",
+          "good:day",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheFarm-GTASA-Farmhouse.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheFarm-GTASA-FarmhouseRearNight.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheFarm-GTASA-Field.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheFarm-GTASA-HaybaleStacks.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheFarm-GTASA-Hill.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:TheFarm-GTASA-RoundBales.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "name_en": "Back o Beyond",
+    "page_title": "Back o Beyond",
+    "chosen": "File:BackOBeyond-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:BackOBeyond-GTASA.png",
+        "score": 1000000,
+        "why": [
+          "explicit_override"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "name_en": "Back O' Beyond Lake",
+    "page_title": "Back o Beyond Lake",
+    "chosen": "File:BackOBeyond-GTASA.jpg",
+    "top_candidates": [
+      {
+        "file": "File:BackOBeyond-GTASA.jpg",
+        "score": 491,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 960,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BackOBeyondLake-GTASA-UnderwaterView.png",
+        "score": 409,
+        "why": [
+          "gtasa",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 768,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BackOBeyondLake-GTASA.png",
+        "score": 399,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 768,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:BackOBeyondLake-GTASA-LeaningTree.jpg",
+        "score": 378,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 1024,
+        "height": 768,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BackOBeyondLake-GTASA-2.jpg",
+        "score": 378,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 995,
+        "height": 750,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BackOBeyondLake-GTASA-1.jpg",
+        "score": 377,
+        "why": [
+          "gtasa",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:BackOBeyondLake-GTASA-Location.png",
+        "score": 348,
+        "why": [
+          "gtasa",
+          "good:location",
+          "medium"
+        ],
+        "width": 730,
+        "height": 970,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "name_en": "Mount Chiliad",
+    "page_title": "Mount Chiliad (3D Universe)",
+    "chosen": "File:MountChiliad-GTASA-ViewFromShadyCreeks.jpg",
+    "top_candidates": [
+      {
+        "file": "File:MountChiliad-GTASA-ViewFromShadyCreeks.jpg",
+        "score": 410,
+        "why": [
+          "gtasa",
+          "good:view",
+          "large",
+          "landscape"
+        ],
+        "width": 1280,
+        "height": 805,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:MountChiliad-GTASA-CloseUp.jpg",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:MountChiliad-GTASA.png",
+        "score": 405,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1920,
+        "height": 1080,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MountChiliad-GTASA-Cave1.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MountChiliad-GTASA-Cave2.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MountChiliad-GTASA-HighestPoint.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MountChiliad-GTASA-MountainBikeTracks.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MountChiliad-GTASA-MountainBikeTrails1.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MountChiliad-GTASA-Top.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:MountChiliad-GTASA-ViewFromSanFierro.jpg",
+        "score": 387,
+        "why": [
+          "gtasa",
+          "good:view",
+          "medium_large",
+          "landscape"
+        ],
+        "width": 800,
+        "height": 600,
+        "mime": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "name_en": "San Fierro Scenic Route",
+    "page_title": "San Fierro Scenic Route",
+    "chosen": "File:SanFierroScenicRoute-GTASA-RoadSign.png",
+    "top_candidates": [
+      {
+        "file": "File:SanFierroScenicRoute-GTASA-RoadSign.png",
+        "score": 513,
+        "why": [
+          "gtasa",
+          "article_pageimage",
+          "good:sign",
+          "good:road",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:SanFierroScenicRoute-GTASA-SS1.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:SanFierroScenicRoute-GTASA-SS2.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:SanFierroScenicRoute-GTASA-Map.png",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1300,
+        "height": 1384,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "name_en": "Shady Creeks",
+    "page_title": "Shady Creeks",
+    "chosen": "File:ShadyCreeks-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:ShadyCreeks-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:ShadyCreeks-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ShadyCreeks-GTASA-WhetstoneMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1548,
+        "height": 1228,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:ShadyCreeks-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 596,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-ShadyCreeks.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "name_en": "Angel Pine",
+    "page_title": "Angel Pine",
+    "chosen": "File:AngelPine-GTASA-Aerial.jpg",
+    "top_candidates": [
+      {
+        "file": "File:AngelPine-GTASA-Aerial.jpg",
+        "score": 1000000,
+        "why": [
+          "explicit_override"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "name_en": "Easter Bay Chemicals",
+    "page_title": "Easter Bay Chemicals",
+    "chosen": "File:EasterBayChemicals-GTASA.png",
+    "top_candidates": [
+      {
+        "file": "File:EasterBayChemicals-GTASA.png",
+        "score": 403,
+        "why": [
+          "gtasa",
+          "large",
+          "landscape"
+        ],
+        "width": 1680,
+        "height": 1050,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:EasterBayChemicals-GTASA-MapFull.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 3072,
+        "height": 3072,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:EasterBayChemicals-GTASA-FlintCountyMap.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 1548,
+        "height": 1228,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:EasterBayChemicals-GTASA-Map.jpg",
+        "score": -100000,
+        "why": [
+          "wiki_map_rejected"
+        ],
+        "width": 600,
+        "height": 600,
+        "mime": "image/jpeg"
+      },
+      {
+        "file": "File:Lifeinvader-GTAV-icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 385,
+        "height": 385,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Snapmatic-PhoneButton-GTAV.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 51,
+        "height": 51,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:Bleeter-GTAV-Icon.png",
+        "score": -100000,
+        "why": [
+          "other_gta_game"
+        ],
+        "width": 45,
+        "height": 46,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:InvisibleHeroImage.png",
+        "score": -100000,
+        "why": [
+          "placeholder_artwork"
+        ],
+        "width": 325,
+        "height": 2,
+        "mime": "image/png"
+      },
+      {
+        "file": "File:PoliceScanner-GTASA-EasterBayChemicals.ogg",
+        "score": -100000,
+        "why": [
+          "not_image_mime"
+        ],
+        "width": 0,
+        "height": 0,
+        "mime": "application/ogg"
+      }
+    ]
+  }
+]

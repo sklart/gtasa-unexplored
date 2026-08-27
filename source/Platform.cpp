@@ -303,7 +303,20 @@ bool Platform::exportDiagnostics(const std::string& text) const {
 
 void Platform::log(const std::string& line) const {
     ensureDir(kAppDir);
-    std::ofstream f(std::string(kAppDir) + "/log.txt", std::ios::app);
+    const std::string path = std::string(kAppDir) + "/log.txt";
+    struct stat st{};
+    if (stat(path.c_str(), &st) == 0 && st.st_size > 512 * 1024) {
+        // Keep four older files.  Failed renames merely leave the current log
+        // intact; logging must never prevent the application from starting.
+        std::remove((std::string(kAppDir) + "/log.4.txt").c_str());
+        for (int i = 3; i >= 1; --i) {
+            const std::string from = std::string(kAppDir) + "/log." + std::to_string(i) + ".txt";
+            const std::string to = std::string(kAppDir) + "/log." + std::to_string(i + 1) + ".txt";
+            std::rename(from.c_str(), to.c_str());
+        }
+        std::rename(path.c_str(), (std::string(kAppDir) + "/log.1.txt").c_str());
+    }
+    std::ofstream f(path, std::ios::app);
     if (f) f << line << "\n";
 }
 

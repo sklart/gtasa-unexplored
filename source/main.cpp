@@ -4,6 +4,8 @@
 #include "CollectibleMedia.hpp"
 #include "MapTexture.hpp"
 #include "Platform.hpp"
+#include "PoiInfo.hpp"
+#include "PoiMedia.hpp"
 #include "SaveParser.hpp"
 
 #include <SDL.h>
@@ -43,6 +45,7 @@ struct Palette {
     SDL_Color horseshoe{245, 196, 72, 255};
     SDL_Color oyster{120, 220, 220, 255};
     SDL_Color jump{226, 112, 255, 255};
+    SDL_Color poi{255, 121, 69, 255};
     SDL_Color selected{255, 255, 255, 255};
 };
 
@@ -139,6 +142,7 @@ struct AppState {
     gtasa::Platform platform;
     gtasa::CollectibleIcons icons;
     gtasa::CollectibleMedia media;
+    gtasa::PoiMedia poiMedia;
     gtasa::AppConfig config;
     gtasa::SaveDiscovery discovery;
     gtasa::MapTexture mapTexture;
@@ -150,8 +154,11 @@ struct AppState {
     int legendIndex = 0;
     float centerX = 0.0f;
     float centerY = 0.0f;
+    float cursorX = 0.0f;
+    float cursorY = 0.0f;
     float zoom = 1.0f;
     int selected = -1;
+    int selectedPoi = -1;
     bool showPanel = true;
     bool detailOpen = false;
     int detailScroll = 0;
@@ -161,6 +168,8 @@ struct AppState {
 const SDL_Rect& mapRect(const AppState& a) {
     return a.showPanel ? kMapRectWithPanel : kMapRectFull;
 }
+
+SDL_Rect mapContentRect(const AppState& a) { return a.mapTexture.contentRect(mapRect(a)); }
 
 bool isRu(const AppState& a) { return a.config.language == "ru"; }
 
@@ -221,12 +230,12 @@ void line(SDL_Renderer* r, int x1, int y1, int x2, int y2, SDL_Color c) {
 }
 
 bool insideMap(const AppState& a, int x, int y) {
-    const auto& rect = mapRect(a);
+    const auto rect = mapContentRect(a);
     return x >= rect.x && x < rect.x + rect.w && y >= rect.y && y < rect.y + rect.h;
 }
 
 std::pair<int, int> worldToScreen(const AppState& a, float x, float y) {
-    const auto& rect = mapRect(a);
+    const auto rect = mapContentRect(a);
     const float base = static_cast<float>(rect.w) / (kWorldHalf * 2.0f);
     const float scale = base * a.zoom;
     const int sx = static_cast<int>(rect.x + rect.w * 0.5f + (x - a.centerX) * scale);
@@ -259,51 +268,57 @@ void drawIconRing(SDL_Renderer* r, int cx, int cy, int radius, SDL_Color c) {
 // than using indistinguishable coloured squares.
 void drawCollectibleIcon(SDL_Renderer* r, const gtasa::CollectibleIcons& icons,
                          int x, int y, gtasa::CollectibleType type, int size = 18) {
-    if (SDL_Texture* texture = icons.texture(type)) {
-        const SDL_Rect dst{x - size / 2, y - size / 2, size, size};
-        SDL_RenderCopy(r, texture, nullptr, &dst);
-        return;
-    }
+    // Use the same compact vector-style silhouettes at every scale.  The
+    // previous source PNGs were designed for larger UI and became visual noise
+    // over a detailed map.
+    (void)icons;
     const SDL_Color c = typeColor(type);
     const SDL_Color shade{10, 14, 18, 230};
-    drawIconRing(r, x, y, 7, shade);
+    const int h = std::max(5, size / 2);
+    drawIconRing(r, x, y, h, shade);
     switch (type) {
         case gtasa::CollectibleType::Tag:
-            fill(r, SDL_Rect{x - 3, y - 3, 6, 8}, c);       // spray-can body
-            fill(r, SDL_Rect{x - 2, y - 5, 4, 2}, c);       // cap
-            line(r, x + 3, y - 1, x + 5, y - 1, c);         // nozzle
+            fill(r, SDL_Rect{x - h / 3, y - h / 3, 2 * h / 3, h}, c);
+            fill(r, SDL_Rect{x - h / 4, y - h / 2, h / 2, std::max(2, h / 4)}, c);
+            line(r, x + h / 3, y - h / 6, x + h / 2, y - h / 6, c);
             break;
         case gtasa::CollectibleType::Snapshot:
-            fill(r, SDL_Rect{x - 6, y - 4, 12, 9}, c);      // camera body
-            fill(r, SDL_Rect{x - 3, y - 6, 5, 2}, c);       // viewfinder
-            drawIconRing(r, x, y, 3, shade);                // lens
+            fill(r, SDL_Rect{x - h / 2, y - h / 3, h, 2 * h / 3}, c);
+            fill(r, SDL_Rect{x - h / 4, y - h / 2, h / 2, std::max(2, h / 4)}, c);
+            drawIconRing(r, x, y, std::max(2, h / 4), shade);
             break;
         case gtasa::CollectibleType::Horseshoe:
-            line(r, x - 4, y - 4, x - 4, y + 3, c);
-            line(r, x - 4, y + 3, x - 2, y + 5, c);
-            line(r, x - 2, y + 5, x + 2, y + 5, c);
-            line(r, x + 2, y + 5, x + 4, y + 3, c);
-            line(r, x + 4, y + 3, x + 4, y - 4, c);
-            line(r, x - 5, y - 4, x - 3, y - 4, c);
-            line(r, x + 3, y - 4, x + 5, y - 4, c);
+            line(r, x - h / 2, y - h / 2, x - h / 2, y + h / 3, c);
+            line(r, x - h / 2, y + h / 3, x, y + h / 2, c);
+            line(r, x, y + h / 2, x + h / 2, y + h / 3, c);
+            line(r, x + h / 2, y + h / 3, x + h / 2, y - h / 2, c);
             break;
         case gtasa::CollectibleType::Oyster:
-            line(r, x - 6, y + 4, x + 6, y + 4, c);
-            line(r, x - 5, y + 3, x - 3, y - 4, c);
-            line(r, x - 3, y - 4, x, y + 3, c);
-            line(r, x, y + 3, x + 3, y - 4, c);
-            line(r, x + 3, y - 4, x + 5, y + 3, c);
+            line(r, x - h / 2, y + h / 3, x + h / 2, y + h / 3, c);
+            line(r, x - h / 2, y + h / 3, x - h / 3, y - h / 2, c);
+            line(r, x - h / 3, y - h / 2, x, y + h / 3, c);
+            line(r, x, y + h / 3, x + h / 3, y - h / 2, c);
+            line(r, x + h / 3, y - h / 2, x + h / 2, y + h / 3, c);
             break;
         case gtasa::CollectibleType::StuntJump:
-            line(r, x, y - 6, x + 5, y, c);
-            line(r, x + 5, y, x, y + 6, c);
-            line(r, x, y + 6, x - 5, y, c);
-            line(r, x - 5, y, x, y - 6, c);
-            line(r, x - 2, y + 1, x + 3, y - 4, c);
-            line(r, x + 3, y - 4, x + 3, y, c);
+            line(r, x, y - h / 2, x + h / 2, y, c);
+            line(r, x + h / 2, y, x, y + h / 2, c);
+            line(r, x, y + h / 2, x - h / 2, y, c);
+            line(r, x - h / 2, y, x, y - h / 2, c);
+            line(r, x - h / 5, y + h / 8, x + h / 3, y - h / 3, c);
             break;
         default: break;
     }
+}
+
+void drawPoiIcon(SDL_Renderer* r, int x, int y, bool representative, int size = 18) {
+    const SDL_Color c = representative ? SDL_Color{255, 176, 72, 255} : kColors.poi;
+    drawIconRing(r, x, y, size / 2, SDL_Color{8, 12, 16, 230});
+    const SDL_Rect body{x - size / 4, y - size / 2, size / 2, size / 2 + 3};
+    fill(r, body, c);
+    line(r, x - size / 4, y + 3, x, y + size / 2, c);
+    line(r, x, y + size / 2, x + size / 4, y + 3, c);
+    drawIconRing(r, x, y - size / 4, std::max(2, size / 8), kColors.bg);
 }
 
 void clampCamera(AppState& a) {
@@ -323,20 +338,31 @@ const gtasa::SaveEntry* currentSave(const AppState& a) {
 
 void selectNearest(AppState& a, int px, int py, float maxDist) {
     const auto* p = currentParse(a);
-    if (!p) return;
     float best = maxDist * maxDist;
     int bestIndex = -1;
-    for (std::size_t i = 0; i < p->missing.size(); ++i) {
-        const auto& c = p->missing[i];
-        if (!a.filters[static_cast<int>(c.type)]) continue;
-        const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
-        if (!insideMap(a, sx, sy)) continue;
-        const float dx = static_cast<float>(sx - px);
-        const float dy = static_cast<float>(sy - py);
-        const float d2 = dx * dx + dy * dy;
-        if (d2 < best) { best = d2; bestIndex = static_cast<int>(i); }
+    if (p) {
+        for (std::size_t i = 0; i < p->missing.size(); ++i) {
+            const auto& c = p->missing[i];
+            if (!a.filters[static_cast<int>(c.type)]) continue;
+            const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
+            if (!insideMap(a, sx, sy)) continue;
+            const float dx = static_cast<float>(sx - px);
+            const float dy = static_cast<float>(sy - py);
+            const float d2 = dx * dx + dy * dy;
+            if (d2 < best) { best = d2; bestIndex = static_cast<int>(i); }
+        }
     }
     a.selected = bestIndex;
+    a.selectedPoi = -1;
+    for (std::size_t i = 0; i < gtasa::poiInfoCount(); ++i) {
+        const auto* poi = gtasa::poiInfo(i);
+        if (!poi || !poi->visibleOnMap) continue;
+        const auto [sx, sy] = collectibleToScreen(a, poi->x, poi->y);
+        if (!insideMap(a, sx, sy)) continue;
+        const float dx = static_cast<float>(sx - px), dy = static_cast<float>(sy - py);
+        const float d2 = dx * dx + dy * dy;
+        if (d2 < best) { best = d2; a.selected = -1; a.selectedPoi = static_cast<int>(i); }
+    }
 }
 
 void drawMap(SDL_Renderer* r, const AppState& a) {
@@ -363,16 +389,27 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
             if (!a.filters[static_cast<int>(c.type)]) continue;
             const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
             if (!insideMap(a, sx, sy)) continue;
-            drawCollectibleIcon(r, a.icons, sx, sy, c.type, 20);
+            const int iconSize = std::clamp(17 + static_cast<int>(std::lround(std::log2(a.zoom) * 5.0f)), 14, 31);
+            drawIconRing(r, sx, sy, iconSize / 2 + 2, SDL_Color{8, 12, 16, 190});
+            drawCollectibleIcon(r, a.icons, sx, sy, c.type, iconSize);
             if (static_cast<int>(i) == a.selected) {
-                drawIconRing(r, sx, sy, 10, kColors.selected);
+                drawIconRing(r, sx, sy, iconSize / 2 + 6, kColors.selected);
             }
         }
     }
+    for (std::size_t i = 0; i < gtasa::poiInfoCount(); ++i) {
+        const auto* poi = gtasa::poiInfo(i);
+        if (!poi || !poi->visibleOnMap) continue;
+        const auto [sx, sy] = collectibleToScreen(a, poi->x, poi->y);
+        if (!insideMap(a, sx, sy)) continue;
+        const int iconSize = std::clamp(17 + static_cast<int>(std::lround(std::log2(a.zoom) * 5.0f)), 14, 31);
+        drawPoiIcon(r, sx, sy, poi->representative, iconSize);
+        if (static_cast<int>(i) == a.selectedPoi) drawIconRing(r, sx, sy, iconSize / 2 + 6, kColors.selected);
+    }
 
-    // Crosshair for controller selection.
-    const int cx = rect.x + rect.w / 2;
-    const int cy = rect.y + rect.h / 2;
+    // Controller cursor lives in world space, so it uses the exact same
+    // projection as markers and remains usable at a cropped map edge.
+    auto [cx, cy] = collectibleToScreen(a, a.cursorX, a.cursorY);
     line(r, cx - 8, cy, cx + 8, cy, SDL_Color{220, 220, 220, 170});
     line(r, cx, cy - 8, cx, cy + 8, SDL_Color{220, 220, 220, 170});
 }
@@ -383,7 +420,19 @@ const gtasa::CollectibleInfo* selectedInfo(const AppState& a) {
     return gtasa::collectibleInfoForRuntime(parsed->missing[static_cast<std::size_t>(a.selected)]);
 }
 
+const gtasa::PoiInfo* selectedPoiInfo(const AppState& a) {
+    return a.selectedPoi >= 0 ? gtasa::poiInfo(static_cast<std::size_t>(a.selectedPoi)) : nullptr;
+}
+
 void openDetails(AppState& a, SDL_Renderer* renderer) {
+    if (const auto* poi = selectedPoiInfo(a)) {
+        a.detailOpen = true;
+        a.detailScroll = 0;
+        std::string error;
+        if (!a.poiMedia.load(renderer, *poi, error))
+            a.platform.log("POI image unavailable: " + std::string(poi->imagePath) + ": " + error);
+        return;
+    }
     const auto* info = selectedInfo(a);
     if (!info) {
         a.status = tr(a, "Подробности для этой метки недоступны", "Details unavailable for this marker");
@@ -414,6 +463,32 @@ void selectAdjacent(AppState& a, int direction, SDL_Renderer* renderer) {
 
 void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     if (!a.detailOpen) return;
+    if (const auto* poi = selectedPoiInfo(a)) {
+        fill(r, SDL_Rect{0, 0, kScreenW, kScreenH}, SDL_Color{7, 10, 13, 244});
+        SDL_Rect card{66, 38, 1148, 644};
+        fill(r, card, kColors.bg);
+        SDL_SetRenderDrawColor(r, 92, 106, 118, 255); SDL_RenderDrawRect(r, &card);
+        drawPoiIcon(r, 110, 83, poi->representative, 42);
+        text.draw(isRu(a) ? poi->nameRu : poi->nameEn, 145, 60, 28, kColors.text, 800);
+        text.draw(poi->representative ? tr(a, "Репрезентативная точка", "Representative point")
+                                      : tr(a, "Подтверждённая точка", "Verified point"),
+                  930, 66, 16, poi->representative ? kColors.warning : kColors.accent, 235);
+        SDL_Rect imageRect{260, 108, 760, 340};
+        if (SDL_Texture* image = a.poiMedia.texture()) SDL_RenderCopy(r, image, nullptr, &imageRect);
+        else { fill(r, imageRect, SDL_Color{26, 32, 38, 255});
+               text.draw(a.poiMedia.error().empty() ? tr(a, "Пакет POI не установлен", "POI pack not installed")
+                                                     : tr(a, "Изображение недоступно", "Image unavailable"),
+                         640, 300, 20, kColors.muted, 600, true); }
+        const SDL_Rect textClip{102, 470, 1070, 128};
+        SDL_RenderSetClipRect(r, &textClip);
+        text.draw(isRu(a) ? poi->descriptionRu : poi->descriptionEn, 112, 480 - a.detailScroll, 19, kColors.text, 1040);
+        SDL_RenderSetClipRect(r, nullptr);
+        std::ostringstream pos; pos.setf(std::ios::fixed); pos.precision(1);
+        pos << "X " << poi->x << "   Y " << poi->y << (poi->representative ? "   2D" : "   Z " + std::to_string(poi->z));
+        text.draw(pos.str(), 112, 615, 15, kColors.muted);
+        text.draw(tr(a, "B — назад    ↑/↓ — текст", "B — back    ↑/↓ — text"), 835, 646, 15, kColors.muted, 360);
+        return;
+    }
     const auto* parsed = currentParse(a);
     const auto* info = selectedInfo(a);
     if (!parsed || !info || a.selected < 0) return;
@@ -430,7 +505,7 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         : item.found ? tr(a, "Обнаружено", "Found") : tr(a, "Не найдено", "Missing");
     text.draw(state, 1040, 66, 18, item.completed ? kColors.accent : kColors.warning, 140);
 
-    SDL_Rect imageRect{260, 108, 760, 427};
+    SDL_Rect imageRect{260, 108, 760, 340};
     if (SDL_Texture* image = a.media.texture()) {
         SDL_RenderCopy(r, image, nullptr, &imageRect);
     } else {
@@ -441,11 +516,14 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
                   640, 300, 20, kColors.muted, 600, true);
     }
     const char* description = isRu(a) ? info->descriptionRu : info->descriptionEn;
-    text.draw(description, 112, 555 - a.detailScroll, 19, kColors.text, 1040);
+    const SDL_Rect textClip{102, 470, 1070, 128};
+    SDL_RenderSetClipRect(r, &textClip);
+    text.draw(description, 112, 480 - a.detailScroll, 19, kColors.text, 1040);
+    SDL_RenderSetClipRect(r, nullptr);
     std::ostringstream coordinates;
     coordinates.setf(std::ios::fixed); coordinates.precision(1);
     coordinates << "X " << info->x << "   Y " << info->y << "   Z " << info->z;
-    text.draw(coordinates.str(), 112, 625, 15, kColors.muted);
+    text.draw(coordinates.str(), 112, 615, 15, kColors.muted);
     text.draw(tr(a, "B — назад    ↑/↓ — текст    L3/R3 — объект", "B — back    ↑/↓ — text    L3/R3 — object"),
               720, 646, 15, kColors.muted, 440);
 }
@@ -492,10 +570,20 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
             pos.setf(std::ios::fixed); pos.precision(1);
             pos << "X " << c.x << "   Y " << c.y << "   Z " << c.z;
             text.draw(pos.str(), 980, y + 30, 15, kColors.muted, 285);
+            text.draw(info ? tr(a, "A — подробности", "A — details")
+                           : tr(a, "Карточка недоступна", "Card unavailable"),
+                      980, y + 50, 14, info ? kColors.accent : kColors.warning, 285);
             if (c.type == gtasa::CollectibleType::StuntJump && c.found) {
                 text.draw(tr(a, "Прыжок уже обнаружен, но не выполнен", "Jump discovered, but not completed"),
                           980, y + 54, 14, kColors.warning, 285);
             }
+        }
+        if (const auto* poi = selectedPoiInfo(a)) {
+            text.draw(isRu(a) ? poi->nameRu : poi->nameEn, 980, y, 19, kColors.poi, 285);
+            text.draw(poi->representative ? tr(a, "Репрезентативная точка", "Representative point")
+                                          : tr(a, "Подтверждённая точка", "Verified point"),
+                      980, y + 28, 15, kColors.muted, 285);
+            text.draw(tr(a, "A — подробности", "A — details"), 980, y + 48, 14, kColors.accent, 285);
         }
     }
 
@@ -504,7 +592,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     const int cy = 425;
     text.draw(tr(a, "Управление", "Controls"), 980, cy, 18, kColors.text);
     text.draw(tr(a, "L/R / щипок — масштаб", "L/R / pinch — zoom"), 980, cy + 26, 14, kColors.muted, 290);
-    text.draw(tr(a, "Стик / экран — карта", "Stick / touch — pan"), 980, cy + 45, 14, kColors.muted, 290);
+    text.draw(tr(a, "Стик — курсор, экран — карта", "Stick — cursor, touch — pan"), 980, cy + 45, 14, kColors.muted, 290);
     text.draw(tr(a, "Правый стик / 2 пальца — панель", "Right stick / 2 fingers — panel"), 980, cy + 64, 14, kColors.muted, 290);
     text.draw(tr(a, "↑/↓ — подложка", "↑/↓ — map layer"), 980, cy + 83, 14, kColors.muted, 290);
     text.draw(tr(a, "←/→ — слот", "←/→ — slot"), 980, cy + 102, 14, kColors.muted, 290);
@@ -512,8 +600,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     text.draw(tr(a, "Y — перечитать карты", "Y — reload maps"), 980, cy + 140, 14, kColors.muted, 290);
     text.draw(tr(a, "X — фильтры", "X — filters"), 980, cy + 159, 14, kColors.muted, 290);
     text.draw(tr(a, "ZL — язык", "ZL — language"), 980, cy + 178, 14, kColors.muted, 290);
-    text.draw(tr(a, "ZR — диагностика", "ZR — diagnostics"), 980, cy + 197, 14, kColors.muted, 290);
-    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 216, 14, kColors.muted, 290);
+    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 197, 14, kColors.muted, 290);
     if (!a.status.empty()) text.draw(a.status, 980, 664, 13, kColors.warning, 285);
 }
 
@@ -547,6 +634,14 @@ std::string diagnosticsText(const AppState& a) {
     ss << "Collectible records: " << gtasa::collectibleInfoCount() << "\n";
     ss << "Collectible media path: " << gtasa::kAppDir << "/collectibles/images\n";
     ss << "Collectible media available: " << (a.media.texture() ? "loaded" : "not loaded") << "\n";
+    ss << "POI records: " << gtasa::poiInfoCount() << "\n";
+    std::size_t poiMapCount = 0, poiRepresentativeCount = 0;
+    for (std::size_t i = 0; i < gtasa::poiInfoCount(); ++i) {
+        const auto* poi = gtasa::poiInfo(i);
+        if (poi && poi->visibleOnMap) { ++poiMapCount; if (poi->representative) ++poiRepresentativeCount; }
+    }
+    ss << "POI map records: " << poiMapCount << " (representative: " << poiRepresentativeCount << ")\n";
+    ss << "POI media path: " << gtasa::kAppDir << "/poi/images\n";
     ss << "Using backup: " << (a.discovery.usingBackup ? "yes" : "no") << "\n";
     const auto* save = currentSave(a);
     const auto* p = currentParse(a);
@@ -577,9 +672,11 @@ void loadSaves(AppState& a, bool forceProfile) {
     a.validSaves.clear();
     a.parsed.clear();
     a.selected = -1;
+    a.selectedPoi = -1;
     a.discovery = a.platform.discoverSaves(a.config, forceProfile);
     if (!a.discovery.ok) {
         a.status = a.discovery.error;
+        a.platform.log("Save discovery: " + a.status);
         return;
     }
 #ifdef __SWITCH__
@@ -599,8 +696,9 @@ void loadSaves(AppState& a, bool forceProfile) {
         }
     }
     if (a.parsed.empty()) {
-        a.status = tr(a, "Найдены файлы, но формат DE 1.112 не распознан. Экспортируйте диагностику ZR.",
-                         "Files found, but DE 1.112 format was not recognized. Export diagnostics with ZR.");
+        a.status = tr(a, "Найдены файлы, но формат DE 1.112 не распознан. Проверьте автоматический log.txt.",
+                         "Files found, but DE 1.112 format was not recognized. Check automatic log.txt.");
+        a.platform.log("Save parsing: " + a.status);
         return;
     }
 
@@ -623,6 +721,7 @@ void switchSlot(AppState& a, int delta) {
     const int n = static_cast<int>(a.parsed.size());
     a.saveIndex = (a.saveIndex + delta + n) % n;
     a.selected = -1;
+    a.selectedPoi = -1;
     if (a.validSaves[a.saveIndex].slot > 0) {
         a.config.preferredSlot = a.validSaves[a.saveIndex].slot;
         a.platform.saveConfig(a.config);
@@ -662,6 +761,7 @@ int main(int, char**) {
         }
         if (app.status.empty() && !mapStatus.empty()) app.status = mapStatus;
     }
+    app.platform.log(diagnosticsText(app));
 
     padConfigureInput(1, HidNpadStyleSet_NpadStandard);
     PadState pad;
@@ -708,11 +808,10 @@ int main(int, char**) {
                     const float dx = point.x - previous.x;
                     const float dy = point.y - previous.y;
                     if (std::abs(dx) >= 1.0f || std::abs(dy) >= 1.0f) {
-                        const auto& rect = mapRect(app);
-                        // Move the map with the finger. The conversion matches
-                        // the texture viewport's independent X/Y scales.
-                        app.centerX -= dx * 6000.0f / (app.zoom * rect.w);
-                        app.centerY += dy * 6000.0f / (app.zoom * rect.h);
+                        gtasa::MapView view{app.centerX, app.centerY, app.zoom};
+                        app.mapTexture.panByScreenDelta(view, mapRect(app), dx, dy);
+                        app.centerX = view.centerX;
+                        app.centerY = view.centerY;
                         clampCamera(app);
                         touchMoved = true;
                     }
@@ -741,12 +840,14 @@ int main(int, char**) {
                     const Uint32 now = SDL_GetTicks();
                     const int dx = x - lastTapX, dy = y - lastTapY;
                     if (now - lastTapTime <= 350 && dx * dx + dy * dy <= 900) {
-                        app.centerX = 0.0f; app.centerY = 0.0f; app.zoom = 1.0f; app.selected = -1;
+                        app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.zoom = 1.0f; app.selected = -1; app.selectedPoi = -1;
                         lastTapTime = 0;
                     } else {
                         const int previous = app.selected;
+                        const int previousPoi = app.selectedPoi;
                         selectNearest(app, x, y, 34.0f);
-                        if (app.selected >= 0 && app.selected == previous) openDetails(app, renderer);
+                        if ((app.selected >= 0 && app.selected == previous) ||
+                            (app.selectedPoi >= 0 && app.selectedPoi == previousPoi)) openDetails(app, renderer);
                         lastTapTime = now;
                         lastTapX = x;
                         lastTapY = y;
@@ -774,7 +875,7 @@ int main(int, char**) {
         }
 
         if (app.detailOpen) {
-            if (down & HidNpadButton_B) { app.detailOpen = false; app.media.unload(); }
+            if (down & HidNpadButton_B) { app.detailOpen = false; app.media.unload(); app.poiMedia.unload(); }
             if (down & HidNpadButton_Up) app.detailScroll = std::max(0, app.detailScroll - 20);
             if (down & HidNpadButton_Down) app.detailScroll = std::min(120, app.detailScroll + 20);
             if (down & HidNpadButton_StickL) selectAdjacent(app, -1, renderer);
@@ -793,28 +894,30 @@ int main(int, char**) {
             if (down & HidNpadButton_Right) switchSlot(app, 1);
             if (down & HidNpadButton_StickR) app.showPanel = !app.showPanel;
             if (down & HidNpadButton_Y) {
-                app.centerX = 0.0f; app.centerY = 0.0f; app.zoom = 1.0f; app.selected = -1;
+                app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.zoom = 1.0f; app.selected = -1; app.selectedPoi = -1;
                 if (!app.mapTexture.discoverAndLoad(renderer, app.mapTexture.currentId(), app.status)) {
                     app.mapTexture.loadFallback(renderer, app.status);
                 }
             }
             if (down & HidNpadButton_A) {
-                const auto& rect = mapRect(app);
+                const auto [cursorX, cursorY] = collectibleToScreen(app, app.cursorX, app.cursorY);
                 const int previous = app.selected;
-                selectNearest(app, rect.x + rect.w / 2, rect.y + rect.h / 2, 48.0f);
-                if (app.selected >= 0 && app.selected == previous) openDetails(app, renderer);
+                const int previousPoi = app.selectedPoi;
+                selectNearest(app, cursorX, cursorY, 48.0f);
+                if ((app.selected >= 0 && app.selected == previous) ||
+                    (app.selectedPoi >= 0 && app.selectedPoi == previousPoi)) openDetails(app, renderer);
             }
-            if (down & HidNpadButton_B) app.selected = -1;
-            if (down & HidNpadButton_ZR) {
-                const bool ok = app.platform.exportDiagnostics(diagnosticsText(app));
-                app.status = ok
-                    ? tr(app, "diagnostics.txt сохранён на SD", "diagnostics.txt saved to SD")
-                    : tr(app, "Не удалось сохранить диагностику", "Failed to save diagnostics");
-            }
+            if (down & HidNpadButton_B) { app.selected = -1; app.selectedPoi = -1; }
 
-            const float panSpeed = 16.0f / app.zoom;
-            if (std::abs(left.x) > 2500) app.centerX += (static_cast<float>(left.x) / 32768.0f) * panSpeed;
-            if (std::abs(left.y) > 2500) app.centerY += (static_cast<float>(left.y) / 32768.0f) * panSpeed;
+            const float cursorSpeed = 16.0f / app.zoom;
+            if (std::abs(left.x) > 2500) app.cursorX += (static_cast<float>(left.x) / 32768.0f) * cursorSpeed;
+            if (std::abs(left.y) > 2500) app.cursorY += (static_cast<float>(left.y) / 32768.0f) * cursorSpeed;
+            app.cursorX = std::clamp(app.cursorX, -3000.0f, 3000.0f);
+            app.cursorY = std::clamp(app.cursorY, -3000.0f, 3000.0f);
+            // Following the cursor makes every edge marker reachable without
+            // relying on an invisible inner cursor rectangle.
+            app.centerX = app.cursorX;
+            app.centerY = app.cursorY;
             if (held & HidNpadButton_L) app.zoom *= 0.985f;
             if (held & HidNpadButton_R) app.zoom *= 1.015f;
             clampCamera(app);
@@ -831,6 +934,7 @@ int main(int, char**) {
 
     text.shutdown();
     app.media.unload();
+    app.poiMedia.unload();
     app.icons.unload();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

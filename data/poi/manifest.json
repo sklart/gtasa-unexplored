@@ -1,0 +1,1303 @@
+{
+  "schema": "gtasa-unexplored-poi-manifest-v4",
+  "item_count": 80,
+  "image_count": 80,
+  "profile": {
+    "format": "jpeg",
+    "max_width": 960,
+    "max_height": 540,
+    "quality": 85,
+    "maps_allowed": false
+  },
+  "quality": {
+    "wiki_map_images": 0,
+    "other_gta_game_images": 0,
+    "tiny_images": 0,
+    "missing_images": 0
+  },
+  "images": [
+    {
+      "id": 1,
+      "source_file": "File:GroveStreet-GTASA.jpg",
+      "path": "images/poi/001.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/9/99/GroveStreet-GTASA.jpg/revision/latest?cb=20070510101844",
+      "source_bytes": 73224,
+      "width": 800,
+      "height": 500,
+      "bytes": 65792,
+      "sha256": "01060bec8f1ea153d7029a4621c448d36c8a5fa8d5a5e1c6781bcc7873a6adb4"
+    },
+    {
+      "id": 2,
+      "source_file": "File:BigSmoke'sHouse-GTASA.jpg",
+      "path": "images/poi/002.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/8/86/BigSmoke%27sHouse-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20230630070727",
+      "source_bytes": 196040,
+      "width": 960,
+      "height": 540,
+      "bytes": 114372,
+      "sha256": "7cf754d5262b2340f678a39dbc439c82964763ba45b73cd2c419439cbc3764fc"
+    },
+    {
+      "id": 3,
+      "source_file": "File:SweetJohnsons'house-GTASA-exterior.jpg",
+      "path": "images/poi/003.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/3/35/SweetJohnsons%27house-GTASA-exterior.jpg/revision/latest?cb=20100724130059",
+      "source_bytes": 106232,
+      "width": 960,
+      "height": 452,
+      "bytes": 76709,
+      "sha256": "9059e0d64ebd558d8fe46cd1a1ac8b773f9ac3053938c30adf09ff6dbd785ac3"
+    },
+    {
+      "id": 4,
+      "source_file": "File:VinewoodSign-GTASA.png",
+      "path": "images/poi/004.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/b/ba/VinewoodSign-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20240213160037",
+      "source_bytes": 174194,
+      "width": 960,
+      "height": 540,
+      "bytes": 101578,
+      "sha256": "f304330fa77a9ba41f4bcb5e77ffbcaf57199a2291d04b22bd21b5af75d65d08"
+    },
+    {
+      "id": 5,
+      "source_file": "File:LosSantosObservatory-GTASA.jpg",
+      "path": "images/poi/005.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/f/f4/LosSantosObservatory-GTASA.jpg/revision/latest?cb=20230830034024",
+      "source_bytes": 201610,
+      "width": 960,
+      "height": 458,
+      "bytes": 95559,
+      "sha256": "9ffda49d22659ae9126cc1234341080da29ed0a0930374366ae2b62a2f9a5f99"
+    },
+    {
+      "id": 6,
+      "source_file": "File:LosSantosCityHall-GTASA.jpg",
+      "path": "images/poi/006.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/5/5f/LosSantosCityHall-GTASA.jpg/revision/latest?cb=20181107172141",
+      "source_bytes": 90620,
+      "width": 540,
+      "height": 540,
+      "bytes": 44336,
+      "sha256": "6d740f6c0ff72b2ef7fd73ebc71dfae7b81cd4d977c0718ed2b5ed70c6894e1f"
+    },
+    {
+      "id": 7,
+      "source_file": "File:LosSantosForum-GTASA.jpg",
+      "path": "images/poi/007.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/c/c4/LosSantosForum-GTASA.jpg/revision/latest?cb=20100418115852",
+      "source_bytes": 61434,
+      "width": 960,
+      "height": 431,
+      "bytes": 50709,
+      "sha256": "2a2e4dc092f580a5681a95140416bf63fd121871d539a78ca1782782072b0e0f"
+    },
+    {
+      "id": 8,
+      "source_file": "File:LSIA-GTASA-Entrance.jpg",
+      "path": "images/poi/008.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/7/7f/LSIA-GTASA-Entrance.jpg/revision/latest?cb=20091213142302",
+      "source_bytes": 199346,
+      "width": 675,
+      "height": 540,
+      "bytes": 72819,
+      "sha256": "8dd6a9884e62eeeb496b7fa755ef491d376f70ce329d7ab7fc7d01ef78fecbe4"
+    },
+    {
+      "id": 9,
+      "source_file": "File:UnityStation-GTASA-ElCorona.jpg",
+      "path": "images/poi/009.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/8/80/UnityStation-GTASA-ElCorona.jpg/revision/latest?cb=20100225135905",
+      "source_bytes": 87552,
+      "width": 949,
+      "height": 540,
+      "bytes": 85758,
+      "sha256": "13fd5453ae79350973988eb979ccb33d44d5d193fb0c466c0552cc6626fe41de"
+    },
+    {
+      "id": 10,
+      "source_file": "File:SantaMariaBeach-GTASA.png",
+      "path": "images/poi/010.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/8/8d/SantaMariaBeach-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20240321124209",
+      "source_bytes": 172120,
+      "width": 960,
+      "height": 540,
+      "bytes": 96511,
+      "sha256": "97900d8f1624f38e030efd6b99e6aa851c5e9443d89d866b85a9d090eef30375"
+    },
+    {
+      "id": 11,
+      "source_file": "File:LosSantosLighthouse-GTASA.jpg",
+      "path": "images/poi/011.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/c/cd/LosSantosLighthouse-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20190106030444",
+      "source_bytes": 150684,
+      "width": 960,
+      "height": 540,
+      "bytes": 88825,
+      "sha256": "ba16026374aab129ac790d3e7a2b339088ec9fae581631e221d9407c4421505d"
+    },
+    {
+      "id": 12,
+      "source_file": "File:VinewoodFilmStudios-GTASA-Overview.png",
+      "path": "images/poi/012.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/2/26/VinewoodFilmStudios-GTASA-Overview.png/revision/latest/scale-to-width-down/1280?cb=20250116205714",
+      "source_bytes": 278914,
+      "width": 960,
+      "height": 540,
+      "bytes": 143762,
+      "sha256": "379f1c57ca6505d79d6f1d8e918783cfb4dff82ef4206355461c6f8b4e8cd18d"
+    },
+    {
+      "id": 13,
+      "source_file": "File:Vinewood Walk of Fame GTASA North Side.png",
+      "path": "images/poi/013.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/e/e6/Vinewood_Walk_of_Fame_GTASA_North_Side.png/revision/latest/scale-to-width-down/1280?cb=20190322055948",
+      "source_bytes": 130148,
+      "width": 960,
+      "height": 540,
+      "bytes": 82193,
+      "sha256": "6c566f9c448813a425f5998f56c9e4a0f8d59143877e034b9f587b1f3922ddbe"
+    },
+    {
+      "id": 14,
+      "source_file": "File:LosSantosStormDrain-GTASA-Downtown.jpg",
+      "path": "images/poi/014.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/a/af/LosSantosStormDrain-GTASA-Downtown.jpg/revision/latest/scale-to-width-down/1280?cb=20191117205454",
+      "source_bytes": 71752,
+      "width": 720,
+      "height": 540,
+      "bytes": 32592,
+      "sha256": "5422a3bf2ea5678afbfb6236b2feb893b76514bc1916ea9f7274d7b4a50c9df7"
+    },
+    {
+      "id": 15,
+      "source_file": "File:GantBridge-GTASA.jpg",
+      "path": "images/poi/015.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/b/b4/GantBridge-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20230623220218",
+      "source_bytes": 95654,
+      "width": 960,
+      "height": 540,
+      "bytes": 59724,
+      "sha256": "9dd605588e5817fd343af3f0f9e5428680db7596eb39a769eb5acbcaec45e2db"
+    },
+    {
+      "id": 16,
+      "source_file": "File:GarverBridge-GTASA.jpg",
+      "path": "images/poi/016.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/5/5e/GarverBridge-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20250116195559",
+      "source_bytes": 111340,
+      "width": 960,
+      "height": 540,
+      "bytes": 74733,
+      "sha256": "d1992d869fee4da3dad5bb0ceb7536475fe8ba16f4dd449f7a064a9eb1e0ab15"
+    },
+    {
+      "id": 17,
+      "source_file": "File:KincaidBridge-GTASA.jpg",
+      "path": "images/poi/017.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/4/4c/KincaidBridge-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20250116195545",
+      "source_bytes": 114386,
+      "width": 960,
+      "height": 540,
+      "bytes": 71405,
+      "sha256": "33c17789be1db15a5614317ab66d63dde4f4a7ad2588d0637ba5eec0466113b1"
+    },
+    {
+      "id": 18,
+      "source_file": "File:BigPointyBuilding-GTASA.jpg",
+      "path": "images/poi/018.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/7/7e/BigPointyBuilding-GTASA.jpg/revision/latest?cb=20240524133235",
+      "source_bytes": 142986,
+      "width": 540,
+      "height": 540,
+      "bytes": 48086,
+      "sha256": "5dd13d8831c0c82d2ae74d459f853b6a723614794bb80f3ffe44c843a09ac960"
+    },
+    {
+      "id": 19,
+      "source_file": "File:Pier69-GTASA.jpg",
+      "path": "images/poi/019.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/d/dd/Pier69-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20230710202502",
+      "source_bytes": 178956,
+      "width": 960,
+      "height": 540,
+      "bytes": 103257,
+      "sha256": "10740e943b556ce19dd5e29dbb2a347463774a016c956ba72d04352a18a3a0c7"
+    },
+    {
+      "id": 20,
+      "source_file": "File:Jizzy'sPleasureDomes-GTASA-exterior.jpg",
+      "path": "images/poi/020.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/0/05/Jizzy%27sPleasureDomes-GTASA-exterior.jpg/revision/latest?cb=20081230203526",
+      "source_bytes": 295158,
+      "width": 887,
+      "height": 540,
+      "bytes": 134961,
+      "sha256": "938750a7ad56c05e44e5e34d658498939b642d0a6e47443735a9ec984cf191ae"
+    },
+    {
+      "id": 21,
+      "source_file": "File:ZombotechCorporation-GTASA-exterior.jpg",
+      "path": "images/poi/021.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/2/25/ZombotechCorporation-GTASA-exterior.jpg/revision/latest/scale-to-width-down/1280?cb=20240224234534",
+      "source_bytes": 133798,
+      "width": 960,
+      "height": 540,
+      "bytes": 97248,
+      "sha256": "ef808d1714ea2e73a8d7b06bd8a957f9688d9c6c2774e810522f35d1164c735c"
+    },
+    {
+      "id": 22,
+      "source_file": "File:WangCars-GTASA-exterior.jpg",
+      "path": "images/poi/022.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/7/72/WangCars-GTASA-exterior.jpg/revision/latest/scale-to-width-down/1280?cb=20230605051645",
+      "source_bytes": 111974,
+      "width": 960,
+      "height": 540,
+      "bytes": 74471,
+      "sha256": "94e3c6f97ab9be97894a6e108b04009b05b1d34dadd7a0d6ab878cebe92dc171"
+    },
+    {
+      "id": 23,
+      "source_file": "File:CranberryStation-GTASA-exterior.jpg",
+      "path": "images/poi/023.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/4/4d/CranberryStation-GTASA-exterior.jpg/revision/latest?cb=20100225200952",
+      "source_bytes": 49080,
+      "width": 960,
+      "height": 312,
+      "bytes": 48921,
+      "sha256": "c9dd666dd03558424a8c3193072d5662c3d157edc77ee697fa1538a6ddd9bcd1"
+    },
+    {
+      "id": 24,
+      "source_file": "File:MissionaryHillTransmitterBuilding-GTASA-RadioTower.jpg",
+      "path": "images/poi/024.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/a/ab/MissionaryHillTransmitterBuilding-GTASA-RadioTower.jpg/revision/latest/scale-to-width-down/1280?cb=20181122041043",
+      "source_bytes": 56962,
+      "width": 960,
+      "height": 540,
+      "bytes": 47329,
+      "sha256": "0a21bfa23e071e331e01ffdaa3b90870b39b36e784f779954c4877441c641ca4"
+    },
+    {
+      "id": 25,
+      "source_file": "File:OceanFlats-GTASA-Church.jpg",
+      "path": "images/poi/025.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/7/78/OceanFlats-GTASA-Church.jpg/revision/latest/scale-to-width-down/1280?cb=20181214085942",
+      "source_bytes": 182002,
+      "width": 960,
+      "height": 540,
+      "bytes": 100735,
+      "sha256": "0ef2971cb731f9f89dc7cbb22167e7a6c94b1339acdbb6404cbe6ec28691980f"
+    },
+    {
+      "id": 26,
+      "source_file": "File:EasterBasinNavalStation-GTASA.jpg",
+      "path": "images/poi/026.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/5/55/EasterBasinNavalStation-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20181201171718",
+      "source_bytes": 61896,
+      "width": 960,
+      "height": 540,
+      "bytes": 48563,
+      "sha256": "7b635c32bc12ca6bb4eb99fa00cfbd9f8244424b653682d0b9079c6b33d0ce88"
+    },
+    {
+      "id": 27,
+      "source_file": "File:WindyWindyWindyWindyStreet-GTASA.jpg",
+      "path": "images/poi/027.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/9/90/WindyWindyWindyWindyStreet-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20240224234136",
+      "source_bytes": 187200,
+      "width": 960,
+      "height": 540,
+      "bytes": 109398,
+      "sha256": "d7ac9cbe7fac604301b7700b42a9c63d63b384b65e8284be4413148b6f6525cf"
+    },
+    {
+      "id": 28,
+      "source_file": "File:DowntownSquare-Intro-GTASA.jpg",
+      "path": "images/poi/028.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/6/6d/DowntownSquare-Intro-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20220320085559",
+      "source_bytes": 160266,
+      "width": 960,
+      "height": 540,
+      "bytes": 96705,
+      "sha256": "a0a8ea09c321f9938be4a0590cd84679539a35aa282f435b52fb338b55392740"
+    },
+    {
+      "id": 29,
+      "source_file": "File:TheFourDragonsCasino-GTASA-Day.jpg",
+      "path": "images/poi/029.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/8/8d/TheFourDragonsCasino-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230831000231",
+      "source_bytes": 237030,
+      "width": 960,
+      "height": 540,
+      "bytes": 135409,
+      "sha256": "99f7989b22d0913def78fb1b45718734f22d09403303c8786ff70b5abab06fcf"
+    },
+    {
+      "id": 30,
+      "source_file": "File:CaligulasPalace-GTASA-Day.jpg",
+      "path": "images/poi/030.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/c/cf/CaligulasPalace-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230831000419",
+      "source_bytes": 155100,
+      "width": 960,
+      "height": 540,
+      "bytes": 95713,
+      "sha256": "e2148ac36ad7d0f7ac9d2c1d9f31e9f78d73cbd78544cdfc1b4893621349aecf"
+    },
+    {
+      "id": 31,
+      "source_file": "File:TheCamel'sToe-GTASA-Day.jpg",
+      "path": "images/poi/031.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/a/a5/TheCamel%27sToe-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230830235950",
+      "source_bytes": 166480,
+      "width": 960,
+      "height": 540,
+      "bytes": 99958,
+      "sha256": "b65ed4ba386941b820fe6330d6b84d9f47b3fcc360ab135475bb32267f60ba97"
+    },
+    {
+      "id": 32,
+      "source_file": "File:TheClown'sPocket-GTASA-Day.jpg",
+      "path": "images/poi/032.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/c/c5/TheClown%27sPocket-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230831000820",
+      "source_bytes": 183190,
+      "width": 960,
+      "height": 540,
+      "bytes": 113243,
+      "sha256": "c83c0fbccabd07caac553d22b2a1959afae86408ef5d5a2552d5d44c008cf00d"
+    },
+    {
+      "id": 33,
+      "source_file": "File:TheEmeraldIsle-GTASA-Day.jpg",
+      "path": "images/poi/033.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/3/36/TheEmeraldIsle-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230831001219",
+      "source_bytes": 152082,
+      "width": 960,
+      "height": 540,
+      "bytes": 93415,
+      "sha256": "836060d1e2f87177ff672e0850706e58d640ab0fd97ea88c606fddb4b951ba00"
+    },
+    {
+      "id": 34,
+      "source_file": "File:TheVisage-GTASA-Day.jpg",
+      "path": "images/poi/034.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/7/7b/TheVisage-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230903005635",
+      "source_bytes": 207250,
+      "width": 960,
+      "height": 540,
+      "bytes": 116660,
+      "sha256": "4729f90cb3aa3fcf1c48c4c4bb71e80fda5d897de34f9cd34d43d1947cad43b5"
+    },
+    {
+      "id": 35,
+      "source_file": "File:PiratesinMen'sPants-GTASA-Day.jpg",
+      "path": "images/poi/035.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/7/7f/PiratesinMen%27sPants-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230903005408",
+      "source_bytes": 245384,
+      "width": 960,
+      "height": 540,
+      "bytes": 137606,
+      "sha256": "2e30ff94e1cdbcdc4b8ed5289e16696a476931e438258a37d04879e037bddd6f"
+    },
+    {
+      "id": 36,
+      "source_file": "File:V-RockHotel-GTASA-exterior.jpg",
+      "path": "images/poi/036.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/b/ba/V-RockHotel-GTASA-exterior.jpg/revision/latest?cb=20100709205002",
+      "source_bytes": 207608,
+      "width": 960,
+      "height": 480,
+      "bytes": 120771,
+      "sha256": "d8dc5368a0893e85d92ca0d7c534b58c2ee4e330f2d2e3bb1236a171f0846191"
+    },
+    {
+      "id": 37,
+      "source_file": "File:LasVenturasWelcomeSign-GTASA.png",
+      "path": "images/poi/037.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/1/11/LasVenturasWelcomeSign-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20240316100324",
+      "source_bytes": 74682,
+      "width": 960,
+      "height": 540,
+      "bytes": 57433,
+      "sha256": "18412e2f95d2b27245efb05f298e8dad8a73d707bdab7c8f9b27d7006f2a4a6f"
+    },
+    {
+      "id": 38,
+      "source_file": "File:LasVenturasAirport-GTASA.png",
+      "path": "images/poi/038.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/f/f8/LasVenturasAirport-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190607210325",
+      "source_bytes": 105130,
+      "width": 864,
+      "height": 540,
+      "bytes": 63907,
+      "sha256": "7ab9646154e1016fa861efeaf05c56efeb0737b06984590acd205e913cd9472d"
+    },
+    {
+      "id": 39,
+      "source_file": "File:BlackfieldStadium-GTASA-ExteriorFront.png",
+      "path": "images/poi/039.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/a/a0/BlackfieldStadium-GTASA-ExteriorFront.png/revision/latest/scale-to-width-down/1280?cb=20250110161038",
+      "source_bytes": 164674,
+      "width": 960,
+      "height": 540,
+      "bytes": 92483,
+      "sha256": "950b8eaa6c646f90b447f5e4432434f9e82b3ae7668d9df1090967cfb85687c7"
+    },
+    {
+      "id": 40,
+      "source_file": "File:KACC-GTASA-MainBuildingSign.jpg",
+      "path": "images/poi/040.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/e/ea/KACC-GTASA-MainBuildingSign.jpg/revision/latest/scale-to-width-down/1280?cb=20181021135159",
+      "source_bytes": 88078,
+      "width": 960,
+      "height": 540,
+      "bytes": 64668,
+      "sha256": "9299073417ff1e353359afbb9a85dd951e946be76c064cafce40a23152f200eb"
+    },
+    {
+      "id": 41,
+      "source_file": "File:OldVenturasStrip-GTASA.png",
+      "path": "images/poi/041.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/4/46/OldVenturasStrip-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190607210327",
+      "source_bytes": 183656,
+      "width": 864,
+      "height": 540,
+      "bytes": 100153,
+      "sha256": "60b486ab0345d9c50230f58b7f5e6feaedf3b6303b47b7d51b3c2b0df0207574"
+    },
+    {
+      "id": 42,
+      "source_file": "File:YellowBellGolfCourse-GTASA.png",
+      "path": "images/poi/042.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/4/46/YellowBellGolfCourse-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20230830033510",
+      "source_bytes": 122228,
+      "width": 864,
+      "height": 540,
+      "bytes": 63512,
+      "sha256": "f8ebb4e03a2e61af74219be10f70d605b19f591f4b5f577d2e3032448dd59b0c"
+    },
+    {
+      "id": 43,
+      "source_file": "File:Area69-GTASA-Airstrip-AlternativeEntrance.png",
+      "path": "images/poi/043.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/d/d0/Area69-GTASA-Airstrip-AlternativeEntrance.png/revision/latest/scale-to-width-down/1280?cb=20250309210339",
+      "source_bytes": 187478,
+      "width": 960,
+      "height": 540,
+      "bytes": 112158,
+      "sha256": "cb2229a15c8374002bbf04c2a17d0bdbf980f6e4a351812e94fc34214b8ed362"
+    },
+    {
+      "id": 44,
+      "source_file": "File:TheBigEar-GTASAde.png",
+      "path": "images/poi/044.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/0/05/TheBigEar-GTASAde.png/revision/latest/scale-to-width-down/1280?cb=20220424174633",
+      "source_bytes": 167094,
+      "width": 960,
+      "height": 540,
+      "bytes": 98161,
+      "sha256": "50f5f5e46084adfb527b2cb62fb8963f7882438b698d62c5d941e625eaf42592"
+    },
+    {
+      "id": 45,
+      "source_file": "File:RegularTom-GTASAde.png",
+      "path": "images/poi/045.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/2/24/RegularTom-GTASAde.png/revision/latest/scale-to-width-down/1280?cb=20220424173102",
+      "source_bytes": 268060,
+      "width": 960,
+      "height": 540,
+      "bytes": 149948,
+      "sha256": "47006955ee396352cfb5c291198d62a170bd1cec5c9429ef9225ce4a7c6d4080"
+    },
+    {
+      "id": 46,
+      "source_file": "File:LilProbeInn-GTASA-RearView.png",
+      "path": "images/poi/046.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/6/6b/LilProbeInn-GTASA-RearView.png/revision/latest/scale-to-width-down/1280?cb=20260117015454",
+      "source_bytes": 158098,
+      "width": 960,
+      "height": 540,
+      "bytes": 85692,
+      "sha256": "1bb047dc2f13b2e76c05b26cdb4363d78af3efc236f7771e72ce9a0ed8f23690"
+    },
+    {
+      "id": 47,
+      "source_file": "File:VerdantMeadows-GTASA-Overview.png",
+      "path": "images/poi/047.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/0/0c/VerdantMeadows-GTASA-Overview.png/revision/latest/scale-to-width-down/1280?cb=20190310084806",
+      "source_bytes": 229376,
+      "width": 864,
+      "height": 540,
+      "bytes": 84855,
+      "sha256": "da582a5933219ae09508a0dc0b9efe94717cdaba1befd1e38b870a0938cae66d"
+    },
+    {
+      "id": 48,
+      "source_file": "File:LasBrujas-GTASAde.png",
+      "path": "images/poi/048.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/2/28/LasBrujas-GTASAde.png/revision/latest/scale-to-width-down/1280?cb=20211127104240",
+      "source_bytes": 142794,
+      "width": 960,
+      "height": 540,
+      "bytes": 84974,
+      "sha256": "727e5786f77d87784b1ed8eb0c86a2ab93ff67bbeeb2599fc6d45d956766caec"
+    },
+    {
+      "id": 49,
+      "source_file": "File:Massgrave-GTASA.jpg",
+      "path": "images/poi/049.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/3/31/Massgrave-GTASA.jpg/revision/latest?cb=20100411073212",
+      "source_bytes": 81306,
+      "width": 934,
+      "height": 540,
+      "bytes": 65944,
+      "sha256": "7e294c8fbaa833c11a5d01e51f23f051b2033bebf1c6cfa3ba1fd7bd8c077d1f"
+    },
+    {
+      "id": 50,
+      "source_file": "File:SnakeFarm-GTASA-Overview.jpg",
+      "path": "images/poi/050.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/4/42/SnakeFarm-GTASA-Overview.jpg/revision/latest/scale-to-width-down/1280?cb=20230712124414",
+      "source_bytes": 130810,
+      "width": 960,
+      "height": 540,
+      "bytes": 82645,
+      "sha256": "9a216fb6465b2f8ab4d34afeed328d89b3499b95d84c41e2509306d399e7bd47"
+    },
+    {
+      "id": 51,
+      "source_file": "File:HunterQuarry-GTASA.png",
+      "path": "images/poi/051.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/a/a3/HunterQuarry-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190310084736",
+      "source_bytes": 230390,
+      "width": 864,
+      "height": 540,
+      "bytes": 87021,
+      "sha256": "4501bcd33af58fb1753e032d7da74509d9a6323b09ca82e3f3da3733797a2b01"
+    },
+    {
+      "id": 52,
+      "source_file": "File:OctaneSprings-GTASA.png",
+      "path": "images/poi/052.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/9/9c/OctaneSprings-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190310084736",
+      "source_bytes": 190052,
+      "width": 864,
+      "height": 540,
+      "bytes": 88551,
+      "sha256": "b238a95bcbbe4af12d7745b5e69d3d10c6b42df8d85da179ef678bb239637200"
+    },
+    {
+      "id": 53,
+      "source_file": "File:GreenPalms-GTASA.png",
+      "path": "images/poi/053.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/5/58/GreenPalms-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190310084735",
+      "source_bytes": 85014,
+      "width": 864,
+      "height": 540,
+      "bytes": 47489,
+      "sha256": "255a4fa5c32fd6d72dc0dd6ac934bf6cd99005f64bdddab163495312ea45acb5"
+    },
+    {
+      "id": 54,
+      "source_file": "File:ShermanReservoir-GTASA-Daylight.jpg",
+      "path": "images/poi/054.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/d/d9/ShermanReservoir-GTASA-Daylight.jpg/revision/latest?cb=20100411064712",
+      "source_bytes": 147968,
+      "width": 960,
+      "height": 495,
+      "bytes": 75510,
+      "sha256": "b23ad13bab47b643d4cffe7b1031b3593a33baab15b2c5bf2ab658aa963f98fc"
+    },
+    {
+      "id": 55,
+      "source_file": "File:CockRock-GTASA.jpg",
+      "path": "images/poi/055.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/5/57/CockRock-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20240114145954",
+      "source_bytes": 137346,
+      "width": 960,
+      "height": 540,
+      "bytes": 83203,
+      "sha256": "8a04499d5377285dd26271516240f896ada033974b9be6ab18b216a67a76c928"
+    },
+    {
+      "id": 56,
+      "source_file": "File:LasPayasadas-GTASA.png",
+      "path": "images/poi/056.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/6/6d/LasPayasadas-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190310084736",
+      "source_bytes": 294704,
+      "width": 864,
+      "height": 540,
+      "bytes": 118824,
+      "sha256": "f782b144cef27a832d6aa46bfcf71bd1e96fc730f4f1966560b74ab4c6fb7289"
+    },
+    {
+      "id": 57,
+      "source_file": "File:ShermanDam-GTASAde.png",
+      "path": "images/poi/057.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/b/b9/ShermanDam-GTASAde.png/revision/latest/scale-to-width-down/1280?cb=20220424175158",
+      "source_bytes": 95294,
+      "width": 960,
+      "height": 540,
+      "bytes": 72140,
+      "sha256": "e20cb82e1787f7bacb6934707d8db2473af776044e117894ffce868020f1481d"
+    },
+    {
+      "id": 58,
+      "source_file": "File:MikeToreno'sRanch-GTASA-Exterior.png",
+      "path": "images/poi/058.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/8/82/MikeToreno%27sRanch-GTASA-Exterior.png/revision/latest/scale-to-width-down/1280?cb=20240327155905",
+      "source_bytes": 226576,
+      "width": 960,
+      "height": 540,
+      "bytes": 125825,
+      "sha256": "952c1353b9c3db023c399e348eb09264648cd2dc75b91d82645d2b6a13238a83"
+    },
+    {
+      "id": 59,
+      "source_file": "File:Bayside-GTASA.png",
+      "path": "images/poi/059.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/c/ce/Bayside-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306201939",
+      "source_bytes": 161478,
+      "width": 864,
+      "height": 540,
+      "bytes": 76650,
+      "sha256": "5dec969ba682320aa822aaeb8a43f668b76d850722a18b0bb8ef5cfe1d8c4016"
+    },
+    {
+      "id": 60,
+      "source_file": "File:BaysideMarina-GTASA.png",
+      "path": "images/poi/060.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/a/ad/BaysideMarina-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306201939",
+      "source_bytes": 150908,
+      "width": 864,
+      "height": 540,
+      "bytes": 76581,
+      "sha256": "441bc2aacb1dcdbab0d6f2d3b9593b6012107a7e921b0702a68d62ea47494794"
+    },
+    {
+      "id": 61,
+      "source_file": "File:AldeaMalvada-GTASA-Overview.jpg",
+      "path": "images/poi/061.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/f/f8/AldeaMalvada-GTASA-Overview.jpg/revision/latest?cb=20110511211511",
+      "source_bytes": 84192,
+      "width": 720,
+      "height": 540,
+      "bytes": 69959,
+      "sha256": "4af7dbf39ebb457463bd1e72e597e45feb3fc6c9802fd46a5dbed4931f3646f1"
+    },
+    {
+      "id": 62,
+      "source_file": "File:ArcodelOeste-GTASA-RockFormation.jpg",
+      "path": "images/poi/062.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/d/df/ArcodelOeste-GTASA-RockFormation.jpg/revision/latest/scale-to-width-down/1280?cb=20230409153109",
+      "source_bytes": 197698,
+      "width": 960,
+      "height": 540,
+      "bytes": 105129,
+      "sha256": "3734d10ecb1aa8c1eec11af338b2e590c31cbb5f49a067abd135afedabd1debb"
+    },
+    {
+      "id": 63,
+      "source_file": "File:LasBarrancas-GTASA-PuebloRuins.png",
+      "path": "images/poi/063.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/8/81/LasBarrancas-GTASA-PuebloRuins.png/revision/latest/scale-to-width-down/1280?cb=20190603132017",
+      "source_bytes": 76702,
+      "width": 864,
+      "height": 540,
+      "bytes": 49666,
+      "sha256": "39d6c8c376e39df257e3dfd553e84367cda664da0e411fdc55b4a571bebe0441"
+    },
+    {
+      "id": 64,
+      "source_file": "File:ValleOcultado-GTASA.png",
+      "path": "images/poi/064.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/b/b9/ValleOcultado-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190310084806",
+      "source_bytes": 261852,
+      "width": 864,
+      "height": 540,
+      "bytes": 104331,
+      "sha256": "2cf1721011e33915d215dbbabaccb6daacb9af7d23f38612730a0eb12978de0f"
+    },
+    {
+      "id": 65,
+      "source_file": "File:ThePanopticon-GTASA.png",
+      "path": "images/poi/065.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/5/59/ThePanopticon-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306123909",
+      "source_bytes": 154866,
+      "width": 864,
+      "height": 540,
+      "bytes": 72013,
+      "sha256": "14cde349a15adbc63643ce74ab14a1c2f2a403c1f37cd7203b51aa91aed1ae6f"
+    },
+    {
+      "id": 66,
+      "source_file": "File:PalominoCreekBank-GTASA.jpg",
+      "path": "images/poi/066.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/0/03/PalominoCreekBank-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20181121073720",
+      "source_bytes": 115858,
+      "width": 960,
+      "height": 540,
+      "bytes": 81164,
+      "sha256": "6fc75ad24f397a6944e94e6074091529ea6ad6db2153bff48bff51edade9bd42"
+    },
+    {
+      "id": 67,
+      "source_file": "File:BlueberryAcres-GTASA.png",
+      "path": "images/poi/067.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/4/4a/BlueberryAcres-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306123847",
+      "source_bytes": 256680,
+      "width": 864,
+      "height": 540,
+      "bytes": 108488,
+      "sha256": "45db920674e4a86f1a69ac57f82cf22313e877632ef8809cac4bff0f0bf8ce48"
+    },
+    {
+      "id": 68,
+      "source_file": "File:FleischBerg-GTASA-front-exterior.jpg",
+      "path": "images/poi/068.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/2/28/FleischBerg-GTASA-front-exterior.jpg/revision/latest?cb=20100210105523",
+      "source_bytes": 117190,
+      "width": 960,
+      "height": 525,
+      "bytes": 72356,
+      "sha256": "fa70b7eb9c1de4c0164f80ee6d5a2911046ae2c6e7bf9de32319f4d66e887c6e"
+    },
+    {
+      "id": 69,
+      "source_file": "File:BiowasteWell-GTASA.jpg",
+      "path": "images/poi/069.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/0/0a/BiowasteWell-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20181120155957",
+      "source_bytes": 128424,
+      "width": 960,
+      "height": 540,
+      "bytes": 78386,
+      "sha256": "0c0286573828832b699226261ae76b4ee4276d71ae0e0aa96a885f08295e1a4c"
+    },
+    {
+      "id": 70,
+      "source_file": "File:Catalina'sHideout-GTASA-Exterior.png",
+      "path": "images/poi/070.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/e/e2/Catalina%27sHideout-GTASA-Exterior.png/revision/latest/scale-to-width-down/1280?cb=20240327154744",
+      "source_bytes": 79522,
+      "width": 960,
+      "height": 540,
+      "bytes": 57108,
+      "sha256": "671db6d6ac585e9036f8beaa5d045d5b258423fddc26957bf22656bb34dfab90"
+    },
+    {
+      "id": 71,
+      "source_file": "File:EasterBoardFarm-GTASA.png",
+      "path": "images/poi/071.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/a/ab/EasterBoardFarm-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20250324161633",
+      "source_bytes": 211022,
+      "width": 960,
+      "height": 540,
+      "bytes": 108775,
+      "sha256": "f3e0325c13aec675dd139f2e3d1baa38c6d0272bdfafd4e0b1de76441c7a4857"
+    },
+    {
+      "id": 72,
+      "source_file": "File:BloodyShack-GTASA-Exterior.jpg",
+      "path": "images/poi/072.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/d/de/BloodyShack-GTASA-Exterior.jpg/revision/latest?cb=20111110172107",
+      "source_bytes": 95210,
+      "width": 720,
+      "height": 540,
+      "bytes": 78852,
+      "sha256": "2f8f292d26e4db5a12af6dd821bdb2940dfe2205505adf04ba37869335938ba9"
+    },
+    {
+      "id": 73,
+      "source_file": "File:TheFarm-GTASA-EntranceView.png",
+      "path": "images/poi/073.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/2/2c/TheFarm-GTASA-EntranceView.png/revision/latest/scale-to-width-down/1280?cb=20250706155723",
+      "source_bytes": 173682,
+      "width": 960,
+      "height": 540,
+      "bytes": 101644,
+      "sha256": "b1f1fd908a0340e463eeea9fb42007a995dbebd37bdbea9716e4c06892162478"
+    },
+    {
+      "id": 74,
+      "source_file": "File:BackOBeyond-GTASA.png",
+      "path": "images/poi/074.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/f/fb/BackOBeyond-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306150530",
+      "source_bytes": 178534,
+      "width": 864,
+      "height": 540,
+      "bytes": 84738,
+      "sha256": "0c467d87334ccb23b6dec24c36d2fc9f56e9d816b1ab837b937cbb0df264d797"
+    },
+    {
+      "id": 75,
+      "source_file": "File:BackOBeyond-GTASA.jpg",
+      "path": "images/poi/075.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/7/7f/BackOBeyond-GTASA.jpg/revision/latest?cb=20130310012229",
+      "source_bytes": 382020,
+      "width": 720,
+      "height": 540,
+      "bytes": 89907,
+      "sha256": "71b1ff7d24d469833181c745366d8fe7a69ca850764a17f2688b1611f26bcccd"
+    },
+    {
+      "id": 76,
+      "source_file": "File:MountChiliad-GTASA-ViewFromShadyCreeks.jpg",
+      "path": "images/poi/076.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/1/1c/MountChiliad-GTASA-ViewFromShadyCreeks.jpg/revision/latest?cb=20100418092556",
+      "source_bytes": 157280,
+      "width": 859,
+      "height": 540,
+      "bytes": 85826,
+      "sha256": "2d7c88a5b0f43a6a259acd9dcf71f2070969bb20c79fee0dab27e78da26471ea"
+    },
+    {
+      "id": 77,
+      "source_file": "File:SanFierroScenicRoute-GTASA-RoadSign.png",
+      "path": "images/poi/077.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/a/af/SanFierroScenicRoute-GTASA-RoadSign.png/revision/latest/scale-to-width-down/1280?cb=20190416194811",
+      "source_bytes": 136090,
+      "width": 864,
+      "height": 540,
+      "bytes": 71567,
+      "sha256": "4679c17bc4c288989464925404b6bab92994e0980a5e2b7d3067a66ba59f830b"
+    },
+    {
+      "id": 78,
+      "source_file": "File:ShadyCreeks-GTASA.png",
+      "path": "images/poi/078.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/0/03/ShadyCreeks-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306151118",
+      "source_bytes": 248556,
+      "width": 864,
+      "height": 540,
+      "bytes": 104942,
+      "sha256": "f74407dcbac4372885406c7e9a9fa904999f19d3dc5dda1cc91b0952cce632a8"
+    },
+    {
+      "id": 79,
+      "source_file": "File:AngelPine-GTASA-Aerial.jpg",
+      "path": "images/poi/079.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/a/ac/AngelPine-GTASA-Aerial.jpg/revision/latest?cb=20100410203300",
+      "source_bytes": 253106,
+      "width": 709,
+      "height": 540,
+      "bytes": 94542,
+      "sha256": "7bf1312e368948b584e5edd86368c165d620aadbb64f03d5e08a6002be1dcb19"
+    },
+    {
+      "id": 80,
+      "source_file": "File:EasterBayChemicals-GTASA.png",
+      "path": "images/poi/080.jpg",
+      "download_url_used": "https://static.wikia.nocookie.net/gtawiki/images/e/e5/EasterBayChemicals-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306150531",
+      "source_bytes": 70748,
+      "width": 864,
+      "height": 540,
+      "bytes": 40224,
+      "sha256": "434e19f007dccb424fd35da8596e4db29d4f0d41f50e50ce6254a428b44d78d5"
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    {
+      "id": 1,
+      "warning": "image_license_not_established",
+      "file": "File:GroveStreet-GTASA.jpg"
+    },
+    {
+      "id": 2,
+      "warning": "image_license_not_established",
+      "file": "File:BigSmoke'sHouse-GTASA.jpg"
+    },
+    {
+      "id": 3,
+      "warning": "image_license_not_established",
+      "file": "File:SweetJohnsons'house-GTASA-exterior.jpg"
+    },
+    {
+      "id": 4,
+      "warning": "image_license_not_established",
+      "file": "File:VinewoodSign-GTASA.png"
+    },
+    {
+      "id": 5,
+      "warning": "image_license_not_established",
+      "file": "File:LosSantosObservatory-GTASA.jpg"
+    },
+    {
+      "id": 6,
+      "warning": "image_license_not_established",
+      "file": "File:LosSantosCityHall-GTASA.jpg"
+    },
+    {
+      "id": 7,
+      "warning": "image_license_not_established",
+      "file": "File:LosSantosForum-GTASA.jpg"
+    },
+    {
+      "id": 8,
+      "warning": "image_license_not_established",
+      "file": "File:LSIA-GTASA-Entrance.jpg"
+    },
+    {
+      "id": 9,
+      "warning": "image_license_not_established",
+      "file": "File:UnityStation-GTASA-ElCorona.jpg"
+    },
+    {
+      "id": 10,
+      "warning": "image_license_not_established",
+      "file": "File:SantaMariaBeach-GTASA.png"
+    },
+    {
+      "id": 11,
+      "warning": "image_license_not_established",
+      "file": "File:LosSantosLighthouse-GTASA.jpg"
+    },
+    {
+      "id": 12,
+      "warning": "image_license_not_established",
+      "file": "File:VinewoodFilmStudios-GTASA-Overview.png"
+    },
+    {
+      "id": 13,
+      "warning": "image_license_not_established",
+      "file": "File:Vinewood Walk of Fame GTASA North Side.png"
+    },
+    {
+      "id": 14,
+      "warning": "image_license_not_established",
+      "file": "File:LosSantosStormDrain-GTASA-Downtown.jpg"
+    },
+    {
+      "id": 15,
+      "warning": "image_license_not_established",
+      "file": "File:GantBridge-GTASA.jpg"
+    },
+    {
+      "id": 16,
+      "warning": "image_license_not_established",
+      "file": "File:GarverBridge-GTASA.jpg"
+    },
+    {
+      "id": 17,
+      "warning": "image_license_not_established",
+      "file": "File:KincaidBridge-GTASA.jpg"
+    },
+    {
+      "id": 18,
+      "warning": "image_license_not_established",
+      "file": "File:BigPointyBuilding-GTASA.jpg"
+    },
+    {
+      "id": 19,
+      "warning": "image_license_not_established",
+      "file": "File:Pier69-GTASA.jpg"
+    },
+    {
+      "id": 20,
+      "warning": "image_license_not_established",
+      "file": "File:Jizzy'sPleasureDomes-GTASA-exterior.jpg"
+    },
+    {
+      "id": 21,
+      "warning": "image_license_not_established",
+      "file": "File:ZombotechCorporation-GTASA-exterior.jpg"
+    },
+    {
+      "id": 22,
+      "warning": "image_license_not_established",
+      "file": "File:WangCars-GTASA-exterior.jpg"
+    },
+    {
+      "id": 23,
+      "warning": "image_license_not_established",
+      "file": "File:CranberryStation-GTASA-exterior.jpg"
+    },
+    {
+      "id": 24,
+      "warning": "image_license_not_established",
+      "file": "File:MissionaryHillTransmitterBuilding-GTASA-RadioTower.jpg"
+    },
+    {
+      "id": 25,
+      "warning": "image_license_not_established",
+      "file": "File:OceanFlats-GTASA-Church.jpg"
+    },
+    {
+      "id": 26,
+      "warning": "image_license_not_established",
+      "file": "File:EasterBasinNavalStation-GTASA.jpg"
+    },
+    {
+      "id": 27,
+      "warning": "image_license_not_established",
+      "file": "File:WindyWindyWindyWindyStreet-GTASA.jpg"
+    },
+    {
+      "id": 28,
+      "warning": "image_license_not_established",
+      "file": "File:DowntownSquare-Intro-GTASA.jpg"
+    },
+    {
+      "id": 29,
+      "warning": "image_license_not_established",
+      "file": "File:TheFourDragonsCasino-GTASA-Day.jpg"
+    },
+    {
+      "id": 30,
+      "warning": "image_license_not_established",
+      "file": "File:CaligulasPalace-GTASA-Day.jpg"
+    },
+    {
+      "id": 31,
+      "warning": "image_license_not_established",
+      "file": "File:TheCamel'sToe-GTASA-Day.jpg"
+    },
+    {
+      "id": 32,
+      "warning": "image_license_not_established",
+      "file": "File:TheClown'sPocket-GTASA-Day.jpg"
+    },
+    {
+      "id": 33,
+      "warning": "image_license_not_established",
+      "file": "File:TheEmeraldIsle-GTASA-Day.jpg"
+    },
+    {
+      "id": 34,
+      "warning": "image_license_not_established",
+      "file": "File:TheVisage-GTASA-Day.jpg"
+    },
+    {
+      "id": 35,
+      "warning": "image_license_not_established",
+      "file": "File:PiratesinMen'sPants-GTASA-Day.jpg"
+    },
+    {
+      "id": 36,
+      "warning": "image_license_not_established",
+      "file": "File:V-RockHotel-GTASA-exterior.jpg"
+    },
+    {
+      "id": 37,
+      "warning": "image_license_not_established",
+      "file": "File:LasVenturasWelcomeSign-GTASA.png"
+    },
+    {
+      "id": 38,
+      "warning": "image_license_not_established",
+      "file": "File:LasVenturasAirport-GTASA.png"
+    },
+    {
+      "id": 39,
+      "warning": "image_license_not_established",
+      "file": "File:BlackfieldStadium-GTASA-ExteriorFront.png"
+    },
+    {
+      "id": 40,
+      "warning": "image_license_not_established",
+      "file": "File:KACC-GTASA-MainBuildingSign.jpg"
+    },
+    {
+      "id": 41,
+      "warning": "image_license_not_established",
+      "file": "File:OldVenturasStrip-GTASA.png"
+    },
+    {
+      "id": 42,
+      "warning": "image_license_not_established",
+      "file": "File:YellowBellGolfCourse-GTASA.png"
+    },
+    {
+      "id": 43,
+      "warning": "image_license_not_established",
+      "file": "File:Area69-GTASA-Airstrip-AlternativeEntrance.png"
+    },
+    {
+      "id": 44,
+      "warning": "image_license_not_established",
+      "file": "File:TheBigEar-GTASAde.png"
+    },
+    {
+      "id": 45,
+      "warning": "image_license_not_established",
+      "file": "File:RegularTom-GTASAde.png"
+    },
+    {
+      "id": 46,
+      "warning": "image_license_not_established",
+      "file": "File:LilProbeInn-GTASA-RearView.png"
+    },
+    {
+      "id": 47,
+      "warning": "image_license_not_established",
+      "file": "File:VerdantMeadows-GTASA-Overview.png"
+    },
+    {
+      "id": 48,
+      "warning": "image_license_not_established",
+      "file": "File:LasBrujas-GTASAde.png"
+    },
+    {
+      "id": 49,
+      "warning": "image_license_not_established",
+      "file": "File:Massgrave-GTASA.jpg"
+    },
+    {
+      "id": 50,
+      "warning": "image_license_not_established",
+      "file": "File:SnakeFarm-GTASA-Overview.jpg"
+    },
+    {
+      "id": 51,
+      "warning": "image_license_not_established",
+      "file": "File:HunterQuarry-GTASA.png"
+    },
+    {
+      "id": 52,
+      "warning": "image_license_not_established",
+      "file": "File:OctaneSprings-GTASA.png"
+    },
+    {
+      "id": 53,
+      "warning": "image_license_not_established",
+      "file": "File:GreenPalms-GTASA.png"
+    },
+    {
+      "id": 54,
+      "warning": "image_license_not_established",
+      "file": "File:ShermanReservoir-GTASA-Daylight.jpg"
+    },
+    {
+      "id": 55,
+      "warning": "image_license_not_established",
+      "file": "File:CockRock-GTASA.jpg"
+    },
+    {
+      "id": 56,
+      "warning": "image_license_not_established",
+      "file": "File:LasPayasadas-GTASA.png"
+    },
+    {
+      "id": 57,
+      "warning": "image_license_not_established",
+      "file": "File:ShermanDam-GTASAde.png"
+    },
+    {
+      "id": 58,
+      "warning": "image_license_not_established",
+      "file": "File:MikeToreno'sRanch-GTASA-Exterior.png"
+    },
+    {
+      "id": 59,
+      "warning": "image_license_not_established",
+      "file": "File:Bayside-GTASA.png"
+    },
+    {
+      "id": 60,
+      "warning": "image_license_not_established",
+      "file": "File:BaysideMarina-GTASA.png"
+    },
+    {
+      "id": 61,
+      "warning": "image_license_not_established",
+      "file": "File:AldeaMalvada-GTASA-Overview.jpg"
+    },
+    {
+      "id": 62,
+      "warning": "image_license_not_established",
+      "file": "File:ArcodelOeste-GTASA-RockFormation.jpg"
+    },
+    {
+      "id": 63,
+      "warning": "image_license_not_established",
+      "file": "File:LasBarrancas-GTASA-PuebloRuins.png"
+    },
+    {
+      "id": 64,
+      "warning": "image_license_not_established",
+      "file": "File:ValleOcultado-GTASA.png"
+    },
+    {
+      "id": 65,
+      "warning": "image_license_not_established",
+      "file": "File:ThePanopticon-GTASA.png"
+    },
+    {
+      "id": 66,
+      "warning": "image_license_not_established",
+      "file": "File:PalominoCreekBank-GTASA.jpg"
+    },
+    {
+      "id": 67,
+      "warning": "image_license_not_established",
+      "file": "File:BlueberryAcres-GTASA.png"
+    },
+    {
+      "id": 68,
+      "warning": "image_license_not_established",
+      "file": "File:FleischBerg-GTASA-front-exterior.jpg"
+    },
+    {
+      "id": 69,
+      "warning": "image_license_not_established",
+      "file": "File:BiowasteWell-GTASA.jpg"
+    },
+    {
+      "id": 70,
+      "warning": "image_license_not_established",
+      "file": "File:Catalina'sHideout-GTASA-Exterior.png"
+    },
+    {
+      "id": 71,
+      "warning": "image_license_not_established",
+      "file": "File:EasterBoardFarm-GTASA.png"
+    },
+    {
+      "id": 72,
+      "warning": "image_license_not_established",
+      "file": "File:BloodyShack-GTASA-Exterior.jpg"
+    },
+    {
+      "id": 73,
+      "warning": "image_license_not_established",
+      "file": "File:TheFarm-GTASA-EntranceView.png"
+    },
+    {
+      "id": 74,
+      "warning": "image_license_not_established",
+      "file": "File:BackOBeyond-GTASA.png"
+    },
+    {
+      "id": 75,
+      "warning": "image_license_not_established",
+      "file": "File:BackOBeyond-GTASA.jpg"
+    },
+    {
+      "id": 76,
+      "warning": "image_license_not_established",
+      "file": "File:MountChiliad-GTASA-ViewFromShadyCreeks.jpg"
+    },
+    {
+      "id": 77,
+      "warning": "image_license_not_established",
+      "file": "File:SanFierroScenicRoute-GTASA-RoadSign.png"
+    },
+    {
+      "id": 78,
+      "warning": "image_license_not_established",
+      "file": "File:ShadyCreeks-GTASA.png"
+    },
+    {
+      "id": 79,
+      "warning": "image_license_not_established",
+      "file": "File:AngelPine-GTASA-Aerial.jpg"
+    },
+    {
+      "id": 80,
+      "warning": "image_license_not_established",
+      "file": "File:EasterBayChemicals-GTASA.png"
+    }
+  ]
+}

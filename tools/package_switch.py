@@ -5,12 +5,14 @@ import zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 NRO = ROOT / "gtasa-unexplored.nro"
-PACK = ROOT / "data" / "collectibles"
+PACKS = ("collectibles", "poi")
 OUT = ROOT / "gtasa-unexplored-switch.zip"
 
 with zipfile.ZipFile(OUT, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
     archive.write(NRO, "switch/gtasa-unexplored/gtasa-unexplored.nro")
-    for path in PACK.rglob("*"):
-        if path.is_file():
-            archive.write(path, "switch/gtasa-unexplored/collectibles/" + path.relative_to(PACK).as_posix())
+    for pack_name in PACKS:
+        pack = ROOT / "data" / pack_name
+        for path in pack.rglob("*"):
+            if path.is_file():
+                archive.write(path, "switch/gtasa-unexplored/" + pack_name + "/" + path.relative_to(pack).as_posix())
 print(OUT)

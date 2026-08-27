@@ -1,0 +1,412 @@
+{
+  "ok": true,
+  "items": 80,
+  "images": 80,
+  "missing_images": 0,
+  "wiki_map_images": 0,
+  "other_gta_game_images": 0,
+  "tiny_images": 0,
+  "errors": [],
+  "warnings": [
+    {
+      "id": 1,
+      "warning": "image_license_not_established",
+      "file": "File:GroveStreet-GTASA.jpg"
+    },
+    {
+      "id": 2,
+      "warning": "image_license_not_established",
+      "file": "File:BigSmoke'sHouse-GTASA.jpg"
+    },
+    {
+      "id": 3,
+      "warning": "image_license_not_established",
+      "file": "File:SweetJohnsons'house-GTASA-exterior.jpg"
+    },
+    {
+      "id": 4,
+      "warning": "image_license_not_established",
+      "file": "File:VinewoodSign-GTASA.png"
+    },
+    {
+      "id": 5,
+      "warning": "image_license_not_established",
+      "file": "File:LosSantosObservatory-GTASA.jpg"
+    },
+    {
+      "id": 6,
+      "warning": "image_license_not_established",
+      "file": "File:LosSantosCityHall-GTASA.jpg"
+    },
+    {
+      "id": 7,
+      "warning": "image_license_not_established",
+      "file": "File:LosSantosForum-GTASA.jpg"
+    },
+    {
+      "id": 8,
+      "warning": "image_license_not_established",
+      "file": "File:LSIA-GTASA-Entrance.jpg"
+    },
+    {
+      "id": 9,
+      "warning": "image_license_not_established",
+      "file": "File:UnityStation-GTASA-ElCorona.jpg"
+    },
+    {
+      "id": 10,
+      "warning": "image_license_not_established",
+      "file": "File:SantaMariaBeach-GTASA.png"
+    },
+    {
+      "id": 11,
+      "warning": "image_license_not_established",
+      "file": "File:LosSantosLighthouse-GTASA.jpg"
+    },
+    {
+      "id": 12,
+      "warning": "image_license_not_established",
+      "file": "File:VinewoodFilmStudios-GTASA-Overview.png"
+    },
+    {
+      "id": 13,
+      "warning": "image_license_not_established",
+      "file": "File:Vinewood Walk of Fame GTASA North Side.png"
+    },
+    {
+      "id": 14,
+      "warning": "image_license_not_established",
+      "file": "File:LosSantosStormDrain-GTASA-Downtown.jpg"
+    },
+    {
+      "id": 15,
+      "warning": "image_license_not_established",
+      "file": "File:GantBridge-GTASA.jpg"
+    },
+    {
+      "id": 16,
+      "warning": "image_license_not_established",
+      "file": "File:GarverBridge-GTASA.jpg"
+    },
+    {
+      "id": 17,
+      "warning": "image_license_not_established",
+      "file": "File:KincaidBridge-GTASA.jpg"
+    },
+    {
+      "id": 18,
+      "warning": "image_license_not_established",
+      "file": "File:BigPointyBuilding-GTASA.jpg"
+    },
+    {
+      "id": 19,
+      "warning": "image_license_not_established",
+      "file": "File:Pier69-GTASA.jpg"
+    },
+    {
+      "id": 20,
+      "warning": "image_license_not_established",
+      "file": "File:Jizzy'sPleasureDomes-GTASA-exterior.jpg"
+    },
+    {
+      "id": 21,
+      "warning": "image_license_not_established",
+      "file": "File:ZombotechCorporation-GTASA-exterior.jpg"
+    },
+    {
+      "id": 22,
+      "warning": "image_license_not_established",
+      "file": "File:WangCars-GTASA-exterior.jpg"
+    },
+    {
+      "id": 23,
+      "warning": "image_license_not_established",
+      "file": "File:CranberryStation-GTASA-exterior.jpg"
+    },
+    {
+      "id": 24,
+      "warning": "image_license_not_established",
+      "file": "File:MissionaryHillTransmitterBuilding-GTASA-RadioTower.jpg"
+    },
+    {
+      "id": 25,
+      "warning": "image_license_not_established",
+      "file": "File:OceanFlats-GTASA-Church.jpg"
+    },
+    {
+      "id": 26,
+      "warning": "image_license_not_established",
+      "file": "File:EasterBasinNavalStation-GTASA.jpg"
+    },
+    {
+      "id": 27,
+      "warning": "image_license_not_established",
+      "file": "File:WindyWindyWindyWindyStreet-GTASA.jpg"
+    },
+    {
+      "id": 28,
+      "warning": "image_license_not_established",
+      "file": "File:DowntownSquare-Intro-GTASA.jpg"
+    },
+    {
+      "id": 29,
+      "warning": "image_license_not_established",
+      "file": "File:TheFourDragonsCasino-GTASA-Day.jpg"
+    },
+    {
+      "id": 30,
+      "warning": "image_license_not_established",
+      "file": "File:CaligulasPalace-GTASA-Day.jpg"
+    },
+    {
+      "id": 31,
+      "warning": "image_license_not_established",
+      "file": "File:TheCamel'sToe-GTASA-Day.jpg"
+    },
+    {
+      "id": 32,
+      "warning": "image_license_not_established",
+      "file": "File:TheClown'sPocket-GTASA-Day.jpg"
+    },
+    {
+      "id": 33,
+      "warning": "image_license_not_established",
+      "file": "File:TheEmeraldIsle-GTASA-Day.jpg"
+    },
+    {
+      "id": 34,
+      "warning": "image_license_not_established",
+      "file": "File:TheVisage-GTASA-Day.jpg"
+    },
+    {
+      "id": 35,
+      "warning": "image_license_not_established",
+      "file": "File:PiratesinMen'sPants-GTASA-Day.jpg"
+    },
+    {
+      "id": 36,
+      "warning": "image_license_not_established",
+      "file": "File:V-RockHotel-GTASA-exterior.jpg"
+    },
+    {
+      "id": 37,
+      "warning": "image_license_not_established",
+      "file": "File:LasVenturasWelcomeSign-GTASA.png"
+    },
+    {
+      "id": 38,
+      "warning": "image_license_not_established",
+      "file": "File:LasVenturasAirport-GTASA.png"
+    },
+    {
+      "id": 39,
+      "warning": "image_license_not_established",
+      "file": "File:BlackfieldStadium-GTASA-ExteriorFront.png"
+    },
+    {
+      "id": 40,
+      "warning": "image_license_not_established",
+      "file": "File:KACC-GTASA-MainBuildingSign.jpg"
+    },
+    {
+      "id": 41,
+      "warning": "image_license_not_established",
+      "file": "File:OldVenturasStrip-GTASA.png"
+    },
+    {
+      "id": 42,
+      "warning": "image_license_not_established",
+      "file": "File:YellowBellGolfCourse-GTASA.png"
+    },
+    {
+      "id": 43,
+      "warning": "image_license_not_established",
+      "file": "File:Area69-GTASA-Airstrip-AlternativeEntrance.png"
+    },
+    {
+      "id": 44,
+      "warning": "image_license_not_established",
+      "file": "File:TheBigEar-GTASAde.png"
+    },
+    {
+      "id": 45,
+      "warning": "image_license_not_established",
+      "file": "File:RegularTom-GTASAde.png"
+    },
+    {
+      "id": 46,
+      "warning": "image_license_not_established",
+      "file": "File:LilProbeInn-GTASA-RearView.png"
+    },
+    {
+      "id": 47,
+      "warning": "image_license_not_established",
+      "file": "File:VerdantMeadows-GTASA-Overview.png"
+    },
+    {
+      "id": 48,
+      "warning": "image_license_not_established",
+      "file": "File:LasBrujas-GTASAde.png"
+    },
+    {
+      "id": 49,
+      "warning": "image_license_not_established",
+      "file": "File:Massgrave-GTASA.jpg"
+    },
+    {
+      "id": 50,
+      "warning": "image_license_not_established",
+      "file": "File:SnakeFarm-GTASA-Overview.jpg"
+    },
+    {
+      "id": 51,
+      "warning": "image_license_not_established",
+      "file": "File:HunterQuarry-GTASA.png"
+    },
+    {
+      "id": 52,
+      "warning": "image_license_not_established",
+      "file": "File:OctaneSprings-GTASA.png"
+    },
+    {
+      "id": 53,
+      "warning": "image_license_not_established",
+      "file": "File:GreenPalms-GTASA.png"
+    },
+    {
+      "id": 54,
+      "warning": "image_license_not_established",
+      "file": "File:ShermanReservoir-GTASA-Daylight.jpg"
+    },
+    {
+      "id": 55,
+      "warning": "image_license_not_established",
+      "file": "File:CockRock-GTASA.jpg"
+    },
+    {
+      "id": 56,
+      "warning": "image_license_not_established",
+      "file": "File:LasPayasadas-GTASA.png"
+    },
+    {
+      "id": 57,
+      "warning": "image_license_not_established",
+      "file": "File:ShermanDam-GTASAde.png"
+    },
+    {
+      "id": 58,
+      "warning": "image_license_not_established",
+      "file": "File:MikeToreno'sRanch-GTASA-Exterior.png"
+    },
+    {
+      "id": 59,
+      "warning": "image_license_not_established",
+      "file": "File:Bayside-GTASA.png"
+    },
+    {
+      "id": 60,
+      "warning": "image_license_not_established",
+      "file": "File:BaysideMarina-GTASA.png"
+    },
+    {
+      "id": 61,
+      "warning": "image_license_not_established",
+      "file": "File:AldeaMalvada-GTASA-Overview.jpg"
+    },
+    {
+      "id": 62,
+      "warning": "image_license_not_established",
+      "file": "File:ArcodelOeste-GTASA-RockFormation.jpg"
+    },
+    {
+      "id": 63,
+      "warning": "image_license_not_established",
+      "file": "File:LasBarrancas-GTASA-PuebloRuins.png"
+    },
+    {
+      "id": 64,
+      "warning": "image_license_not_established",
+      "file": "File:ValleOcultado-GTASA.png"
+    },
+    {
+      "id": 65,
+      "warning": "image_license_not_established",
+      "file": "File:ThePanopticon-GTASA.png"
+    },
+    {
+      "id": 66,
+      "warning": "image_license_not_established",
+      "file": "File:PalominoCreekBank-GTASA.jpg"
+    },
+    {
+      "id": 67,
+      "warning": "image_license_not_established",
+      "file": "File:BlueberryAcres-GTASA.png"
+    },
+    {
+      "id": 68,
+      "warning": "image_license_not_established",
+      "file": "File:FleischBerg-GTASA-front-exterior.jpg"
+    },
+    {
+      "id": 69,
+      "warning": "image_license_not_established",
+      "file": "File:BiowasteWell-GTASA.jpg"
+    },
+    {
+      "id": 70,
+      "warning": "image_license_not_established",
+      "file": "File:Catalina'sHideout-GTASA-Exterior.png"
+    },
+    {
+      "id": 71,
+      "warning": "image_license_not_established",
+      "file": "File:EasterBoardFarm-GTASA.png"
+    },
+    {
+      "id": 72,
+      "warning": "image_license_not_established",
+      "file": "File:BloodyShack-GTASA-Exterior.jpg"
+    },
+    {
+      "id": 73,
+      "warning": "image_license_not_established",
+      "file": "File:TheFarm-GTASA-EntranceView.png"
+    },
+    {
+      "id": 74,
+      "warning": "image_license_not_established",
+      "file": "File:BackOBeyond-GTASA.png"
+    },
+    {
+      "id": 75,
+      "warning": "image_license_not_established",
+      "file": "File:BackOBeyond-GTASA.jpg"
+    },
+    {
+      "id": 76,
+      "warning": "image_license_not_established",
+      "file": "File:MountChiliad-GTASA-ViewFromShadyCreeks.jpg"
+    },
+    {
+      "id": 77,
+      "warning": "image_license_not_established",
+      "file": "File:SanFierroScenicRoute-GTASA-RoadSign.png"
+    },
+    {
+      "id": 78,
+      "warning": "image_license_not_established",
+      "file": "File:ShadyCreeks-GTASA.png"
+    },
+    {
+      "id": 79,
+      "warning": "image_license_not_established",
+      "file": "File:AngelPine-GTASA-Aerial.jpg"
+    },
+    {
+      "id": 80,
+      "warning": "image_license_not_established",
+      "file": "File:EasterBayChemicals-GTASA.png"
+    }
+  ]
+}

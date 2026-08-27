@@ -1,0 +1,2006 @@
+{
+  "schema": "gtasa-unexplored-poi-credits-v1",
+  "notice": "English Wiki article text and concrete image/file licensing are separate. Empty file license metadata does not establish redistribution permission.",
+  "items": [
+    {
+      "id": 1,
+      "name_en": "Grove Street",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Grove Street (3D Universe)",
+        "page_url": "https://gta.fandom.com/wiki/Grove_Street_(3D_Universe)",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8_context",
+      "image": {
+        "file_title": "File:GroveStreet-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/9/99/GroveStreet-GTASA.jpg/revision/latest?cb=20070510101844",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/9/99/GroveStreet-GTASA.jpg/revision/latest?cb=20070510101844",
+        "description_url": "https://gta.fandom.com/wiki/File:GroveStreet-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 800,
+        "source_height": 500,
+        "extmetadata": {
+          "DateTime": "2007-05-10T10:18:44Z",
+          "ObjectName": "GroveStreet-GTASA"
+        },
+        "runtime_path": "images/poi/001.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "name_en": "Big Smoke's House",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Big Smoke's House",
+        "page_url": "https://gta.fandom.com/wiki/Big_Smoke%27s_House",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "user_override_then_ru_wiki",
+      "image": {
+        "file_title": "File:BigSmoke'sHouse-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/8/86/BigSmoke%27sHouse-GTASA.jpg/revision/latest?cb=20230630070727",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/8/86/BigSmoke%27sHouse-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20230630070727",
+        "description_url": "https://gta.fandom.com/wiki/File:BigSmoke%27sHouse-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-06-30T07:07:27Z",
+          "ObjectName": "BigSmoke'sHouse-GTASA"
+        },
+        "runtime_path": "images/poi/002.jpg"
+      }
+    },
+    {
+      "id": 3,
+      "name_en": "Sweet's House",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Sweet's House",
+        "page_url": "https://gta.fandom.com/wiki/Sweet%27s_House",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "user_override",
+      "image": {
+        "file_title": "File:SweetJohnsons'house-GTASA-exterior.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/3/35/SweetJohnsons%27house-GTASA-exterior.jpg/revision/latest?cb=20100724130059",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/3/35/SweetJohnsons%27house-GTASA-exterior.jpg/revision/latest?cb=20100724130059",
+        "description_url": "https://gta.fandom.com/wiki/File:SweetJohnsons%27house-GTASA-exterior.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1280,
+        "source_height": 603,
+        "extmetadata": {
+          "DateTime": "2010-07-24T13:00:59Z",
+          "ObjectName": "SweetJohnsons'house-GTASA-exterior"
+        },
+        "runtime_path": "images/poi/003.jpg"
+      }
+    },
+    {
+      "id": 4,
+      "name_en": "Vinewood Sign",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Vinewood Sign (3D Universe)",
+        "page_url": "https://gta.fandom.com/wiki/Vinewood_Sign_(3D_Universe)",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki",
+      "image": {
+        "file_title": "File:VinewoodSign-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/b/ba/VinewoodSign-GTASA.png/revision/latest?cb=20240213160037",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/b/ba/VinewoodSign-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20240213160037",
+        "description_url": "https://gta.fandom.com/wiki/File:VinewoodSign-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2024-02-13T16:00:37Z",
+          "ObjectName": "VinewoodSign-GTASA"
+        },
+        "runtime_path": "images/poi/004.jpg"
+      }
+    },
+    {
+      "id": 5,
+      "name_en": "Los Santos Observatory",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Los Santos Observatory",
+        "page_url": "https://gta.fandom.com/wiki/Los_Santos_Observatory",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki",
+      "image": {
+        "file_title": "File:LosSantosObservatory-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/f/f4/LosSantosObservatory-GTASA.jpg/revision/latest?cb=20230830034024",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/f/f4/LosSantosObservatory-GTASA.jpg/revision/latest?cb=20230830034024",
+        "description_url": "https://gta.fandom.com/wiki/File:LosSantosObservatory-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1280,
+        "source_height": 610,
+        "extmetadata": {
+          "DateTime": "2023-08-30T03:40:24Z",
+          "ObjectName": "LosSantosObservatory-GTASA"
+        },
+        "runtime_path": "images/poi/005.jpg"
+      }
+    },
+    {
+      "id": 6,
+      "name_en": "Los Santos City Hall",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Los Santos City Hall",
+        "page_url": "https://gta.fandom.com/wiki/Los_Santos_City_Hall",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "original",
+      "image": {
+        "file_title": "File:LosSantosCityHall-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/5/5f/LosSantosCityHall-GTASA.jpg/revision/latest?cb=20181107172141",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/5/5f/LosSantosCityHall-GTASA.jpg/revision/latest?cb=20181107172141",
+        "description_url": "https://gta.fandom.com/wiki/File:LosSantosCityHall-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 900,
+        "source_height": 900,
+        "extmetadata": {
+          "DateTime": "2018-11-07T17:21:41Z",
+          "ObjectName": "LosSantosCityHall-GTASA"
+        },
+        "runtime_path": "images/poi/006.jpg"
+      }
+    },
+    {
+      "id": 7,
+      "name_en": "Los Santos Forum",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Los Santos Forum",
+        "page_url": "https://gta.fandom.com/wiki/Los_Santos_Forum",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_components_then_ru_wiki",
+      "image": {
+        "file_title": "File:LosSantosForum-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/c/c4/LosSantosForum-GTASA.jpg/revision/latest?cb=20100418115852",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/c/c4/LosSantosForum-GTASA.jpg/revision/latest?cb=20100418115852",
+        "description_url": "https://gta.fandom.com/wiki/File:LosSantosForum-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1280,
+        "source_height": 575,
+        "extmetadata": {
+          "DateTime": "2010-04-18T11:58:52Z",
+          "ObjectName": "LosSantosForum-GTASA"
+        },
+        "runtime_path": "images/poi/007.jpg"
+      }
+    },
+    {
+      "id": 8,
+      "name_en": "Los Santos International Airport",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Los Santos International Airport (3D Universe)",
+        "page_url": "https://gta.fandom.com/wiki/Los_Santos_International_Airport_(3D_Universe)",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8_context",
+      "image": {
+        "file_title": "File:LSIA-GTASA-Entrance.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/7/7f/LSIA-GTASA-Entrance.jpg/revision/latest?cb=20091213142302",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/7/7f/LSIA-GTASA-Entrance.jpg/revision/latest?cb=20091213142302",
+        "description_url": "https://gta.fandom.com/wiki/File:LSIA-GTASA-Entrance.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1280,
+        "source_height": 1024,
+        "extmetadata": {
+          "DateTime": "2009-12-13T14:23:02Z",
+          "ObjectName": "LSIA-GTASA-Entrance"
+        },
+        "runtime_path": "images/poi/008.jpg"
+      }
+    },
+    {
+      "id": 9,
+      "name_en": "Unity Station",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Unity Station",
+        "page_url": "https://gta.fandom.com/wiki/Unity_Station",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:UnityStation-GTASA-ElCorona.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/8/80/UnityStation-GTASA-ElCorona.jpg/revision/latest?cb=20100225135905",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/8/80/UnityStation-GTASA-ElCorona.jpg/revision/latest?cb=20100225135905",
+        "description_url": "https://gta.fandom.com/wiki/File:UnityStation-GTASA-ElCorona.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1000,
+        "source_height": 569,
+        "extmetadata": {
+          "DateTime": "2010-02-25T13:59:05Z",
+          "ObjectName": "UnityStation-GTASA-ElCorona"
+        },
+        "runtime_path": "images/poi/009.jpg"
+      }
+    },
+    {
+      "id": 10,
+      "name_en": "Santa Maria Beach",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Santa Maria Beach",
+        "page_url": "https://gta.fandom.com/wiki/Santa_Maria_Beach",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:SantaMariaBeach-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/8/8d/SantaMariaBeach-GTASA.png/revision/latest?cb=20240321124209",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/8/8d/SantaMariaBeach-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20240321124209",
+        "description_url": "https://gta.fandom.com/wiki/File:SantaMariaBeach-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2024-03-21T12:42:09Z",
+          "ObjectName": "SantaMariaBeach-GTASA"
+        },
+        "runtime_path": "images/poi/010.jpg"
+      }
+    },
+    {
+      "id": 11,
+      "name_en": "Los Santos Lighthouse",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Los Santos Lighthouse",
+        "page_url": "https://gta.fandom.com/wiki/Los_Santos_Lighthouse",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki",
+      "image": {
+        "file_title": "File:LosSantosLighthouse-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/c/cd/LosSantosLighthouse-GTASA.jpg/revision/latest?cb=20190106030444",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/c/cd/LosSantosLighthouse-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20190106030444",
+        "description_url": "https://gta.fandom.com/wiki/File:LosSantosLighthouse-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1366,
+        "source_height": 768,
+        "extmetadata": {
+          "DateTime": "2019-01-06T03:04:44Z",
+          "ObjectName": "LosSantosLighthouse-GTASA"
+        },
+        "runtime_path": "images/poi/011.jpg"
+      }
+    },
+    {
+      "id": 12,
+      "name_en": "Vinewood Movie Studios",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Vinewood Movie Studios",
+        "page_url": "https://gta.fandom.com/wiki/Vinewood_Movie_Studios",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "original",
+      "image": {
+        "file_title": "File:VinewoodFilmStudios-GTASA-Overview.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/2/26/VinewoodFilmStudios-GTASA-Overview.png/revision/latest?cb=20250116205714",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/2/26/VinewoodFilmStudios-GTASA-Overview.png/revision/latest/scale-to-width-down/1280?cb=20250116205714",
+        "description_url": "https://gta.fandom.com/wiki/File:VinewoodFilmStudios-GTASA-Overview.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2025-01-16T20:57:14Z",
+          "ObjectName": "VinewoodFilmStudios-GTASA-Overview"
+        },
+        "runtime_path": "images/poi/012.jpg"
+      }
+    },
+    {
+      "id": 13,
+      "name_en": "Vinewood Walk of Fame",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Vinewood Walk of Fame",
+        "page_url": "https://gta.fandom.com/wiki/Vinewood_Walk_of_Fame",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki",
+      "image": {
+        "file_title": "File:Vinewood Walk of Fame GTASA North Side.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/e/e6/Vinewood_Walk_of_Fame_GTASA_North_Side.png/revision/latest?cb=20190322055948",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/e/e6/Vinewood_Walk_of_Fame_GTASA_North_Side.png/revision/latest/scale-to-width-down/1280?cb=20190322055948",
+        "description_url": "https://gta.fandom.com/wiki/File:Vinewood_Walk_of_Fame_GTASA_North_Side.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2019-03-22T05:59:48Z",
+          "ObjectName": "Vinewood Walk of Fame GTASA North Side"
+        },
+        "runtime_path": "images/poi/013.jpg"
+      }
+    },
+    {
+      "id": 14,
+      "name_en": "Los Santos Storm Drain",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Los Santos Storm Drain (3D Universe)",
+        "page_url": "https://gta.fandom.com/wiki/Los_Santos_Storm_Drain_(3D_Universe)",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "original",
+      "image": {
+        "file_title": "File:LosSantosStormDrain-GTASA-Downtown.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/a/af/LosSantosStormDrain-GTASA-Downtown.jpg/revision/latest?cb=20191117205454",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/a/af/LosSantosStormDrain-GTASA-Downtown.jpg/revision/latest/scale-to-width-down/1280?cb=20191117205454",
+        "description_url": "https://gta.fandom.com/wiki/File:LosSantosStormDrain-GTASA-Downtown.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1400,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-11-17T20:54:54Z",
+          "ObjectName": "LosSantosStormDrain-GTASA-Downtown"
+        },
+        "runtime_path": "images/poi/014.jpg"
+      }
+    },
+    {
+      "id": 15,
+      "name_en": "Gant Bridge",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Gant Bridge",
+        "page_url": "https://gta.fandom.com/wiki/Gant_Bridge",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:GantBridge-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/b/b4/GantBridge-GTASA.jpg/revision/latest?cb=20230623220218",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/b/b4/GantBridge-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20230623220218",
+        "description_url": "https://gta.fandom.com/wiki/File:GantBridge-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-06-23T22:02:18Z",
+          "ObjectName": "GantBridge-GTASA"
+        },
+        "runtime_path": "images/poi/015.jpg"
+      }
+    },
+    {
+      "id": 16,
+      "name_en": "Garver Bridge",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Garver Bridge",
+        "page_url": "https://gta.fandom.com/wiki/Garver_Bridge",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:GarverBridge-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/5/5e/GarverBridge-GTASA.jpg/revision/latest?cb=20250116195559",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/5/5e/GarverBridge-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20250116195559",
+        "description_url": "https://gta.fandom.com/wiki/File:GarverBridge-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2025-01-16T19:55:59Z",
+          "ObjectName": "GarverBridge-GTASA"
+        },
+        "runtime_path": "images/poi/016.jpg"
+      }
+    },
+    {
+      "id": 17,
+      "name_en": "Kincaid Bridge",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Kincaid Bridge",
+        "page_url": "https://gta.fandom.com/wiki/Kincaid_Bridge",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:KincaidBridge-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/4/4c/KincaidBridge-GTASA.jpg/revision/latest?cb=20250116195545",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/4/4c/KincaidBridge-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20250116195545",
+        "description_url": "https://gta.fandom.com/wiki/File:KincaidBridge-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2025-01-16T19:55:45Z",
+          "ObjectName": "KincaidBridge-GTASA"
+        },
+        "runtime_path": "images/poi/017.jpg"
+      }
+    },
+    {
+      "id": 18,
+      "name_en": "Big Pointy Building",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Big Pointy Building",
+        "page_url": "https://gta.fandom.com/wiki/Big_Pointy_Building",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki_keeps_english",
+      "image": {
+        "file_title": "File:BigPointyBuilding-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/7/7e/BigPointyBuilding-GTASA.jpg/revision/latest?cb=20240524133235",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/7/7e/BigPointyBuilding-GTASA.jpg/revision/latest?cb=20240524133235",
+        "description_url": "https://gta.fandom.com/wiki/File:BigPointyBuilding-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1080,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2024-05-24T13:32:35Z",
+          "ObjectName": "BigPointyBuilding-GTASA"
+        },
+        "runtime_path": "images/poi/018.jpg"
+      }
+    },
+    {
+      "id": 19,
+      "name_en": "Pier 69",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Pier 69",
+        "page_url": "https://gta.fandom.com/wiki/Pier_69",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:Pier69-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/d/dd/Pier69-GTASA.jpg/revision/latest?cb=20230710202502",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/d/dd/Pier69-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20230710202502",
+        "description_url": "https://gta.fandom.com/wiki/File:Pier69-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-07-10T20:25:02Z",
+          "ObjectName": "Pier69-GTASA"
+        },
+        "runtime_path": "images/poi/019.jpg"
+      }
+    },
+    {
+      "id": 20,
+      "name_en": "Jizzy's Pleasure Domes",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Jizzy's Pleasure Domes",
+        "page_url": "https://gta.fandom.com/wiki/Jizzy%27s_Pleasure_Domes",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_components_then_ru_wiki",
+      "image": {
+        "file_title": "File:Jizzy'sPleasureDomes-GTASA-exterior.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/0/05/Jizzy%27sPleasureDomes-GTASA-exterior.jpg/revision/latest?cb=20081230203526",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/0/05/Jizzy%27sPleasureDomes-GTASA-exterior.jpg/revision/latest?cb=20081230203526",
+        "description_url": "https://gta.fandom.com/wiki/File:Jizzy%27sPleasureDomes-GTASA-exterior.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1255,
+        "source_height": 764,
+        "extmetadata": {
+          "DateTime": "2008-12-30T20:35:26Z",
+          "ObjectName": "Jizzy'sPleasureDomes-GTASA-exterior"
+        },
+        "runtime_path": "images/poi/020.jpg"
+      }
+    },
+    {
+      "id": 21,
+      "name_en": "Zombotech Corporation",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Zombotech Corporation",
+        "page_url": "https://gta.fandom.com/wiki/Zombotech_Corporation",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki_keeps_english",
+      "image": {
+        "file_title": "File:ZombotechCorporation-GTASA-exterior.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/2/25/ZombotechCorporation-GTASA-exterior.jpg/revision/latest?cb=20240224234534",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/2/25/ZombotechCorporation-GTASA-exterior.jpg/revision/latest/scale-to-width-down/1280?cb=20240224234534",
+        "description_url": "https://gta.fandom.com/wiki/File:ZombotechCorporation-GTASA-exterior.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2024-02-24T23:45:34Z",
+          "ObjectName": "ZombotechCorporation-GTASA-exterior"
+        },
+        "runtime_path": "images/poi/021.jpg"
+      }
+    },
+    {
+      "id": 22,
+      "name_en": "Wang Cars",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Wang Cars (GTA San Andreas)",
+        "page_url": "https://gta.fandom.com/wiki/Wang_Cars_(GTA_San_Andreas)",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8_context",
+      "image": {
+        "file_title": "File:WangCars-GTASA-exterior.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/7/72/WangCars-GTASA-exterior.jpg/revision/latest?cb=20230605051645",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/7/72/WangCars-GTASA-exterior.jpg/revision/latest/scale-to-width-down/1280?cb=20230605051645",
+        "description_url": "https://gta.fandom.com/wiki/File:WangCars-GTASA-exterior.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-06-05T05:16:45Z",
+          "ObjectName": "WangCars-GTASA-exterior"
+        },
+        "runtime_path": "images/poi/022.jpg"
+      }
+    },
+    {
+      "id": 23,
+      "name_en": "Cranberry Station",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Cranberry Station",
+        "page_url": "https://gta.fandom.com/wiki/Cranberry_Station",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:CranberryStation-GTASA-exterior.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/4/4d/CranberryStation-GTASA-exterior.jpg/revision/latest?cb=20100225200952",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/4/4d/CranberryStation-GTASA-exterior.jpg/revision/latest?cb=20100225200952",
+        "description_url": "https://gta.fandom.com/wiki/File:CranberryStation-GTASA-exterior.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1000,
+        "source_height": 325,
+        "extmetadata": {
+          "DateTime": "2010-02-25T20:09:52Z",
+          "ObjectName": "CranberryStation-GTASA-exterior"
+        },
+        "runtime_path": "images/poi/023.jpg"
+      }
+    },
+    {
+      "id": 24,
+      "name_en": "Missionary Hill Radio Tower",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Missionary Hill Radio Tower",
+        "page_url": "https://gta.fandom.com/wiki/Missionary_Hill_Radio_Tower",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "derived_from_official_ru_1.0.8",
+      "image": {
+        "file_title": "File:MissionaryHillTransmitterBuilding-GTASA-RadioTower.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/a/ab/MissionaryHillTransmitterBuilding-GTASA-RadioTower.jpg/revision/latest?cb=20181122041043",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/a/ab/MissionaryHillTransmitterBuilding-GTASA-RadioTower.jpg/revision/latest/scale-to-width-down/1280?cb=20181122041043",
+        "description_url": "https://gta.fandom.com/wiki/File:MissionaryHillTransmitterBuilding-GTASA-RadioTower.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1600,
+        "source_height": 900,
+        "extmetadata": {
+          "DateTime": "2018-11-22T04:10:43Z",
+          "ObjectName": "MissionaryHillTransmitterBuilding-GTASA-RadioTower"
+        },
+        "runtime_path": "images/poi/024.jpg"
+      }
+    },
+    {
+      "id": 25,
+      "name_en": "Ocean Flats Cathedral",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Ocean Flats Cathedral",
+        "page_url": "https://gta.fandom.com/wiki/Ocean_Flats_Cathedral",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_components_then_ru_wiki",
+      "image": {
+        "file_title": "File:OceanFlats-GTASA-Church.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/7/78/OceanFlats-GTASA-Church.jpg/revision/latest?cb=20181214085942",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/7/78/OceanFlats-GTASA-Church.jpg/revision/latest/scale-to-width-down/1280?cb=20181214085942",
+        "description_url": "https://gta.fandom.com/wiki/File:OceanFlats-GTASA-Church.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1600,
+        "source_height": 900,
+        "extmetadata": {
+          "DateTime": "2018-12-14T08:59:42Z",
+          "ObjectName": "OceanFlats-GTASA-Church"
+        },
+        "runtime_path": "images/poi/025.jpg"
+      }
+    },
+    {
+      "id": 26,
+      "name_en": "Easter Basin Naval Station",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Easter Basin Naval Station",
+        "page_url": "https://gta.fandom.com/wiki/Easter_Basin_Naval_Station",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8_context",
+      "image": {
+        "file_title": "File:EasterBasinNavalStation-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/5/55/EasterBasinNavalStation-GTASA.jpg/revision/latest?cb=20181201171718",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/5/55/EasterBasinNavalStation-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20181201171718",
+        "description_url": "https://gta.fandom.com/wiki/File:EasterBasinNavalStation-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1600,
+        "source_height": 900,
+        "extmetadata": {
+          "DateTime": "2018-12-01T17:17:18Z",
+          "ObjectName": "EasterBasinNavalStation-GTASA"
+        },
+        "runtime_path": "images/poi/026.jpg"
+      }
+    },
+    {
+      "id": 27,
+      "name_en": "Windy Windy Windy Windy Street",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Windy Windy Windy Windy Street",
+        "page_url": "https://gta.fandom.com/wiki/Windy_Windy_Windy_Windy_Street",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki_keeps_english",
+      "image": {
+        "file_title": "File:WindyWindyWindyWindyStreet-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/9/90/WindyWindyWindyWindyStreet-GTASA.jpg/revision/latest?cb=20240224234136",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/9/90/WindyWindyWindyWindyStreet-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20240224234136",
+        "description_url": "https://gta.fandom.com/wiki/File:WindyWindyWindyWindyStreet-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2024-02-24T23:41:36Z",
+          "ObjectName": "WindyWindyWindyWindyStreet-GTASA"
+        },
+        "runtime_path": "images/poi/027.jpg"
+      }
+    },
+    {
+      "id": 28,
+      "name_en": "Downtown Square",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Downtown Square",
+        "page_url": "https://gta.fandom.com/wiki/Downtown_Square",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "original",
+      "image": {
+        "file_title": "File:DowntownSquare-Intro-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/6/6d/DowntownSquare-Intro-GTASA.jpg/revision/latest?cb=20220320085559",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/6/6d/DowntownSquare-Intro-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20220320085559",
+        "description_url": "https://gta.fandom.com/wiki/File:DowntownSquare-Intro-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2022-03-20T08:55:59Z",
+          "ObjectName": "DowntownSquare-Intro-GTASA"
+        },
+        "runtime_path": "images/poi/028.jpg"
+      }
+    },
+    {
+      "id": 29,
+      "name_en": "The Four Dragons Casino",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "The Four Dragons Hotel & Casino",
+        "page_url": "https://gta.fandom.com/wiki/The_Four_Dragons_Hotel_%26_Casino",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:TheFourDragonsCasino-GTASA-Day.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/8/8d/TheFourDragonsCasino-GTASA-Day.jpg/revision/latest?cb=20230831000231",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/8/8d/TheFourDragonsCasino-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230831000231",
+        "description_url": "https://gta.fandom.com/wiki/File:TheFourDragonsCasino-GTASA-Day.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-08-31T00:02:31Z",
+          "ObjectName": "TheFourDragonsCasino-GTASA-Day"
+        },
+        "runtime_path": "images/poi/029.jpg"
+      }
+    },
+    {
+      "id": 30,
+      "name_en": "Caligula's Palace",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Caligula's Palace",
+        "page_url": "https://gta.fandom.com/wiki/Caligula%27s_Palace",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:CaligulasPalace-GTASA-Day.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/c/cf/CaligulasPalace-GTASA-Day.jpg/revision/latest?cb=20230831000419",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/c/cf/CaligulasPalace-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230831000419",
+        "description_url": "https://gta.fandom.com/wiki/File:CaligulasPalace-GTASA-Day.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-08-31T00:04:19Z",
+          "ObjectName": "CaligulasPalace-GTASA-Day"
+        },
+        "runtime_path": "images/poi/030.jpg"
+      }
+    },
+    {
+      "id": 31,
+      "name_en": "The Camel's Toe",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "The Camel's Toe",
+        "page_url": "https://gta.fandom.com/wiki/The_Camel%27s_Toe",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:TheCamel'sToe-GTASA-Day.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/a/a5/TheCamel%27sToe-GTASA-Day.jpg/revision/latest?cb=20230830235950",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/a/a5/TheCamel%27sToe-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230830235950",
+        "description_url": "https://gta.fandom.com/wiki/File:TheCamel%27sToe-GTASA-Day.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-08-30T23:59:50Z",
+          "ObjectName": "TheCamel'sToe-GTASA-Day"
+        },
+        "runtime_path": "images/poi/031.jpg"
+      }
+    },
+    {
+      "id": 32,
+      "name_en": "The Clown's Pocket",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "The Clown's Pocket",
+        "page_url": "https://gta.fandom.com/wiki/The_Clown%27s_Pocket",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:TheClown'sPocket-GTASA-Day.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/c/c5/TheClown%27sPocket-GTASA-Day.jpg/revision/latest?cb=20230831000820",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/c/c5/TheClown%27sPocket-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230831000820",
+        "description_url": "https://gta.fandom.com/wiki/File:TheClown%27sPocket-GTASA-Day.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-08-31T00:08:20Z",
+          "ObjectName": "TheClown'sPocket-GTASA-Day"
+        },
+        "runtime_path": "images/poi/032.jpg"
+      }
+    },
+    {
+      "id": 33,
+      "name_en": "The Emerald Isle",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "The Emerald Isle",
+        "page_url": "https://gta.fandom.com/wiki/The_Emerald_Isle",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:TheEmeraldIsle-GTASA-Day.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/3/36/TheEmeraldIsle-GTASA-Day.jpg/revision/latest?cb=20230831001219",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/3/36/TheEmeraldIsle-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230831001219",
+        "description_url": "https://gta.fandom.com/wiki/File:TheEmeraldIsle-GTASA-Day.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-08-31T00:12:19Z",
+          "ObjectName": "TheEmeraldIsle-GTASA-Day"
+        },
+        "runtime_path": "images/poi/033.jpg"
+      }
+    },
+    {
+      "id": 34,
+      "name_en": "The Visage",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "The Visage",
+        "page_url": "https://gta.fandom.com/wiki/The_Visage",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:TheVisage-GTASA-Day.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/7/7b/TheVisage-GTASA-Day.jpg/revision/latest?cb=20230903005635",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/7/7b/TheVisage-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230903005635",
+        "description_url": "https://gta.fandom.com/wiki/File:TheVisage-GTASA-Day.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-09-03T00:56:35Z",
+          "ObjectName": "TheVisage-GTASA-Day"
+        },
+        "runtime_path": "images/poi/034.jpg"
+      }
+    },
+    {
+      "id": 35,
+      "name_en": "Pirates in Men's Pants",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Pirates in Men's Pants",
+        "page_url": "https://gta.fandom.com/wiki/Pirates_in_Men%27s_Pants",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:PiratesinMen'sPants-GTASA-Day.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/7/7f/PiratesinMen%27sPants-GTASA-Day.jpg/revision/latest?cb=20230903005408",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/7/7f/PiratesinMen%27sPants-GTASA-Day.jpg/revision/latest/scale-to-width-down/1280?cb=20230903005408",
+        "description_url": "https://gta.fandom.com/wiki/File:PiratesinMen%27sPants-GTASA-Day.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-09-03T00:54:08Z",
+          "ObjectName": "PiratesinMen'sPants-GTASA-Day"
+        },
+        "runtime_path": "images/poi/035.jpg"
+      }
+    },
+    {
+      "id": 36,
+      "name_en": "V-Rock Hotel",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "V-Rock Hotel",
+        "page_url": "https://gta.fandom.com/wiki/V-Rock_Hotel",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki_keeps_english",
+      "image": {
+        "file_title": "File:V-RockHotel-GTASA-exterior.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/b/ba/V-RockHotel-GTASA-exterior.jpg/revision/latest?cb=20100709205002",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/b/ba/V-RockHotel-GTASA-exterior.jpg/revision/latest?cb=20100709205002",
+        "description_url": "https://gta.fandom.com/wiki/File:V-RockHotel-GTASA-exterior.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1280,
+        "source_height": 640,
+        "extmetadata": {
+          "DateTime": "2010-07-09T20:50:02Z",
+          "ObjectName": "V-RockHotel-GTASA-exterior"
+        },
+        "runtime_path": "images/poi/036.jpg"
+      }
+    },
+    {
+      "id": 37,
+      "name_en": "Las Venturas Welcome Sign",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Las Venturas Welcome Sign",
+        "page_url": "https://gta.fandom.com/wiki/Las_Venturas_Welcome_Sign",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "original",
+      "image": {
+        "file_title": "File:LasVenturasWelcomeSign-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/1/11/LasVenturasWelcomeSign-GTASA.png/revision/latest?cb=20240316100324",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/1/11/LasVenturasWelcomeSign-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20240316100324",
+        "description_url": "https://gta.fandom.com/wiki/File:LasVenturasWelcomeSign-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2024-03-16T10:03:24Z",
+          "ObjectName": "LasVenturasWelcomeSign-GTASA"
+        },
+        "runtime_path": "images/poi/037.jpg"
+      }
+    },
+    {
+      "id": 38,
+      "name_en": "Las Venturas Airport",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Las Venturas Airport",
+        "page_url": "https://gta.fandom.com/wiki/Las_Venturas_Airport",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:LasVenturasAirport-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/f/f8/LasVenturasAirport-GTASA.png/revision/latest?cb=20190607210325",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/f/f8/LasVenturasAirport-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190607210325",
+        "description_url": "https://gta.fandom.com/wiki/File:LasVenturasAirport-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-06-07T21:03:25Z",
+          "ObjectName": "LasVenturasAirport-GTASA"
+        },
+        "runtime_path": "images/poi/038.jpg"
+      }
+    },
+    {
+      "id": 39,
+      "name_en": "Blackfield Stadium",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Blackfield Stadium",
+        "page_url": "https://gta.fandom.com/wiki/Blackfield_Stadium",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8_context",
+      "image": {
+        "file_title": "File:BlackfieldStadium-GTASA-ExteriorFront.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/a/a0/BlackfieldStadium-GTASA-ExteriorFront.png/revision/latest?cb=20250110161038",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/a/a0/BlackfieldStadium-GTASA-ExteriorFront.png/revision/latest/scale-to-width-down/1280?cb=20250110161038",
+        "description_url": "https://gta.fandom.com/wiki/File:BlackfieldStadium-GTASA-ExteriorFront.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2025-01-10T16:10:38Z",
+          "ObjectName": "BlackfieldStadium-GTASA-ExteriorFront"
+        },
+        "runtime_path": "images/poi/039.jpg"
+      }
+    },
+    {
+      "id": 40,
+      "name_en": "K.A.C.C. Military Aviation Fuel Depot",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "K.A.C.C. Military Aviation Fuel Depot",
+        "page_url": "https://gta.fandom.com/wiki/K.A.C.C._Military_Aviation_Fuel_Depot",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8_context",
+      "image": {
+        "file_title": "File:KACC-GTASA-MainBuildingSign.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/e/ea/KACC-GTASA-MainBuildingSign.jpg/revision/latest?cb=20181021135159",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/e/ea/KACC-GTASA-MainBuildingSign.jpg/revision/latest/scale-to-width-down/1280?cb=20181021135159",
+        "description_url": "https://gta.fandom.com/wiki/File:KACC-GTASA-MainBuildingSign.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1600,
+        "source_height": 900,
+        "extmetadata": {
+          "DateTime": "2018-10-21T13:51:59Z",
+          "ObjectName": "KACC-GTASA-MainBuildingSign"
+        },
+        "runtime_path": "images/poi/040.jpg"
+      }
+    },
+    {
+      "id": 41,
+      "name_en": "Old Venturas Strip",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Old Venturas Strip",
+        "page_url": "https://gta.fandom.com/wiki/Old_Venturas_Strip",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:OldVenturasStrip-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/4/46/OldVenturasStrip-GTASA.png/revision/latest?cb=20190607210327",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/4/46/OldVenturasStrip-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190607210327",
+        "description_url": "https://gta.fandom.com/wiki/File:OldVenturasStrip-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-06-07T21:03:27Z",
+          "ObjectName": "OldVenturasStrip-GTASA"
+        },
+        "runtime_path": "images/poi/041.jpg"
+      }
+    },
+    {
+      "id": 42,
+      "name_en": "Yellow Bell Golf Course",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Yellow Bell Golf Course",
+        "page_url": "https://gta.fandom.com/wiki/Yellow_Bell_Golf_Course",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:YellowBellGolfCourse-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/4/46/YellowBellGolfCourse-GTASA.png/revision/latest?cb=20230830033510",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/4/46/YellowBellGolfCourse-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20230830033510",
+        "description_url": "https://gta.fandom.com/wiki/File:YellowBellGolfCourse-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2023-08-30T03:35:10Z",
+          "ObjectName": "YellowBellGolfCourse-GTASA"
+        },
+        "runtime_path": "images/poi/042.jpg"
+      }
+    },
+    {
+      "id": 43,
+      "name_en": "Area 69",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Area 69 (3D Universe)",
+        "page_url": "https://gta.fandom.com/wiki/Area_69_(3D_Universe)",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8_context",
+      "image": {
+        "file_title": "File:Area69-GTASA-Airstrip-AlternativeEntrance.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/d/d0/Area69-GTASA-Airstrip-AlternativeEntrance.png/revision/latest?cb=20250309210339",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/d/d0/Area69-GTASA-Airstrip-AlternativeEntrance.png/revision/latest/scale-to-width-down/1280?cb=20250309210339",
+        "description_url": "https://gta.fandom.com/wiki/File:Area69-GTASA-Airstrip-AlternativeEntrance.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2025-03-09T21:03:39Z",
+          "ObjectName": "Area69-GTASA-Airstrip-AlternativeEntrance"
+        },
+        "runtime_path": "images/poi/043.jpg"
+      }
+    },
+    {
+      "id": 44,
+      "name_en": "The Big Ear",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "The Big Ear",
+        "page_url": "https://gta.fandom.com/wiki/The_Big_Ear",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "user_override_ru_gta_wiki",
+      "image": {
+        "file_title": "File:TheBigEar-GTASAde.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/0/05/TheBigEar-GTASAde.png/revision/latest?cb=20220424174633",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/0/05/TheBigEar-GTASAde.png/revision/latest/scale-to-width-down/1280?cb=20220424174633",
+        "description_url": "https://gta.fandom.com/wiki/File:TheBigEar-GTASAde.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2022-04-24T17:46:33Z",
+          "ObjectName": "TheBigEar-GTASAde"
+        },
+        "runtime_path": "images/poi/044.jpg"
+      }
+    },
+    {
+      "id": 45,
+      "name_en": "Regular Tom",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Regular Tom",
+        "page_url": "https://gta.fandom.com/wiki/Regular_Tom",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:RegularTom-GTASAde.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/2/24/RegularTom-GTASAde.png/revision/latest?cb=20220424173102",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/2/24/RegularTom-GTASAde.png/revision/latest/scale-to-width-down/1280?cb=20220424173102",
+        "description_url": "https://gta.fandom.com/wiki/File:RegularTom-GTASAde.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2022-04-24T17:31:02Z",
+          "ObjectName": "RegularTom-GTASAde"
+        },
+        "runtime_path": "images/poi/045.jpg"
+      }
+    },
+    {
+      "id": 46,
+      "name_en": "Lil' Probe'Inn",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Lil' Probe'Inn",
+        "page_url": "https://gta.fandom.com/wiki/Lil%27_Probe%27Inn",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:LilProbeInn-GTASA-RearView.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/6/6b/LilProbeInn-GTASA-RearView.png/revision/latest?cb=20260117015454",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/6/6b/LilProbeInn-GTASA-RearView.png/revision/latest/scale-to-width-down/1280?cb=20260117015454",
+        "description_url": "https://gta.fandom.com/wiki/File:LilProbeInn-GTASA-RearView.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2026-01-17T01:54:54Z",
+          "ObjectName": "LilProbeInn-GTASA-RearView"
+        },
+        "runtime_path": "images/poi/046.jpg"
+      }
+    },
+    {
+      "id": 47,
+      "name_en": "Verdant Meadows",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Verdant Meadows Airfield",
+        "page_url": "https://gta.fandom.com/wiki/Verdant_Meadows_Airfield",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:VerdantMeadows-GTASA-Overview.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/0/0c/VerdantMeadows-GTASA-Overview.png/revision/latest?cb=20190310084806",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/0/0c/VerdantMeadows-GTASA-Overview.png/revision/latest/scale-to-width-down/1280?cb=20190310084806",
+        "description_url": "https://gta.fandom.com/wiki/File:VerdantMeadows-GTASA-Overview.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-10T08:48:06Z",
+          "ObjectName": "VerdantMeadows-GTASA-Overview"
+        },
+        "runtime_path": "images/poi/047.jpg"
+      }
+    },
+    {
+      "id": 48,
+      "name_en": "Las Brujas",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Las Brujas",
+        "page_url": "https://gta.fandom.com/wiki/Las_Brujas",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:LasBrujas-GTASAde.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/2/28/LasBrujas-GTASAde.png/revision/latest?cb=20211127104240",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/2/28/LasBrujas-GTASAde.png/revision/latest/scale-to-width-down/1280?cb=20211127104240",
+        "description_url": "https://gta.fandom.com/wiki/File:LasBrujas-GTASAde.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2021-11-27T10:42:40Z",
+          "ObjectName": "LasBrujas-GTASAde"
+        },
+        "runtime_path": "images/poi/048.jpg"
+      }
+    },
+    {
+      "id": 49,
+      "name_en": "Mass Grave",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Mass Grave",
+        "page_url": "https://gta.fandom.com/wiki/Mass_Grave",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki",
+      "image": {
+        "file_title": "File:Massgrave-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/3/31/Massgrave-GTASA.jpg/revision/latest?cb=20100411073212",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/3/31/Massgrave-GTASA.jpg/revision/latest?cb=20100411073212",
+        "description_url": "https://gta.fandom.com/wiki/File:Massgrave-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1280,
+        "source_height": 740,
+        "extmetadata": {
+          "DateTime": "2010-04-11T07:32:12Z",
+          "ObjectName": "Massgrave-GTASA"
+        },
+        "runtime_path": "images/poi/049.jpg"
+      }
+    },
+    {
+      "id": 50,
+      "name_en": "Snake Farm",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Snake Farm",
+        "page_url": "https://gta.fandom.com/wiki/Snake_Farm",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8_context",
+      "image": {
+        "file_title": "File:SnakeFarm-GTASA-Overview.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/4/42/SnakeFarm-GTASA-Overview.jpg/revision/latest?cb=20230712124414",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/4/42/SnakeFarm-GTASA-Overview.jpg/revision/latest/scale-to-width-down/1280?cb=20230712124414",
+        "description_url": "https://gta.fandom.com/wiki/File:SnakeFarm-GTASA-Overview.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-07-12T12:44:14Z",
+          "ObjectName": "SnakeFarm-GTASA-Overview"
+        },
+        "runtime_path": "images/poi/050.jpg"
+      }
+    },
+    {
+      "id": 51,
+      "name_en": "Hunter Quarry",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Hunter Quarry",
+        "page_url": "https://gta.fandom.com/wiki/Hunter_Quarry",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:HunterQuarry-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/a/a3/HunterQuarry-GTASA.png/revision/latest?cb=20190310084736",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/a/a3/HunterQuarry-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190310084736",
+        "description_url": "https://gta.fandom.com/wiki/File:HunterQuarry-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-10T08:47:36Z",
+          "ObjectName": "HunterQuarry-GTASA"
+        },
+        "runtime_path": "images/poi/051.jpg"
+      }
+    },
+    {
+      "id": 52,
+      "name_en": "Octane Springs",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Octane Springs",
+        "page_url": "https://gta.fandom.com/wiki/Octane_Springs",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:OctaneSprings-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/9/9c/OctaneSprings-GTASA.png/revision/latest?cb=20190310084736",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/9/9c/OctaneSprings-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190310084736",
+        "description_url": "https://gta.fandom.com/wiki/File:OctaneSprings-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-10T08:47:36Z",
+          "ObjectName": "OctaneSprings-GTASA"
+        },
+        "runtime_path": "images/poi/052.jpg"
+      }
+    },
+    {
+      "id": 53,
+      "name_en": "Green Palms",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Green Palms",
+        "page_url": "https://gta.fandom.com/wiki/Green_Palms",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:GreenPalms-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/5/58/GreenPalms-GTASA.png/revision/latest?cb=20190310084735",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/5/58/GreenPalms-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190310084735",
+        "description_url": "https://gta.fandom.com/wiki/File:GreenPalms-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-10T08:47:35Z",
+          "ObjectName": "GreenPalms-GTASA"
+        },
+        "runtime_path": "images/poi/053.jpg"
+      }
+    },
+    {
+      "id": 54,
+      "name_en": "Sherman Reservoir",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Sherman Reservoir",
+        "page_url": "https://gta.fandom.com/wiki/Sherman_Reservoir",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:ShermanReservoir-GTASA-Daylight.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/d/d9/ShermanReservoir-GTASA-Daylight.jpg/revision/latest?cb=20100411064712",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/d/d9/ShermanReservoir-GTASA-Daylight.jpg/revision/latest?cb=20100411064712",
+        "description_url": "https://gta.fandom.com/wiki/File:ShermanReservoir-GTASA-Daylight.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1280,
+        "source_height": 660,
+        "extmetadata": {
+          "DateTime": "2010-04-11T06:47:12Z",
+          "ObjectName": "ShermanReservoir-GTASA-Daylight"
+        },
+        "runtime_path": "images/poi/054.jpg"
+      }
+    },
+    {
+      "id": 55,
+      "name_en": "Cock Rock",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Cock Rock",
+        "page_url": "https://gta.fandom.com/wiki/Cock_Rock",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "original",
+      "image": {
+        "file_title": "File:CockRock-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/5/57/CockRock-GTASA.jpg/revision/latest?cb=20240114145954",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/5/57/CockRock-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20240114145954",
+        "description_url": "https://gta.fandom.com/wiki/File:CockRock-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2024-01-14T14:59:54Z",
+          "ObjectName": "CockRock-GTASA"
+        },
+        "runtime_path": "images/poi/055.jpg"
+      }
+    },
+    {
+      "id": 56,
+      "name_en": "Las Payasadas",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Las Payasadas",
+        "page_url": "https://gta.fandom.com/wiki/Las_Payasadas",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:LasPayasadas-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/6/6d/LasPayasadas-GTASA.png/revision/latest?cb=20190310084736",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/6/6d/LasPayasadas-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190310084736",
+        "description_url": "https://gta.fandom.com/wiki/File:LasPayasadas-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-10T08:47:36Z",
+          "ObjectName": "LasPayasadas-GTASA"
+        },
+        "runtime_path": "images/poi/056.jpg"
+      }
+    },
+    {
+      "id": 57,
+      "name_en": "Sherman Dam",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Sherman Dam",
+        "page_url": "https://gta.fandom.com/wiki/Sherman_Dam",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8_context",
+      "image": {
+        "file_title": "File:ShermanDam-GTASAde.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/b/b9/ShermanDam-GTASAde.png/revision/latest?cb=20220424175158",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/b/b9/ShermanDam-GTASAde.png/revision/latest/scale-to-width-down/1280?cb=20220424175158",
+        "description_url": "https://gta.fandom.com/wiki/File:ShermanDam-GTASAde.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2022-04-24T17:51:58Z",
+          "ObjectName": "ShermanDam-GTASAde"
+        },
+        "runtime_path": "images/poi/057.jpg"
+      }
+    },
+    {
+      "id": 58,
+      "name_en": "Mike Toreno's Ranch",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Mike Toreno's Ranch",
+        "page_url": "https://gta.fandom.com/wiki/Mike_Toreno%27s_Ranch",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_components_then_ru_wiki",
+      "image": {
+        "file_title": "File:MikeToreno'sRanch-GTASA-Exterior.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/8/82/MikeToreno%27sRanch-GTASA-Exterior.png/revision/latest?cb=20240327155905",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/8/82/MikeToreno%27sRanch-GTASA-Exterior.png/revision/latest/scale-to-width-down/1280?cb=20240327155905",
+        "description_url": "https://gta.fandom.com/wiki/File:MikeToreno%27sRanch-GTASA-Exterior.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2024-03-27T15:59:05Z",
+          "ObjectName": "MikeToreno'sRanch-GTASA-Exterior"
+        },
+        "runtime_path": "images/poi/058.jpg"
+      }
+    },
+    {
+      "id": 59,
+      "name_en": "Bayside",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Bayside",
+        "page_url": "https://gta.fandom.com/wiki/Bayside",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:Bayside-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/c/ce/Bayside-GTASA.png/revision/latest?cb=20190306201939",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/c/ce/Bayside-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306201939",
+        "description_url": "https://gta.fandom.com/wiki/File:Bayside-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-06T20:19:39Z",
+          "ObjectName": "Bayside-GTASA"
+        },
+        "runtime_path": "images/poi/059.jpg"
+      }
+    },
+    {
+      "id": 60,
+      "name_en": "Bayside Marina",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Bayside Marina",
+        "page_url": "https://gta.fandom.com/wiki/Bayside_Marina",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:BaysideMarina-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/a/ad/BaysideMarina-GTASA.png/revision/latest?cb=20190306201939",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/a/ad/BaysideMarina-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306201939",
+        "description_url": "https://gta.fandom.com/wiki/File:BaysideMarina-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-06T20:19:39Z",
+          "ObjectName": "BaysideMarina-GTASA"
+        },
+        "runtime_path": "images/poi/060.jpg"
+      }
+    },
+    {
+      "id": 61,
+      "name_en": "Aldea Malvada",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Aldea Malvada",
+        "page_url": "https://gta.fandom.com/wiki/Aldea_Malvada",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:AldeaMalvada-GTASA-Overview.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/f/f8/AldeaMalvada-GTASA-Overview.jpg/revision/latest?cb=20110511211511",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/f/f8/AldeaMalvada-GTASA-Overview.jpg/revision/latest?cb=20110511211511",
+        "description_url": "https://gta.fandom.com/wiki/File:AldeaMalvada-GTASA-Overview.jpg",
+        "mime": "image/jpeg",
+        "source_width": 800,
+        "source_height": 600,
+        "extmetadata": {
+          "DateTime": "2011-05-11T21:15:11Z",
+          "ObjectName": "AldeaMalvada-GTASA-Overview"
+        },
+        "runtime_path": "images/poi/061.jpg"
+      }
+    },
+    {
+      "id": 62,
+      "name_en": "Arco del Oeste",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Arco del Oeste",
+        "page_url": "https://gta.fandom.com/wiki/Arco_del_Oeste",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:ArcodelOeste-GTASA-RockFormation.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/d/df/ArcodelOeste-GTASA-RockFormation.jpg/revision/latest?cb=20230409153109",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/d/df/ArcodelOeste-GTASA-RockFormation.jpg/revision/latest/scale-to-width-down/1280?cb=20230409153109",
+        "description_url": "https://gta.fandom.com/wiki/File:ArcodelOeste-GTASA-RockFormation.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2023-04-09T15:31:09Z",
+          "ObjectName": "ArcodelOeste-GTASA-RockFormation"
+        },
+        "runtime_path": "images/poi/062.jpg"
+      }
+    },
+    {
+      "id": 63,
+      "name_en": "Las Barrancas",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Las Barrancas",
+        "page_url": "https://gta.fandom.com/wiki/Las_Barrancas",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:LasBarrancas-GTASA-PuebloRuins.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/8/81/LasBarrancas-GTASA-PuebloRuins.png/revision/latest?cb=20190603132017",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/8/81/LasBarrancas-GTASA-PuebloRuins.png/revision/latest/scale-to-width-down/1280?cb=20190603132017",
+        "description_url": "https://gta.fandom.com/wiki/File:LasBarrancas-GTASA-PuebloRuins.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-06-03T13:20:17Z",
+          "ObjectName": "LasBarrancas-GTASA-PuebloRuins"
+        },
+        "runtime_path": "images/poi/063.jpg"
+      }
+    },
+    {
+      "id": 64,
+      "name_en": "Valle Ocultado",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Valle Ocultado",
+        "page_url": "https://gta.fandom.com/wiki/Valle_Ocultado",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:ValleOcultado-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/b/b9/ValleOcultado-GTASA.png/revision/latest?cb=20190310084806",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/b/b9/ValleOcultado-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190310084806",
+        "description_url": "https://gta.fandom.com/wiki/File:ValleOcultado-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-10T08:48:06Z",
+          "ObjectName": "ValleOcultado-GTASA"
+        },
+        "runtime_path": "images/poi/064.jpg"
+      }
+    },
+    {
+      "id": 65,
+      "name_en": "The Panopticon",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "The Panopticon",
+        "page_url": "https://gta.fandom.com/wiki/The_Panopticon",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:ThePanopticon-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/5/59/ThePanopticon-GTASA.png/revision/latest?cb=20190306123909",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/5/59/ThePanopticon-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306123909",
+        "description_url": "https://gta.fandom.com/wiki/File:ThePanopticon-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-06T12:39:09Z",
+          "ObjectName": "ThePanopticon-GTASA"
+        },
+        "runtime_path": "images/poi/065.jpg"
+      }
+    },
+    {
+      "id": 66,
+      "name_en": "Palomino Creek Bank",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Palomino Creek Bank",
+        "page_url": "https://gta.fandom.com/wiki/Palomino_Creek_Bank",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "derived_from_official_ru_1.0.8",
+      "image": {
+        "file_title": "File:PalominoCreekBank-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/0/03/PalominoCreekBank-GTASA.jpg/revision/latest?cb=20181121073720",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/0/03/PalominoCreekBank-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20181121073720",
+        "description_url": "https://gta.fandom.com/wiki/File:PalominoCreekBank-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1600,
+        "source_height": 900,
+        "extmetadata": {
+          "DateTime": "2018-11-21T07:37:20Z",
+          "ObjectName": "PalominoCreekBank-GTASA"
+        },
+        "runtime_path": "images/poi/066.jpg"
+      }
+    },
+    {
+      "id": 67,
+      "name_en": "Blueberry Acres",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Blueberry Acres",
+        "page_url": "https://gta.fandom.com/wiki/Blueberry_Acres",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:BlueberryAcres-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/4/4a/BlueberryAcres-GTASA.png/revision/latest?cb=20190306123847",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/4/4a/BlueberryAcres-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306123847",
+        "description_url": "https://gta.fandom.com/wiki/File:BlueberryAcres-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-06T12:38:47Z",
+          "ObjectName": "BlueberryAcres-GTASA"
+        },
+        "runtime_path": "images/poi/067.jpg"
+      }
+    },
+    {
+      "id": 68,
+      "name_en": "FleischBerg",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "FleischBerg",
+        "page_url": "https://gta.fandom.com/wiki/FleischBerg",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki_keeps_english",
+      "image": {
+        "file_title": "File:FleischBerg-GTASA-front-exterior.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/2/28/FleischBerg-GTASA-front-exterior.jpg/revision/latest?cb=20100210105523",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/2/28/FleischBerg-GTASA-front-exterior.jpg/revision/latest?cb=20100210105523",
+        "description_url": "https://gta.fandom.com/wiki/File:FleischBerg-GTASA-front-exterior.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1280,
+        "source_height": 700,
+        "extmetadata": {
+          "DateTime": "2010-02-10T10:55:23Z",
+          "ObjectName": "FleischBerg-GTASA-front-exterior"
+        },
+        "runtime_path": "images/poi/068.jpg"
+      }
+    },
+    {
+      "id": 69,
+      "name_en": "Biowaste Well",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Biowaste Well",
+        "page_url": "https://gta.fandom.com/wiki/Biowaste_Well",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki_keeps_english",
+      "image": {
+        "file_title": "File:BiowasteWell-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/0/0a/BiowasteWell-GTASA.jpg/revision/latest?cb=20181120155957",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/0/0a/BiowasteWell-GTASA.jpg/revision/latest/scale-to-width-down/1280?cb=20181120155957",
+        "description_url": "https://gta.fandom.com/wiki/File:BiowasteWell-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1600,
+        "source_height": 900,
+        "extmetadata": {
+          "DateTime": "2018-11-20T15:59:57Z",
+          "ObjectName": "BiowasteWell-GTASA"
+        },
+        "runtime_path": "images/poi/069.jpg"
+      }
+    },
+    {
+      "id": 70,
+      "name_en": "Fern Ridge",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Fern Ridge",
+        "page_url": "https://gta.fandom.com/wiki/Fern_Ridge",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:Catalina'sHideout-GTASA-Exterior.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/e/e2/Catalina%27sHideout-GTASA-Exterior.png/revision/latest?cb=20240327154744",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/e/e2/Catalina%27sHideout-GTASA-Exterior.png/revision/latest/scale-to-width-down/1280?cb=20240327154744",
+        "description_url": "https://gta.fandom.com/wiki/File:Catalina%27sHideout-GTASA-Exterior.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2024-03-27T15:47:44Z",
+          "ObjectName": "Catalina'sHideout-GTASA-Exterior"
+        },
+        "runtime_path": "images/poi/070.jpg"
+      }
+    },
+    {
+      "id": 71,
+      "name_en": "EasterBoard Farm",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "EasterBoard Farm",
+        "page_url": "https://gta.fandom.com/wiki/EasterBoard_Farm",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki",
+      "image": {
+        "file_title": "File:EasterBoardFarm-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/a/ab/EasterBoardFarm-GTASA.png/revision/latest?cb=20250324161633",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/a/ab/EasterBoardFarm-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20250324161633",
+        "description_url": "https://gta.fandom.com/wiki/File:EasterBoardFarm-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2025-03-24T16:16:33Z",
+          "ObjectName": "EasterBoardFarm-GTASA"
+        },
+        "runtime_path": "images/poi/071.jpg"
+      }
+    },
+    {
+      "id": 72,
+      "name_en": "Northstar Rock",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Northstar Rock",
+        "page_url": "https://gta.fandom.com/wiki/Northstar_Rock",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "ru_gta_wiki",
+      "image": {
+        "file_title": "File:BloodyShack-GTASA-Exterior.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/d/de/BloodyShack-GTASA-Exterior.jpg/revision/latest?cb=20111110172107",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/d/de/BloodyShack-GTASA-Exterior.jpg/revision/latest?cb=20111110172107",
+        "description_url": "https://gta.fandom.com/wiki/File:BloodyShack-GTASA-Exterior.jpg",
+        "mime": "image/jpeg",
+        "source_width": 800,
+        "source_height": 600,
+        "extmetadata": {
+          "DateTime": "2011-11-10T17:21:07Z",
+          "ObjectName": "BloodyShack-GTASA-Exterior"
+        },
+        "runtime_path": "images/poi/072.jpg"
+      }
+    },
+    {
+      "id": 73,
+      "name_en": "The Farm",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "The Farm",
+        "page_url": "https://gta.fandom.com/wiki/The_Farm",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:TheFarm-GTASA-EntranceView.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/2/2c/TheFarm-GTASA-EntranceView.png/revision/latest?cb=20250706155723",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/2/2c/TheFarm-GTASA-EntranceView.png/revision/latest/scale-to-width-down/1280?cb=20250706155723",
+        "description_url": "https://gta.fandom.com/wiki/File:TheFarm-GTASA-EntranceView.png",
+        "mime": "image/png",
+        "source_width": 1920,
+        "source_height": 1080,
+        "extmetadata": {
+          "DateTime": "2025-07-06T15:57:23Z",
+          "ObjectName": "TheFarm-GTASA-EntranceView"
+        },
+        "runtime_path": "images/poi/073.jpg"
+      }
+    },
+    {
+      "id": 74,
+      "name_en": "Back o Beyond",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Back o Beyond",
+        "page_url": "https://gta.fandom.com/wiki/Back_o_Beyond",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:BackOBeyond-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/f/fb/BackOBeyond-GTASA.png/revision/latest?cb=20190306150530",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/f/fb/BackOBeyond-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306150530",
+        "description_url": "https://gta.fandom.com/wiki/File:BackOBeyond-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-06T15:05:30Z",
+          "ObjectName": "BackOBeyond-GTASA"
+        },
+        "runtime_path": "images/poi/074.jpg"
+      }
+    },
+    {
+      "id": 75,
+      "name_en": "Back O' Beyond Lake",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Back o Beyond Lake",
+        "page_url": "https://gta.fandom.com/wiki/Back_o_Beyond_Lake",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "derived_from_official_ru_1.0.8",
+      "image": {
+        "file_title": "File:BackOBeyond-GTASA.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/7/7f/BackOBeyond-GTASA.jpg/revision/latest?cb=20130310012229",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/7/7f/BackOBeyond-GTASA.jpg/revision/latest?cb=20130310012229",
+        "description_url": "https://gta.fandom.com/wiki/File:BackOBeyond-GTASA.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1280,
+        "source_height": 960,
+        "extmetadata": {
+          "DateTime": "2013-03-10T01:22:29Z",
+          "ObjectName": "BackOBeyond-GTASA"
+        },
+        "runtime_path": "images/poi/075.jpg"
+      }
+    },
+    {
+      "id": 76,
+      "name_en": "Mount Chiliad",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Mount Chiliad (3D Universe)",
+        "page_url": "https://gta.fandom.com/wiki/Mount_Chiliad_(3D_Universe)",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:MountChiliad-GTASA-ViewFromShadyCreeks.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/1/1c/MountChiliad-GTASA-ViewFromShadyCreeks.jpg/revision/latest?cb=20100418092556",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/1/1c/MountChiliad-GTASA-ViewFromShadyCreeks.jpg/revision/latest?cb=20100418092556",
+        "description_url": "https://gta.fandom.com/wiki/File:MountChiliad-GTASA-ViewFromShadyCreeks.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1280,
+        "source_height": 805,
+        "extmetadata": {
+          "DateTime": "2010-04-18T09:25:56Z",
+          "ObjectName": "MountChiliad-GTASA-ViewFromShadyCreeks"
+        },
+        "runtime_path": "images/poi/076.jpg"
+      }
+    },
+    {
+      "id": 77,
+      "name_en": "San Fierro Scenic Route",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "San Fierro Scenic Route",
+        "page_url": "https://gta.fandom.com/wiki/San_Fierro_Scenic_Route",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "original",
+      "image": {
+        "file_title": "File:SanFierroScenicRoute-GTASA-RoadSign.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/a/af/SanFierroScenicRoute-GTASA-RoadSign.png/revision/latest?cb=20190416194811",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/a/af/SanFierroScenicRoute-GTASA-RoadSign.png/revision/latest/scale-to-width-down/1280?cb=20190416194811",
+        "description_url": "https://gta.fandom.com/wiki/File:SanFierroScenicRoute-GTASA-RoadSign.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-04-16T19:48:11Z",
+          "ObjectName": "SanFierroScenicRoute-GTASA-RoadSign"
+        },
+        "runtime_path": "images/poi/077.jpg"
+      }
+    },
+    {
+      "id": 78,
+      "name_en": "Shady Creeks",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Shady Creeks",
+        "page_url": "https://gta.fandom.com/wiki/Shady_Creeks",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:ShadyCreeks-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/0/03/ShadyCreeks-GTASA.png/revision/latest?cb=20190306151118",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/0/03/ShadyCreeks-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306151118",
+        "description_url": "https://gta.fandom.com/wiki/File:ShadyCreeks-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-06T15:11:18Z",
+          "ObjectName": "ShadyCreeks-GTASA"
+        },
+        "runtime_path": "images/poi/078.jpg"
+      }
+    },
+    {
+      "id": 79,
+      "name_en": "Angel Pine",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Angel Pine",
+        "page_url": "https://gta.fandom.com/wiki/Angel_Pine",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:AngelPine-GTASA-Aerial.jpg",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/a/ac/AngelPine-GTASA-Aerial.jpg/revision/latest?cb=20100410203300",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/a/ac/AngelPine-GTASA-Aerial.jpg/revision/latest?cb=20100410203300",
+        "description_url": "https://gta.fandom.com/wiki/File:AngelPine-GTASA-Aerial.jpg",
+        "mime": "image/jpeg",
+        "source_width": 1280,
+        "source_height": 975,
+        "extmetadata": {
+          "DateTime": "2010-04-10T20:33:00Z",
+          "ObjectName": "AngelPine-GTASA-Aerial"
+        },
+        "runtime_path": "images/poi/079.jpg"
+      }
+    },
+    {
+      "id": 80,
+      "name_en": "Easter Bay Chemicals",
+      "article": {
+        "site": "https://gta.fandom.com/",
+        "page_title": "Easter Bay Chemicals",
+        "page_url": "https://gta.fandom.com/wiki/Easter_Bay_Chemicals",
+        "content_role": "primary English content source"
+      },
+      "russian_name_source": "official_ru_1.0.8",
+      "image": {
+        "file_title": "File:EasterBayChemicals-GTASA.png",
+        "source_url": "https://static.wikia.nocookie.net/gtawiki/images/e/e5/EasterBayChemicals-GTASA.png/revision/latest?cb=20190306150531",
+        "thumbnail_url": "https://static.wikia.nocookie.net/gtawiki/images/e/e5/EasterBayChemicals-GTASA.png/revision/latest/scale-to-width-down/1280?cb=20190306150531",
+        "description_url": "https://gta.fandom.com/wiki/File:EasterBayChemicals-GTASA.png",
+        "mime": "image/png",
+        "source_width": 1680,
+        "source_height": 1050,
+        "extmetadata": {
+          "DateTime": "2019-03-06T15:05:31Z",
+          "ObjectName": "EasterBayChemicals-GTASA"
+        },
+        "runtime_path": "images/poi/080.jpg"
+      }
+    }
+  ]
+}

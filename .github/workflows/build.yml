@@ -14,6 +14,8 @@ jobs:
         run: |
           python3 tools/validate_collectible_pack.py
           python3 tools/generate_collectible_info.py --check
+          python3 tools/validate_poi_pack.py
+          python3 tools/generate_poi_info.py --check
       - name: Build and run parser regression test
         run: |
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
