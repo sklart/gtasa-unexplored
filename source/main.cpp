@@ -1,4 +1,7 @@
 #include "Collectibles.hpp"
+#include "CollectibleIcons.hpp"
+#include "CollectibleInfo.hpp"
+#include "CollectibleMedia.hpp"
 #include "MapTexture.hpp"
 #include "Platform.hpp"
 #include "SaveParser.hpp"
@@ -134,6 +137,8 @@ private:
 
 struct AppState {
     gtasa::Platform platform;
+    gtasa::CollectibleIcons icons;
+    gtasa::CollectibleMedia media;
     gtasa::AppConfig config;
     gtasa::SaveDiscovery discovery;
     gtasa::MapTexture mapTexture;
@@ -148,6 +153,8 @@ struct AppState {
     float zoom = 1.0f;
     int selected = -1;
     bool showPanel = true;
+    bool detailOpen = false;
+    int detailScroll = 0;
     std::string status;
 };
 
@@ -250,7 +257,13 @@ void drawIconRing(SDL_Renderer* r, int cx, int cy, int radius, SDL_Color c) {
 
 // Compact map pictograms modelled after the GTA collectible symbols, rather
 // than using indistinguishable coloured squares.
-void drawCollectibleIcon(SDL_Renderer* r, int x, int y, gtasa::CollectibleType type) {
+void drawCollectibleIcon(SDL_Renderer* r, const gtasa::CollectibleIcons& icons,
+                         int x, int y, gtasa::CollectibleType type, int size = 18) {
+    if (SDL_Texture* texture = icons.texture(type)) {
+        const SDL_Rect dst{x - size / 2, y - size / 2, size, size};
+        SDL_RenderCopy(r, texture, nullptr, &dst);
+        return;
+    }
     const SDL_Color c = typeColor(type);
     const SDL_Color shade{10, 14, 18, 230};
     drawIconRing(r, x, y, 7, shade);
@@ -350,7 +363,7 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
             if (!a.filters[static_cast<int>(c.type)]) continue;
             const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
             if (!insideMap(a, sx, sy)) continue;
-            drawCollectibleIcon(r, sx, sy, c.type);
+            drawCollectibleIcon(r, a.icons, sx, sy, c.type, 20);
             if (static_cast<int>(i) == a.selected) {
                 drawIconRing(r, sx, sy, 10, kColors.selected);
             }
@@ -362,6 +375,79 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
     const int cy = rect.y + rect.h / 2;
     line(r, cx - 8, cy, cx + 8, cy, SDL_Color{220, 220, 220, 170});
     line(r, cx, cy - 8, cx, cy + 8, SDL_Color{220, 220, 220, 170});
+}
+
+const gtasa::CollectibleInfo* selectedInfo(const AppState& a) {
+    const auto* parsed = currentParse(a);
+    if (!parsed || a.selected < 0 || a.selected >= static_cast<int>(parsed->missing.size())) return nullptr;
+    return gtasa::collectibleInfoForRuntime(parsed->missing[static_cast<std::size_t>(a.selected)]);
+}
+
+void openDetails(AppState& a, SDL_Renderer* renderer) {
+    const auto* info = selectedInfo(a);
+    if (!info) {
+        a.status = tr(a, "Подробности для этой метки недоступны", "Details unavailable for this marker");
+        return;
+    }
+    a.detailOpen = true;
+    a.detailScroll = 0;
+    std::string error;
+    if (!a.media.load(renderer, *info, error)) {
+        a.platform.log("Collectible image unavailable: " + std::string(info->imagePath) + ": " + error);
+    }
+}
+
+void selectAdjacent(AppState& a, int direction, SDL_Renderer* renderer) {
+    const auto* parsed = currentParse(a);
+    if (!parsed || parsed->missing.empty()) return;
+    const int n = static_cast<int>(parsed->missing.size());
+    int index = a.selected;
+    for (int step = 0; step < n; ++step) {
+        index = (index + direction + n) % n;
+        if (a.filters[static_cast<int>(parsed->missing[static_cast<std::size_t>(index)].type)]) {
+            a.selected = index;
+            if (a.detailOpen) openDetails(a, renderer);
+            return;
+        }
+    }
+}
+
+void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
+    if (!a.detailOpen) return;
+    const auto* parsed = currentParse(a);
+    const auto* info = selectedInfo(a);
+    if (!parsed || !info || a.selected < 0) return;
+    const auto& item = parsed->missing[static_cast<std::size_t>(a.selected)];
+    fill(r, SDL_Rect{0, 0, kScreenW, kScreenH}, SDL_Color{7, 10, 13, 244});
+    SDL_Rect card{66, 38, 1148, 644};
+    fill(r, card, kColors.bg);
+    SDL_SetRenderDrawColor(r, 92, 106, 118, 255);
+    SDL_RenderDrawRect(r, &card);
+    drawCollectibleIcon(r, a.icons, 110, 83, item.type, 42);
+    const std::string title = typeName(a, item.type) + " #" + std::to_string(info->canonicalId);
+    text.draw(title, 145, 60, 28, kColors.text);
+    const std::string state = item.completed ? tr(a, "Найдено", "Completed")
+        : item.found ? tr(a, "Обнаружено", "Found") : tr(a, "Не найдено", "Missing");
+    text.draw(state, 1040, 66, 18, item.completed ? kColors.accent : kColors.warning, 140);
+
+    SDL_Rect imageRect{260, 108, 760, 427};
+    if (SDL_Texture* image = a.media.texture()) {
+        SDL_RenderCopy(r, image, nullptr, &imageRect);
+    } else {
+        fill(r, imageRect, SDL_Color{26, 32, 38, 255});
+        text.draw(a.media.error().empty()
+                      ? tr(a, "Пакет изображений не установлен", "Collectible media pack not installed")
+                      : tr(a, "Изображение недоступно", "Image unavailable"),
+                  640, 300, 20, kColors.muted, 600, true);
+    }
+    const char* description = isRu(a) ? info->descriptionRu : info->descriptionEn;
+    text.draw(description, 112, 555 - a.detailScroll, 19, kColors.text, 1040);
+    std::ostringstream coordinates;
+    coordinates.setf(std::ios::fixed); coordinates.precision(1);
+    coordinates << "X " << info->x << "   Y " << info->y << "   Z " << info->z;
+    text.draw(coordinates.str(), 112, 625, 15, kColors.muted);
+    text.draw(tr(a, "B — назад    ↑/↓ — текст    L3/R3 — объект", "B — back    ↑/↓ — text    L3/R3 — object"),
+              720, 646, 15, kColors.muted, 440);
 }
 
 void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
@@ -388,7 +474,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
 
         for (int i = 0; i < static_cast<int>(gtasa::CollectibleType::Count); ++i) {
             const auto type = static_cast<gtasa::CollectibleType>(i);
-            drawCollectibleIcon(r, 987, y + 10, type);
+            drawCollectibleIcon(r, a.icons, 987, y + 10, type, 20);
             std::ostringstream row;
             row << typeName(a, type) << ": " << completedFor(p->summary, type)
                 << "/" << totalFor(p->summary, type);
@@ -399,7 +485,9 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         y += 8;
         if (a.selected >= 0 && a.selected < static_cast<int>(p->missing.size())) {
             const auto& c = p->missing[a.selected];
-            text.draw(typeName(a, c.type) + " #" + std::to_string(c.id), 980, y, 20, typeColor(c.type));
+            const auto* info = gtasa::collectibleInfoForRuntime(c);
+            const std::string id = info ? std::to_string(info->canonicalId) : "?";
+            text.draw(typeName(a, c.type) + " #" + id, 980, y, 20, typeColor(c.type));
             std::ostringstream pos;
             pos.setf(std::ios::fixed); pos.precision(1);
             pos << "X " << c.x << "   Y " << c.y << "   Z " << c.z;
@@ -442,7 +530,7 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     for (int i = 0; i < static_cast<int>(gtasa::CollectibleType::Count); ++i) {
         SDL_Rect row{195, y - 8, 555, 44};
         if (i == a.legendIndex) fill(r, row, SDL_Color{45, 53, 61, 255});
-        drawCollectibleIcon(r, 223, y + 10, static_cast<gtasa::CollectibleType>(i));
+        drawCollectibleIcon(r, a.icons, 223, y + 10, static_cast<gtasa::CollectibleType>(i), 28);
         text.draw(typeName(a, static_cast<gtasa::CollectibleType>(i)), 250, y - 2, 20,
                   a.filters[i] ? kColors.text : kColors.muted);
         y += 58;
@@ -455,10 +543,18 @@ std::string diagnosticsText(const AppState& a) {
     ss << "Target title id: 0x" << std::hex << gtasa::kGtaSaTitleId << std::dec << "\n";
     ss << "Language: " << a.config.language << "\n";
     ss << "Map id: " << a.mapTexture.currentId() << "\n";
+    ss << "Collectible data schema: v1\n";
+    ss << "Collectible records: " << gtasa::collectibleInfoCount() << "\n";
+    ss << "Collectible media path: " << gtasa::kAppDir << "/collectibles/images\n";
+    ss << "Collectible media available: " << (a.media.texture() ? "loaded" : "not loaded") << "\n";
     ss << "Using backup: " << (a.discovery.usingBackup ? "yes" : "no") << "\n";
     const auto* save = currentSave(a);
     const auto* p = currentParse(a);
     if (save) ss << "Save: " << save->path << " slot=" << save->slot << "\n";
+    if (const auto* info = selectedInfo(a)) {
+        ss << "Selected canonical id: " << info->canonicalId << "\n";
+        ss << "Selected lookup strategy: " << (info->tagSaveOrderId ? "tag_save_order_id" : "nearest_world_coordinate") << "\n";
+    }
     if (p) {
         ss << "Parse: " << (p->ok ? "OK" : "FAIL") << "\n";
         ss << "PICKUPS offset: 0x" << std::hex << p->pickupsOffset << "\n";
@@ -550,6 +646,8 @@ int main(int, char**) {
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (!renderer) return 5;
 
+    if (!app.icons.load(renderer)) app.platform.log("Embedded collectible icons unavailable; using procedural fallback");
+
     TextRenderer text;
     if (!text.init(renderer)) {
         SDL_DestroyRenderer(renderer);
@@ -581,7 +679,7 @@ int main(int, char**) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) running = false;
-            if (event.type == SDL_FINGERDOWN && !app.legendOpen) {
+            if (event.type == SDL_FINGERDOWN && !app.legendOpen && !app.detailOpen) {
                 const int x = static_cast<int>(event.tfinger.x * kScreenW);
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
                 if (insideMap(app, x, y)) {
@@ -600,7 +698,7 @@ int main(int, char**) {
                     }
                 }
             }
-            if (event.type == SDL_FINGERMOTION && !app.legendOpen) {
+            if (event.type == SDL_FINGERMOTION && !app.legendOpen && !app.detailOpen) {
                 const auto current = touches.find(event.tfinger.fingerId);
                 if (current == touches.end()) continue;
                 const SDL_FPoint previous = current->second;
@@ -639,14 +737,16 @@ int main(int, char**) {
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
                 const bool singleTap = touches.size() == 1 && !multiTouch && !touchMoved;
                 touches.erase(current);
-                if (singleTap && !app.legendOpen && insideMap(app, x, y)) {
+                if (singleTap && !app.legendOpen && !app.detailOpen && insideMap(app, x, y)) {
                     const Uint32 now = SDL_GetTicks();
                     const int dx = x - lastTapX, dy = y - lastTapY;
                     if (now - lastTapTime <= 350 && dx * dx + dy * dy <= 900) {
                         app.centerX = 0.0f; app.centerY = 0.0f; app.zoom = 1.0f; app.selected = -1;
                         lastTapTime = 0;
                     } else {
+                        const int previous = app.selected;
                         selectNearest(app, x, y, 34.0f);
+                        if (app.selected >= 0 && app.selected == previous) openDetails(app, renderer);
                         lastTapTime = now;
                         lastTapX = x;
                         lastTapY = y;
@@ -673,7 +773,13 @@ int main(int, char**) {
             app.status = tr(app, "Язык: Русский", "Language: English");
         }
 
-        if (app.legendOpen) {
+        if (app.detailOpen) {
+            if (down & HidNpadButton_B) { app.detailOpen = false; app.media.unload(); }
+            if (down & HidNpadButton_Up) app.detailScroll = std::max(0, app.detailScroll - 20);
+            if (down & HidNpadButton_Down) app.detailScroll = std::min(120, app.detailScroll + 20);
+            if (down & HidNpadButton_StickL) selectAdjacent(app, -1, renderer);
+            if (down & HidNpadButton_StickR) selectAdjacent(app, 1, renderer);
+        } else if (app.legendOpen) {
             if (down & HidNpadButton_X) app.legendOpen = false;
             if (down & HidNpadButton_Up) app.legendIndex = (app.legendIndex + 4) % 5;
             if (down & HidNpadButton_Down) app.legendIndex = (app.legendIndex + 1) % 5;
@@ -694,7 +800,9 @@ int main(int, char**) {
             }
             if (down & HidNpadButton_A) {
                 const auto& rect = mapRect(app);
+                const int previous = app.selected;
                 selectNearest(app, rect.x + rect.w / 2, rect.y + rect.h / 2, 48.0f);
+                if (app.selected >= 0 && app.selected == previous) openDetails(app, renderer);
             }
             if (down & HidNpadButton_B) app.selected = -1;
             if (down & HidNpadButton_ZR) {
@@ -717,10 +825,13 @@ int main(int, char**) {
         drawMap(renderer, app);
         drawPanel(renderer, text, app);
         drawLegend(renderer, text, app);
+        drawDetails(renderer, text, app);
         SDL_RenderPresent(renderer);
     }
 
     text.shutdown();
+    app.media.unload();
+    app.icons.unload();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();

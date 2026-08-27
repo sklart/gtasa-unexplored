@@ -2,7 +2,7 @@ name: Build GTASA Unexplored
 
 on:
   push:
-    branches: [gtasa-unexplored]
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Validate collectible pack and generated metadata
+        run: |
+          python3 tools/validate_collectible_pack.py
+          python3 tools/generate_collectible_info.py --check
       - name: Build and run parser regression test
         run: |
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
@@ -21,6 +25,12 @@ jobs:
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
             tools/inspect_save.cpp source/SaveParser.cpp source/TagData.cpp \
             -o inspect-save
+      - name: Build and run collectible metadata test
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
+            tests/collectible_info_tests.cpp source/CollectibleInfoData.cpp \
+            -o collectible-info-tests
+          ./collectible-info-tests
 
   switch-build:
     runs-on: ubuntu-latest
@@ -34,9 +44,17 @@ jobs:
           dkp-pacman -S --needed --noconfirm switch-sdl2 switch-sdl2_ttf switch-sdl2_image
       - name: Build NRO
         run: make -j2
+      - name: Build installable Switch package
+        run: python3 tools/package_switch.py
       - name: Upload NRO
         uses: actions/upload-artifact@v4
         with:
           name: gtasa-unexplored-nro
           path: gtasa-unexplored.nro
+          if-no-files-found: error
+      - name: Upload installable Switch package
+        uses: actions/upload-artifact@v4
+        with:
+          name: gtasa-unexplored-switch-package
+          path: gtasa-unexplored-switch.zip
           if-no-files-found: error

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0
+
+- Добавлены карточки всех 320 collectibles с RU/EN-описаниями, каноническим
+  сопоставлением save-to-Wiki и ленивой загрузкой одной location-фотографии.
+- Добавлены пользовательские category icons и installable Switch package.
+- Добавлены validator media-pack, генерация compiled metadata и CI-проверка.
+
 ## 0.1.2
 
 - Добавлены жесты на сенсорном экране: щипок масштабирует карту, двойное

@@ -19,3 +19,10 @@ applet mode.
 `TagData.cpp` и `CollectibleData.cpp` содержат нормализованные фактические игровые world coordinates, а не код интерфейса или графические ассеты этих проектов. Подробности и fail-closed правила описаны в `docs/COLLECTIBLE_DATA.md`.
 
 Отдельно подготовленные map-pack'и могут содержать пользовательские или отдельно распространяемые изображения. Лицензирование/разрешение на распространение таких изображений является ответственностью дистрибьютора конкретного map-pack.
+
+## Collectible descriptions and location screenshots
+
+Canonical descriptions, provenance and location screenshot references for the 320
+collectibles are in [`data/collectibles/credits.json`](data/collectibles/credits.json).
+Their licences are separate from the MIT licence of this program; see
+[`data/collectibles/NOTICE.md`](data/collectibles/NOTICE.md).
