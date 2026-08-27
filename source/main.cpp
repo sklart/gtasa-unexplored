@@ -21,7 +21,8 @@ namespace {
 
 constexpr int kScreenW = 1280;
 constexpr int kScreenH = 720;
-constexpr SDL_Rect kMapRect{0, 0, 955, 720};
+constexpr SDL_Rect kMapRectWithPanel{0, 0, 955, 720};
+constexpr SDL_Rect kMapRectFull{0, 0, kScreenW, kScreenH};
 constexpr SDL_Rect kPanelRect{955, 0, 325, 720};
 constexpr float kWorldHalf = 3000.0f;
 
@@ -146,8 +147,13 @@ struct AppState {
     float centerY = 0.0f;
     float zoom = 1.0f;
     int selected = -1;
+    bool showPanel = true;
     std::string status;
 };
+
+const SDL_Rect& mapRect(const AppState& a) {
+    return a.showPanel ? kMapRectWithPanel : kMapRectFull;
+}
 
 bool isRu(const AppState& a) { return a.config.language == "ru"; }
 
@@ -207,23 +213,24 @@ void line(SDL_Renderer* r, int x1, int y1, int x2, int y2, SDL_Color c) {
     SDL_RenderDrawLine(r, x1, y1, x2, y2);
 }
 
-bool insideMap(int x, int y) {
-    return x >= kMapRect.x && x < kMapRect.x + kMapRect.w &&
-           y >= kMapRect.y && y < kMapRect.y + kMapRect.h;
+bool insideMap(const AppState& a, int x, int y) {
+    const auto& rect = mapRect(a);
+    return x >= rect.x && x < rect.x + rect.w && y >= rect.y && y < rect.y + rect.h;
 }
 
 std::pair<int, int> worldToScreen(const AppState& a, float x, float y) {
-    const float base = static_cast<float>(kMapRect.w) / (kWorldHalf * 2.0f);
+    const auto& rect = mapRect(a);
+    const float base = static_cast<float>(rect.w) / (kWorldHalf * 2.0f);
     const float scale = base * a.zoom;
-    const int sx = static_cast<int>(kMapRect.x + kMapRect.w * 0.5f + (x - a.centerX) * scale);
-    const int sy = static_cast<int>(kMapRect.y + kMapRect.h * 0.5f - (y - a.centerY) * scale);
+    const int sx = static_cast<int>(rect.x + rect.w * 0.5f + (x - a.centerX) * scale);
+    const int sy = static_cast<int>(rect.y + rect.h * 0.5f - (y - a.centerY) * scale);
     return {sx, sy};
 }
 
 std::pair<int, int> collectibleToScreen(const AppState& a, float x, float y) {
     const gtasa::MapView view{a.centerX, a.centerY, a.zoom};
     int sx = 0, sy = 0;
-    if (a.mapTexture.projectWorldPoint(view, kMapRect, x, y, sx, sy)) return {sx, sy};
+    if (a.mapTexture.projectWorldPoint(view, mapRect(a), x, y, sx, sy)) return {sx, sy};
     return worldToScreen(a, x, y);
 }
 
@@ -310,7 +317,7 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
         const auto& c = p->missing[i];
         if (!a.filters[static_cast<int>(c.type)]) continue;
         const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
-        if (!insideMap(sx, sy)) continue;
+        if (!insideMap(a, sx, sy)) continue;
         const float dx = static_cast<float>(sx - px);
         const float dy = static_cast<float>(sy - py);
         const float d2 = dx * dx + dy * dy;
@@ -320,10 +327,11 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
 }
 
 void drawMap(SDL_Renderer* r, const AppState& a) {
-    fill(r, kMapRect, kColors.mapBg);
+    const auto& rect = mapRect(a);
+    fill(r, rect, kColors.mapBg);
 
     const gtasa::MapView view{a.centerX, a.centerY, a.zoom};
-    if (!a.mapTexture.render(r, view, kMapRect)) {
+    if (!a.mapTexture.render(r, view, rect)) {
         for (int w = -3000; w <= 3000; w += 500) {
             const auto [x1, y1] = worldToScreen(a, static_cast<float>(w), -3000.0f);
             const auto [x2, y2] = worldToScreen(a, static_cast<float>(w), 3000.0f);
@@ -341,7 +349,7 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
             const auto& c = p->missing[i];
             if (!a.filters[static_cast<int>(c.type)]) continue;
             const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
-            if (!insideMap(sx, sy)) continue;
+            if (!insideMap(a, sx, sy)) continue;
             drawCollectibleIcon(r, sx, sy, c.type);
             if (static_cast<int>(i) == a.selected) {
                 drawIconRing(r, sx, sy, 10, kColors.selected);
@@ -350,13 +358,14 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
     }
 
     // Crosshair for controller selection.
-    const int cx = kMapRect.x + kMapRect.w / 2;
-    const int cy = kMapRect.y + kMapRect.h / 2;
+    const int cx = rect.x + rect.w / 2;
+    const int cy = rect.y + rect.h / 2;
     line(r, cx - 8, cy, cx + 8, cy, SDL_Color{220, 220, 220, 170});
     line(r, cx, cy - 8, cx, cy + 8, SDL_Color{220, 220, 220, 170});
 }
 
 void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
+    if (!a.showPanel) return;
     fill(r, kPanelRect, kColors.bg);
     text.draw("GTASA Unexplored", 980, 22, 28, kColors.text);
     text.draw(tr(a, "San Andreas DE • Switch • read-only", "San Andreas DE • Switch • read-only"),
@@ -404,18 +413,19 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
 
     // Keep one control/action pair per line.  The panel has enough vertical
     // space and this avoids wrapping or visually joining unrelated shortcuts.
-    const int cy = 444;
+    const int cy = 425;
     text.draw(tr(a, "Управление", "Controls"), 980, cy, 18, kColors.text);
-    text.draw(tr(a, "L/R — масштаб", "L/R — zoom"), 980, cy + 26, 14, kColors.muted, 290);
+    text.draw(tr(a, "L/R / щипок — масштаб", "L/R / pinch — zoom"), 980, cy + 26, 14, kColors.muted, 290);
     text.draw(tr(a, "Стик / экран — карта", "Stick / touch — pan"), 980, cy + 45, 14, kColors.muted, 290);
-    text.draw(tr(a, "↑/↓ — подложка", "↑/↓ — map layer"), 980, cy + 64, 14, kColors.muted, 290);
-    text.draw(tr(a, "←/→ — слот", "←/→ — slot"), 980, cy + 83, 14, kColors.muted, 290);
-    text.draw(tr(a, "− — перечитать профиль", "− — reload profile"), 980, cy + 102, 14, kColors.muted, 290);
-    text.draw(tr(a, "Y — перечитать карты", "Y — reload maps"), 980, cy + 121, 14, kColors.muted, 290);
-    text.draw(tr(a, "X — фильтры", "X — filters"), 980, cy + 140, 14, kColors.muted, 290);
-    text.draw(tr(a, "ZL — язык", "ZL — language"), 980, cy + 159, 14, kColors.muted, 290);
-    text.draw(tr(a, "ZR — диагностика", "ZR — diagnostics"), 980, cy + 178, 14, kColors.muted, 290);
-    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 197, 14, kColors.muted, 290);
+    text.draw(tr(a, "Правый стик / 2 пальца — панель", "Right stick / 2 fingers — panel"), 980, cy + 64, 14, kColors.muted, 290);
+    text.draw(tr(a, "↑/↓ — подложка", "↑/↓ — map layer"), 980, cy + 83, 14, kColors.muted, 290);
+    text.draw(tr(a, "←/→ — слот", "←/→ — slot"), 980, cy + 102, 14, kColors.muted, 290);
+    text.draw(tr(a, "− — перечитать профиль", "− — reload profile"), 980, cy + 121, 14, kColors.muted, 290);
+    text.draw(tr(a, "Y — перечитать карты", "Y — reload maps"), 980, cy + 140, 14, kColors.muted, 290);
+    text.draw(tr(a, "X — фильтры", "X — filters"), 980, cy + 159, 14, kColors.muted, 290);
+    text.draw(tr(a, "ZL — язык", "ZL — language"), 980, cy + 178, 14, kColors.muted, 290);
+    text.draw(tr(a, "ZR — диагностика", "ZR — diagnostics"), 980, cy + 197, 14, kColors.muted, 290);
+    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 216, 14, kColors.muted, 290);
     if (!a.status.empty()) text.draw(a.status, 980, 664, 13, kColors.warning, 285);
 }
 
@@ -560,11 +570,13 @@ int main(int, char**) {
     padInitializeDefault(&pad);
 
     bool running = true;
-    bool touchActive = false;
+    std::map<SDL_FingerID, SDL_FPoint> touches;
     bool touchMoved = false;
-    SDL_FingerID activeFinger{};
-    float touchLastX = 0.0f;
-    float touchLastY = 0.0f;
+    bool multiTouch = false;
+    bool twoFingerTapCandidate = false;
+    float pinchDistance = 0.0f;
+    Uint32 lastTapTime = 0;
+    int lastTapX = 0, lastTapY = 0;
     while (running && appletMainLoop()) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
@@ -572,38 +584,79 @@ int main(int, char**) {
             if (event.type == SDL_FINGERDOWN && !app.legendOpen) {
                 const int x = static_cast<int>(event.tfinger.x * kScreenW);
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
-                if (insideMap(x, y) && !touchActive) {
-                    touchActive = true;
-                    touchMoved = false;
-                    activeFinger = event.tfinger.fingerId;
-                    touchLastX = static_cast<float>(x);
-                    touchLastY = static_cast<float>(y);
+                if (insideMap(app, x, y)) {
+                    touches[event.tfinger.fingerId] = SDL_FPoint{static_cast<float>(x), static_cast<float>(y)};
+                    if (touches.size() == 1) {
+                        touchMoved = false;
+                        multiTouch = false;
+                    } else if (touches.size() == 2) {
+                        auto first = touches.begin();
+                        auto second = std::next(first);
+                        const float dx = second->second.x - first->second.x;
+                        const float dy = second->second.y - first->second.y;
+                        pinchDistance = std::sqrt(dx * dx + dy * dy);
+                        multiTouch = true;
+                        twoFingerTapCandidate = true;
+                    }
                 }
             }
-            if (event.type == SDL_FINGERMOTION && touchActive &&
-                event.tfinger.fingerId == activeFinger && !app.legendOpen) {
-                const float x = event.tfinger.x * kScreenW;
-                const float y = event.tfinger.y * kScreenH;
-                const float dx = x - touchLastX;
-                const float dy = y - touchLastY;
-                if (std::abs(dx) >= 1.0f || std::abs(dy) >= 1.0f) {
-                    // Move the map with the finger. The conversion matches the
-                    // texture viewport: its X and Y screen scales differ.
-                    app.centerX -= dx * 6000.0f / (app.zoom * kMapRect.w);
-                    app.centerY += dy * 6000.0f / (app.zoom * kMapRect.h);
-                    clampCamera(app);
-                    touchMoved = true;
+            if (event.type == SDL_FINGERMOTION && !app.legendOpen) {
+                const auto current = touches.find(event.tfinger.fingerId);
+                if (current == touches.end()) continue;
+                const SDL_FPoint previous = current->second;
+                const SDL_FPoint point{event.tfinger.x * kScreenW, event.tfinger.y * kScreenH};
+                current->second = point;
+                if (touches.size() == 1) {
+                    const float dx = point.x - previous.x;
+                    const float dy = point.y - previous.y;
+                    if (std::abs(dx) >= 1.0f || std::abs(dy) >= 1.0f) {
+                        const auto& rect = mapRect(app);
+                        // Move the map with the finger. The conversion matches
+                        // the texture viewport's independent X/Y scales.
+                        app.centerX -= dx * 6000.0f / (app.zoom * rect.w);
+                        app.centerY += dy * 6000.0f / (app.zoom * rect.h);
+                        clampCamera(app);
+                        touchMoved = true;
+                    }
+                } else if (touches.size() == 2) {
+                    auto first = touches.begin();
+                    auto second = std::next(first);
+                    const float dx = second->second.x - first->second.x;
+                    const float dy = second->second.y - first->second.y;
+                    const float distance = std::sqrt(dx * dx + dy * dy);
+                    if (pinchDistance > 1.0f && std::abs(distance - pinchDistance) >= 2.0f) {
+                        app.zoom *= distance / pinchDistance;
+                        clampCamera(app);
+                        twoFingerTapCandidate = false;
+                    }
+                    pinchDistance = distance;
                 }
-                touchLastX = x;
-                touchLastY = y;
             }
-            if (event.type == SDL_FINGERUP && touchActive && event.tfinger.fingerId == activeFinger) {
+            if (event.type == SDL_FINGERUP) {
+                const auto current = touches.find(event.tfinger.fingerId);
+                if (current == touches.end()) continue;
                 const int x = static_cast<int>(event.tfinger.x * kScreenW);
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
-                if (!touchMoved && !app.legendOpen && insideMap(x, y)) {
-                    selectNearest(app, x, y, 34.0f);
+                const bool singleTap = touches.size() == 1 && !multiTouch && !touchMoved;
+                touches.erase(current);
+                if (singleTap && !app.legendOpen && insideMap(app, x, y)) {
+                    const Uint32 now = SDL_GetTicks();
+                    const int dx = x - lastTapX, dy = y - lastTapY;
+                    if (now - lastTapTime <= 350 && dx * dx + dy * dy <= 900) {
+                        app.centerX = 0.0f; app.centerY = 0.0f; app.zoom = 1.0f; app.selected = -1;
+                        lastTapTime = 0;
+                    } else {
+                        selectNearest(app, x, y, 34.0f);
+                        lastTapTime = now;
+                        lastTapX = x;
+                        lastTapY = y;
+                    }
                 }
-                touchActive = false;
+                if (multiTouch && touches.empty()) {
+                    if (twoFingerTapCandidate) app.showPanel = !app.showPanel;
+                    multiTouch = false;
+                    twoFingerTapCandidate = false;
+                }
             }
         }
 
@@ -632,6 +685,7 @@ int main(int, char**) {
             if (down & HidNpadButton_Down) app.mapTexture.cycle(renderer, 1, app.status);
             if (down & HidNpadButton_Left) switchSlot(app, -1);
             if (down & HidNpadButton_Right) switchSlot(app, 1);
+            if (down & HidNpadButton_StickR) app.showPanel = !app.showPanel;
             if (down & HidNpadButton_Y) {
                 app.centerX = 0.0f; app.centerY = 0.0f; app.zoom = 1.0f; app.selected = -1;
                 if (!app.mapTexture.discoverAndLoad(renderer, app.mapTexture.currentId(), app.status)) {
@@ -639,7 +693,8 @@ int main(int, char**) {
                 }
             }
             if (down & HidNpadButton_A) {
-                selectNearest(app, kMapRect.x + kMapRect.w / 2, kMapRect.y + kMapRect.h / 2, 48.0f);
+                const auto& rect = mapRect(app);
+                selectNearest(app, rect.x + rect.w / 2, rect.y + rect.h / 2, 48.0f);
             }
             if (down & HidNpadButton_B) app.selected = -1;
             if (down & HidNpadButton_ZR) {
