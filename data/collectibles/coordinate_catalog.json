@@ -1,0 +1,2597 @@
+{
+  "schema": "gtasa-unexplored-coordinate-catalog-v1",
+  "repository": "sklart/gtasa-unexplored",
+  "based_on_commit": "bad81417441ccce6035938c3e83244a9ac63f2a3",
+  "categories": {
+    "tags": {
+      "expected_count": 100,
+      "source": "https://raw.githubusercontent.com/interactive-game-maps/grand_theft_auto_san_andreas/master/marker/tags.js",
+      "items": [
+        {
+          "coordinate_catalog_id": 1,
+          "world": {
+            "x": 2046.41,
+            "y": -1635.84,
+            "z": 13.59
+          }
+        },
+        {
+          "coordinate_catalog_id": 2,
+          "world": {
+            "x": 2066.43,
+            "y": -1652.48,
+            "z": 14.28
+          }
+        },
+        {
+          "coordinate_catalog_id": 3,
+          "world": {
+            "x": 2102.2,
+            "y": -1648.76,
+            "z": 13.59
+          }
+        },
+        {
+          "coordinate_catalog_id": 4,
+          "world": {
+            "x": 2162.78,
+            "y": -1786.07,
+            "z": 14.19
+          }
+        },
+        {
+          "coordinate_catalog_id": 5,
+          "world": {
+            "x": 2034.4,
+            "y": -1801.67,
+            "z": 14.55
+          }
+        },
+        {
+          "coordinate_catalog_id": 6,
+          "world": {
+            "x": 1910.16,
+            "y": -1779.66,
+            "z": 18.75
+          }
+        },
+        {
+          "coordinate_catalog_id": 7,
+          "world": {
+            "x": 1837.2,
+            "y": -1814.19,
+            "z": 4.34
+          }
+        },
+        {
+          "coordinate_catalog_id": 8,
+          "world": {
+            "x": 1837.66,
+            "y": -1640.38,
+            "z": 13.76
+          }
+        },
+        {
+          "coordinate_catalog_id": 9,
+          "world": {
+            "x": 1959.4,
+            "y": -1577.76,
+            "z": 13.76
+          }
+        },
+        {
+          "coordinate_catalog_id": 10,
+          "world": {
+            "x": 2074.18,
+            "y": -1579.15,
+            "z": 14.03
+          }
+        },
+        {
+          "coordinate_catalog_id": 11,
+          "world": {
+            "x": 2182.23,
+            "y": -1467.9,
+            "z": 25.55
+          }
+        },
+        {
+          "coordinate_catalog_id": 12,
+          "world": {
+            "x": 2132.23,
+            "y": -1258.09,
+            "z": 24.05
+          }
+        },
+        {
+          "coordinate_catalog_id": 13,
+          "world": {
+            "x": 2233.95,
+            "y": -1367.62,
+            "z": 24.53
+          }
+        },
+        {
+          "coordinate_catalog_id": 14,
+          "world": {
+            "x": 2224.77,
+            "y": -1193.06,
+            "z": 25.84
+          }
+        },
+        {
+          "coordinate_catalog_id": 15,
+          "world": {
+            "x": 2119.2,
+            "y": -1196.62,
+            "z": 24.63
+          }
+        },
+        {
+          "coordinate_catalog_id": 16,
+          "world": {
+            "x": 1974.09,
+            "y": -1351.16,
+            "z": 24.56
+          }
+        },
+        {
+          "coordinate_catalog_id": 17,
+          "world": {
+            "x": 2093.76,
+            "y": -1413.45,
+            "z": 24.12
+          }
+        },
+        {
+          "coordinate_catalog_id": 18,
+          "world": {
+            "x": 1969.59,
+            "y": -1289.7,
+            "z": 24.56
+          }
+        },
+        {
+          "coordinate_catalog_id": 19,
+          "world": {
+            "x": 1966.95,
+            "y": -1174.73,
+            "z": 20.04
+          }
+        },
+        {
+          "coordinate_catalog_id": 20,
+          "world": {
+            "x": 1911.87,
+            "y": -1064.4,
+            "z": 25.19
+          }
+        },
+        {
+          "coordinate_catalog_id": 21,
+          "world": {
+            "x": 2281.46,
+            "y": -1118.96,
+            "z": 27.01
+          }
+        },
+        {
+          "coordinate_catalog_id": 22,
+          "world": {
+            "x": 2239.78,
+            "y": -999.75,
+            "z": 59.76
+          }
+        },
+        {
+          "coordinate_catalog_id": 23,
+          "world": {
+            "x": 2122.69,
+            "y": -1060.9,
+            "z": 25.39
+          }
+        },
+        {
+          "coordinate_catalog_id": 24,
+          "world": {
+            "x": 2062.72,
+            "y": -996.46,
+            "z": 48.27
+          }
+        },
+        {
+          "coordinate_catalog_id": 25,
+          "world": {
+            "x": 2076.73,
+            "y": -1071.13,
+            "z": 27.61
+          }
+        },
+        {
+          "coordinate_catalog_id": 26,
+          "world": {
+            "x": 2399.41,
+            "y": -1552.03,
+            "z": 28.75
+          }
+        },
+        {
+          "coordinate_catalog_id": 27,
+          "world": {
+            "x": 2353.54,
+            "y": -1508.21,
+            "z": 24.75
+          }
+        },
+        {
+          "coordinate_catalog_id": 28,
+          "world": {
+            "x": 2394.1,
+            "y": -1468.37,
+            "z": 24.78
+          }
+        },
+        {
+          "coordinate_catalog_id": 29,
+          "world": {
+            "x": 2841.37,
+            "y": -1312.96,
+            "z": 18.82
+          }
+        },
+        {
+          "coordinate_catalog_id": 30,
+          "world": {
+            "x": 2820.34,
+            "y": -1190.98,
+            "z": 25.67
+          }
+        },
+        {
+          "coordinate_catalog_id": 31,
+          "world": {
+            "x": 2766.09,
+            "y": -1197.14,
+            "z": 69.07
+          }
+        },
+        {
+          "coordinate_catalog_id": 32,
+          "world": {
+            "x": 2756.01,
+            "y": -1388.13,
+            "z": 39.46
+          }
+        },
+        {
+          "coordinate_catalog_id": 33,
+          "world": {
+            "x": 2821.23,
+            "y": -1465.09,
+            "z": 16.54
+          }
+        },
+        {
+          "coordinate_catalog_id": 34,
+          "world": {
+            "x": 2767.78,
+            "y": -1621.19,
+            "z": 11.23
+          }
+        },
+        {
+          "coordinate_catalog_id": 35,
+          "world": {
+            "x": 2767.76,
+            "y": -1819.95,
+            "z": 12.23
+          }
+        },
+        {
+          "coordinate_catalog_id": 36,
+          "world": {
+            "x": 2667.89,
+            "y": -1469.13,
+            "z": 31.68
+          }
+        },
+        {
+          "coordinate_catalog_id": 37,
+          "world": {
+            "x": 2612.93,
+            "y": -1390.77,
+            "z": 35.43
+          }
+        },
+        {
+          "coordinate_catalog_id": 38,
+          "world": {
+            "x": 2536.22,
+            "y": -1352.77,
+            "z": 31.09
+          }
+        },
+        {
+          "coordinate_catalog_id": 39,
+          "world": {
+            "x": 2580.95,
+            "y": -1274.09,
+            "z": 46.59
+          }
+        },
+        {
+          "coordinate_catalog_id": 40,
+          "world": {
+            "x": 2603.16,
+            "y": -1197.81,
+            "z": 60.99
+          }
+        },
+        {
+          "coordinate_catalog_id": 41,
+          "world": {
+            "x": 2542.95,
+            "y": -1363.24,
+            "z": 31.77
+          }
+        },
+        {
+          "coordinate_catalog_id": 42,
+          "world": {
+            "x": 2462.27,
+            "y": -1541.41,
+            "z": 25.42
+          }
+        },
+        {
+          "coordinate_catalog_id": 43,
+          "world": {
+            "x": 2522.46,
+            "y": -1478.74,
+            "z": 24.16
+          }
+        },
+        {
+          "coordinate_catalog_id": 44,
+          "world": {
+            "x": 2346.52,
+            "y": -1350.78,
+            "z": 24.28
+          }
+        },
+        {
+          "coordinate_catalog_id": 45,
+          "world": {
+            "x": 2322.45,
+            "y": -1254.41,
+            "z": 22.92
+          }
+        },
+        {
+          "coordinate_catalog_id": 46,
+          "world": {
+            "x": 2273.02,
+            "y": -1687.43,
+            "z": 14.97
+          }
+        },
+        {
+          "coordinate_catalog_id": 47,
+          "world": {
+            "x": 2422.91,
+            "y": -1682.3,
+            "z": 13.99
+          }
+        },
+        {
+          "coordinate_catalog_id": 48,
+          "world": {
+            "x": 2576.82,
+            "y": -1143.27,
+            "z": 48.2
+          }
+        },
+        {
+          "coordinate_catalog_id": 49,
+          "world": {
+            "x": 2621.51,
+            "y": -1092.2,
+            "z": 69.8
+          }
+        },
+        {
+          "coordinate_catalog_id": 50,
+          "world": {
+            "x": 2797.92,
+            "y": -1097.7,
+            "z": 31.06
+          }
+        },
+        {
+          "coordinate_catalog_id": 51,
+          "world": {
+            "x": 1549.89,
+            "y": -1714.52,
+            "z": 15.1
+          }
+        },
+        {
+          "coordinate_catalog_id": 52,
+          "world": {
+            "x": 1448.23,
+            "y": -1755.9,
+            "z": 14.52
+          }
+        },
+        {
+          "coordinate_catalog_id": 53,
+          "world": {
+            "x": 1332.13,
+            "y": -1722.3,
+            "z": 14.19
+          }
+        },
+        {
+          "coordinate_catalog_id": 54,
+          "world": {
+            "x": 1724.73,
+            "y": -1741.5,
+            "z": 14.1
+          }
+        },
+        {
+          "coordinate_catalog_id": 55,
+          "world": {
+            "x": 1767.21,
+            "y": -1617.54,
+            "z": 15.04
+          }
+        },
+        {
+          "coordinate_catalog_id": 56,
+          "world": {
+            "x": 1799.13,
+            "y": -1708.77,
+            "z": 14.1
+          }
+        },
+        {
+          "coordinate_catalog_id": 57,
+          "world": {
+            "x": 1498.63,
+            "y": -1207.35,
+            "z": 24.68
+          }
+        },
+        {
+          "coordinate_catalog_id": 58,
+          "world": {
+            "x": 1732.73,
+            "y": -963.08,
+            "z": 41.44
+          }
+        },
+        {
+          "coordinate_catalog_id": 59,
+          "world": {
+            "x": 1746.75,
+            "y": -1359.77,
+            "z": 16.21
+          }
+        },
+        {
+          "coordinate_catalog_id": 60,
+          "world": {
+            "x": 1519.42,
+            "y": -1010.95,
+            "z": 24.61
+          }
+        },
+        {
+          "coordinate_catalog_id": 61,
+          "world": {
+            "x": 1687.23,
+            "y": -1239.13,
+            "z": 15.81
+          }
+        },
+        {
+          "coordinate_catalog_id": 62,
+          "world": {
+            "x": 1783.97,
+            "y": -2156.54,
+            "z": 14.31
+          }
+        },
+        {
+          "coordinate_catalog_id": 63,
+          "world": {
+            "x": 1574.71,
+            "y": -2691.88,
+            "z": 13.6
+          }
+        },
+        {
+          "coordinate_catalog_id": 64,
+          "world": {
+            "x": 1118.91,
+            "y": -2008.24,
+            "z": 75.02
+          }
+        },
+        {
+          "coordinate_catalog_id": 65,
+          "world": {
+            "x": 1850.01,
+            "y": -1876.84,
+            "z": 14.36
+          }
+        },
+        {
+          "coordinate_catalog_id": 66,
+          "world": {
+            "x": 1889.24,
+            "y": -1982.51,
+            "z": 15.76
+          }
+        },
+        {
+          "coordinate_catalog_id": 67,
+          "world": {
+            "x": 1950.62,
+            "y": -2034.4,
+            "z": 14.09
+          }
+        },
+        {
+          "coordinate_catalog_id": 68,
+          "world": {
+            "x": 1936.88,
+            "y": -2134.91,
+            "z": 14.22
+          }
+        },
+        {
+          "coordinate_catalog_id": 69,
+          "world": {
+            "x": 1808.34,
+            "y": -2092.27,
+            "z": 14.22
+          }
+        },
+        {
+          "coordinate_catalog_id": 70,
+          "world": {
+            "x": 1624.63,
+            "y": -2296.24,
+            "z": 14.31
+          }
+        },
+        {
+          "coordinate_catalog_id": 71,
+          "world": {
+            "x": 1071.14,
+            "y": -1863.79,
+            "z": 14.09
+          }
+        },
+        {
+          "coordinate_catalog_id": 72,
+          "world": {
+            "x": 2065.44,
+            "y": -1897.23,
+            "z": 13.61
+          }
+        },
+        {
+          "coordinate_catalog_id": 73,
+          "world": {
+            "x": 2763.0,
+            "y": -2012.11,
+            "z": 14.13
+          }
+        },
+        {
+          "coordinate_catalog_id": 74,
+          "world": {
+            "x": 2379.32,
+            "y": -2166.22,
+            "z": 24.95
+          }
+        },
+        {
+          "coordinate_catalog_id": 75,
+          "world": {
+            "x": 2134.33,
+            "y": -2011.2,
+            "z": 10.52
+          }
+        },
+        {
+          "coordinate_catalog_id": 76,
+          "world": {
+            "x": 2392.36,
+            "y": -1914.57,
+            "z": 14.74
+          }
+        },
+        {
+          "coordinate_catalog_id": 77,
+          "world": {
+            "x": 2430.33,
+            "y": -1997.91,
+            "z": 14.74
+          }
+        },
+        {
+          "coordinate_catalog_id": 78,
+          "world": {
+            "x": 2587.32,
+            "y": -2063.52,
+            "z": 4.61
+          }
+        },
+        {
+          "coordinate_catalog_id": 79,
+          "world": {
+            "x": 2704.2,
+            "y": -1966.69,
+            "z": 13.76
+          }
+        },
+        {
+          "coordinate_catalog_id": 80,
+          "world": {
+            "x": 2489.24,
+            "y": -1959.07,
+            "z": 13.76
+          }
+        },
+        {
+          "coordinate_catalog_id": 81,
+          "world": {
+            "x": 2273.9,
+            "y": -2265.8,
+            "z": 14.56
+          }
+        },
+        {
+          "coordinate_catalog_id": 82,
+          "world": {
+            "x": 2173.59,
+            "y": -2165.19,
+            "z": 15.3
+          }
+        },
+        {
+          "coordinate_catalog_id": 83,
+          "world": {
+            "x": 2273.2,
+            "y": -2529.12,
+            "z": 8.52
+          }
+        },
+        {
+          "coordinate_catalog_id": 84,
+          "world": {
+            "x": 2704.23,
+            "y": -2144.3,
+            "z": 11.82
+          }
+        },
+        {
+          "coordinate_catalog_id": 85,
+          "world": {
+            "x": 2794.53,
+            "y": -1906.81,
+            "z": 14.67
+          }
+        },
+        {
+          "coordinate_catalog_id": 86,
+          "world": {
+            "x": 2812.94,
+            "y": -1942.07,
+            "z": 11.06
+          }
+        },
+        {
+          "coordinate_catalog_id": 87,
+          "world": {
+            "x": 2874.5,
+            "y": -1909.38,
+            "z": 8.39
+          }
+        },
+        {
+          "coordinate_catalog_id": 88,
+          "world": {
+            "x": 1295.18,
+            "y": -1465.22,
+            "z": 10.28
+          }
+        },
+        {
+          "coordinate_catalog_id": 89,
+          "world": {
+            "x": 1271.48,
+            "y": -1662.32,
+            "z": 20.25
+          }
+        },
+        {
+          "coordinate_catalog_id": 90,
+          "world": {
+            "x": 810.57,
+            "y": -1797.57,
+            "z": 13.62
+          }
+        },
+        {
+          "coordinate_catalog_id": 91,
+          "world": {
+            "x": 730.45,
+            "y": -1482.01,
+            "z": 2.25
+          }
+        },
+        {
+          "coordinate_catalog_id": 92,
+          "world": {
+            "x": 947.48,
+            "y": -1466.72,
+            "z": 17.24
+          }
+        },
+        {
+          "coordinate_catalog_id": 93,
+          "world": {
+            "x": 482.63,
+            "y": -1761.59,
+            "z": 5.91
+          }
+        },
+        {
+          "coordinate_catalog_id": 94,
+          "world": {
+            "x": 399.01,
+            "y": -2066.88,
+            "z": 11.23
+          }
+        },
+        {
+          "coordinate_catalog_id": 95,
+          "world": {
+            "x": 466.98,
+            "y": -1283.02,
+            "z": 16.32
+          }
+        },
+        {
+          "coordinate_catalog_id": 96,
+          "world": {
+            "x": 583.46,
+            "y": -1502.11,
+            "z": 16.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 97,
+          "world": {
+            "x": 944.27,
+            "y": -985.82,
+            "z": 39.3
+          }
+        },
+        {
+          "coordinate_catalog_id": 98,
+          "world": {
+            "x": 1072.91,
+            "y": -1012.8,
+            "z": 35.52
+          }
+        },
+        {
+          "coordinate_catalog_id": 99,
+          "world": {
+            "x": 1206.25,
+            "y": -1162.0,
+            "z": 23.88
+          }
+        },
+        {
+          "coordinate_catalog_id": 100,
+          "world": {
+            "x": 1098.81,
+            "y": -1292.55,
+            "z": 17.14
+          }
+        }
+      ]
+    },
+    "snapshots": {
+      "expected_count": 50,
+      "source": "https://raw.githubusercontent.com/interactive-game-maps/grand_theft_auto_san_andreas/master/marker/snapshots.js",
+      "items": [
+        {
+          "coordinate_catalog_id": 1,
+          "world": {
+            "x": -2511.28,
+            "y": -672.99,
+            "z": 195.75
+          }
+        },
+        {
+          "coordinate_catalog_id": 2,
+          "world": {
+            "x": -2723.63,
+            "y": -314.72,
+            "z": 55.79
+          }
+        },
+        {
+          "coordinate_catalog_id": 3,
+          "world": {
+            "x": -1737.71,
+            "y": -579.55,
+            "z": 26.19
+          }
+        },
+        {
+          "coordinate_catalog_id": 4,
+          "world": {
+            "x": -1486.08,
+            "y": 920.04,
+            "z": 41.37
+          }
+        },
+        {
+          "coordinate_catalog_id": 5,
+          "world": {
+            "x": -1269.82,
+            "y": 963.63,
+            "z": 130.37
+          }
+        },
+        {
+          "coordinate_catalog_id": 6,
+          "world": {
+            "x": -1650.01,
+            "y": 422.0,
+            "z": 21.17
+          }
+        },
+        {
+          "coordinate_catalog_id": 7,
+          "world": {
+            "x": -1851.72,
+            "y": -96.73,
+            "z": 24.37
+          }
+        },
+        {
+          "coordinate_catalog_id": 8,
+          "world": {
+            "x": -2732.0,
+            "y": -244.0,
+            "z": 19.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 9,
+          "world": {
+            "x": -2802.75,
+            "y": 375.47,
+            "z": 36.59
+          }
+        },
+        {
+          "coordinate_catalog_id": 10,
+          "world": {
+            "x": -2773.04,
+            "y": 783.45,
+            "z": 67.66
+          }
+        },
+        {
+          "coordinate_catalog_id": 11,
+          "world": {
+            "x": -2680.07,
+            "y": 1590.8,
+            "z": 143.53
+          }
+        },
+        {
+          "coordinate_catalog_id": 12,
+          "world": {
+            "x": -2476.75,
+            "y": 1543.44,
+            "z": 49.26
+          }
+        },
+        {
+          "coordinate_catalog_id": 13,
+          "world": {
+            "x": -1879.04,
+            "y": 1456.52,
+            "z": 9.34
+          }
+        },
+        {
+          "coordinate_catalog_id": 14,
+          "world": {
+            "x": -1561.55,
+            "y": 655.19,
+            "z": 56.52
+          }
+        },
+        {
+          "coordinate_catalog_id": 15,
+          "world": {
+            "x": -1325.15,
+            "y": 494.19,
+            "z": 26.83
+          }
+        },
+        {
+          "coordinate_catalog_id": 16,
+          "world": {
+            "x": -1941.41,
+            "y": 137.72,
+            "z": 37.83
+          }
+        },
+        {
+          "coordinate_catalog_id": 17,
+          "world": {
+            "x": -2153.23,
+            "y": 462.25,
+            "z": 103.27
+          }
+        },
+        {
+          "coordinate_catalog_id": 18,
+          "world": {
+            "x": -2243.96,
+            "y": 577.76,
+            "z": 49.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 19,
+          "world": {
+            "x": -2051.0,
+            "y": 456.0,
+            "z": 167.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 20,
+          "world": {
+            "x": -1951.0,
+            "y": 659.0,
+            "z": 81.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 21,
+          "world": {
+            "x": -2064.0,
+            "y": 926.0,
+            "z": 63.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 22,
+          "world": {
+            "x": -2357.33,
+            "y": 1017.01,
+            "z": 59.76
+          }
+        },
+        {
+          "coordinate_catalog_id": 23,
+          "world": {
+            "x": -2072.0,
+            "y": 1066.0,
+            "z": 74.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 24,
+          "world": {
+            "x": -1744.0,
+            "y": 972.46,
+            "z": 156.89
+          }
+        },
+        {
+          "coordinate_catalog_id": 25,
+          "world": {
+            "x": -1941.0,
+            "y": 883.0,
+            "z": 68.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 26,
+          "world": {
+            "x": -1839.51,
+            "y": 1086.88,
+            "z": 101.29
+          }
+        },
+        {
+          "coordinate_catalog_id": 27,
+          "world": {
+            "x": -1704.8,
+            "y": 1338.0,
+            "z": 14.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 28,
+          "world": {
+            "x": -2346.62,
+            "y": 536.85,
+            "z": 86.02
+          }
+        },
+        {
+          "coordinate_catalog_id": 29,
+          "world": {
+            "x": -2443.0,
+            "y": 755.0,
+            "z": 49.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 30,
+          "world": {
+            "x": -2765.0,
+            "y": 375.0,
+            "z": 15.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 31,
+          "world": {
+            "x": -2880.31,
+            "y": -935.83,
+            "z": 40.82
+          }
+        },
+        {
+          "coordinate_catalog_id": 32,
+          "world": {
+            "x": -2083.0,
+            "y": -808.0,
+            "z": 69.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 33,
+          "world": {
+            "x": -1954.0,
+            "y": -760.0,
+            "z": 53.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 34,
+          "world": {
+            "x": -964.53,
+            "y": -331.59,
+            "z": 47.16
+          }
+        },
+        {
+          "coordinate_catalog_id": 35,
+          "world": {
+            "x": -1689.0,
+            "y": 51.0,
+            "z": 38.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 36,
+          "world": {
+            "x": -2080.0,
+            "y": 256.05,
+            "z": 107.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 37,
+          "world": {
+            "x": -2413.0,
+            "y": 331.0,
+            "z": 37.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 38,
+          "world": {
+            "x": -2244.42,
+            "y": 731.32,
+            "z": 61.88
+          }
+        },
+        {
+          "coordinate_catalog_id": 39,
+          "world": {
+            "x": -2462.0,
+            "y": 369.0,
+            "z": 59.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 40,
+          "world": {
+            "x": -1124.44,
+            "y": -153.15,
+            "z": 18.5
+          }
+        },
+        {
+          "coordinate_catalog_id": 41,
+          "world": {
+            "x": -1275.78,
+            "y": 53.68,
+            "z": 89.07
+          }
+        },
+        {
+          "coordinate_catalog_id": 42,
+          "world": {
+            "x": -2430.0,
+            "y": 38.0,
+            "z": 51.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 43,
+          "world": {
+            "x": -2591.0,
+            "y": 162.0,
+            "z": 15.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 44,
+          "world": {
+            "x": -2591.0,
+            "y": -16.0,
+            "z": 17.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 45,
+          "world": {
+            "x": -2648.0,
+            "y": -5.0,
+            "z": 31.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 46,
+          "world": {
+            "x": -2593.0,
+            "y": 56.0,
+            "z": 16.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 47,
+          "world": {
+            "x": -1619.31,
+            "y": 1341.39,
+            "z": 11.3
+          }
+        },
+        {
+          "coordinate_catalog_id": 48,
+          "world": {
+            "x": -2307.0,
+            "y": 207.0,
+            "z": 42.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 49,
+          "world": {
+            "x": -2343.0,
+            "y": -79.0,
+            "z": 38.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 50,
+          "world": {
+            "x": -1906.66,
+            "y": 518.58,
+            "z": 61.71
+          }
+        }
+      ]
+    },
+    "horseshoes": {
+      "expected_count": 50,
+      "source": "MAIN.SCM raw coordinates reconciled with interactive-game-maps marker/horseshoes.js",
+      "items": [
+        {
+          "coordinate_catalog_id": 1,
+          "world": {
+            "x": 1224.0,
+            "y": 2617.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 2,
+          "world": {
+            "x": 2323.0,
+            "y": 1284.0,
+            "z": 97.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 3,
+          "world": {
+            "x": 2035.0,
+            "y": 2305.0,
+            "z": 18.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 4,
+          "world": {
+            "x": 2491.0,
+            "y": 2263.0,
+            "z": 15.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 5,
+          "world": {
+            "x": 1433.0,
+            "y": 2796.0,
+            "z": 20.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 6,
+          "world": {
+            "x": 2071.0,
+            "y": 712.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 7,
+          "world": {
+            "x": 2239.0,
+            "y": 1839.0,
+            "z": 18.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 8,
+          "world": {
+            "x": 2583.0,
+            "y": 2387.0,
+            "z": 16.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 9,
+          "world": {
+            "x": 2864.0,
+            "y": 857.0,
+            "z": 13.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 10,
+          "world": {
+            "x": 2612.0,
+            "y": 2200.0,
+            "z": -1.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 11,
+          "world": {
+            "x": 2274.0,
+            "y": 1507.0,
+            "z": 24.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 12,
+          "world": {
+            "x": 2184.0,
+            "y": 2529.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 13,
+          "world": {
+            "x": 1863.0,
+            "y": 2314.0,
+            "z": 15.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 14,
+          "world": {
+            "x": 2054.0,
+            "y": 2434.0,
+            "z": 166.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 15,
+          "world": {
+            "x": 1603.0,
+            "y": 1435.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 16,
+          "world": {
+            "x": 1362.92,
+            "y": 1015.24,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 17,
+          "world": {
+            "x": 2058.7,
+            "y": 2159.1,
+            "z": 16.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 18,
+          "world": {
+            "x": 2003.0,
+            "y": 1672.0,
+            "z": 12.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 19,
+          "world": {
+            "x": 2238.0,
+            "y": 1135.0,
+            "z": 49.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 20,
+          "world": {
+            "x": 1934.06,
+            "y": 988.79,
+            "z": 22.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 21,
+          "world": {
+            "x": 1768.0,
+            "y": 2847.0,
+            "z": 9.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 22,
+          "world": {
+            "x": 1084.0,
+            "y": 1076.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 23,
+          "world": {
+            "x": 2879.0,
+            "y": 2522.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 24,
+          "world": {
+            "x": 2371.0,
+            "y": 2009.0,
+            "z": 15.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 25,
+          "world": {
+            "x": 1521.0,
+            "y": 1690.0,
+            "z": 10.6
+          }
+        },
+        {
+          "coordinate_catalog_id": 26,
+          "world": {
+            "x": 2417.0,
+            "y": 1281.0,
+            "z": 21.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 27,
+          "world": {
+            "x": 1376.0,
+            "y": 2304.0,
+            "z": 15.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 28,
+          "world": {
+            "x": 1393.0,
+            "y": 1832.0,
+            "z": 12.34
+          }
+        },
+        {
+          "coordinate_catalog_id": 29,
+          "world": {
+            "x": 984.0,
+            "y": 2563.0,
+            "z": 12.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 30,
+          "world": {
+            "x": 1767.0,
+            "y": 601.0,
+            "z": 13.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 31,
+          "world": {
+            "x": 2108.0,
+            "y": 1003.0,
+            "z": 46.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 32,
+          "world": {
+            "x": 2705.98,
+            "y": 1862.52,
+            "z": 24.41
+          }
+        },
+        {
+          "coordinate_catalog_id": 33,
+          "world": {
+            "x": 2493.0,
+            "y": 922.0,
+            "z": 16.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 34,
+          "world": {
+            "x": 1881.0,
+            "y": 2846.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 35,
+          "world": {
+            "x": 2020.0,
+            "y": 2352.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 36,
+          "world": {
+            "x": 1680.3,
+            "y": 2226.86,
+            "z": 16.11
+          }
+        },
+        {
+          "coordinate_catalog_id": 37,
+          "world": {
+            "x": 1462.0,
+            "y": 936.0,
+            "z": 10.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 38,
+          "world": {
+            "x": 2125.5,
+            "y": 789.23,
+            "z": 11.45
+          }
+        },
+        {
+          "coordinate_catalog_id": 39,
+          "world": {
+            "x": 2588.0,
+            "y": 1902.0,
+            "z": 15.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 40,
+          "world": {
+            "x": 919.0,
+            "y": 2070.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 41,
+          "world": {
+            "x": 2173.0,
+            "y": 2465.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 42,
+          "world": {
+            "x": 2031.25,
+            "y": 2207.33,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 43,
+          "world": {
+            "x": 2509.0,
+            "y": 1144.0,
+            "z": 19.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 44,
+          "world": {
+            "x": 2215.0,
+            "y": 1968.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 45,
+          "world": {
+            "x": 2626.0,
+            "y": 2841.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 46,
+          "world": {
+            "x": 2440.08,
+            "y": 2161.07,
+            "z": 20.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 47,
+          "world": {
+            "x": 1582.0,
+            "y": 2401.0,
+            "z": 19.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 48,
+          "world": {
+            "x": 2077.0,
+            "y": 1912.0,
+            "z": 14.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 49,
+          "world": {
+            "x": 970.0,
+            "y": 1787.0,
+            "z": 11.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 50,
+          "world": {
+            "x": 1526.22,
+            "y": 751.0,
+            "z": 29.04
+          }
+        }
+      ]
+    },
+    "oysters": {
+      "expected_count": 50,
+      "source": "MAIN.SCM/GTAMods raw oyster pickup coordinates (true XYZ; do not use legacy z=0 marker catalogue)",
+      "items": [
+        {
+          "coordinate_catalog_id": 1,
+          "world": {
+            "x": 979,
+            "y": -2210,
+            "z": -3
+          }
+        },
+        {
+          "coordinate_catalog_id": 2,
+          "world": {
+            "x": 2750,
+            "y": -2584,
+            "z": -5
+          }
+        },
+        {
+          "coordinate_catalog_id": 3,
+          "world": {
+            "x": 1279,
+            "y": -806,
+            "z": 85
+          }
+        },
+        {
+          "coordinate_catalog_id": 4,
+          "world": {
+            "x": 2945.13,
+            "y": -2051.93,
+            "z": -3
+          }
+        },
+        {
+          "coordinate_catalog_id": 5,
+          "world": {
+            "x": 67,
+            "y": -1018,
+            "z": -5
+          }
+        },
+        {
+          "coordinate_catalog_id": 6,
+          "world": {
+            "x": 2327,
+            "y": -2662,
+            "z": -5
+          }
+        },
+        {
+          "coordinate_catalog_id": 7,
+          "world": {
+            "x": 2621,
+            "y": -2506,
+            "z": -5
+          }
+        },
+        {
+          "coordinate_catalog_id": 8,
+          "world": {
+            "x": 1249,
+            "y": -2687,
+            "z": -1
+          }
+        },
+        {
+          "coordinate_catalog_id": 9,
+          "world": {
+            "x": 725,
+            "y": -1849,
+            "z": -5
+          }
+        },
+        {
+          "coordinate_catalog_id": 10,
+          "world": {
+            "x": 723,
+            "y": -1586,
+            "z": -3
+          }
+        },
+        {
+          "coordinate_catalog_id": 11,
+          "world": {
+            "x": 155,
+            "y": -1975,
+            "z": -8
+          }
+        },
+        {
+          "coordinate_catalog_id": 12,
+          "world": {
+            "x": 1968,
+            "y": -1203,
+            "z": 17
+          }
+        },
+        {
+          "coordinate_catalog_id": 13,
+          "world": {
+            "x": -2657,
+            "y": 1564,
+            "z": -6
+          }
+        },
+        {
+          "coordinate_catalog_id": 14,
+          "world": {
+            "x": -1252,
+            "y": 501,
+            "z": -8
+          }
+        },
+        {
+          "coordinate_catalog_id": 15,
+          "world": {
+            "x": -1625,
+            "y": 4,
+            "z": -10
+          }
+        },
+        {
+          "coordinate_catalog_id": 16,
+          "world": {
+            "x": -1484,
+            "y": 1489,
+            "z": -10
+          }
+        },
+        {
+          "coordinate_catalog_id": 17,
+          "world": {
+            "x": -2505.406,
+            "y": 1543.724,
+            "z": -22.5553
+          }
+        },
+        {
+          "coordinate_catalog_id": 18,
+          "world": {
+            "x": -2727,
+            "y": -469,
+            "z": -5
+          }
+        },
+        {
+          "coordinate_catalog_id": 19,
+          "world": {
+            "x": -1266,
+            "y": 966,
+            "z": -10
+          }
+        },
+        {
+          "coordinate_catalog_id": 20,
+          "world": {
+            "x": -1013,
+            "y": 478,
+            "z": -7
+          }
+        },
+        {
+          "coordinate_catalog_id": 21,
+          "world": {
+            "x": -1364,
+            "y": 390,
+            "z": -5
+          }
+        },
+        {
+          "coordinate_catalog_id": 22,
+          "world": {
+            "x": 2578,
+            "y": 2382,
+            "z": 16
+          }
+        },
+        {
+          "coordinate_catalog_id": 23,
+          "world": {
+            "x": 2090,
+            "y": 1898,
+            "z": 8
+          }
+        },
+        {
+          "coordinate_catalog_id": 24,
+          "world": {
+            "x": 2130,
+            "y": 1152,
+            "z": 7
+          }
+        },
+        {
+          "coordinate_catalog_id": 25,
+          "world": {
+            "x": 2013,
+            "y": 1670,
+            "z": 7
+          }
+        },
+        {
+          "coordinate_catalog_id": 26,
+          "world": {
+            "x": 2531,
+            "y": 1569,
+            "z": 9
+          }
+        },
+        {
+          "coordinate_catalog_id": 27,
+          "world": {
+            "x": 2998,
+            "y": 2998,
+            "z": -10
+          }
+        },
+        {
+          "coordinate_catalog_id": 28,
+          "world": {
+            "x": -832,
+            "y": 925,
+            "z": -2
+          }
+        },
+        {
+          "coordinate_catalog_id": 29,
+          "world": {
+            "x": 486,
+            "y": -253,
+            "z": -4
+          }
+        },
+        {
+          "coordinate_catalog_id": 30,
+          "world": {
+            "x": -90,
+            "y": -910,
+            "z": -5
+          }
+        },
+        {
+          "coordinate_catalog_id": 31,
+          "world": {
+            "x": 26.43,
+            "y": -1320.94,
+            "z": -10.04
+          }
+        },
+        {
+          "coordinate_catalog_id": 32,
+          "world": {
+            "x": -207,
+            "y": -1682,
+            "z": -8
+          }
+        },
+        {
+          "coordinate_catalog_id": 33,
+          "world": {
+            "x": -1672,
+            "y": -1641,
+            "z": -2
+          }
+        },
+        {
+          "coordinate_catalog_id": 34,
+          "world": {
+            "x": -1175,
+            "y": -2639,
+            "z": -2.5
+          }
+        },
+        {
+          "coordinate_catalog_id": 35,
+          "world": {
+            "x": -1097,
+            "y": -2858,
+            "z": -8
+          }
+        },
+        {
+          "coordinate_catalog_id": 36,
+          "world": {
+            "x": -2889,
+            "y": -1042,
+            "z": -9
+          }
+        },
+        {
+          "coordinate_catalog_id": 37,
+          "world": {
+            "x": -659,
+            "y": 874,
+            "z": -2
+          }
+        },
+        {
+          "coordinate_catalog_id": 38,
+          "world": {
+            "x": -955,
+            "y": 2628,
+            "z": 35
+          }
+        },
+        {
+          "coordinate_catalog_id": 39,
+          "world": {
+            "x": -1066,
+            "y": 2197,
+            "z": 32
+          }
+        },
+        {
+          "coordinate_catalog_id": 40,
+          "world": {
+            "x": 40,
+            "y": -531,
+            "z": -8
+          }
+        },
+        {
+          "coordinate_catalog_id": 41,
+          "world": {
+            "x": -765,
+            "y": 247,
+            "z": -8
+          }
+        },
+        {
+          "coordinate_catalog_id": 42,
+          "world": {
+            "x": 2098,
+            "y": -108,
+            "z": -2
+          }
+        },
+        {
+          "coordinate_catalog_id": 43,
+          "world": {
+            "x": 2767,
+            "y": 470,
+            "z": -8
+          }
+        },
+        {
+          "coordinate_catalog_id": 44,
+          "world": {
+            "x": -783,
+            "y": 2116,
+            "z": 35
+          }
+        },
+        {
+          "coordinate_catalog_id": 45,
+          "world": {
+            "x": -821,
+            "y": 1374,
+            "z": -8
+          }
+        },
+        {
+          "coordinate_catalog_id": 46,
+          "world": {
+            "x": -2110.5,
+            "y": 2329.72,
+            "z": -7.5
+          }
+        },
+        {
+          "coordinate_catalog_id": 47,
+          "world": {
+            "x": -1538,
+            "y": 1708,
+            "z": -3.27
+          }
+        },
+        {
+          "coordinate_catalog_id": 48,
+          "world": {
+            "x": -2685,
+            "y": 2153,
+            "z": -5
+          }
+        },
+        {
+          "coordinate_catalog_id": 49,
+          "world": {
+            "x": 796,
+            "y": 2939,
+            "z": -5
+          }
+        },
+        {
+          "coordinate_catalog_id": 50,
+          "world": {
+            "x": 2179,
+            "y": 235,
+            "z": -5
+          }
+        }
+      ]
+    },
+    "stunt_jumps": {
+      "expected_count": 70,
+      "source": "MAIN.SCM ADD_STUNT_JUMP + interactive-game-maps marker/stunt_jumps.js Point/Polygon/video_id",
+      "items": [
+        {
+          "coordinate_catalog_id": 1,
+          "world": {
+            "x": 1939.14,
+            "y": -1968.05,
+            "z": 17.66
+          }
+        },
+        {
+          "coordinate_catalog_id": 2,
+          "world": {
+            "x": 2209.28,
+            "y": -1843.69,
+            "z": 19.1
+          }
+        },
+        {
+          "coordinate_catalog_id": 3,
+          "world": {
+            "x": 1177.22,
+            "y": -1696.76,
+            "z": 21.37
+          }
+        },
+        {
+          "coordinate_catalog_id": 4,
+          "world": {
+            "x": 2278.29,
+            "y": -1357.86,
+            "z": 31.33
+          }
+        },
+        {
+          "coordinate_catalog_id": 5,
+          "world": {
+            "x": 2335.35,
+            "y": -2163.95,
+            "z": 18.51
+          }
+        },
+        {
+          "coordinate_catalog_id": 6,
+          "world": {
+            "x": 2825.93,
+            "y": -1582.66,
+            "z": 18.13
+          }
+        },
+        {
+          "coordinate_catalog_id": 7,
+          "world": {
+            "x": 2460.18,
+            "y": -2567.91,
+            "z": 18.82
+          }
+        },
+        {
+          "coordinate_catalog_id": 8,
+          "world": {
+            "x": 1832.45,
+            "y": -2386.81,
+            "z": 17.92
+          }
+        },
+        {
+          "coordinate_catalog_id": 9,
+          "world": {
+            "x": 1839.75,
+            "y": -2514.48,
+            "z": 16.18
+          }
+        },
+        {
+          "coordinate_catalog_id": 10,
+          "world": {
+            "x": 2634.4,
+            "y": -2107.98,
+            "z": 17.09
+          }
+        },
+        {
+          "coordinate_catalog_id": 11,
+          "world": {
+            "x": 2352.3,
+            "y": -1259.07,
+            "z": 29.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 12,
+          "world": {
+            "x": 1013.16,
+            "y": -1270.36,
+            "z": 24.45
+          }
+        },
+        {
+          "coordinate_catalog_id": 13,
+          "world": {
+            "x": -973.36,
+            "y": -223.23,
+            "z": 53.37
+          }
+        },
+        {
+          "coordinate_catalog_id": 14,
+          "world": {
+            "x": -2637.07,
+            "y": 780.39,
+            "z": 50.02
+          }
+        },
+        {
+          "coordinate_catalog_id": 15,
+          "world": {
+            "x": -2520.2,
+            "y": 1169.2,
+            "z": 59.55
+          }
+        },
+        {
+          "coordinate_catalog_id": 16,
+          "world": {
+            "x": -1794.98,
+            "y": 1211.61,
+            "z": 35.68
+          }
+        },
+        {
+          "coordinate_catalog_id": 17,
+          "world": {
+            "x": -2659.55,
+            "y": 1533.67,
+            "z": 53.2
+          }
+        },
+        {
+          "coordinate_catalog_id": 18,
+          "world": {
+            "x": -1690.66,
+            "y": 1110.39,
+            "z": 57.28
+          }
+        },
+        {
+          "coordinate_catalog_id": 19,
+          "world": {
+            "x": -2145.46,
+            "y": -112.03,
+            "z": 44.35
+          }
+        },
+        {
+          "coordinate_catalog_id": 20,
+          "world": {
+            "x": -267.77,
+            "y": 2662.04,
+            "z": 68.74
+          }
+        },
+        {
+          "coordinate_catalog_id": 21,
+          "world": {
+            "x": -249.69,
+            "y": 2590.81,
+            "z": 66.12
+          }
+        },
+        {
+          "coordinate_catalog_id": 22,
+          "world": {
+            "x": -871.5,
+            "y": 2308.79,
+            "z": 164.57
+          }
+        },
+        {
+          "coordinate_catalog_id": 23,
+          "world": {
+            "x": 2073.71,
+            "y": 2366.65,
+            "z": 50.85
+          }
+        },
+        {
+          "coordinate_catalog_id": 24,
+          "world": {
+            "x": 2170.95,
+            "y": 2402.61,
+            "z": 62.29
+          }
+        },
+        {
+          "coordinate_catalog_id": 25,
+          "world": {
+            "x": 2418.06,
+            "y": 1353.23,
+            "z": 12.36
+          }
+        },
+        {
+          "coordinate_catalog_id": 26,
+          "world": {
+            "x": 2407.31,
+            "y": 1364.38,
+            "z": 14.57
+          }
+        },
+        {
+          "coordinate_catalog_id": 27,
+          "world": {
+            "x": 2784.76,
+            "y": 2208.72,
+            "z": 15.19
+          }
+        },
+        {
+          "coordinate_catalog_id": 28,
+          "world": {
+            "x": 1482.38,
+            "y": 2037.0,
+            "z": 17.06
+          }
+        },
+        {
+          "coordinate_catalog_id": 29,
+          "world": {
+            "x": 1976.4,
+            "y": 2593.69,
+            "z": 17.21
+          }
+        },
+        {
+          "coordinate_catalog_id": 30,
+          "world": {
+            "x": 1636.26,
+            "y": 2399.71,
+            "z": 15.89
+          }
+        },
+        {
+          "coordinate_catalog_id": 31,
+          "world": {
+            "x": 2119.23,
+            "y": 2385.21,
+            "z": 33.71
+          }
+        },
+        {
+          "coordinate_catalog_id": 32,
+          "world": {
+            "x": -2082.53,
+            "y": -2498.93,
+            "z": 33.97
+          }
+        },
+        {
+          "coordinate_catalog_id": 33,
+          "world": {
+            "x": 2112.41,
+            "y": 97.9,
+            "z": 39.99
+          }
+        },
+        {
+          "coordinate_catalog_id": 34,
+          "world": {
+            "x": -2100.41,
+            "y": -1743.6,
+            "z": 199.73
+          }
+        },
+        {
+          "coordinate_catalog_id": 35,
+          "world": {
+            "x": -2287.67,
+            "y": -2800.78,
+            "z": 22.05
+          }
+        },
+        {
+          "coordinate_catalog_id": 36,
+          "world": {
+            "x": 110.89,
+            "y": 2428.05,
+            "z": 23.79
+          }
+        },
+        {
+          "coordinate_catalog_id": 37,
+          "world": {
+            "x": -894.5,
+            "y": 2693.2,
+            "z": 44.73
+          }
+        },
+        {
+          "coordinate_catalog_id": 38,
+          "world": {
+            "x": 89.99,
+            "y": -243.2,
+            "z": 7.56
+          }
+        },
+        {
+          "coordinate_catalog_id": 39,
+          "world": {
+            "x": 160.8,
+            "y": -160.25,
+            "z": 6.15
+          }
+        },
+        {
+          "coordinate_catalog_id": 40,
+          "world": {
+            "x": -72.3,
+            "y": 17.7,
+            "z": 8.41
+          }
+        },
+        {
+          "coordinate_catalog_id": 41,
+          "world": {
+            "x": -39.8,
+            "y": 53.3,
+            "z": 6.92
+          }
+        },
+        {
+          "coordinate_catalog_id": 42,
+          "world": {
+            "x": 638.75,
+            "y": -520.07,
+            "z": 18.85
+          }
+        },
+        {
+          "coordinate_catalog_id": 43,
+          "world": {
+            "x": 1749.72,
+            "y": 779.6,
+            "z": 13.48
+          }
+        },
+        {
+          "coordinate_catalog_id": 44,
+          "world": {
+            "x": 110.24,
+            "y": -257.99,
+            "z": 6.27
+          }
+        },
+        {
+          "coordinate_catalog_id": 45,
+          "world": {
+            "x": 2125.64,
+            "y": 95.25,
+            "z": 37.4
+          }
+        },
+        {
+          "coordinate_catalog_id": 46,
+          "world": {
+            "x": -344.65,
+            "y": -9.88,
+            "z": 44.96
+          }
+        },
+        {
+          "coordinate_catalog_id": 47,
+          "world": {
+            "x": -2589.18,
+            "y": 1164.37,
+            "z": 59.83
+          }
+        },
+        {
+          "coordinate_catalog_id": 48,
+          "world": {
+            "x": -2292.04,
+            "y": 1097.71,
+            "z": 84.73
+          }
+        },
+        {
+          "coordinate_catalog_id": 49,
+          "world": {
+            "x": -2408.29,
+            "y": 723.3,
+            "z": 38.68
+          }
+        },
+        {
+          "coordinate_catalog_id": 50,
+          "world": {
+            "x": -2116.36,
+            "y": 925.68,
+            "z": 87.82
+          }
+        },
+        {
+          "coordinate_catalog_id": 51,
+          "world": {
+            "x": -1903.19,
+            "y": 223.35,
+            "z": 37.8
+          }
+        },
+        {
+          "coordinate_catalog_id": 52,
+          "world": {
+            "x": -1687.32,
+            "y": -162.2,
+            "z": 17.86
+          }
+        },
+        {
+          "coordinate_catalog_id": 53,
+          "world": {
+            "x": -1729.92,
+            "y": -364.53,
+            "z": 18.22
+          }
+        },
+        {
+          "coordinate_catalog_id": 54,
+          "world": {
+            "x": -1972.1,
+            "y": -543.09,
+            "z": 38.99
+          }
+        },
+        {
+          "coordinate_catalog_id": 55,
+          "world": {
+            "x": 2770.21,
+            "y": -1177.48,
+            "z": 70.75
+          }
+        },
+        {
+          "coordinate_catalog_id": 56,
+          "world": {
+            "x": 2248.84,
+            "y": -2463.26,
+            "z": 15.1
+          }
+        },
+        {
+          "coordinate_catalog_id": 57,
+          "world": {
+            "x": 2248.83,
+            "y": -2627.62,
+            "z": 15.18
+          }
+        },
+        {
+          "coordinate_catalog_id": 58,
+          "world": {
+            "x": 2326.12,
+            "y": -1508.75,
+            "z": 27.01
+          }
+        },
+        {
+          "coordinate_catalog_id": 59,
+          "world": {
+            "x": 1623.57,
+            "y": -1110.96,
+            "z": 61.82
+          }
+        },
+        {
+          "coordinate_catalog_id": 60,
+          "world": {
+            "x": 1679.65,
+            "y": -962.22,
+            "z": 65.67
+          }
+        },
+        {
+          "coordinate_catalog_id": 61,
+          "world": {
+            "x": 1667.17,
+            "y": -992.86,
+            "z": 32.76
+          }
+        },
+        {
+          "coordinate_catalog_id": 62,
+          "world": {
+            "x": 347.0,
+            "y": -1662.3,
+            "z": 35.82
+          }
+        },
+        {
+          "coordinate_catalog_id": 63,
+          "world": {
+            "x": 743.15,
+            "y": -1132.82,
+            "z": 25.8
+          }
+        },
+        {
+          "coordinate_catalog_id": 64,
+          "world": {
+            "x": 1395.56,
+            "y": -1460.57,
+            "z": 12.39
+          }
+        },
+        {
+          "coordinate_catalog_id": 65,
+          "world": {
+            "x": 1586.49,
+            "y": 312.89,
+            "z": 24.0
+          }
+        },
+        {
+          "coordinate_catalog_id": 66,
+          "world": {
+            "x": 2058.1,
+            "y": -2677.52,
+            "z": 15.49
+          }
+        },
+        {
+          "coordinate_catalog_id": 67,
+          "world": {
+            "x": 586.01,
+            "y": -1773.77,
+            "z": 15.23
+          }
+        },
+        {
+          "coordinate_catalog_id": 68,
+          "world": {
+            "x": 2172.08,
+            "y": 2430.51,
+            "z": 61.75
+          }
+        },
+        {
+          "coordinate_catalog_id": 69,
+          "world": {
+            "x": 2176.13,
+            "y": 2268.2,
+            "z": 13.47
+          }
+        },
+        {
+          "coordinate_catalog_id": 70,
+          "world": {
+            "x": -2213.77,
+            "y": -311.08,
+            "z": 38.53
+          }
+        }
+      ]
+    }
+  }
+}

@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Validate collectible pack and generated metadata
         run: |
+          python3 tools/apply_collectible_crosswalk.py --check
+          python3 tools/validate_collectible_pack.py --metadata-only
           python3 tools/validate_collectible_pack.py
           python3 tools/generate_collectible_info.py --check
           python3 tools/validate_poi_pack.py

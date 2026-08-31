@@ -1831,15 +1831,15 @@
       "canonical_id": 1,
       "wiki_ref": 1,
       "world": {
-        "x": -2511.28,
-        "y": -672.99,
-        "z": 195.75
+        "x": -964.53,
+        "y": -331.59,
+        "z": 47.16
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2511.28,
-        "y": -672.99,
-        "z": 195.75
+        "x": -964.53,
+        "y": -331.59,
+        "z": 47.16
       },
       "description_en": "The Panopticon Arch Bridge overlooking the Easter Bay Airport .",
       "description_ru": "Арочный мост Паноптикона с видом на аэропорт «Бухта Пасхи».",
@@ -1850,15 +1850,15 @@
       "canonical_id": 2,
       "wiki_ref": 2,
       "world": {
-        "x": -2723.63,
-        "y": -314.72,
-        "z": 55.79
+        "x": -1737.71,
+        "y": -579.55,
+        "z": 26.19
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2723.63,
-        "y": -314.72,
-        "z": 55.79
+        "x": -1737.71,
+        "y": -579.55,
+        "z": 26.19
       },
       "description_en": "Between two fuel tanks next to the northeastern hangars at the Easter Bay Airport.",
       "description_ru": "Между двумя топливными резервуарами рядом с северо-восточными ангарами аэропорта «Бухта Пасхи».",
@@ -1869,15 +1869,15 @@
       "canonical_id": 3,
       "wiki_ref": 3,
       "world": {
-        "x": -1737.71,
-        "y": -579.55,
-        "z": 26.19
+        "x": -1124.44,
+        "y": -153.15,
+        "z": 18.5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1737.71,
-        "y": -579.55,
-        "z": 26.19
+        "x": -1124.44,
+        "y": -153.15,
+        "z": 18.5
       },
       "description_en": "On top of the Easter Bay Airport control tower.",
       "description_ru": "На вершине диспетчерской башни аэропорта «Бухта Пасхи».",
@@ -1888,15 +1888,15 @@
       "canonical_id": 4,
       "wiki_ref": 4,
       "world": {
-        "x": -1486.08,
-        "y": 920.04,
-        "z": 41.37
+        "x": -1275.78,
+        "y": 53.68,
+        "z": 89.07
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1486.08,
-        "y": 920.04,
-        "z": 41.37
+        "x": -1275.78,
+        "y": 53.68,
+        "z": 89.07
       },
       "description_en": "Easter Bay Airport entrance sign.",
       "description_ru": "Вывеска у въезда в аэропорт «Бухта Пасхи».",
@@ -1907,15 +1907,15 @@
       "canonical_id": 5,
       "wiki_ref": 5,
       "world": {
-        "x": -1269.82,
-        "y": 963.63,
-        "z": 130.37
+        "x": -1954.0,
+        "y": -760.0,
+        "z": 53.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1269.82,
-        "y": 963.63,
-        "z": 130.37
+        "x": -1954.0,
+        "y": -760.0,
+        "z": 53.0
       },
       "description_en": "Northeast Foster Valley .",
       "description_ru": "В северо-восточной части долины Фостер.",
@@ -1926,15 +1926,15 @@
       "canonical_id": 6,
       "wiki_ref": 6,
       "world": {
-        "x": -1650.01,
-        "y": 422.0,
-        "z": 21.17
+        "x": -2083.0,
+        "y": -808.0,
+        "z": 69.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1650.01,
-        "y": 422.0,
-        "z": 21.17
+        "x": -2083.0,
+        "y": -808.0,
+        "z": 69.0
       },
       "description_en": "On top of one of the circular buildings in northwest Foster Valley.",
       "description_ru": "На крыше одного из круглых зданий в северо-западной части долины Фостер.",
@@ -1945,15 +1945,15 @@
       "canonical_id": 7,
       "wiki_ref": 7,
       "world": {
-        "x": -1851.72,
-        "y": -96.73,
-        "z": 24.37
+        "x": -2511.28,
+        "y": -672.99,
+        "z": 195.75
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1851.72,
-        "y": -96.73,
-        "z": 24.37
+        "x": -2511.28,
+        "y": -672.99,
+        "z": 195.75
       },
       "description_en": "Missionary Hill Radio Tower .",
       "description_ru": "Радиовышка на Холме Миссионеров.",
@@ -1964,15 +1964,15 @@
       "canonical_id": 8,
       "wiki_ref": 8,
       "world": {
-        "x": -2732.0,
-        "y": -244.0,
-        "z": 19.0
+        "x": -2880.31,
+        "y": -935.83,
+        "z": 40.82
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2732.0,
-        "y": -244.0,
-        "z": 19.0
+        "x": -2880.31,
+        "y": -935.83,
+        "z": 40.82
       },
       "description_en": "North end of the Whetstone Bridge , northeast of Mount Chiliad .",
       "description_ru": "Северный конец моста Уэтстоун, к северо-востоку от горы Чилиад.",
@@ -1983,15 +1983,15 @@
       "canonical_id": 9,
       "wiki_ref": 9,
       "world": {
-        "x": -2802.75,
-        "y": 375.47,
-        "z": 36.59
+        "x": -2723.63,
+        "y": -314.72,
+        "z": 55.79
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2802.75,
-        "y": 375.47,
-        "z": 36.59
+        "x": -2723.63,
+        "y": -314.72,
+        "z": 55.79
       },
       "description_en": "Clubhouse of the Avispa Country Club .",
       "description_ru": "Клубный дом кантри-клуба «Ависпа».",
@@ -2002,15 +2002,15 @@
       "canonical_id": 10,
       "wiki_ref": 10,
       "world": {
-        "x": -2773.04,
-        "y": 783.45,
-        "z": 67.66
+        "x": -2732.0,
+        "y": -244.0,
+        "z": 19.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2773.04,
-        "y": 783.45,
-        "z": 67.66
+        "x": -2732.0,
+        "y": -244.0,
+        "z": 19.0
       },
       "description_en": "Avispa Country Club tennis courts.",
       "description_ru": "Теннисные корты кантри-клуба «Ависпа».",
@@ -2021,15 +2021,15 @@
       "canonical_id": 11,
       "wiki_ref": 11,
       "world": {
-        "x": -2680.07,
-        "y": 1590.8,
-        "z": 143.53
+        "x": -2648.0,
+        "y": -5.0,
+        "z": 31.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2680.07,
-        "y": 1590.8,
-        "z": 143.53
+        "x": -2648.0,
+        "y": -5.0,
+        "z": 31.0
       },
       "description_en": "On top of the Ocean Flats Cathedral .",
       "description_ru": "На вершине собора Оушен-Флэтс.",
@@ -2040,15 +2040,15 @@
       "canonical_id": 12,
       "wiki_ref": 12,
       "world": {
-        "x": -2476.75,
-        "y": 1543.44,
-        "z": 49.26
+        "x": -2591.0,
+        "y": -16.0,
+        "z": 17.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2476.75,
-        "y": 1543.44,
-        "z": 49.26
+        "x": -2591.0,
+        "y": -16.0,
+        "z": 17.0
       },
       "description_en": "West entrance of the Hashbury Cemetery .",
       "description_ru": "Западный вход на кладбище Хэшбери.",
@@ -2059,15 +2059,15 @@
       "canonical_id": 13,
       "wiki_ref": 13,
       "world": {
-        "x": -1879.04,
-        "y": 1456.52,
-        "z": 9.34
+        "x": -2593.0,
+        "y": 56.0,
+        "z": 16.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1879.04,
-        "y": 1456.52,
-        "z": 9.34
+        "x": -2593.0,
+        "y": 56.0,
+        "z": 16.0
       },
       "description_en": "Hashbury & Garcia Joint Festival flag in northeast Hashbury.",
       "description_ru": "Флаг совместного фестиваля Хэшбери и Гарсии в северо-восточной части Хэшбери.",
@@ -2078,15 +2078,15 @@
       "canonical_id": 14,
       "wiki_ref": 14,
       "world": {
-        "x": -1561.55,
-        "y": 655.19,
-        "z": 56.52
+        "x": -2430.0,
+        "y": 38.0,
+        "z": 51.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1561.55,
-        "y": 655.19,
-        "z": 56.52
+        "x": -2430.0,
+        "y": 38.0,
+        "z": 51.0
       },
       "description_en": "Hippy Shopper in south Queens .",
       "description_ru": "Магазин Hippy Shopper в южной части Куинс.",
@@ -2097,15 +2097,15 @@
       "canonical_id": 15,
       "wiki_ref": 15,
       "world": {
-        "x": -1325.15,
-        "y": 494.19,
-        "z": 26.83
+        "x": -2343.0,
+        "y": -79.0,
+        "z": 38.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1325.15,
-        "y": 494.19,
-        "z": 26.83
+        "x": -2343.0,
+        "y": -79.0,
+        "z": 38.0
       },
       "description_en": "In front of the Queens Theater .",
       "description_ru": "Перед театром Куинс.",
@@ -2116,15 +2116,15 @@
       "canonical_id": 16,
       "wiki_ref": 16,
       "world": {
-        "x": -1941.41,
-        "y": 137.72,
-        "z": 37.83
+        "x": -2591.0,
+        "y": 162.0,
+        "z": 15.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1941.41,
-        "y": 137.72,
-        "z": 37.83
+        "x": -2591.0,
+        "y": 162.0,
+        "z": 15.0
       },
       "description_en": "In front of the San Fierro City Hall .",
       "description_ru": "Перед мэрией Сан-Фиерро.",
@@ -2135,15 +2135,15 @@
       "canonical_id": 17,
       "wiki_ref": 17,
       "world": {
-        "x": -2153.23,
-        "y": 462.25,
-        "z": 103.27
+        "x": -2307.0,
+        "y": 207.0,
+        "z": 42.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2153.23,
-        "y": 462.25,
-        "z": 103.27
+        "x": -2307.0,
+        "y": 207.0,
+        "z": 42.0
       },
       "description_en": "Rear side of the San Fierro City Hall.",
       "description_ru": "С задней стороны мэрии Сан-Фиерро.",
@@ -2154,15 +2154,15 @@
       "canonical_id": 18,
       "wiki_ref": 18,
       "world": {
-        "x": -2243.96,
-        "y": 577.76,
-        "z": 49.0
+        "x": -2413.0,
+        "y": 331.0,
+        "z": 37.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2243.96,
-        "y": 577.76,
-        "z": 49.0
+        "x": -2413.0,
+        "y": 331.0,
+        "z": 37.0
       },
       "description_en": "Tuff Nut Donuts shop in Palisades .",
       "description_ru": "Магазинчик «Ореховые пончики Туфа» в Палисэйдс.",
@@ -2173,15 +2173,15 @@
       "canonical_id": 19,
       "wiki_ref": 19,
       "world": {
-        "x": -2051.0,
-        "y": 456.0,
-        "z": 167.0
+        "x": -2462.0,
+        "y": 369.0,
+        "z": 59.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2051.0,
-        "y": 456.0,
-        "z": 167.0
+        "x": -2462.0,
+        "y": 369.0,
+        "z": 59.0
       },
       "description_en": "Southern suspension tower of the Gant Bridge .",
       "description_ru": "Южная опора подвесного моста Гант.",
@@ -2192,15 +2192,15 @@
       "canonical_id": 20,
       "wiki_ref": 20,
       "world": {
-        "x": -1951.0,
-        "y": 659.0,
-        "z": 81.0
+        "x": -2765.0,
+        "y": 375.0,
+        "z": 15.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1951.0,
-        "y": 659.0,
-        "z": 81.0
+        "x": -2765.0,
+        "y": 375.0,
+        "z": 15.0
       },
       "description_en": "Da Nang Boys Freighter next to the Gant Bridge.",
       "description_ru": "Грузовое судно Бойцов Дананга рядом с мостом Гант.",
@@ -2211,15 +2211,15 @@
       "canonical_id": 21,
       "wiki_ref": 21,
       "world": {
-        "x": -2064.0,
-        "y": 926.0,
-        "z": 63.0
+        "x": -2802.75,
+        "y": 375.47,
+        "z": 36.59
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2064.0,
-        "y": 926.0,
-        "z": 63.0
+        "x": -2802.75,
+        "y": 375.47,
+        "z": 36.59
       },
       "description_en": "USS Numnutz submarine in Esplanade North , to the east of Pier 69 .",
       "description_ru": "Подводная лодка USS Numnutz в Северной Эспланаде, к востоку от Пирса 69.",
@@ -2230,15 +2230,15 @@
       "canonical_id": 22,
       "wiki_ref": 22,
       "world": {
-        "x": -2357.33,
-        "y": 1017.01,
-        "z": 59.76
+        "x": -2773.04,
+        "y": 783.45,
+        "z": 67.66
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2357.33,
-        "y": 1017.01,
-        "z": 59.76
+        "x": -2773.04,
+        "y": 783.45,
+        "z": 67.66
       },
       "description_en": "Pier 69 entrance signage in Esplanade North.",
       "description_ru": "Вывеска у входа на Пирс 69 в Северной Эспланаде.",
@@ -2249,15 +2249,15 @@
       "canonical_id": 23,
       "wiki_ref": 23,
       "world": {
-        "x": -2072.0,
-        "y": 1066.0,
-        "z": 74.0
+        "x": -2443.0,
+        "y": 755.0,
+        "z": 49.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2072.0,
-        "y": 1066.0,
-        "z": 74.0
+        "x": -2443.0,
+        "y": 755.0,
+        "z": 49.0
       },
       "description_en": "On top of the underwater caves in eastern Esplanade North.",
       "description_ru": "Над подводными пещерами в восточной части Северной Эспланады.",
@@ -2268,15 +2268,15 @@
       "canonical_id": 24,
       "wiki_ref": 24,
       "world": {
-        "x": -1744.0,
-        "y": 972.46,
-        "z": 156.89
+        "x": -2346.62,
+        "y": 536.85,
+        "z": 86.02
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1744.0,
-        "y": 972.46,
-        "z": 156.89
+        "x": -2346.62,
+        "y": 536.85,
+        "z": 86.02
       },
       "description_en": "Clock tower building in Esplanade East .",
       "description_ru": "Здание с часовой башней в Восточной Эспланаде.",
@@ -2287,15 +2287,15 @@
       "canonical_id": 25,
       "wiki_ref": 25,
       "world": {
-        "x": -1941.0,
-        "y": 883.0,
-        "z": 68.0
+        "x": -2243.96,
+        "y": 577.76,
+        "z": 49.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1941.0,
-        "y": 883.0,
-        "z": 68.0
+        "x": -2243.96,
+        "y": 577.76,
+        "z": 49.0
       },
       "description_en": "Northeastern suspension tower of the Garver Bridge .",
       "description_ru": "Северо-восточная опора подвесного моста Гарвер.",
@@ -2306,15 +2306,15 @@
       "canonical_id": 26,
       "wiki_ref": 26,
       "world": {
-        "x": -1839.51,
-        "y": 1086.88,
-        "z": 101.29
+        "x": -2244.42,
+        "y": 731.32,
+        "z": 61.88
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1839.51,
-        "y": 1086.88,
-        "z": 101.29
+        "x": -2244.42,
+        "y": 731.32,
+        "z": 61.88
       },
       "description_en": "Between the lanes of the Garver Bridge, to the south of the San Fierro Police Headquarters .",
       "description_ru": "Между полосами моста Гарвер, к югу от полицейского управления Сан-Фиерро.",
@@ -2325,15 +2325,15 @@
       "canonical_id": 27,
       "wiki_ref": 27,
       "world": {
-        "x": -1704.8,
-        "y": 1338.0,
-        "z": 14.0
+        "x": -2357.33,
+        "y": 1017.01,
+        "z": 59.76
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1704.8,
-        "y": 1338.0,
-        "z": 14.0
+        "x": -2357.33,
+        "y": 1017.01,
+        "z": 59.76
       },
       "description_en": "Xoomer gas station to the west of the Easter Basin Naval Station .",
       "description_ru": "Заправка Xoomer к западу от военно-морской базы в бухте Пасхи.",
@@ -2344,15 +2344,15 @@
       "canonical_id": 28,
       "wiki_ref": 28,
       "world": {
-        "x": -2346.62,
-        "y": 536.85,
-        "z": 86.02
+        "x": -2680.07,
+        "y": 1590.8,
+        "z": 143.53
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2346.62,
-        "y": 536.85,
-        "z": 86.02
+        "x": -2680.07,
+        "y": 1590.8,
+        "z": 143.53
       },
       "description_en": "Surface-to-Air Missiles on the LHD-069 aircraft carrier.",
       "description_ru": "Зенитные ракеты на авианосце LHD-069.",
@@ -2363,15 +2363,15 @@
       "canonical_id": 29,
       "wiki_ref": 29,
       "world": {
-        "x": -2443.0,
-        "y": 755.0,
-        "z": 49.0
+        "x": -2476.75,
+        "y": 1543.44,
+        "z": 49.26
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2443.0,
-        "y": 755.0,
-        "z": 49.0
+        "x": -2476.75,
+        "y": 1543.44,
+        "z": 49.26
       },
       "description_en": "Above the dry dock next to the Easter Basin Freighter .",
       "description_ru": "Над сухим доком рядом с грузовым судном в бухте Пасхи.",
@@ -2382,15 +2382,15 @@
       "canonical_id": 30,
       "wiki_ref": 30,
       "world": {
-        "x": -2765.0,
-        "y": 375.0,
-        "z": 15.0
+        "x": -1879.04,
+        "y": 1456.52,
+        "z": 9.34
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2765.0,
-        "y": 375.0,
-        "z": 15.0
+        "x": -1879.04,
+        "y": 1456.52,
+        "z": 9.34
       },
       "description_en": "White tankers on the southern building of the Solarin Industries factory in east Doherty .",
       "description_ru": "Белые цистерны на южном здании фабрики Solarin Industries в восточной части Доэрти.",
@@ -2401,15 +2401,15 @@
       "canonical_id": 31,
       "wiki_ref": 31,
       "world": {
-        "x": -2880.31,
-        "y": -935.83,
-        "z": 40.82
+        "x": -1704.8,
+        "y": 1338.0,
+        "z": 14.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2880.31,
-        "y": -935.83,
-        "z": 40.82
+        "x": -1704.8,
+        "y": 1338.0,
+        "z": 14.0
       },
       "description_en": "Cranberry Station .",
       "description_ru": "Станция Крэнберри.",
@@ -2420,15 +2420,15 @@
       "canonical_id": 32,
       "wiki_ref": 32,
       "world": {
-        "x": -2083.0,
-        "y": -808.0,
-        "z": 69.0
+        "x": -1619.31,
+        "y": 1341.39,
+        "z": 11.3
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2083.0,
-        "y": -808.0,
-        "z": 69.0
+        "x": -1619.31,
+        "y": 1341.39,
+        "z": 11.3
       },
       "description_en": "On top of the crane in the northern side of the construction site of Doherty.",
       "description_ru": "На вершине крана в северной части стройплощадки Доэрти.",
@@ -2439,15 +2439,15 @@
       "canonical_id": 33,
       "wiki_ref": 33,
       "world": {
-        "x": -1954.0,
-        "y": -760.0,
-        "z": 53.0
+        "x": -1269.82,
+        "y": 963.63,
+        "z": 130.37
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1954.0,
-        "y": -760.0,
-        "z": 53.0
+        "x": -1269.82,
+        "y": 963.63,
+        "z": 130.37
       },
       "description_en": "Final Build Construction site behind the Burger Shot in Garcia .",
       "description_ru": "Стройплощадка Final Build Construction за «Бургер Шот» в Гарсии.",
@@ -2458,15 +2458,15 @@
       "canonical_id": 34,
       "wiki_ref": 34,
       "world": {
-        "x": -964.53,
-        "y": -331.59,
-        "z": 47.16
+        "x": -1486.08,
+        "y": 920.04,
+        "z": 41.37
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -964.53,
-        "y": -331.59,
-        "z": 47.16
+        "x": -1486.08,
+        "y": 920.04,
+        "z": 41.37
       },
       "description_en": "Baseball field in front of Zero RC shop in Garcia.",
       "description_ru": "Бейсбольное поле перед магазином Zero RC в Гарсии.",
@@ -2477,15 +2477,15 @@
       "canonical_id": 35,
       "wiki_ref": 35,
       "world": {
-        "x": -1689.0,
-        "y": 51.0,
-        "z": 38.0
+        "x": -1561.55,
+        "y": 655.19,
+        "z": 56.52
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1689.0,
-        "y": 51.0,
-        "z": 38.0
+        "x": -1561.55,
+        "y": 655.19,
+        "z": 56.52
       },
       "description_en": "Front entrance of the Vank Hoff in the Park in Queens.",
       "description_ru": "Главный вход в отель «Ванк Хофф» в Куинс.",
@@ -2496,15 +2496,15 @@
       "canonical_id": 36,
       "wiki_ref": 36,
       "world": {
-        "x": -2080.0,
-        "y": 256.05,
-        "z": 107.0
+        "x": -1744.0,
+        "y": 972.46,
+        "z": 156.89
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2080.0,
-        "y": 256.05,
-        "z": 107.0
+        "x": -1744.0,
+        "y": 972.46,
+        "z": 156.89
       },
       "description_en": "Behind the Vank Hoff in the Park in Queens.",
       "description_ru": "За отелем «Ванк Хофф» в Куинс.",
@@ -2515,15 +2515,15 @@
       "canonical_id": 37,
       "wiki_ref": 37,
       "world": {
-        "x": -2413.0,
-        "y": 331.0,
-        "z": 37.0
+        "x": -1839.51,
+        "y": 1086.88,
+        "z": 101.29
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2413.0,
-        "y": 331.0,
-        "z": 37.0
+        "x": -1839.51,
+        "y": 1086.88,
+        "z": 101.29
       },
       "description_en": "On top of the King's Tram Terminal chimney.",
       "description_ru": "На вершине дымовой трубы у трамвайной станции в Кингсе.",
@@ -2534,15 +2534,15 @@
       "canonical_id": 38,
       "wiki_ref": 38,
       "world": {
-        "x": -2244.42,
-        "y": 731.32,
-        "z": 61.88
+        "x": -2072.0,
+        "y": 1066.0,
+        "z": 74.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2244.42,
-        "y": 731.32,
-        "z": 61.88
+        "x": -2072.0,
+        "y": 1066.0,
+        "z": 74.0
       },
       "description_en": "Chinatown building in front of the King's Tram Terminal.",
       "description_ru": "Здание в Чайна-тауне перед трамвайной станцией в Кингсе.",
@@ -2553,15 +2553,15 @@
       "canonical_id": 39,
       "wiki_ref": 39,
       "world": {
-        "x": -2462.0,
-        "y": 369.0,
-        "z": 59.0
+        "x": -2064.0,
+        "y": 926.0,
+        "z": 63.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2462.0,
-        "y": 369.0,
-        "z": 59.0
+        "x": -2064.0,
+        "y": 926.0,
+        "z": 63.0
       },
       "description_en": "Building to the northwest of Doherty's ZIP store under construction.",
       "description_ru": "Строящееся здание к северо-западу от магазина «Зип» в Доэрти.",
@@ -2572,15 +2572,15 @@
       "canonical_id": 40,
       "wiki_ref": 40,
       "world": {
-        "x": -1124.44,
-        "y": -153.15,
-        "z": 18.5
+        "x": -1941.0,
+        "y": 883.0,
+        "z": 68.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1124.44,
-        "y": -153.15,
-        "z": 18.5
+        "x": -1941.0,
+        "y": 883.0,
+        "z": 68.0
       },
       "description_en": "Building to the north of Doherty's ZIP store under construction.",
       "description_ru": "Строящееся здание к северу от магазина «Зип» в Доэрти.",
@@ -2591,15 +2591,15 @@
       "canonical_id": 41,
       "wiki_ref": 41,
       "world": {
-        "x": -1275.78,
-        "y": 53.68,
-        "z": 89.07
+        "x": -1951.0,
+        "y": 659.0,
+        "z": 81.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1275.78,
-        "y": 53.68,
-        "z": 89.07
+        "x": -1951.0,
+        "y": 659.0,
+        "z": 81.0
       },
       "description_en": "Between the three skyscrapers to the north of Wang Cars .",
       "description_ru": "Между тремя небоскрёбами к северу от автосалона «Тачки Ванга».",
@@ -2610,15 +2610,15 @@
       "canonical_id": 42,
       "wiki_ref": 42,
       "world": {
-        "x": -2430.0,
-        "y": 38.0,
-        "z": 51.0
+        "x": -1906.66,
+        "y": 518.58,
+        "z": 61.71
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2430.0,
-        "y": 38.0,
-        "z": 51.0
+        "x": -1906.66,
+        "y": 518.58,
+        "z": 61.71
       },
       "description_en": "Double helix sculpture located at the center of the Zombotech Corporation building.",
       "description_ru": "Скульптура двойной спирали в центре здания Zombotech Corporation.",
@@ -2629,15 +2629,15 @@
       "canonical_id": 43,
       "wiki_ref": 43,
       "world": {
-        "x": -2591.0,
-        "y": 162.0,
-        "z": 15.0
+        "x": -2051.0,
+        "y": 456.0,
+        "z": 167.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2591.0,
-        "y": 162.0,
-        "z": 15.0
+        "x": -2051.0,
+        "y": 456.0,
+        "z": 167.0
       },
       "description_en": "Antenna on the rooftop of the Vank Hoff Hotel in Financial .",
       "description_ru": "Антенна на крыше отеля «Ванк Хофф» в Финансовом районе.",
@@ -2648,15 +2648,15 @@
       "canonical_id": 44,
       "wiki_ref": 44,
       "world": {
-        "x": -2591.0,
-        "y": -16.0,
-        "z": 17.0
+        "x": -2153.23,
+        "y": 462.25,
+        "z": 103.27
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2591.0,
-        "y": -16.0,
-        "z": 17.0
+        "x": -2153.23,
+        "y": 462.25,
+        "z": 103.27
       },
       "description_en": "Downtown San Fierro building to the east of the cathedral.",
       "description_ru": "Здание в Деловом районе Сан-Фиерро к востоку от собора.",
@@ -2667,15 +2667,15 @@
       "canonical_id": 45,
       "wiki_ref": 45,
       "world": {
-        "x": -2648.0,
-        "y": -5.0,
-        "z": 31.0
+        "x": -2080.0,
+        "y": 256.05,
+        "z": 107.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2648.0,
-        "y": -5.0,
-        "z": 31.0
+        "x": -2080.0,
+        "y": 256.05,
+        "z": 107.0
       },
       "description_en": "Road tunnel next to the cathedral in Calton Heights .",
       "description_ru": "Автомобильный тоннель рядом с собором в Кэлтон-Хайтс.",
@@ -2686,15 +2686,15 @@
       "canonical_id": 46,
       "wiki_ref": 46,
       "world": {
-        "x": -2593.0,
-        "y": 56.0,
-        "z": 16.0
+        "x": -1941.41,
+        "y": 137.72,
+        "z": 37.83
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2593.0,
-        "y": 56.0,
-        "z": 16.0
+        "x": -1941.41,
+        "y": 137.72,
+        "z": 37.83
       },
       "description_en": "Burger Shot in Juniper Hollow .",
       "description_ru": "«Бургер Шот» в Низине Джунипер.",
@@ -2705,15 +2705,15 @@
       "canonical_id": 47,
       "wiki_ref": 47,
       "world": {
-        "x": -1619.31,
-        "y": 1341.39,
-        "z": 11.3
+        "x": -1851.72,
+        "y": -96.73,
+        "z": 24.37
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1619.31,
-        "y": 1341.39,
-        "z": 11.3
+        "x": -1851.72,
+        "y": -96.73,
+        "z": 24.37
       },
       "description_en": "Supa Save! in Juniper Hill .",
       "description_ru": "Supa Save! в Джунипер-Хилл.",
@@ -2724,15 +2724,15 @@
       "canonical_id": 48,
       "wiki_ref": 48,
       "world": {
-        "x": -2307.0,
-        "y": 207.0,
-        "z": 42.0
+        "x": -1689.0,
+        "y": 51.0,
+        "z": 38.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2307.0,
-        "y": 207.0,
-        "z": 42.0
+        "x": -1689.0,
+        "y": 51.0,
+        "z": 38.0
       },
       "description_en": "West entrance of Chinatown.",
       "description_ru": "Западный вход в Чайна-таун.",
@@ -2743,15 +2743,15 @@
       "canonical_id": 49,
       "wiki_ref": 49,
       "world": {
-        "x": -2343.0,
-        "y": -79.0,
-        "z": 38.0
+        "x": -1650.01,
+        "y": 422.0,
+        "z": 21.17
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2343.0,
-        "y": -79.0,
-        "z": 38.0
+        "x": -1650.01,
+        "y": 422.0,
+        "z": 21.17
       },
       "description_en": "Windy Windy Windy Windy Street in Calton Heights.",
       "description_ru": "Windy Windy Windy Windy Street в Кэлтон-Хайтс.",
@@ -2762,15 +2762,15 @@
       "canonical_id": 50,
       "wiki_ref": 50,
       "world": {
-        "x": -1906.66,
-        "y": 518.58,
-        "z": 61.71
+        "x": -1325.15,
+        "y": 494.19,
+        "z": 26.83
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1906.66,
-        "y": 518.58,
-        "z": 61.71
+        "x": -1325.15,
+        "y": 494.19,
+        "z": 26.83
       },
       "description_en": "Sam 's statue on top of the Downtown Square pillar.",
       "description_ru": "Статуя Sam на вершине колонны в сквере Делового района.",
@@ -2781,15 +2781,15 @@
       "canonical_id": 1,
       "wiki_ref": 1,
       "world": {
-        "x": 1224.0,
-        "y": 2617.0,
-        "z": 11.0
+        "x": 984.0,
+        "y": 2563.0,
+        "z": 12.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1224.0,
-        "y": 2617.0,
-        "z": 11.0
+        "x": 984.0,
+        "y": 2563.0,
+        "z": 12.0
       },
       "description_en": "At the Las Venturas Welcome Sign in the northwestern end of Las Venturas.",
       "description_ru": "У приветственного знака Лас-Вентураса на северо-западной окраине города.",
@@ -2800,15 +2800,15 @@
       "canonical_id": 2,
       "wiki_ref": 2,
       "world": {
-        "x": 2323.0,
-        "y": 1284.0,
-        "z": 97.0
+        "x": 919.0,
+        "y": 2070.0,
+        "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2323.0,
-        "y": 1284.0,
-        "z": 97.0
+        "x": 919.0,
+        "y": 2070.0,
+        "z": 11.0
       },
       "description_en": "Behind the Sindacco Abattoir in Whitewood Estates .",
       "description_ru": "За скотобойней Синдакко в Уайтвуд-Эстейтс.",
@@ -2819,15 +2819,15 @@
       "canonical_id": 3,
       "wiki_ref": 3,
       "world": {
-        "x": 2035.0,
-        "y": 2305.0,
-        "z": 18.0
+        "x": 970.0,
+        "y": 1787.0,
+        "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2035.0,
-        "y": 2305.0,
-        "z": 18.0
+        "x": 970.0,
+        "y": 1787.0,
+        "z": 11.0
       },
       "description_en": "In the building in Whitewood Estates, located to the west of the Blackfield Stadium .",
       "description_ru": "В здании в Уайтвуд-Эстейтс, к западу от стадиона Блэкфилд.",
@@ -2838,15 +2838,15 @@
       "canonical_id": 4,
       "wiki_ref": 4,
       "world": {
-        "x": 2491.0,
-        "y": 2263.0,
-        "z": 15.0
+        "x": 1393.0,
+        "y": 1832.0,
+        "z": 12.34
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2491.0,
-        "y": 2263.0,
-        "z": 15.0
+        "x": 1393.0,
+        "y": 1832.0,
+        "z": 12.34
       },
       "description_en": "Next to the northern end of the Las Venturas Airport runway.",
       "description_ru": "Рядом с северным концом взлётно-посадочной полосы аэропорта Лас-Вентураса.",
@@ -2857,15 +2857,15 @@
       "canonical_id": 5,
       "wiki_ref": 5,
       "world": {
-        "x": 1433.0,
-        "y": 2796.0,
-        "z": 20.0
+        "x": 1521.0,
+        "y": 1690.0,
+        "z": 10.6
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1433.0,
-        "y": 2796.0,
-        "z": 20.0
+        "x": 1521.0,
+        "y": 1690.0,
+        "z": 10.6
       },
       "description_en": "Between the northernmost hangars and the runway of the Las Venturas runway.",
       "description_ru": "Между самыми северными ангарами и взлётно-посадочной полосой аэропорта Лас-Вентураса.",
@@ -2876,14 +2876,14 @@
       "canonical_id": 6,
       "wiki_ref": 6,
       "world": {
-        "x": 2071.0,
-        "y": 712.0,
+        "x": 1603.0,
+        "y": 1435.0,
         "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2071.0,
-        "y": 712.0,
+        "x": 1603.0,
+        "y": 1435.0,
         "z": 11.0
       },
       "description_en": "Behind the Las Venturas Airport terminal.",
@@ -2895,15 +2895,15 @@
       "canonical_id": 7,
       "wiki_ref": 7,
       "world": {
-        "x": 2239.0,
-        "y": 1839.0,
-        "z": 18.0
+        "x": 1084.0,
+        "y": 1076.0,
+        "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2239.0,
-        "y": 1839.0,
-        "z": 18.0
+        "x": 1084.0,
+        "y": 1076.0,
+        "z": 11.0
       },
       "description_en": "In the middle of the Greenglass College campus.",
       "description_ru": "В центре кампуса колледжа Грингласс.",
@@ -2914,15 +2914,15 @@
       "canonical_id": 8,
       "wiki_ref": 8,
       "world": {
-        "x": 2583.0,
-        "y": 2387.0,
-        "z": 16.0
+        "x": 1362.92,
+        "y": 1015.24,
+        "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2583.0,
-        "y": 2387.0,
-        "z": 16.0
+        "x": 1362.92,
+        "y": 1015.24,
+        "z": 11.0
       },
       "description_en": "Behind the Sumo depot on the border of Blackfield Intersection and LVA Freight Depot .",
       "description_ru": "За депо Sumo на границе развязки Блэкфилд и грузового склада аэропорта Лас-Вентураса.",
@@ -2933,15 +2933,15 @@
       "canonical_id": 9,
       "wiki_ref": 9,
       "world": {
-        "x": 2864.0,
-        "y": 857.0,
-        "z": 13.0
+        "x": 1462.0,
+        "y": 936.0,
+        "z": 10.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2864.0,
-        "y": 857.0,
-        "z": 13.0
+        "x": 1462.0,
+        "y": 936.0,
+        "z": 10.0
       },
       "description_en": "Behind the warehouse to the south of the Sumo depot.",
       "description_ru": "За складом к югу от депо Sumo.",
@@ -2952,15 +2952,15 @@
       "canonical_id": 10,
       "wiki_ref": 10,
       "world": {
-        "x": 2612.0,
-        "y": 2200.0,
-        "z": -1.0
+        "x": 1526.22,
+        "y": 751.0,
+        "z": 29.04
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2612.0,
-        "y": 2200.0,
-        "z": -1.0
+        "x": 1526.22,
+        "y": 751.0,
+        "z": 29.04
       },
       "description_en": "On the top of the Blackfield Chapel .",
       "description_ru": "На крыше часовни Блэкфилд.",
@@ -2971,15 +2971,15 @@
       "canonical_id": 11,
       "wiki_ref": 11,
       "world": {
-        "x": 2274.0,
-        "y": 1507.0,
-        "z": 24.0
+        "x": 1767.0,
+        "y": 601.0,
+        "z": 13.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2274.0,
-        "y": 1507.0,
-        "z": 24.0
+        "x": 1767.0,
+        "y": 601.0,
+        "z": 13.0
       },
       "description_en": "Under the northern end of The Mako Span bridge in Randolph Industrial Estate .",
       "description_ru": "Под северным концом моста Мако в Промышленной зоне Рэндольф.",
@@ -2990,14 +2990,14 @@
       "canonical_id": 12,
       "wiki_ref": 12,
       "world": {
-        "x": 2184.0,
-        "y": 2529.0,
+        "x": 2071.0,
+        "y": 712.0,
         "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2184.0,
-        "y": 2529.0,
+        "x": 2071.0,
+        "y": 712.0,
         "z": 11.0
       },
       "description_en": "In the backyard of one of the houses in Rockshore West , to the east of Last Dime Motel .",
@@ -3009,15 +3009,15 @@
       "canonical_id": 13,
       "wiki_ref": 13,
       "world": {
-        "x": 1863.0,
-        "y": 2314.0,
-        "z": 15.0
+        "x": 2125.5,
+        "y": 789.23,
+        "z": 11.45
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1863.0,
-        "y": 2314.0,
-        "z": 15.0
+        "x": 2125.5,
+        "y": 789.23,
+        "z": 11.45
       },
       "description_en": "In the backyard of one of the houses in Rockshore West, to the south of the Ammu-Nation and Xoomer gas station.",
       "description_ru": "На заднем дворе одного из домов в Западном Рокшоре, к югу от «Амму-Нации» и заправки Xoomer.",
@@ -3028,15 +3028,15 @@
       "canonical_id": 14,
       "wiki_ref": 14,
       "world": {
-        "x": 2054.0,
-        "y": 2434.0,
-        "z": 166.0
+        "x": 2864.0,
+        "y": 857.0,
+        "z": 13.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2054.0,
-        "y": 2434.0,
-        "z": 166.0
+        "x": 2864.0,
+        "y": 857.0,
+        "z": 13.0
       },
       "description_en": "In the southeastern portion of the depot in Rockshore East , next to the ocean border.",
       "description_ru": "В юго-восточной части депо в Восточном Рокшоре, рядом с берегом океана.",
@@ -3047,15 +3047,15 @@
       "canonical_id": 15,
       "wiki_ref": 15,
       "world": {
-        "x": 1603.0,
-        "y": 1435.0,
-        "z": 11.0
+        "x": 2493.0,
+        "y": 922.0,
+        "z": 16.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1603.0,
-        "y": 1435.0,
-        "z": 11.0
+        "x": 2493.0,
+        "y": 922.0,
+        "z": 16.0
       },
       "description_en": "In the Wedding Chapel on the southeast border of Come-A-Lot , to the southeast of the TransFender garage.",
       "description_ru": "В Wedding Chapel на юго-восточной границе казино «Кам-е-лот», к юго-востоку от гаража «ТрансФендер».",
@@ -3066,15 +3066,15 @@
       "canonical_id": 16,
       "wiki_ref": 16,
       "world": {
-        "x": 1362.92,
-        "y": 1015.24,
-        "z": 11.0
+        "x": 2108.0,
+        "y": 1003.0,
+        "z": 46.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1362.92,
-        "y": 1015.24,
-        "z": 11.0
+        "x": 2108.0,
+        "y": 1003.0,
+        "z": 46.0
       },
       "description_en": "On top of the Come-A-Lot casino pillar sign, across the street from The Four Dragons Casino .",
       "description_ru": "На вершине опоры вывески казино «Кам-е-лот», через дорогу от казино «Четыре дракона».",
@@ -3085,15 +3085,15 @@
       "canonical_id": 17,
       "wiki_ref": 17,
       "world": {
-        "x": 2058.7,
-        "y": 2159.1,
-        "z": 16.0
+        "x": 1934.06,
+        "y": 988.79,
+        "z": 22.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2058.7,
-        "y": 2159.1,
-        "z": 16.0
+        "x": 1934.06,
+        "y": 988.79,
+        "z": 22.0
       },
       "description_en": "On the lower rooftops of The Four Dragons Casino.",
       "description_ru": "На нижних крышах казино «Четыре дракона».",
@@ -3104,15 +3104,15 @@
       "canonical_id": 18,
       "wiki_ref": 18,
       "world": {
-        "x": 2003.0,
-        "y": 1672.0,
-        "z": 12.0
+        "x": 2238.0,
+        "y": 1135.0,
+        "z": 49.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2003.0,
-        "y": 1672.0,
-        "z": 12.0
+        "x": 2238.0,
+        "y": 1135.0,
+        "z": 49.0
       },
       "description_en": "In one of the castle towers of the Come-A-Lot casino.",
       "description_ru": "В одной из башен замка казино «Кам-е-лот».",
@@ -3123,15 +3123,15 @@
       "canonical_id": 19,
       "wiki_ref": 19,
       "world": {
-        "x": 2238.0,
-        "y": 1135.0,
-        "z": 49.0
+        "x": 2509.0,
+        "y": 1144.0,
+        "z": 19.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2238.0,
-        "y": 1135.0,
-        "z": 49.0
+        "x": 2509.0,
+        "y": 1144.0,
+        "z": 19.0
       },
       "description_en": "On an accessible balcony of a building adjacent to the Zip Pizza branch across the street from the Las Venturas City Planning Department building.",
       "description_ru": "На доступном балконе здания рядом с Zip Pizza, через дорогу от здания Департамента градостроительства Лас-Вентураса.",
@@ -3142,15 +3142,15 @@
       "canonical_id": 20,
       "wiki_ref": 20,
       "world": {
-        "x": 1934.06,
-        "y": 988.79,
-        "z": 22.0
+        "x": 2417.0,
+        "y": 1281.0,
+        "z": 21.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1934.06,
-        "y": 988.79,
-        "z": 22.0
+        "x": 2417.0,
+        "y": 1281.0,
+        "z": 21.0
       },
       "description_en": "On the eastern border of The Camel's Toe pyramid.",
       "description_ru": "На восточной границе пирамиды казино «Верблюжье копыто».",
@@ -3161,15 +3161,15 @@
       "canonical_id": 21,
       "wiki_ref": 21,
       "world": {
-        "x": 1768.0,
-        "y": 2847.0,
-        "z": 9.0
+        "x": 2323.0,
+        "y": 1284.0,
+        "z": 97.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1768.0,
-        "y": 2847.0,
-        "z": 9.0
+        "x": 2323.0,
+        "y": 1284.0,
+        "z": 97.0
       },
       "description_en": "On the top of The Camel's Toe pyramid.",
       "description_ru": "На вершине пирамиды казино «Верблюжье копыто».",
@@ -3180,15 +3180,15 @@
       "canonical_id": 22,
       "wiki_ref": 22,
       "world": {
-        "x": 1084.0,
-        "y": 1076.0,
-        "z": 11.0
+        "x": 2274.0,
+        "y": 1507.0,
+        "z": 24.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1084.0,
-        "y": 1076.0,
-        "z": 11.0
+        "x": 2274.0,
+        "y": 1507.0,
+        "z": 24.0
       },
       "description_en": "On the third floor of the multstory parking lot to the southeast of Caligula's Palace , overlooking the casino.",
       "description_ru": "На третьем этаже многоуровневой парковки к юго-востоку от Дворца Калигулы, с видом на казино.",
@@ -3199,15 +3199,15 @@
       "canonical_id": 23,
       "wiki_ref": 23,
       "world": {
-        "x": 2879.0,
-        "y": 2522.0,
-        "z": 11.0
+        "x": 2003.0,
+        "y": 1672.0,
+        "z": 12.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2879.0,
-        "y": 2522.0,
-        "z": 11.0
+        "x": 2003.0,
+        "y": 1672.0,
+        "z": 12.0
       },
       "description_en": "Hidden in the bushes between the skull torches in the northern section of the Pirates in Men's Pants hotel and casino.",
       "description_ru": "Спрятана в кустах между факелами в виде черепов в северной части казино «Пираты в штанах».",
@@ -3218,15 +3218,15 @@
       "canonical_id": 24,
       "wiki_ref": 24,
       "world": {
-        "x": 2371.0,
-        "y": 2009.0,
-        "z": 15.0
+        "x": 2239.0,
+        "y": 1839.0,
+        "z": 18.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2371.0,
-        "y": 2009.0,
-        "z": 15.0
+        "x": 2239.0,
+        "y": 1839.0,
+        "z": 18.0
       },
       "description_en": "On the top of the entrance of The Clown's Pocket hotel and casino.",
       "description_ru": "На крыше над входом в казино «Карман шута».",
@@ -3237,15 +3237,15 @@
       "canonical_id": 25,
       "wiki_ref": 25,
       "world": {
-        "x": 1521.0,
-        "y": 1690.0,
-        "z": 10.6
+        "x": 2077.0,
+        "y": 1912.0,
+        "z": 14.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1521.0,
-        "y": 1690.0,
-        "z": 10.6
+        "x": 2077.0,
+        "y": 1912.0,
+        "z": 14.0
       },
       "description_en": "Under the waterfalls of The Visage hotel and casino.",
       "description_ru": "Под водопадами казино «Визаж».",
@@ -3256,15 +3256,15 @@
       "canonical_id": 26,
       "wiki_ref": 26,
       "world": {
-        "x": 2417.0,
-        "y": 1281.0,
-        "z": 21.0
+        "x": 2215.0,
+        "y": 1968.0,
+        "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2417.0,
-        "y": 1281.0,
-        "z": 21.0
+        "x": 2215.0,
+        "y": 1968.0,
+        "z": 11.0
       },
       "description_en": "In the alley behind the 24/7 convenience store adjacent to the Starfish Casino .",
       "description_ru": "В переулке за магазином 24/7 рядом с казино «Морская звезда».",
@@ -3275,14 +3275,14 @@
       "canonical_id": 27,
       "wiki_ref": 27,
       "world": {
-        "x": 1376.0,
-        "y": 2304.0,
+        "x": 2371.0,
+        "y": 2009.0,
         "z": 15.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1376.0,
-        "y": 2304.0,
+        "x": 2371.0,
+        "y": 2009.0,
         "z": 15.0
       },
       "description_en": "On the top of the drive-thru entrance of the Venturas Steaks Steakhouse in the Old Venturas Strip .",
@@ -3294,15 +3294,15 @@
       "canonical_id": 28,
       "wiki_ref": 28,
       "world": {
-        "x": 1393.0,
-        "y": 1832.0,
-        "z": 12.34
+        "x": 2588.0,
+        "y": 1902.0,
+        "z": 15.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1393.0,
-        "y": 1832.0,
-        "z": 12.34
+        "x": 2588.0,
+        "y": 1902.0,
+        "z": 15.0
       },
       "description_en": "On the balcony above the ZIP clothing store in the Pilgrim mall, on the border of Starfish Casino .",
       "description_ru": "На балконе над магазином одежды «Зип» в торговом центре Пилгрим, на границе казино «Морская звезда».",
@@ -3313,15 +3313,15 @@
       "canonical_id": 29,
       "wiki_ref": 29,
       "world": {
-        "x": 984.0,
-        "y": 2563.0,
-        "z": 12.0
+        "x": 2705.98,
+        "y": 1862.52,
+        "z": 24.41
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 984.0,
-        "y": 2563.0,
-        "z": 12.0
+        "x": 2705.98,
+        "y": 1862.52,
+        "z": 24.41
       },
       "description_en": "On the billboard advertising the Victim clothing store on Julius Thruway East , to the east of the Pilgrim mall.",
       "description_ru": "На рекламном щите магазина одежды «Виктим» на шоссе Джулиус — Восток, к востоку от торгового центра Пилгрим.",
@@ -3332,15 +3332,15 @@
       "canonical_id": 30,
       "wiki_ref": 30,
       "world": {
-        "x": 1767.0,
-        "y": 601.0,
-        "z": 13.0
+        "x": 2612.0,
+        "y": 2200.0,
+        "z": -1.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1767.0,
-        "y": 601.0,
-        "z": 13.0
+        "x": 2612.0,
+        "y": 2200.0,
+        "z": -1.0
       },
       "description_en": "Inside the underground railway tunnel, whose northern entrance is located behind the V-Rock Hotel .",
       "description_ru": "Внутри подземного железнодорожного тоннеля; его северный вход находится за V-Rock Hotel.",
@@ -3351,15 +3351,15 @@
       "canonical_id": 31,
       "wiki_ref": 31,
       "world": {
-        "x": 2108.0,
-        "y": 1003.0,
-        "z": 46.0
+        "x": 2583.0,
+        "y": 2387.0,
+        "z": 16.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2108.0,
-        "y": 1003.0,
-        "z": 46.0
+        "x": 2583.0,
+        "y": 2387.0,
+        "z": 16.0
       },
       "description_en": "In the guitar-shaped pool behind the V-Rock Hotel.",
       "description_ru": "В бассейне в форме гитары за V-Rock Hotel.",
@@ -3370,15 +3370,15 @@
       "canonical_id": 32,
       "wiki_ref": 32,
       "world": {
-        "x": 2705.98,
-        "y": 1862.52,
-        "z": 24.41
+        "x": 2491.0,
+        "y": 2263.0,
+        "z": 15.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2705.98,
-        "y": 1862.52,
-        "z": 24.41
+        "x": 2491.0,
+        "y": 2263.0,
+        "z": 15.0
       },
       "description_en": "On the rooftop of the Erotic Wedding Chapel to the north of the V-Rock Hotel.",
       "description_ru": "На крыше Erotic Wedding Chapel к северу от V-Rock Hotel.",
@@ -3389,15 +3389,15 @@
       "canonical_id": 33,
       "wiki_ref": 33,
       "world": {
-        "x": 2493.0,
-        "y": 922.0,
-        "z": 16.0
+        "x": 2440.08,
+        "y": 2161.07,
+        "z": 20.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2493.0,
-        "y": 922.0,
-        "z": 16.0
+        "x": 2440.08,
+        "y": 2161.07,
+        "z": 20.0
       },
       "description_en": "On the \"Casino\" sign of the Old Venturas Strip Safehouse .",
       "description_ru": "На вывеске «Casino» у убежища в Олд-Вентурас-Стрип.",
@@ -3408,15 +3408,15 @@
       "canonical_id": 34,
       "wiki_ref": 34,
       "world": {
-        "x": 1881.0,
-        "y": 2846.0,
-        "z": 11.0
+        "x": 2058.7,
+        "y": 2159.1,
+        "z": 16.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1881.0,
-        "y": 2846.0,
-        "z": 11.0
+        "x": 2058.7,
+        "y": 2159.1,
+        "z": 16.0
       },
       "description_en": "On the western balcony of the Tam O'Shanter Motel in the The Strip , bordering Redsands East .",
       "description_ru": "На западном балконе Tam O'Shanter Motel на Стрипе, на границе с Восточным Рэдсэндс.",
@@ -3427,14 +3427,14 @@
       "canonical_id": 35,
       "wiki_ref": 35,
       "world": {
-        "x": 2020.0,
-        "y": 2352.0,
+        "x": 2031.25,
+        "y": 2207.33,
         "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2020.0,
-        "y": 2352.0,
+        "x": 2031.25,
+        "y": 2207.33,
         "z": 11.0
       },
       "description_en": "In the alley to the west of the strip mall (with accessible The Well Stacked Pizza Co. , Cluckin' Bell , ZIP and Binco ) in the northern end of The Strip.",
@@ -3465,15 +3465,15 @@
       "canonical_id": 37,
       "wiki_ref": 37,
       "world": {
-        "x": 1462.0,
-        "y": 936.0,
-        "z": 10.0
+        "x": 1376.0,
+        "y": 2304.0,
+        "z": 15.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1462.0,
-        "y": 936.0,
-        "z": 10.0
+        "x": 1376.0,
+        "y": 2304.0,
+        "z": 15.0
       },
       "description_en": "On top of a wall in the northern portion of the Las Venturas Bandits Stadium in Redsands West.",
       "description_ru": "На вершине стены в северной части стадиона «Las Venturas Bandits» в Западном Рэдсэндс.",
@@ -3484,15 +3484,15 @@
       "canonical_id": 38,
       "wiki_ref": 38,
       "world": {
-        "x": 2125.5,
-        "y": 789.23,
-        "z": 11.45
+        "x": 1582.0,
+        "y": 2401.0,
+        "z": 19.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2125.5,
-        "y": 789.23,
-        "z": 11.45
+        "x": 1582.0,
+        "y": 2401.0,
+        "z": 19.0
       },
       "description_en": "In a depot to the northeast of the Las Venturas Bandits Stadium, on top of the containers to the north.",
       "description_ru": "В депо к северо-востоку от стадиона «Las Venturas Bandits», на контейнерах в северной части.",
@@ -3503,14 +3503,14 @@
       "canonical_id": 39,
       "wiki_ref": 39,
       "world": {
-        "x": 2588.0,
-        "y": 1902.0,
+        "x": 1863.0,
+        "y": 2314.0,
         "z": 15.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2588.0,
-        "y": 1902.0,
+        "x": 1863.0,
+        "y": 2314.0,
         "z": 15.0
       },
       "description_en": "On the rooftop of a building across the street from the Ivory Towers Drive-Thru Mental Clinic in Redsands East.",
@@ -3522,15 +3522,15 @@
       "canonical_id": 40,
       "wiki_ref": 40,
       "world": {
-        "x": 919.0,
-        "y": 2070.0,
-        "z": 11.0
+        "x": 2035.0,
+        "y": 2305.0,
+        "z": 18.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 919.0,
-        "y": 2070.0,
-        "z": 11.0
+        "x": 2035.0,
+        "y": 2305.0,
+        "z": 18.0
       },
       "description_en": "On the rooftop of a souvenirs store to the east of Below the Belt Gym , in front of The Emerald Isle .",
       "description_ru": "На крыше сувенирного магазина к востоку от спортзала «Ниже пояса», напротив «Изумрудного острова».",
@@ -3541,14 +3541,14 @@
       "canonical_id": 41,
       "wiki_ref": 41,
       "world": {
-        "x": 2173.0,
-        "y": 2465.0,
+        "x": 2020.0,
+        "y": 2352.0,
         "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2173.0,
-        "y": 2465.0,
+        "x": 2020.0,
+        "y": 2352.0,
         "z": 11.0
       },
       "description_en": "In a small space below a \"Train Hard\" ProLaps billboard in front of The Emerald Isle.",
@@ -3560,15 +3560,15 @@
       "canonical_id": 42,
       "wiki_ref": 42,
       "world": {
-        "x": 2031.25,
-        "y": 2207.33,
-        "z": 11.0
+        "x": 2054.0,
+        "y": 2434.0,
+        "z": 166.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2031.25,
-        "y": 2207.33,
-        "z": 11.0
+        "x": 2054.0,
+        "y": 2434.0,
+        "z": 166.0
       },
       "description_en": "On top of The Emerald Isle.",
       "description_ru": "На вершине «Изумрудного острова».",
@@ -3579,15 +3579,15 @@
       "canonical_id": 43,
       "wiki_ref": 43,
       "world": {
-        "x": 2509.0,
-        "y": 1144.0,
-        "z": 19.0
+        "x": 2173.0,
+        "y": 2465.0,
+        "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2509.0,
-        "y": 1144.0,
-        "z": 19.0
+        "x": 2173.0,
+        "y": 2465.0,
+        "z": 11.0
       },
       "description_en": "Hidden behind the billboard support next to Soapys Car Wash , to the north of The Emerald Isle.",
       "description_ru": "Спрятана за опорой рекламного щита рядом с Soapys Car Wash, к северу от «Изумрудного острова».",
@@ -3598,14 +3598,14 @@
       "canonical_id": 44,
       "wiki_ref": 44,
       "world": {
-        "x": 2215.0,
-        "y": 1968.0,
+        "x": 2184.0,
+        "y": 2529.0,
         "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2215.0,
-        "y": 1968.0,
+        "x": 2184.0,
+        "y": 2529.0,
         "z": 11.0
       },
       "description_en": "In front of a row of storage garages to the north of Soapys Car Wash, to the north of The Emerald Isle.",
@@ -3617,14 +3617,14 @@
       "canonical_id": 45,
       "wiki_ref": 45,
       "world": {
-        "x": 2626.0,
-        "y": 2841.0,
+        "x": 2879.0,
+        "y": 2522.0,
         "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2626.0,
-        "y": 2841.0,
+        "x": 2879.0,
+        "y": 2522.0,
         "z": 11.0
       },
       "description_en": "Behind the Creek Mall in the northeastern end of Las Venturas.",
@@ -3636,15 +3636,15 @@
       "canonical_id": 46,
       "wiki_ref": 46,
       "world": {
-        "x": 2440.08,
-        "y": 2161.07,
-        "z": 20.0
+        "x": 2626.0,
+        "y": 2841.0,
+        "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2440.08,
-        "y": 2161.07,
-        "z": 20.0
+        "x": 2626.0,
+        "y": 2841.0,
+        "z": 11.0
       },
       "description_en": "At the K.A.C.C. Military Aviation Fuel Depot , between the accessible warehouse and an inacessible factory building in the northern end of the facility.",
       "description_ru": "На территории склада военного авиационного топлива K.A.C.C., между доступным складом и недоступным заводским зданием в северной части комплекса.",
@@ -3655,15 +3655,15 @@
       "canonical_id": 47,
       "wiki_ref": 47,
       "world": {
-        "x": 1582.0,
-        "y": 2401.0,
-        "z": 19.0
+        "x": 1881.0,
+        "y": 2846.0,
+        "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1582.0,
-        "y": 2401.0,
-        "z": 19.0
+        "x": 1881.0,
+        "y": 2846.0,
+        "z": 11.0
       },
       "description_en": "In the tennis courts in Prickle Pine .",
       "description_ru": "На теннисных кортах в Прикл-Пайн.",
@@ -3674,15 +3674,15 @@
       "canonical_id": 48,
       "wiki_ref": 48,
       "world": {
-        "x": 2077.0,
-        "y": 1912.0,
-        "z": 14.0
+        "x": 1768.0,
+        "y": 2847.0,
+        "z": 9.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2077.0,
-        "y": 1912.0,
-        "z": 14.0
+        "x": 1768.0,
+        "y": 2847.0,
+        "z": 9.0
       },
       "description_en": "In the pool next to the tennis courts in Prickle Pine.",
       "description_ru": "В бассейне рядом с теннисными кортами в Прикл-Пайн.",
@@ -3693,15 +3693,15 @@
       "canonical_id": 49,
       "wiki_ref": 49,
       "world": {
-        "x": 970.0,
-        "y": 1787.0,
-        "z": 11.0
+        "x": 1433.0,
+        "y": 2796.0,
+        "z": 20.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 970.0,
-        "y": 1787.0,
-        "z": 11.0
+        "x": 1433.0,
+        "y": 2796.0,
+        "z": 20.0
       },
       "description_en": "On the balcony of the club house of the Yellow Bell Golf Course .",
       "description_ru": "На балконе клубного дома поля для гольфа «Йеллоу Белл».",
@@ -3712,15 +3712,15 @@
       "canonical_id": 50,
       "wiki_ref": 50,
       "world": {
-        "x": 1526.22,
-        "y": 751.0,
-        "z": 29.04
+        "x": 1224.0,
+        "y": 2617.0,
+        "z": 11.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1526.22,
-        "y": 751.0,
-        "z": 29.04
+        "x": 1224.0,
+        "y": 2617.0,
+        "z": 11.0
       },
       "description_en": "In front of the westernmost residency of Prickle Pine, adjacent to the northeastern railway of Las Venturas, on the border with Bone County .",
       "description_ru": "Перед самым западным жилым домом Прикл-Пайн, рядом с северо-восточной железной дорогой Лас-Вентураса, на границе с округом Боун.",
@@ -3731,15 +3731,15 @@
       "canonical_id": 1,
       "wiki_ref": 1,
       "world": {
-        "x": 979.0,
-        "y": -2210.0,
-        "z": 0.0
+        "x": 2179,
+        "y": 235,
+        "z": -5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 979.0,
-        "y": -2210.0,
-        "z": 0.0
+        "x": 2179,
+        "y": 235,
+        "z": -5
       },
       "description_en": "Under the bridge to the northwest of the Palomino Creek Safehouse .",
       "description_ru": "Под мостом к северо-западу от убежища в Паломино-Крик.",
@@ -3750,15 +3750,15 @@
       "canonical_id": 2,
       "wiki_ref": 2,
       "world": {
-        "x": 2750.0,
-        "y": -2584.0,
-        "z": 0.0
+        "x": 2098,
+        "y": -108,
+        "z": -2
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2750.0,
-        "y": -2584.0,
-        "z": 0.0
+        "x": 2098,
+        "y": -108,
+        "z": -2
       },
       "description_en": "At the end of the fishing jetty at Fisher's Lagoon in Palomino Creek .",
       "description_ru": "В конце рыбацкого пирса у Рыбацкой лагуны в Паломино-Крик.",
@@ -3769,15 +3769,15 @@
       "canonical_id": 3,
       "wiki_ref": 3,
       "world": {
-        "x": 1279.0,
-        "y": -806.0,
-        "z": 0.0
+        "x": 486,
+        "y": -253,
+        "z": -4
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1279.0,
-        "y": -806.0,
-        "z": 0.0
+        "x": 486,
+        "y": -253,
+        "z": -4
       },
       "description_en": "Under the wooden bridge over the river between Blueberry and Fern Ridge .",
       "description_ru": "Под деревянным мостом через реку между Блуберри и Ферн-Ридж.",
@@ -3788,15 +3788,15 @@
       "canonical_id": 4,
       "wiki_ref": 4,
       "world": {
-        "x": 2945.13,
-        "y": -2051.93,
-        "z": 0.0
+        "x": 40,
+        "y": -531,
+        "z": -8
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2945.13,
-        "y": -2051.93,
-        "z": 0.0
+        "x": 40,
+        "y": -531,
+        "z": -8
       },
       "description_en": "Under the bridge to the west of Flint Water , located to the south of the FleischBerg factory.",
       "description_ru": "Под мостом к западу от Флинт-Уотер, к югу от фабрики FleischBerg.",
@@ -3807,15 +3807,15 @@
       "canonical_id": 5,
       "wiki_ref": 5,
       "world": {
-        "x": 67.0,
-        "y": -1018.0,
-        "z": 0.0
+        "x": 67,
+        "y": -1018,
+        "z": -5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 67.0,
-        "y": -1018.0,
-        "z": 0.0
+        "x": 67,
+        "y": -1018,
+        "z": -5
       },
       "description_en": "Under the bridge to the north of the Trucking Depot in Flint County .",
       "description_ru": "Под мостом к северу от Trucking Depot в округе Флинт.",
@@ -3826,15 +3826,15 @@
       "canonical_id": 6,
       "wiki_ref": 6,
       "world": {
-        "x": 2327.0,
-        "y": -2662.0,
-        "z": 0.0
+        "x": -90,
+        "y": -910,
+        "z": -5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2327.0,
-        "y": -2662.0,
-        "z": 0.0
+        "x": -90,
+        "y": -910,
+        "z": -5
       },
       "description_en": "Under the rail bridge to the north of the Trucking Depot in Flint County.",
       "description_ru": "Под железнодорожным мостом к северу от Trucking Depot в округе Флинт.",
@@ -3845,15 +3845,15 @@
       "canonical_id": 7,
       "wiki_ref": 7,
       "world": {
-        "x": 2621.0,
-        "y": -2506.0,
-        "z": 0.0
+        "x": 26.43,
+        "y": -1320.94,
+        "z": -10.04
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2621.0,
-        "y": -2506.0,
-        "z": 0.0
+        "x": 26.43,
+        "y": -1320.94,
+        "z": -10.04
       },
       "description_en": "Under the Flint Intersection bridge, below the entrance of the tunnel leading to Los Santos .",
       "description_ru": "Под мостом развязки Флинт, ниже входа в тоннель, ведущий в Лос-Сантос.",
@@ -3864,15 +3864,15 @@
       "canonical_id": 8,
       "wiki_ref": 8,
       "world": {
-        "x": 1249.0,
-        "y": -2687.0,
-        "z": 0.0
+        "x": -207,
+        "y": -1682,
+        "z": -8
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1249.0,
-        "y": -2687.0,
-        "z": 0.0
+        "x": -207,
+        "y": -1682,
+        "z": -8
       },
       "description_en": "On a small beach to the south of the Flint Intersection Trailer Park , in the San Fierro Scenic Route .",
       "description_ru": "На небольшом пляже к югу от трейлерного парка у развязки Флинт, на живописном маршруте Сан-Фиерро.",
@@ -3883,15 +3883,15 @@
       "canonical_id": 9,
       "wiki_ref": 9,
       "world": {
-        "x": 725.0,
-        "y": -1849.0,
-        "z": 0.0
+        "x": 155,
+        "y": -1975,
+        "z": -8
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 725.0,
-        "y": -1849.0,
-        "z": 0.0
+        "x": 155,
+        "y": -1975,
+        "z": -8
       },
       "description_en": "At the end of the pier in Santa Maria Beach on which the Los Santos Lighthouse is located.",
       "description_ru": "В конце пирса на пляже Санта-Мария, где расположен Маяк Лос-Сантоса.",
@@ -3902,15 +3902,15 @@
       "canonical_id": 10,
       "wiki_ref": 10,
       "world": {
-        "x": 723.0,
-        "y": -1586.0,
-        "z": 0.0
+        "x": 725,
+        "y": -1849,
+        "z": -5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 723.0,
-        "y": -1586.0,
-        "z": 0.0
+        "x": 725,
+        "y": -1849,
+        "z": -5
       },
       "description_en": "In the southern end of the Marina canal, under the ped walkway bridges in Verona Beach .",
       "description_ru": "В южной части канала Марина, под пешеходными мостиками в Верона-Бич.",
@@ -3921,15 +3921,15 @@
       "canonical_id": 11,
       "wiki_ref": 11,
       "world": {
-        "x": 155.0,
-        "y": -1975.0,
-        "z": 0.0
+        "x": 723,
+        "y": -1586,
+        "z": -3
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 155.0,
-        "y": -1975.0,
-        "z": 0.0
+        "x": 723,
+        "y": -1586,
+        "z": -3
       },
       "description_en": "Under the bridge in the Marina canal, to the south of the Jetty Lounge , and west from the Burger Shot .",
       "description_ru": "Под мостом в канале Марина, к югу от Jetty Lounge и к западу от «Бургер Шот».",
@@ -3940,15 +3940,15 @@
       "canonical_id": 12,
       "wiki_ref": 12,
       "world": {
-        "x": 1968.0,
-        "y": -1203.0,
-        "z": 0.0
+        "x": 1279,
+        "y": -806,
+        "z": 85
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1968.0,
-        "y": -1203.0,
-        "z": 0.0
+        "x": 1279,
+        "y": -806,
+        "z": 85
       },
       "description_en": "In the pool outside Madd Dogg's Crib in Mulholland .",
       "description_ru": "В бассейне у Дома Бешеного Кекса в Малхолланде.",
@@ -3959,15 +3959,15 @@
       "canonical_id": 13,
       "wiki_ref": 13,
       "world": {
-        "x": -2657.0,
-        "y": 1564.0,
-        "z": 0.0
+        "x": 1968,
+        "y": -1203,
+        "z": 17
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2657.0,
-        "y": 1564.0,
-        "z": 0.0
+        "x": 1968,
+        "y": -1203,
+        "z": 17
       },
       "description_en": "In the middle of the lake in Glen Park , under the bridge.",
       "description_ru": "Посреди озера в Глен-Парке, под мостом.",
@@ -3978,15 +3978,15 @@
       "canonical_id": 14,
       "wiki_ref": 14,
       "world": {
-        "x": -1252.0,
-        "y": 501.0,
-        "z": 0.0
+        "x": 2945.13,
+        "y": -2051.93,
+        "z": -3
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1252.0,
-        "y": 501.0,
-        "z": 0.0
+        "x": 2945.13,
+        "y": -2051.93,
+        "z": -3
       },
       "description_en": "At the end of the wooden jetty at Playa del Seville .",
       "description_ru": "В конце деревянного пирса в районе Плайя-дель-Севилья.",
@@ -3997,15 +3997,15 @@
       "canonical_id": 15,
       "wiki_ref": 15,
       "world": {
-        "x": -1625.0,
-        "y": 4.0,
-        "z": 0.0
+        "x": 2750,
+        "y": -2584,
+        "z": -5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1625.0,
-        "y": 4.0,
-        "z": 0.0
+        "x": 2750,
+        "y": -2584,
+        "z": -5
       },
       "description_en": "In the small dock in the southeastern portion of Ocean Docks , near the freighter.",
       "description_ru": "В небольшом доке в юго-восточной части Океанского порта, рядом с грузовым судном.",
@@ -4016,15 +4016,15 @@
       "canonical_id": 16,
       "wiki_ref": 16,
       "world": {
-        "x": -1484.0,
-        "y": 1489.0,
-        "z": 0.0
+        "x": 2621,
+        "y": -2506,
+        "z": -5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1484.0,
-        "y": 1489.0,
-        "z": 0.0
+        "x": 2621,
+        "y": -2506,
+        "z": -5
       },
       "description_en": "Under the arch bridge in the center of Ocean Docks.",
       "description_ru": "Под арочным мостом в центре Океанского порта.",
@@ -4035,15 +4035,15 @@
       "canonical_id": 17,
       "wiki_ref": 17,
       "world": {
-        "x": -2505.41,
-        "y": 1543.72,
-        "z": 0.0
+        "x": 2327,
+        "y": -2662,
+        "z": -5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2505.41,
-        "y": 1543.72,
-        "z": 0.0
+        "x": 2327,
+        "y": -2662,
+        "z": -5
       },
       "description_en": "Under the southernmost bridge in Ocean Docks.",
       "description_ru": "Под самым южным мостом в Океанском порту.",
@@ -4054,15 +4054,15 @@
       "canonical_id": 18,
       "wiki_ref": 18,
       "world": {
-        "x": -2727.0,
-        "y": -469.0,
-        "z": 0.0
+        "x": 1249,
+        "y": -2687,
+        "z": -1
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2727.0,
-        "y": -469.0,
-        "z": 0.0
+        "x": 1249,
+        "y": -2687,
+        "z": -1
       },
       "description_en": "On the beach to the east of Los Santos International Airport and to the south of the Verdant Bluffs lake.",
       "description_ru": "На пляже к востоку от Международного аэропорта Лос-Сантоса и к югу от озера в Вердант-Блаффс.",
@@ -4073,15 +4073,15 @@
       "canonical_id": 19,
       "wiki_ref": 19,
       "world": {
-        "x": -1266.0,
-        "y": 966.0,
-        "z": 0.0
+        "x": 979,
+        "y": -2210,
+        "z": -3
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1266.0,
-        "y": 966.0,
-        "z": 0.0
+        "x": 979,
+        "y": -2210,
+        "z": -3
       },
       "description_en": "To the west of the southern entrance of the tunnel in Verdant Bluffs leading to Los Santos International Airport.",
       "description_ru": "К западу от южного входа в тоннель в Вердант-Блаффс, ведущий к Международному аэропорту Лос-Сантоса.",
@@ -4092,15 +4092,15 @@
       "canonical_id": 20,
       "wiki_ref": 20,
       "world": {
-        "x": -1013.0,
-        "y": 478.0,
-        "z": 0.0
+        "x": -1097,
+        "y": -2858,
+        "z": -8
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1013.0,
-        "y": 478.0,
-        "z": 0.0
+        "x": -1097,
+        "y": -2858,
+        "z": -8
       },
       "description_en": "Under Oram Bridge , separating Flint County from Whetstone .",
       "description_ru": "Под мостом Орам, разделяющим округ Флинт и Уэтстоун.",
@@ -4111,15 +4111,15 @@
       "canonical_id": 21,
       "wiki_ref": 21,
       "world": {
-        "x": -1364.0,
-        "y": 390.0,
-        "z": 0.0
+        "x": -1175,
+        "y": -2639,
+        "z": -2.5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1364.0,
-        "y": 390.0,
-        "z": 0.0
+        "x": -1175,
+        "y": -2639,
+        "z": -2.5
       },
       "description_en": "Under the wooden bridge in Shady Creeks , to the north of Oram Bridge.",
       "description_ru": "Под деревянным мостом в Мрачном овраге, к северу от моста Орам.",
@@ -4130,15 +4130,15 @@
       "canonical_id": 22,
       "wiki_ref": 22,
       "world": {
-        "x": 2578.0,
-        "y": 2382.0,
-        "z": 0.0
+        "x": -1672,
+        "y": -1641,
+        "z": -2
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2578.0,
-        "y": 2382.0,
-        "z": 0.0
+        "x": -1672,
+        "y": -1641,
+        "z": -2
       },
       "description_en": "Under the bridge near the Angel Pine Junkyard , to the northeast of Mount Chiliad .",
       "description_ru": "Под мостом рядом со свалкой Эйнджел-Пайн, к северо-востоку от горы Чилиад.",
@@ -4149,15 +4149,15 @@
       "canonical_id": 23,
       "wiki_ref": 23,
       "world": {
-        "x": 2090.0,
-        "y": 1898.0,
-        "z": 0.0
+        "x": -2889,
+        "y": -1042,
+        "z": -9
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2090.0,
-        "y": 1898.0,
-        "z": 0.0
+        "x": -2889,
+        "y": -1042,
+        "z": -9
       },
       "description_en": "Under Whetstone Bridge , separating San Fierro from Whetstone .",
       "description_ru": "Под мостом Уэтстоун, разделяющим Сан-Фиерро и Уэтстоун.",
@@ -4168,15 +4168,15 @@
       "canonical_id": 24,
       "wiki_ref": 24,
       "world": {
-        "x": 2130.0,
-        "y": 1152.0,
-        "z": 0.0
+        "x": -2727,
+        "y": -469,
+        "z": -5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2130.0,
-        "y": 1152.0,
-        "z": 0.0
+        "x": -2727,
+        "y": -469,
+        "z": -5
       },
       "description_en": "In the lake in Missionary Hill , to the south of the Avispa Country Club tennis courts and building.",
       "description_ru": "В озере на Холме Миссионеров, к югу от теннисных кортов и здания кантри-клуба «Ависпа».",
@@ -4187,15 +4187,15 @@
       "canonical_id": 25,
       "wiki_ref": 25,
       "world": {
-        "x": 2013.0,
-        "y": 1670.0,
-        "z": 0.0
+        "x": -1625,
+        "y": 4,
+        "z": -10
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2013.0,
-        "y": 1670.0,
-        "z": 0.0
+        "x": -1625,
+        "y": 4,
+        "z": -10
       },
       "description_en": "Under the Import/Export freighter in Easter Basin .",
       "description_ru": "Под грузовым судном Import/Export в бухте Пасхи.",
@@ -4206,15 +4206,15 @@
       "canonical_id": 26,
       "wiki_ref": 26,
       "world": {
-        "x": 2531.0,
-        "y": 1569.0,
-        "z": 0.0
+        "x": -765,
+        "y": 247,
+        "z": -8
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2531.0,
-        "y": 1569.0,
-        "z": 0.0
+        "x": -765,
+        "y": 247,
+        "z": -8
       },
       "description_en": "In the western end of the beach in The Panopticon , facing the San Fierro Bay .",
       "description_ru": "В западной части пляжа в Паноптиконе, со стороны бухты Сан-Фиерро.",
@@ -4225,15 +4225,15 @@
       "canonical_id": 27,
       "wiki_ref": 27,
       "world": {
-        "x": 2998.0,
-        "y": 2998.0,
-        "z": 0.0
+        "x": -1013,
+        "y": 478,
+        "z": -7
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2998.0,
-        "y": 2998.0,
-        "z": 0.0
+        "x": -1013,
+        "y": 478,
+        "z": -7
       },
       "description_en": "At the end of the runway of the Easter Bay Airport in San Fierro.",
       "description_ru": "В конце взлётно-посадочной полосы аэропорта «Бухта Пасхи» в Сан-Фиерро.",
@@ -4244,15 +4244,15 @@
       "canonical_id": 28,
       "wiki_ref": 28,
       "world": {
-        "x": -832.0,
-        "y": 925.0,
-        "z": 0.0
+        "x": -1364,
+        "y": 390,
+        "z": -5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -832.0,
-        "y": 925.0,
-        "z": 0.0
+        "x": -1364,
+        "y": 390,
+        "z": -5
       },
       "description_en": "In the central compartment of the submarine pen of the Easter Basin Naval Station .",
       "description_ru": "В центральном отсеке дока для подводных лодок военно-морской базы в бухте Пасхи.",
@@ -4263,15 +4263,15 @@
       "canonical_id": 29,
       "wiki_ref": 29,
       "world": {
-        "x": 486.0,
-        "y": -253.0,
-        "z": 0.0
+        "x": -1252,
+        "y": 501,
+        "z": -8
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 486.0,
-        "y": -253.0,
-        "z": 0.0
+        "x": -1252,
+        "y": 501,
+        "z": -8
       },
       "description_en": "Under the bow of the aircraft carrier in the Easter Basin Naval Station.",
       "description_ru": "Под носовой частью авианосца на военно-морской базе в бухте Пасхи.",
@@ -4282,15 +4282,15 @@
       "canonical_id": 30,
       "wiki_ref": 30,
       "world": {
-        "x": -90.0,
-        "y": -910.0,
-        "z": 0.0
+        "x": -1266,
+        "y": 966,
+        "z": -10
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -90.0,
-        "y": -910.0,
-        "z": 0.0
+        "x": -1266,
+        "y": 966,
+        "z": -10
       },
       "description_en": "Under the suspension tower of Garver Bridge .",
       "description_ru": "Под опорой подвесной части моста Гарвер.",
@@ -4301,15 +4301,15 @@
       "canonical_id": 31,
       "wiki_ref": 31,
       "world": {
-        "x": 26.43,
-        "y": -1320.94,
-        "z": 0.0
+        "x": -1484,
+        "y": 1489,
+        "z": -10
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 26.43,
-        "y": -1320.94,
-        "z": 0.0
+        "x": -1484,
+        "y": 1489,
+        "z": -10
       },
       "description_en": "Under the Da Nang Boys freighter near Pier 69 in Esplanade North .",
       "description_ru": "Под грузовым судном Бойцов Дананга возле Пирса 69 в Северной Эспланаде.",
@@ -4320,15 +4320,15 @@
       "canonical_id": 32,
       "wiki_ref": 32,
       "world": {
-        "x": -207.0,
-        "y": -1682.0,
-        "z": 0.0
+        "x": -1538,
+        "y": 1708,
+        "z": -3.27
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -207.0,
-        "y": -1682.0,
-        "z": 0.0
+        "x": -1538,
+        "y": 1708,
+        "z": -3.27
       },
       "description_en": "South from the western entrance of the road tunnel in Tierra Robada , to the north of Pier 69 in Esplanade North.",
       "description_ru": "К югу от западного входа в автомобильный тоннель в Тьерра-Робада, к северу от Пирса 69 в Северной Эспланаде.",
@@ -4339,15 +4339,15 @@
       "canonical_id": 33,
       "wiki_ref": 33,
       "world": {
-        "x": -1672.0,
-        "y": -1641.0,
-        "z": 0.0
+        "x": -2505.406,
+        "y": 1543.724,
+        "z": -22.5553
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1672.0,
-        "y": -1641.0,
-        "z": 0.0
+        "x": -2505.406,
+        "y": 1543.724,
+        "z": -22.5553
       },
       "description_en": "Under the Da Nang Boys freighter near Jizzy's Pleasure Domes in Battery Point .",
       "description_ru": "Под грузовым судном Бойцов Дананга рядом с «Куполами удовольствия Джиззи» в Бэттери-Пойнт.",
@@ -4358,15 +4358,15 @@
       "canonical_id": 34,
       "wiki_ref": 34,
       "world": {
-        "x": -1175.0,
-        "y": -2639.0,
-        "z": 0.0
+        "x": -2657,
+        "y": 1564,
+        "z": -6
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1175.0,
-        "y": -2639.0,
-        "z": 0.0
+        "x": -2657,
+        "y": 1564,
+        "z": -6
       },
       "description_en": "Under the southernmost suspension tower of Gant Bridge , near Jizzy's Pleasure Domes in Battery Point.",
       "description_ru": "Под самой южной опорой подвесного моста Гант, рядом с «Куполами удовольствия Джиззи» в Бэттери-Пойнт.",
@@ -4377,15 +4377,15 @@
       "canonical_id": 35,
       "wiki_ref": 35,
       "world": {
-        "x": -1097.0,
-        "y": -2858.0,
-        "z": 0.0
+        "x": -2685,
+        "y": 2153,
+        "z": -5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1097.0,
-        "y": -2858.0,
-        "z": 0.0
+        "x": -2685,
+        "y": 2153,
+        "z": -5
       },
       "description_en": "Under the northernmost structure of Gant Bridge in Bayside .",
       "description_ru": "Под самой северной конструкцией моста Гант в Бэйсайде.",
@@ -4396,15 +4396,15 @@
       "canonical_id": 36,
       "wiki_ref": 36,
       "world": {
-        "x": -2889.0,
-        "y": -1042.0,
-        "z": 0.0
+        "x": -2110.5,
+        "y": 2329.72,
+        "z": -7.5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2889.0,
-        "y": -1042.0,
-        "z": 0.0
+        "x": -2110.5,
+        "y": 2329.72,
+        "z": -7.5
       },
       "description_en": "Near the Tierra Robada Lighthouse Ruins on the cliffs to the west of Bayside's Boat School .",
       "description_ru": "Рядом с руинами маяка Тьерра-Робада на утёсах к западу от мореходной школы Бэйсайда.",
@@ -4415,15 +4415,15 @@
       "canonical_id": 37,
       "wiki_ref": 37,
       "world": {
-        "x": -659.0,
-        "y": 874.0,
-        "z": 0.0
+        "x": -1066,
+        "y": 2197,
+        "z": 32
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -659.0,
-        "y": 874.0,
-        "z": 0.0
+        "x": -1066,
+        "y": 2197,
+        "z": 32
       },
       "description_en": "Next to the fishing jetty in Sherman Reservoir , to the north of Sherman Dam .",
       "description_ru": "Рядом с рыбацким пирсом в Шерманском водохранилище, к северу от дамбы Шерман.",
@@ -4434,15 +4434,15 @@
       "canonical_id": 38,
       "wiki_ref": 38,
       "world": {
-        "x": -955.0,
-        "y": 2628.0,
-        "z": 0.0
+        "x": -955,
+        "y": 2628,
+        "z": 35
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -955.0,
-        "y": 2628.0,
-        "z": 0.0
+        "x": -955,
+        "y": 2628,
+        "z": 35
       },
       "description_en": "Under the wooden bridge leading to Aldea Malvada , to the northwest of Sherman Dam.",
       "description_ru": "Под деревянным мостом, ведущим в Альдеа Мальвада, к северо-западу от дамбы Шерман.",
@@ -4453,15 +4453,15 @@
       "canonical_id": 39,
       "wiki_ref": 39,
       "world": {
-        "x": -1066.0,
-        "y": 2197.0,
-        "z": 0.0
+        "x": -783,
+        "y": 2116,
+        "z": 35
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1066.0,
-        "y": 2197.0,
-        "z": 0.0
+        "x": -783,
+        "y": 2116,
+        "z": 35
       },
       "description_en": "Under the northwestern structure of Sherman Dam.",
       "description_ru": "Под северо-западной конструкцией дамбы Шерман.",
@@ -4472,15 +4472,15 @@
       "canonical_id": 40,
       "wiki_ref": 40,
       "world": {
-        "x": 40.0,
-        "y": -531.0,
-        "z": 0.0
+        "x": -821,
+        "y": 1374,
+        "z": -8
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 40.0,
-        "y": -531.0,
-        "z": 0.0
+        "x": -821,
+        "y": 1374,
+        "z": -8
       },
       "description_en": "Under the road bridge to the south of Las Barrancas .",
       "description_ru": "Под автомобильным мостом к югу от Лас-Барранкас.",
@@ -4491,15 +4491,15 @@
       "canonical_id": 41,
       "wiki_ref": 41,
       "world": {
-        "x": -765.0,
-        "y": 247.0,
-        "z": 0.0
+        "x": -832,
+        "y": 925,
+        "z": -2
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -765.0,
-        "y": 247.0,
-        "z": 0.0
+        "x": -832,
+        "y": 925,
+        "z": -2
       },
       "description_en": "Under the bridge to the west of Mike Toreno's Ranch .",
       "description_ru": "Под мостом к западу от Ранчо Майка Торено.",
@@ -4510,15 +4510,15 @@
       "canonical_id": 42,
       "wiki_ref": 42,
       "world": {
-        "x": 2098.0,
-        "y": -108.0,
-        "z": 0.0
+        "x": -659,
+        "y": 874,
+        "z": -2
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2098.0,
-        "y": -108.0,
-        "z": 0.0
+        "x": -659,
+        "y": 874,
+        "z": -2
       },
       "description_en": "In a small dock to the western portion of Mike Toreno's Ranch.",
       "description_ru": "В небольшом доке в западной части Ранчо Майка Торено.",
@@ -4529,15 +4529,15 @@
       "canonical_id": 43,
       "wiki_ref": 43,
       "world": {
-        "x": 2767.0,
-        "y": 470.0,
-        "z": 0.0
+        "x": 796,
+        "y": 2939,
+        "z": -5
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2767.0,
-        "y": 470.0,
-        "z": 0.0
+        "x": 796,
+        "y": 2939,
+        "z": -5
       },
       "description_en": "Between the Abandoned Dock in Bone County and a water pump house in north Las Venturas .",
       "description_ru": "Между Abandoned Dock в округе Боун и водонасосной станцией в северной части Лас-Вентураса.",
@@ -4548,15 +4548,15 @@
       "canonical_id": 44,
       "wiki_ref": 44,
       "world": {
-        "x": -783.0,
-        "y": 2116.0,
-        "z": 0.0
+        "x": 2998,
+        "y": 2998,
+        "z": -10
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -783.0,
-        "y": 2116.0,
-        "z": 0.0
+        "x": 2998,
+        "y": 2998,
+        "z": -10
       },
       "description_en": "Northeasternmost corner of the San Andreas state map, to the northeast from K.A.C.C. Military Aviation Fuel Depot .",
       "description_ru": "В самом северо-восточном углу карты штата Сан-Андреас, к северо-востоку от склада военного авиационного топлива K.A.C.C.",
@@ -4567,15 +4567,15 @@
       "canonical_id": 45,
       "wiki_ref": 45,
       "world": {
-        "x": -821.0,
-        "y": 1374.0,
-        "z": 0.0
+        "x": 2578,
+        "y": 2382,
+        "z": 16
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -821.0,
-        "y": 1374.0,
-        "z": 0.0
+        "x": 2578,
+        "y": 2382,
+        "z": 16
       },
       "description_en": "In the guitar shaped pool at the V-Rock Hotel .",
       "description_ru": "В бассейне в форме гитары у V-Rock Hotel.",
@@ -4586,15 +4586,15 @@
       "canonical_id": 46,
       "wiki_ref": 46,
       "world": {
-        "x": -2110.5,
-        "y": 2329.72,
-        "z": 0.0
+        "x": 2090,
+        "y": 1898,
+        "z": 8
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2110.5,
-        "y": 2329.72,
-        "z": 0.0
+        "x": 2090,
+        "y": 1898,
+        "z": 8
       },
       "description_en": "Under the waterfall at The Visage .",
       "description_ru": "Под водопадом у казино «Визаж».",
@@ -4605,15 +4605,15 @@
       "canonical_id": 47,
       "wiki_ref": 47,
       "world": {
-        "x": -1538.0,
-        "y": 1708.0,
-        "z": 0.0
+        "x": 2013,
+        "y": 1670,
+        "z": 7
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1538.0,
-        "y": 1708.0,
-        "z": 0.0
+        "x": 2013,
+        "y": 1670,
+        "z": 7
       },
       "description_en": "Northeastern portion of the lake at Pirates in Men's Pants .",
       "description_ru": "В северо-восточной части озера у казино «Пираты в штанах».",
@@ -4624,15 +4624,15 @@
       "canonical_id": 48,
       "wiki_ref": 48,
       "world": {
-        "x": -2685.0,
-        "y": 2153.0,
-        "z": 0.0
+        "x": 2531,
+        "y": 1569,
+        "z": 9
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2685.0,
-        "y": 2153.0,
-        "z": 0.0
+        "x": 2531,
+        "y": 1569,
+        "z": 9
       },
       "description_en": "In the pool at the Tiki Motel in Pilgrim .",
       "description_ru": "В бассейне Tiki Motel в Пилгриме.",
@@ -4643,15 +4643,15 @@
       "canonical_id": 49,
       "wiki_ref": 49,
       "world": {
-        "x": 796.0,
-        "y": 2939.0,
-        "z": 0.0
+        "x": 2130,
+        "y": 1152,
+        "z": 7
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 796.0,
-        "y": 2939.0,
-        "z": 0.0
+        "x": 2130,
+        "y": 1152,
+        "z": 7
       },
       "description_en": "Lake in the entrance of Come-A-Lot , in front of The Four Dragons Casino .",
       "description_ru": "В озере у входа в казино «Кам-е-лот», перед казино «Четыре дракона».",
@@ -4662,15 +4662,15 @@
       "canonical_id": 50,
       "wiki_ref": 50,
       "world": {
-        "x": 2179.0,
-        "y": 235.0,
-        "z": 0.0
+        "x": 2767,
+        "y": 470,
+        "z": -8
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2179.0,
-        "y": 235.0,
-        "z": 0.0
+        "x": 2767,
+        "y": 470,
+        "z": -8
       },
       "description_en": "Under Frederick Bridge in the San Andreas Sound , to the northeast of Palomino Creek .",
       "description_ru": "Под мостом Фредерик в заливе Сан-Андреас, к северо-востоку от Паломино-Крик.",
@@ -4681,15 +4681,15 @@
       "canonical_id": 1,
       "wiki_ref": 1,
       "world": {
-        "x": 1939.14,
-        "y": -1968.05,
-        "z": 17.66
+        "x": 2460.18,
+        "y": -2567.91,
+        "z": 18.82
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1939.14,
-        "y": -1968.05,
-        "z": 17.66
+        "x": 2460.18,
+        "y": -2567.91,
+        "z": 18.82
       },
       "description_en": "Southbound, a wooden ramp over a stack of containers.",
       "description_ru": "Двигайтесь на юг: трамплин — деревянный настил над штабелем контейнеров.",
@@ -4700,15 +4700,15 @@
       "canonical_id": 2,
       "wiki_ref": 2,
       "world": {
-        "x": 2209.28,
-        "y": -1843.69,
-        "z": 19.1
+        "x": 2248.83,
+        "y": -2627.62,
+        "z": 15.18
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2209.28,
-        "y": -1843.69,
-        "z": 19.1
+        "x": 2248.83,
+        "y": -2627.62,
+        "z": 15.18
       },
       "description_en": "Southbound, up the southern stairs from a low level container crane area.",
       "description_ru": "Двигайтесь на юг: поднимитесь по южной лестнице из низко расположенной зоны контейнерного крана.",
@@ -4719,15 +4719,15 @@
       "canonical_id": 3,
       "wiki_ref": 3,
       "world": {
-        "x": 1177.22,
-        "y": -1696.76,
-        "z": 21.37
+        "x": 2248.84,
+        "y": -2463.26,
+        "z": 15.1
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1177.22,
-        "y": -1696.76,
-        "z": 21.37
+        "x": 2248.84,
+        "y": -2463.26,
+        "z": 15.1
       },
       "description_en": "Northbound, up the northern stairs from the same low level container crane area as jump #02.",
       "description_ru": "Двигайтесь на север: поднимитесь по северной лестнице из той же низко расположенной зоны контейнерного крана, что и в прыжке №2.",
@@ -4738,15 +4738,15 @@
       "canonical_id": 4,
       "wiki_ref": 4,
       "world": {
-        "x": 2278.29,
-        "y": -1357.86,
-        "z": 31.33
+        "x": 2058.1,
+        "y": -2677.52,
+        "z": 15.49
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2278.29,
-        "y": -1357.86,
-        "z": 31.33
+        "x": 2058.1,
+        "y": -2677.52,
+        "z": 15.49
       },
       "description_en": "In the central median of the freeway immediately after the road turns west.",
       "description_ru": "На центральной разделительной полосе шоссе сразу после того, как дорога поворачивает на запад.",
@@ -4757,15 +4757,15 @@
       "canonical_id": 5,
       "wiki_ref": 5,
       "world": {
-        "x": 2335.35,
-        "y": -2163.95,
-        "z": 18.51
+        "x": 1839.75,
+        "y": -2514.48,
+        "z": 16.18
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2335.35,
-        "y": -2163.95,
-        "z": 18.51
+        "x": 1839.75,
+        "y": -2514.48,
+        "z": 16.18
       },
       "description_en": "Eastbound on the northern runway, yellow directional signage just off the runway on the south side is the ramp.",
       "description_ru": "Двигайтесь на восток по северной взлётно-посадочной полосе: жёлтый дорожный указатель сразу к югу от полосы служит трамплином.",
@@ -4776,15 +4776,15 @@
       "canonical_id": 6,
       "wiki_ref": 6,
       "world": {
-        "x": 2825.93,
-        "y": -1582.66,
-        "z": 18.13
+        "x": 1832.45,
+        "y": -2386.81,
+        "z": 17.92
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2825.93,
-        "y": -1582.66,
-        "z": 18.13
+        "x": 1832.45,
+        "y": -2386.81,
+        "z": 17.92
       },
       "description_en": "Northbound from the runways towards the east end of the airport interior circuit road, a mobile stairway near the perimeter fence is the ramp.",
       "description_ru": "Двигайтесь на север от взлётно-посадочных полос к восточной части внутренней дороги аэропорта: мобильный трап у ограждения служит трамплином.",
@@ -4795,15 +4795,15 @@
       "canonical_id": 7,
       "wiki_ref": 7,
       "world": {
-        "x": 2460.18,
-        "y": -2567.91,
-        "z": 18.82
+        "x": 2335.35,
+        "y": -2163.95,
+        "z": 18.51
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2460.18,
-        "y": -2567.91,
-        "z": 18.82
+        "x": 2335.35,
+        "y": -2163.95,
+        "z": 18.51
       },
       "description_en": "Southeast, coming from Willowfield , a fenced yard on the right between the road and rail lines just before the bridge with a ramp right up against the end fence.",
       "description_ru": "Двигайтесь на юго-восток со стороны Уиллоуфилда: справа между дорогой и железнодорожными путями перед мостом есть огороженная площадка; трамплин упирается в дальний забор.",
@@ -4814,15 +4814,15 @@
       "canonical_id": 8,
       "wiki_ref": 8,
       "world": {
-        "x": 1832.45,
-        "y": -2386.81,
-        "z": 17.92
+        "x": 2634.4,
+        "y": -2107.98,
+        "z": 17.09
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1832.45,
-        "y": -2386.81,
-        "z": 17.92
+        "x": 2634.4,
+        "y": -2107.98,
+        "z": 17.09
       },
       "description_en": "Westbound in the Fossil Oil silo area, the staircase up to the silos is the ramp.",
       "description_ru": "Двигайтесь на запад в районе резервуаров Fossil Oil: лестница, ведущая к резервуарам, служит трамплином.",
@@ -4833,15 +4833,15 @@
       "canonical_id": 9,
       "wiki_ref": 9,
       "world": {
-        "x": 1839.75,
-        "y": -2514.48,
-        "z": 16.18
+        "x": 1939.14,
+        "y": -1968.05,
+        "z": 17.66
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1839.75,
-        "y": -2514.48,
-        "z": 16.18
+        "x": 1939.14,
+        "y": -1968.05,
+        "z": 17.66
       },
       "description_en": "Eastbound from Unity Station , a wooden ramp over containers on the grass south of the rail tracks.",
       "description_ru": "Двигайтесь на восток от станции Юнити: деревянный трамплин расположен на контейнерах на траве к югу от железнодорожных путей.",
@@ -4852,15 +4852,15 @@
       "canonical_id": 10,
       "wiki_ref": 10,
       "world": {
-        "x": 2634.4,
-        "y": -2107.98,
-        "z": 17.09
+        "x": 2209.28,
+        "y": -1843.69,
+        "z": 19.1
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2634.4,
-        "y": -2107.98,
-        "z": 17.09
+        "x": 2209.28,
+        "y": -1843.69,
+        "z": 19.1
       },
       "description_en": "Southbound from Ganton , the steep sloped side of the steel bridge on the west side of the street beside the rail tracks forms the ramp.",
       "description_ru": "Двигайтесь на юг от Гэнтона: крутой наклон боковой части стального моста с западной стороны улицы рядом с путями служит трамплином.",
@@ -4871,15 +4871,15 @@
       "canonical_id": 11,
       "wiki_ref": 11,
       "world": {
-        "x": 2352.3,
-        "y": -1259.07,
-        "z": 29.0
+        "x": 2825.93,
+        "y": -1582.66,
+        "z": 18.13
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2352.3,
-        "y": -1259.07,
-        "z": 29.0
+        "x": 2825.93,
+        "y": -1582.66,
+        "z": 18.13
       },
       "description_en": "Westbound from the beach on the south side of the pedestrian overbridge, the bridge stairs form the jump ramp.",
       "description_ru": "Двигайтесь на запад от пляжа с южной стороны пешеходного моста: лестница моста служит трамплином.",
@@ -4890,15 +4890,15 @@
       "canonical_id": 12,
       "wiki_ref": 12,
       "world": {
-        "x": 1013.16,
-        "y": -1270.36,
-        "z": 24.45
+        "x": 2326.12,
+        "y": -1508.75,
+        "z": 27.01
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1013.16,
-        "y": -1270.36,
-        "z": 24.45
+        "x": 2326.12,
+        "y": -1508.75,
+        "z": 27.01
       },
       "description_en": "Westbound on the north side of the basketball courts opposite Lolita's Market , the steps form the ramp.",
       "description_ru": "Двигайтесь на запад по северной стороне баскетбольных площадок напротив Lolita's Market: ступени служат трамплином.",
@@ -4909,15 +4909,15 @@
       "canonical_id": 13,
       "wiki_ref": 13,
       "world": {
-        "x": -973.36,
-        "y": -223.23,
-        "z": 53.37
+        "x": 2278.29,
+        "y": -1357.86,
+        "z": 31.33
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -973.36,
-        "y": -223.23,
-        "z": 53.37
+        "x": 2278.29,
+        "y": -1357.86,
+        "z": 31.33
       },
       "description_en": "Northbound on the west side of the rail tracks, the stairs for the pedestrian overbridge forms the ramp.",
       "description_ru": "Двигайтесь на север по западной стороне железнодорожных путей: лестница пешеходного моста служит трамплином.",
@@ -4928,15 +4928,15 @@
       "canonical_id": 14,
       "wiki_ref": 14,
       "world": {
-        "x": -2637.07,
-        "y": 780.39,
-        "z": 50.02
+        "x": 2352.3,
+        "y": -1259.07,
+        "z": 29.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2637.07,
-        "y": 780.39,
-        "z": 50.02
+        "x": 2352.3,
+        "y": -1259.07,
+        "z": 29.0
       },
       "description_en": "Westbound past The Pig Pen , straight ahead at the junction up the steps between two houses.",
       "description_ru": "Двигайтесь на запад мимо The Pig Pen, на перекрёстке прямо вперёд и вверх по ступеням между двумя домами.",
@@ -4947,15 +4947,15 @@
       "canonical_id": 15,
       "wiki_ref": 15,
       "world": {
-        "x": -2520.2,
-        "y": 1169.2,
-        "z": 59.55
+        "x": 2770.21,
+        "y": -1177.48,
+        "z": 70.75
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2520.2,
-        "y": 1169.2,
-        "z": 59.55
+        "x": 2770.21,
+        "y": -1177.48,
+        "z": 70.75
       },
       "description_en": "Eastbound up the hill, straight ahead at the junction, on the north side of the house, a broken low wall is the jump.",
       "description_ru": "Двигайтесь на восток вверх по холму, на перекрёстке прямо: с северной стороны дома разрушенная низкая стена служит трамплином.",
@@ -4966,15 +4966,15 @@
       "canonical_id": 16,
       "wiki_ref": 16,
       "world": {
-        "x": -1794.98,
-        "y": 1211.61,
-        "z": 35.68
+        "x": 1679.65,
+        "y": -962.22,
+        "z": 65.67
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1794.98,
-        "y": 1211.61,
-        "z": 35.68
+        "x": 1679.65,
+        "y": -962.22,
+        "z": 65.67
       },
       "description_en": "Southbound in the northbound lane into oncoming traffic, a ramp is on the pavement on the east side nearly in the center of the intersection.",
       "description_ru": "Двигайтесь на юг по полосе встречного движения: на тротуаре с восточной стороны почти в центре перекрёстка находится трамплин.",
@@ -4985,15 +4985,15 @@
       "canonical_id": 17,
       "wiki_ref": 17,
       "world": {
-        "x": -2659.55,
-        "y": 1533.67,
-        "z": 53.2
+        "x": 1667.17,
+        "y": -992.86,
+        "z": 32.76
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2659.55,
-        "y": 1533.67,
-        "z": 53.2
+        "x": 1667.17,
+        "y": -992.86,
+        "z": 32.76
       },
       "description_en": "Eastbound under the intersection, just to the east as the onramp to travel south climbs and curves, a ramp is on the grass area and points southeast.",
       "description_ru": "Двигайтесь на восток под развязкой; чуть восточнее, где съезд на юг поднимается и изгибается, на траве расположен трамплин, направленный на юго-восток.",
@@ -5004,15 +5004,15 @@
       "canonical_id": 18,
       "wiki_ref": 18,
       "world": {
-        "x": -1690.66,
-        "y": 1110.39,
-        "z": 57.28
+        "x": 1623.57,
+        "y": -1110.96,
+        "z": 61.82
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1690.66,
-        "y": 1110.39,
-        "z": 57.28
+        "x": 1623.57,
+        "y": -1110.96,
+        "z": 61.82
       },
       "description_en": "Northbound in the southbound lane into oncoming traffic, a ramp is on the pavement on the west side just after the East-West offramp.",
       "description_ru": "Двигайтесь на север по полосе встречного движения: на тротуаре с западной стороны сразу после съезда East-West находится трамплин.",
@@ -5023,15 +5023,15 @@
       "canonical_id": 19,
       "wiki_ref": 19,
       "world": {
-        "x": -2145.46,
-        "y": -112.03,
-        "z": 44.35
+        "x": 1395.56,
+        "y": -1460.57,
+        "z": 12.39
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2145.46,
-        "y": -112.03,
-        "z": 44.35
+        "x": 1395.56,
+        "y": -1460.57,
+        "z": 12.39
       },
       "description_en": "Northbound in the Storm Drain , a sloped walkway on the west side just prior to the tunnel under the street is the ramp.",
       "description_ru": "Двигайтесь на север по ливневому каналу: наклонная дорожка с западной стороны непосредственно перед тоннелем под улицей служит трамплином.",
@@ -5042,15 +5042,15 @@
       "canonical_id": 20,
       "wiki_ref": 20,
       "world": {
-        "x": -267.77,
-        "y": 2662.04,
-        "z": 68.74
+        "x": 1177.22,
+        "y": -1696.76,
+        "z": 21.37
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -267.77,
-        "y": 2662.04,
-        "z": 68.74
+        "x": 1177.22,
+        "y": -1696.76,
+        "z": 21.37
       },
       "description_en": "Northbound from the street in the middle of the Los Santos Conference Center , straight ahead at the junction up the stairs on the east side of the building.",
       "description_ru": "Двигайтесь на север от улицы в центре конференц-центра Лос-Сантоса; на перекрёстке прямо вперёд и вверх по лестнице с восточной стороны здания.",
@@ -5061,15 +5061,15 @@
       "canonical_id": 21,
       "wiki_ref": 21,
       "world": {
-        "x": -249.69,
-        "y": 2590.81,
-        "z": 66.12
+        "x": 1013.16,
+        "y": -1270.36,
+        "z": 24.45
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -249.69,
-        "y": 2590.81,
-        "z": 66.12
+        "x": 1013.16,
+        "y": -1270.36,
+        "z": 24.45
       },
       "description_en": "Eastbound from the Vinewood Movie Studios on the brick paved alleyway, a staircase up the side of the building is the ramp.",
       "description_ru": "Двигайтесь на восток от киностудий Вайнвуда по мощённому кирпичом переулку: лестница вдоль здания служит трамплином.",
@@ -5080,15 +5080,15 @@
       "canonical_id": 22,
       "wiki_ref": 22,
       "world": {
-        "x": -871.5,
-        "y": 2308.79,
-        "z": 164.57
+        "x": 586.01,
+        "y": -1773.77,
+        "z": 15.23
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -871.5,
-        "y": 2308.79,
-        "z": 164.57
+        "x": 586.01,
+        "y": -1773.77,
+        "z": 15.23
       },
       "description_en": "Eastbound under the beach boardwalk up the stairs.",
       "description_ru": "Двигайтесь на восток под пляжным настилом и вверх по лестнице.",
@@ -5099,15 +5099,15 @@
       "canonical_id": 23,
       "wiki_ref": 23,
       "world": {
-        "x": 2073.71,
-        "y": 2366.65,
-        "z": 50.85
+        "x": 347.0,
+        "y": -1662.3,
+        "z": 35.82
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2073.71,
-        "y": 2366.65,
-        "z": 50.85
+        "x": 347.0,
+        "y": -1662.3,
+        "z": 35.82
       },
       "description_en": "Southbound from Rodeo towards Yacht Harbor pier, the jump is on the west side of the pier entrance, where a natural grassy bank forms the ramp.",
       "description_ru": "Двигайтесь на юг от Родео к пирсу Yacht Harbor: прыжок находится с западной стороны въезда на пирс, где естественный травяной склон образует трамплин.",
@@ -5118,15 +5118,15 @@
       "canonical_id": 24,
       "wiki_ref": 24,
       "world": {
-        "x": 2170.95,
-        "y": 2402.61,
-        "z": 62.29
+        "x": 743.15,
+        "y": -1132.82,
+        "z": 25.8
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2170.95,
-        "y": 2402.61,
-        "z": 62.29
+        "x": 743.15,
+        "y": -1132.82,
+        "z": 25.8
       },
       "description_en": "Westbound on Vinewood Boulevard , straight ahead at the junction, then turn slightly southwest as the corner of the paved area rises slightly to form the jump.",
       "description_ru": "Двигайтесь на запад по бульвару Вайнвуд; на перекрёстке прямо, затем немного поверните на юго-запад — приподнятый угол мощёной площадки образует трамплин.",
@@ -5137,15 +5137,15 @@
       "canonical_id": 25,
       "wiki_ref": 25,
       "world": {
-        "x": 2418.06,
-        "y": 1353.23,
-        "z": 12.36
+        "x": 2125.64,
+        "y": 95.25,
+        "z": 37.4
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2418.06,
-        "y": 1353.23,
-        "z": 12.36
+        "x": 2125.64,
+        "y": 95.25,
+        "z": 37.4
       },
       "description_en": "Westbound, just south of the Palomino Creek Safehouse onto the dirt road leading to the old broken wooden bridge.",
       "description_ru": "Двигайтесь на запад чуть южнее убежища в Паломино-Крик по грунтовой дороге к старому разрушенному деревянному мосту.",
@@ -5156,15 +5156,15 @@
       "canonical_id": 26,
       "wiki_ref": 26,
       "world": {
-        "x": 2407.31,
-        "y": 1364.38,
-        "z": 14.57
+        "x": 2112.41,
+        "y": 97.9,
+        "z": 39.99
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2407.31,
-        "y": 1364.38,
-        "z": 14.57
+        "x": 2112.41,
+        "y": 97.9,
+        "z": 39.99
       },
       "description_en": "Jump #25 in reverse: eastbound on the dirt road to the bridge.",
       "description_ru": "Прыжок №25 в обратном направлении: двигайтесь на восток по грунтовой дороге к мосту.",
@@ -5175,15 +5175,15 @@
       "canonical_id": 27,
       "wiki_ref": 27,
       "world": {
-        "x": 2784.76,
-        "y": 2208.72,
-        "z": 15.19
+        "x": 1586.49,
+        "y": 312.89,
+        "z": 24.0
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2784.76,
-        "y": 2208.72,
-        "z": 15.19
+        "x": 1586.49,
+        "y": 312.89,
+        "z": 24.0
       },
       "description_en": "Westbound under the freeway overpass right in the center of the two loops, a dirt rise forms the ramp.",
       "description_ru": "Двигайтесь на запад под эстакадой шоссе прямо в центре двух петель развязки: земляной подъём образует трамплин.",
@@ -5194,15 +5194,15 @@
       "canonical_id": 28,
       "wiki_ref": 28,
       "world": {
-        "x": 1482.38,
-        "y": 2037.0,
-        "z": 17.06
+        "x": 638.75,
+        "y": -520.07,
+        "z": 18.85
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1482.38,
-        "y": 2037.0,
-        "z": 17.06
+        "x": 638.75,
+        "y": -520.07,
+        "z": 18.85
       },
       "description_en": "Southbound, west of the Pay 'n' Spray between the buildings, a ramp set up over the low wall.",
       "description_ru": "Двигайтесь на юг: к западу от автомастерской между зданиями установлен трамплин через низкую стену.",
@@ -5213,15 +5213,15 @@
       "canonical_id": 29,
       "wiki_ref": 29,
       "world": {
-        "x": 1976.4,
-        "y": 2593.69,
-        "z": 17.21
+        "x": 89.99,
+        "y": -243.2,
+        "z": 7.56
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1976.4,
-        "y": 2593.69,
-        "z": 17.21
+        "x": 89.99,
+        "y": -243.2,
+        "z": 7.56
       },
       "description_en": "Eastbound past FleischBerg , veering south of the road into the Red County Truck Terminal , a large wooden ramp facing southeast is set up against the side of a parked trailer.",
       "description_ru": "Двигайтесь на восток мимо FleischBerg, отклонитесь к югу от дороги на грузовой терминал округа Ред: большой деревянный трамплин, направленный на юго-восток, установлен у борта припаркованного прицепа.",
@@ -5232,15 +5232,15 @@
       "canonical_id": 30,
       "wiki_ref": 30,
       "world": {
-        "x": 1636.26,
-        "y": 2399.71,
-        "z": 15.89
+        "x": 110.24,
+        "y": -257.99,
+        "z": 6.27
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1636.26,
-        "y": 2399.71,
-        "z": 15.89
+        "x": 110.24,
+        "y": -257.99,
+        "z": 6.27
       },
       "description_en": "Jump #29 in reverse: northwest through the Red County Truck Terminal between the container stacks and warehouse to another large wooden ramp facing northwest.",
       "description_ru": "Прыжок №29 в обратном направлении: двигайтесь на северо-запад через грузовой терминал округа Ред между штабелями контейнеров и складом к другому большому деревянному трамплину, направленному на северо-запад.",
@@ -5251,15 +5251,15 @@
       "canonical_id": 31,
       "wiki_ref": 31,
       "world": {
-        "x": 2119.23,
-        "y": 2385.21,
-        "z": 33.71
+        "x": 160.8,
+        "y": -160.25,
+        "z": 6.15
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2119.23,
-        "y": 2385.21,
-        "z": 33.71
+        "x": 160.8,
+        "y": -160.25,
+        "z": 6.15
       },
       "description_en": "Eastbound into the back of the southwest block of the town, a stairway up the back of a building is the ramp.",
       "description_ru": "Двигайтесь на восток во внутреннюю часть юго-западного квартала города: лестница на задней стороне здания служит трамплином.",
@@ -5270,15 +5270,15 @@
       "canonical_id": 32,
       "wiki_ref": 32,
       "world": {
-        "x": -2082.53,
-        "y": -2498.93,
-        "z": 33.97
+        "x": -72.3,
+        "y": 17.7,
+        "z": 8.41
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2082.53,
-        "y": -2498.93,
-        "z": 33.97
+        "x": -72.3,
+        "y": 17.7,
+        "z": 8.41
       },
       "description_en": "Northbound through EasterBoard Farm, directly through the first central barn onto the corrugated iron ramp.",
       "description_ru": "Двигайтесь на север через Ферму Истерборд: проезжайте прямо через первый центральный амбар на трамплин из профнастила.",
@@ -5289,15 +5289,15 @@
       "canonical_id": 33,
       "wiki_ref": 33,
       "world": {
-        "x": 2112.41,
-        "y": 97.9,
-        "z": 39.99
+        "x": -39.8,
+        "y": 53.3,
+        "z": 6.92
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2112.41,
-        "y": 97.9,
-        "z": 39.99
+        "x": -39.8,
+        "y": 53.3,
+        "z": 6.92
       },
       "description_en": "Northbound through EasterBoard Farm, veering east of the first central barn and inside the eastern barn where the ramp lines up with the upper arched door of the barn.",
       "description_ru": "Двигайтесь на север через Ферму Истерборд, отклонитесь к востоку от первого центрального амбара и заезжайте в восточный амбар, где трамплин направлен к верхним арочным воротам.",
@@ -5308,15 +5308,15 @@
       "canonical_id": 34,
       "wiki_ref": 34,
       "world": {
-        "x": -2100.41,
-        "y": -1743.6,
-        "z": 199.73
+        "x": -344.65,
+        "y": -9.88,
+        "z": 44.96
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2100.41,
-        "y": -1743.6,
-        "z": 199.73
+        "x": -344.65,
+        "y": -9.88,
+        "z": 44.96
       },
       "description_en": "Northbound, parallel to the road below, over a grass-covered cliff.",
       "description_ru": "Двигайтесь на север параллельно дороге внизу и прыгайте с покрытого травой утёса.",
@@ -5327,15 +5327,15 @@
       "canonical_id": 35,
       "wiki_ref": 35,
       "world": {
-        "x": -2287.67,
-        "y": -2800.78,
-        "z": 22.05
+        "x": -973.36,
+        "y": -223.23,
+        "z": 53.37
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2287.67,
-        "y": -2800.78,
-        "z": 22.05
+        "x": -973.36,
+        "y": -223.23,
+        "z": 53.37
       },
       "description_en": "Westbound on the southern road, straight ahead at the junction where a large dirt pile forms the ramp at the clifftop overlooking Easter Bay .",
       "description_ru": "Двигайтесь на запад по южной дороге, на перекрёстке прямо: большая куча земли на краю утёса с видом на бухту Пасхи служит трамплином.",
@@ -5346,15 +5346,15 @@
       "canonical_id": 36,
       "wiki_ref": 36,
       "world": {
-        "x": 110.89,
-        "y": 2428.05,
-        "z": 23.79
+        "x": -2287.67,
+        "y": -2800.78,
+        "z": 22.05
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 110.89,
-        "y": 2428.05,
-        "z": 23.79
+        "x": -2287.67,
+        "y": -2800.78,
+        "z": 22.05
       },
       "description_en": "Southeast along the beach south of Angel Pine , a sand dune near the beach access path.",
       "description_ru": "Двигайтесь на юго-восток вдоль пляжа к югу от Эйнджел-Пайн: трамплин — песчаная дюна рядом с дорожкой к пляжу.",
@@ -5365,15 +5365,15 @@
       "canonical_id": 37,
       "wiki_ref": 37,
       "world": {
-        "x": -894.5,
-        "y": 2693.2,
-        "z": 44.73
+        "x": -2082.53,
+        "y": -2498.93,
+        "z": 33.97
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -894.5,
-        "y": 2693.2,
-        "z": 44.73
+        "x": -2082.53,
+        "y": -2498.93,
+        "z": 33.97
       },
       "description_en": "From the Angel Pine Mobile Home Park , northwest between two trailers, corrugated iron on a wrecked car forms the ramp over the fence.",
       "description_ru": "От трейлерного парка в Эйнджел-Пайн двигайтесь на северо-запад между двумя трейлерами: лист профнастила на разбитой машине служит трамплином через забор.",
@@ -5384,15 +5384,15 @@
       "canonical_id": 38,
       "wiki_ref": 38,
       "world": {
-        "x": 89.99,
-        "y": -243.2,
-        "z": 7.56
+        "x": -2100.41,
+        "y": -1743.6,
+        "z": 199.73
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 89.99,
-        "y": -243.2,
-        "z": 7.56
+        "x": -2100.41,
+        "y": -1743.6,
+        "z": 199.73
       },
       "description_en": "An unmapped wooden boardwalk marked with red and white mountain-bike trail poles as used for the \"Cobra Run\" portion of The Chiliad Challenge about a third of the way up the southeast side of the mountain leads to a wooden jump facing northeast. To access from Angel Pine, go straight ahead at the first switchback on the marked road, onto an unmarked dirt trail through the natural hole in the side of the mountain, then switch back over the top of the hole until the grassy area with the boardwalk and the jump ramp is reached. The poles can also be seen ahead and slightly to the right from a switchback on the main trail higher up the mountain and access can be gained coming back downhill from there, following the \"Cobra Run\" trail to the jump. Detailed satellite view with the two unmapped access paths mapped: blue uphill unmarked, and orange downhill with the trail poles.",
       "description_ru": "Примерно на трети подъёма по юго-восточному склону горы Чилиад есть не отмеченный на карте деревянный настил с красно-белыми столбиками трассы «Бросок кобры» из испытания Чилиад; он ведёт к деревянному трамплину, направленному на северо-восток. Из Эйнджел-Пайн на первом серпантине отмеченной дороги двигайтесь прямо на неотмеченную грунтовую тропу через естественный проём в склоне, затем развернитесь над проёмом и поднимайтесь до травяной площадки с настилом и трамплином. К трамплину также можно спуститься сверху по трассе «Бросок кобры»: столбики видны впереди и немного справа с серпантина основной тропы выше по склону.",
@@ -5403,15 +5403,15 @@
       "canonical_id": 39,
       "wiki_ref": 39,
       "world": {
-        "x": 160.8,
-        "y": -160.25,
-        "z": 6.15
+        "x": -1972.1,
+        "y": -543.09,
+        "z": 38.99
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 160.8,
-        "y": -160.25,
-        "z": 6.15
+        "x": -1972.1,
+        "y": -543.09,
+        "z": 38.99
       },
       "description_en": "Eastbound around the south side of the Corvin Stadium , a ramp is in the southeast corner, facing east.",
       "description_ru": "Двигайтесь на восток вокруг южной стороны стадиона Корвин: трамплин находится в юго-восточном углу и направлен на восток.",
@@ -5422,15 +5422,15 @@
       "canonical_id": 40,
       "wiki_ref": 40,
       "world": {
-        "x": -72.3,
-        "y": 17.7,
-        "z": 8.41
+        "x": -1729.92,
+        "y": -364.53,
+        "z": 18.22
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -72.3,
-        "y": 17.7,
-        "z": 8.41
+        "x": -1729.92,
+        "y": -364.53,
+        "z": 18.22
       },
       "description_en": "Westbound on the tarmac to the north of the aircraft overbridge, a concrete gas utilities structure forms the ramp right on the edge by the water.",
       "description_ru": "Двигайтесь на запад по перрону к северу от авиационного путепровода: бетонная конструкция газовых коммуникаций у самой воды служит трамплином.",
@@ -5441,15 +5441,15 @@
       "canonical_id": 41,
       "wiki_ref": 41,
       "world": {
-        "x": -39.8,
-        "y": 53.3,
-        "z": 6.92
+        "x": -1687.32,
+        "y": -162.2,
+        "z": 17.86
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -39.8,
-        "y": 53.3,
-        "z": 6.92
+        "x": -1687.32,
+        "y": -162.2,
+        "z": 17.86
       },
       "description_en": "Northwest on the tarmac, north of jump #40, another concrete gas utilities structure on the water's edge right at the start of the runway.",
       "description_ru": "Двигайтесь на северо-запад по перрону к северу от прыжка №40: ещё одна бетонная конструкция газовых коммуникаций у воды, прямо у начала взлётно-посадочной полосы, служит трамплином.",
@@ -5460,15 +5460,15 @@
       "canonical_id": 42,
       "wiki_ref": 42,
       "world": {
-        "x": 638.75,
-        "y": -520.07,
-        "z": 18.85
+        "x": -2213.77,
+        "y": -311.08,
+        "z": 38.53
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 638.75,
-        "y": -520.07,
-        "z": 18.85
+        "x": -2213.77,
+        "y": -311.08,
+        "z": 38.53
       },
       "description_en": "Southbound in the southwest corner of the crack factory , straight ahead as the road turns east, the ramp is up the stairway that leads up to the road overhead.",
       "description_ru": "Двигайтесь на юг в юго-западном углу наркозавода в Доэрти; когда дорога поворачивает на восток, продолжайте прямо — трамплин находится на лестнице, ведущей к дороге наверху.",
@@ -5479,15 +5479,15 @@
       "canonical_id": 43,
       "wiki_ref": 43,
       "world": {
-        "x": 1749.72,
-        "y": 779.6,
-        "z": 13.48
+        "x": -2145.46,
+        "y": -112.03,
+        "z": 44.35
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1749.72,
-        "y": 779.6,
-        "z": 13.48
+        "x": -2145.46,
+        "y": -112.03,
+        "z": 44.35
       },
       "description_en": "Inside the Loco Syndicate Crack Factory , northbound to the damaged building west of the gate, up the ramp.",
       "description_ru": "На территории наркозавода в Доэрти двигайтесь на север к повреждённому зданию к западу от ворот и поднимайтесь по рампе.",
@@ -5498,15 +5498,15 @@
       "canonical_id": 44,
       "wiki_ref": 44,
       "world": {
-        "x": 110.24,
-        "y": -257.99,
-        "z": 6.27
+        "x": -1903.19,
+        "y": 223.35,
+        "z": 37.8
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 110.24,
-        "y": -257.99,
-        "z": 6.27
+        "x": -1903.19,
+        "y": 223.35,
+        "z": 37.8
       },
       "description_en": "Eastbound on the short cul-de-sac between Wang Cars and Cranberry Station , past TransFender straight ahead as the road curves north to the Pay 'n' Spray , the ramp is next to a dumpster.",
       "description_ru": "Двигайтесь на восток по короткому тупику между автосалоном «Тачки Ванга» и станцией Крэнберри; проезжайте «ТрансФендер» прямо, когда дорога поворачивает на север к автомастерской — трамплин находится рядом с мусорным контейнером.",
@@ -5517,15 +5517,15 @@
       "canonical_id": 45,
       "wiki_ref": 45,
       "world": {
-        "x": 2125.64,
-        "y": 95.25,
-        "z": 37.4
+        "x": -2408.29,
+        "y": 723.3,
+        "z": 38.68
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2125.64,
-        "y": 95.25,
-        "z": 37.4
+        "x": -2408.29,
+        "y": 723.3,
+        "z": 38.68
       },
       "description_en": "West from the Chinatown Safehouse downhill through a back alley, straight ahead at the junction up a concrete gas utilities ramp at the southeast corner of the Supa Save! car park.",
       "description_ru": "От убежища в Чайна-тауне двигайтесь на запад вниз через задний переулок; на перекрёстке прямо вверх по бетонной рампе газовых коммуникаций в юго-восточном углу парковки Supa Save!.",
@@ -5536,15 +5536,15 @@
       "canonical_id": 46,
       "wiki_ref": 46,
       "world": {
-        "x": -344.65,
-        "y": -9.88,
-        "z": 44.96
+        "x": -2637.07,
+        "y": 780.39,
+        "z": 50.02
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -344.65,
-        "y": -9.88,
-        "z": 44.96
+        "x": -2637.07,
+        "y": 780.39,
+        "z": 50.02
       },
       "description_en": "Southbound on the east side of the housing block opposite the Paradiso Safehouse , off the edge of the driveway as it dips downhill.",
       "description_ru": "Двигайтесь на юг по восточной стороне жилого квартала напротив убежища в Парадизо и прыгайте с края проезда там, где он уходит вниз.",
@@ -5555,15 +5555,15 @@
       "canonical_id": 47,
       "wiki_ref": 47,
       "world": {
-        "x": -2589.18,
-        "y": 1164.37,
-        "z": 59.83
+        "x": -2116.36,
+        "y": 925.68,
+        "z": 87.82
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2589.18,
-        "y": 1164.37,
-        "z": 59.83
+        "x": -2116.36,
+        "y": 925.68,
+        "z": 87.82
       },
       "description_en": "Eastbound towards the Calton Heights Safehouse , at the top of the Windy Windy Windy Windy Street , the ramp is the staircase opposite the safehouse.",
       "description_ru": "Двигайтесь на восток к убежищу в Кэлтон-Хайтс; на вершине Windy Windy Windy Windy Street трамплином служит лестница напротив убежища.",
@@ -5574,15 +5574,15 @@
       "canonical_id": 48,
       "wiki_ref": 48,
       "world": {
-        "x": -2292.04,
-        "y": 1097.71,
-        "z": 84.73
+        "x": -1690.66,
+        "y": 1110.39,
+        "z": 57.28
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2292.04,
-        "y": 1097.71,
-        "z": 84.73
+        "x": -1690.66,
+        "y": 1110.39,
+        "z": 57.28
       },
       "description_en": "Eastbound a block north of the Victim store, straight ahead at the junction up the stairs between the buildings.",
       "description_ru": "Двигайтесь на восток на один квартал севернее магазина «Виктим»; на перекрёстке прямо вверх по лестнице между зданиями.",
@@ -5593,15 +5593,15 @@
       "canonical_id": 49,
       "wiki_ref": 49,
       "world": {
-        "x": -2408.29,
-        "y": 723.3,
-        "z": 38.68
+        "x": -1794.98,
+        "y": 1211.61,
+        "z": 35.68
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2408.29,
-        "y": 723.3,
-        "z": 38.68
+        "x": -1794.98,
+        "y": 1211.61,
+        "z": 35.68
       },
       "description_en": "Northbound towards Michelle's Auto Repair , straight ahead at the junction, the ramp is the stairway up the side of the building between the office and garage.",
       "description_ru": "Двигайтесь на север к Michelle's Auto Repair; на перекрёстке прямо — лестница вдоль здания между офисом и гаражом служит трамплином.",
@@ -5612,15 +5612,15 @@
       "canonical_id": 50,
       "wiki_ref": 50,
       "world": {
-        "x": -2116.36,
-        "y": 925.68,
-        "z": 87.82
+        "x": -2292.04,
+        "y": 1097.71,
+        "z": 84.73
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2116.36,
-        "y": 925.68,
-        "z": 87.82
+        "x": -2292.04,
+        "y": 1097.71,
+        "z": 84.73
       },
       "description_en": "Westbound above the tunnel, straight ahead at the junction, a sloped driveway up the side of the building is the ramp.",
       "description_ru": "Двигайтесь на запад над тоннелем; на перекрёстке прямо — наклонный подъезд вдоль здания служит трамплином.",
@@ -5631,15 +5631,15 @@
       "canonical_id": 51,
       "wiki_ref": 51,
       "world": {
-        "x": -1903.19,
-        "y": 223.35,
-        "z": 37.8
+        "x": -2520.2,
+        "y": 1169.2,
+        "z": 59.55
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1903.19,
-        "y": 223.35,
-        "z": 37.8
+        "x": -2520.2,
+        "y": 1169.2,
+        "z": 59.55
       },
       "description_en": "Northbound across the main road to the Gant Bridge to a small gap between the houses, off the edge of the hill.",
       "description_ru": "Двигайтесь на север через главную дорогу к мосту Гант, в небольшой проход между домами, и прыгайте с края холма.",
@@ -5650,15 +5650,15 @@
       "canonical_id": 52,
       "wiki_ref": 52,
       "world": {
-        "x": -1687.32,
-        "y": -162.2,
-        "z": 17.86
+        "x": -2589.18,
+        "y": 1164.37,
+        "z": 59.83
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1687.32,
-        "y": -162.2,
-        "z": 17.86
+        "x": -2589.18,
+        "y": 1164.37,
+        "z": 59.83
       },
       "description_en": "Northbound, just to the west of jump#51, at the west end of the row of houses, the concrete gas utilities ramp is on the left side of the road.",
       "description_ru": "Двигайтесь на север чуть западнее прыжка №51; у западного конца ряда домов бетонная рампа газовых коммуникаций находится слева от дороги.",
@@ -5669,15 +5669,15 @@
       "canonical_id": 53,
       "wiki_ref": 53,
       "world": {
-        "x": -1729.92,
-        "y": -364.53,
-        "z": 18.22
+        "x": -2659.55,
+        "y": 1533.67,
+        "z": 53.2
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1729.92,
-        "y": -364.53,
-        "z": 18.22
+        "x": -2659.55,
+        "y": 1533.67,
+        "z": 53.2
       },
       "description_en": "Up the scaffolding on the east side of the Gant Bridge above Jizzy's Pleasure Domes , eventually reaching a stretch heading northbound alongside the bridge, jump is simply off the end of the scaffold.",
       "description_ru": "Поднимайтесь по строительным лесам с восточной стороны моста Гант над «Куполами удовольствия Джиззи»; в конце участок идёт на север вдоль моста — прыгайте с конца лесов.",
@@ -5688,15 +5688,15 @@
       "canonical_id": 54,
       "wiki_ref": 54,
       "world": {
-        "x": -1972.1,
-        "y": -543.09,
-        "z": 38.99
+        "x": -894.5,
+        "y": 2693.2,
+        "z": 44.73
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -1972.1,
-        "y": -543.09,
-        "z": 38.99
+        "x": -894.5,
+        "y": 2693.2,
+        "z": 44.73
       },
       "description_en": "Westbound past the Tee Pee Motel , veer south before the bridge, the ramp is up against the building facing southwest at the Valle Ocultado Wharf next to the Vortex spawn point.",
       "description_ru": "Двигайтесь на запад мимо Tee Pee Motel, перед мостом отклонитесь на юг: у здания на Причале Валле-Окультадо рядом с местом появления Vortex находится трамплин, направленный на юго-запад.",
@@ -5707,15 +5707,15 @@
       "canonical_id": 55,
       "wiki_ref": 55,
       "world": {
-        "x": 2770.21,
-        "y": -1177.48,
-        "z": 70.75
+        "x": -871.5,
+        "y": 2308.79,
+        "z": 164.57
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2770.21,
-        "y": -1177.48,
-        "z": 70.75
+        "x": -871.5,
+        "y": 2308.79,
+        "z": 164.57
       },
       "description_en": "Westbound at the south side of the peak along the wooden trail from the mineshaft and off the far end.",
       "description_ru": "Двигайтесь на запад по южной стороне вершины вдоль деревянной тропы от шахты и прыгайте с её дальнего конца.",
@@ -5726,15 +5726,15 @@
       "canonical_id": 56,
       "wiki_ref": 56,
       "world": {
-        "x": 2248.84,
-        "y": -2463.26,
-        "z": 15.1
+        "x": -267.77,
+        "y": 2662.04,
+        "z": 68.74
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2248.84,
-        "y": -2463.26,
-        "z": 15.1
+        "x": -267.77,
+        "y": 2662.04,
+        "z": 68.74
       },
       "description_en": "Eastbound through Pecker's Feed & Seed to a teal coloured tarpaulin covering the ramp.",
       "description_ru": "Двигайтесь на восток через Pecker's Feed & Seed к трамплину, накрытому бирюзовым брезентом.",
@@ -5745,15 +5745,15 @@
       "canonical_id": 57,
       "wiki_ref": 57,
       "world": {
-        "x": 2248.83,
-        "y": -2627.62,
-        "z": 15.18
+        "x": -249.69,
+        "y": 2590.81,
+        "z": 66.12
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2248.83,
-        "y": -2627.62,
-        "z": 15.18
+        "x": -249.69,
+        "y": 2590.81,
+        "z": 66.12
       },
       "description_en": "Southbound on the west side of the World's Largest Cock to the steps on the east side of Las Payasadas Cafe which form the ramp.",
       "description_ru": "Двигайтесь на юг по западной стороне скульптуры World's Largest Cock к ступеням с восточной стороны кафе в Лас-Паясадас — они служат трамплином.",
@@ -5764,15 +5764,15 @@
       "canonical_id": 58,
       "wiki_ref": 58,
       "world": {
-        "x": 2326.12,
-        "y": -1508.75,
-        "z": 27.01
+        "x": 110.89,
+        "y": 2428.05,
+        "z": 23.79
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2326.12,
-        "y": -1508.75,
-        "z": 27.01
+        "x": 110.89,
+        "y": 2428.05,
+        "z": 23.79
       },
       "description_en": "Northeast to the last derelict plane on the south side of the airstrip, up the wing which forms the ramp.",
       "description_ru": "Двигайтесь на северо-восток к последнему заброшенному самолёту с южной стороны аэродрома; его крыло служит трамплином.",
@@ -5783,15 +5783,15 @@
       "canonical_id": 59,
       "wiki_ref": 59,
       "world": {
-        "x": 1623.57,
-        "y": -1110.96,
-        "z": 61.82
+        "x": 1976.4,
+        "y": 2593.69,
+        "z": 17.21
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1623.57,
-        "y": -1110.96,
-        "z": 61.82
+        "x": 1976.4,
+        "y": 2593.69,
+        "z": 17.21
       },
       "description_en": "Eastbound on the north side of the freeway from Prickle Pine to a dead end into an apartment complex, the jump is in the south east corner up against the fence.",
       "description_ru": "Двигайтесь на восток по северной стороне шоссе из Прикл-Пайн в тупик жилого комплекса: трамплин находится в юго-восточном углу у забора.",
@@ -5802,15 +5802,15 @@
       "canonical_id": 60,
       "wiki_ref": 60,
       "world": {
-        "x": 1679.65,
-        "y": -962.22,
-        "z": 65.67
+        "x": 2119.23,
+        "y": 2385.21,
+        "z": 33.71
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1679.65,
-        "y": -962.22,
-        "z": 65.67
+        "x": 2119.23,
+        "y": 2385.21,
+        "z": 33.71
       },
       "description_en": "Level 6 of The Emerald Isle parking building, a small ramp is against the wall facing east, right next to the inter-level access ramps.",
       "description_ru": "На 6-м уровне парковки «Изумрудного острова» небольшой трамплин стоит у стены и направлен на восток, рядом с межуровневыми рампами.",
@@ -5821,15 +5821,15 @@
       "canonical_id": 61,
       "wiki_ref": 61,
       "world": {
-        "x": 1667.17,
-        "y": -992.86,
-        "z": 32.76
+        "x": 2073.71,
+        "y": 2366.65,
+        "z": 50.85
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1667.17,
-        "y": -992.86,
-        "z": 32.76
+        "x": 2073.71,
+        "y": 2366.65,
+        "z": 50.85
       },
       "description_en": "Level 10 (the top level) of The Emerald Isle parking building, a ramp is against the wall facing west, right above the last inter-level access ramp.",
       "description_ru": "На 10-м, верхнем уровне парковки «Изумрудного острова» трамплин стоит у стены и направлен на запад, прямо над последней межуровневой рампой.",
@@ -5840,15 +5840,15 @@
       "canonical_id": 62,
       "wiki_ref": 62,
       "world": {
-        "x": 347.0,
-        "y": -1662.3,
-        "z": 35.82
+        "x": 2172.08,
+        "y": 2430.51,
+        "z": 61.75
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 347.0,
-        "y": -1662.3,
-        "z": 35.82
+        "x": 2172.08,
+        "y": 2430.51,
+        "z": 61.75
       },
       "description_en": "From Level 10 (the top level) of The Emerald Isle parking building, exit up the pedestrian stairway on the north side (opposite jump #61) to get to the rooftop and then accelerate eastwards to get over a small gap to the run-up to the ramp on the north side of the eastern tower of the building.",
       "description_ru": "С 10-го, верхнего уровня парковки «Изумрудного острова» поднимитесь по пешеходной лестнице с северной стороны, напротив прыжка №61, на крышу. Разгонитесь на восток, перепрыгните небольшой разрыв и продолжайте к трамплину на северной стороне восточной башни здания.",
@@ -5859,15 +5859,15 @@
       "canonical_id": 63,
       "wiki_ref": 63,
       "world": {
-        "x": 743.15,
-        "y": -1132.82,
-        "z": 25.8
+        "x": 2170.95,
+        "y": 2402.61,
+        "z": 62.29
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 743.15,
-        "y": -1132.82,
-        "z": 25.8
+        "x": 2170.95,
+        "y": 2402.61,
+        "z": 62.29
       },
       "description_en": "Almost identical to jump #62. From the stairs on the roof, turn south then eastbound again over the gap to the ramp on the south side of the tower in jump #62.",
       "description_ru": "Почти такой же прыжок, как №62. От лестницы на крыше поверните на юг, затем снова двигайтесь на восток через разрыв к трамплину на южной стороне той же башни.",
@@ -5878,15 +5878,15 @@
       "canonical_id": 64,
       "wiki_ref": 64,
       "world": {
-        "x": 1395.56,
-        "y": -1460.57,
-        "z": 12.39
+        "x": 2176.13,
+        "y": 2268.2,
+        "z": 13.47
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1395.56,
-        "y": -1460.57,
-        "z": 12.39
+        "x": 2176.13,
+        "y": 2268.2,
+        "z": 13.47
       },
       "description_en": "Westbound from Roca Escalante through a fence into a minor power substation on the north side of the Old Venturas Strip casino where The Brown Starfish Bar and Grill occupies the south side, the ramp is under the final power transformer with a bribe star directly above the fence.",
       "description_ru": "Двигайтесь на запад от Рока-Эскаланте через забор на небольшую электрическую подстанцию к северу от казино в Олд-Вентурас-Стрип, южную часть которого занимает The Brown Starfish Bar and Grill. Трамплин находится под последним трансформатором; звезда взятки висит прямо над забором.",
@@ -5897,15 +5897,15 @@
       "canonical_id": 65,
       "wiki_ref": 65,
       "world": {
-        "x": 1586.49,
-        "y": 312.89,
-        "z": 24.0
+        "x": 2784.76,
+        "y": 2208.72,
+        "z": 15.19
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 1586.49,
-        "y": 312.89,
-        "z": 24.0
+        "x": 2784.76,
+        "y": 2208.72,
+        "z": 15.19
       },
       "description_en": "Westbound, through the main entry to the Creek Safehouse parking, the wooden ramp is on the grass right next to the building directly west of the entry structure.",
       "description_ru": "Двигайтесь на запад через главный въезд на парковку убежища в Крике: деревянный трамплин находится на траве рядом со зданием прямо к западу от въездной конструкции.",
@@ -5916,15 +5916,15 @@
       "canonical_id": 66,
       "wiki_ref": 66,
       "world": {
-        "x": 2058.1,
-        "y": -2677.52,
-        "z": 15.49
+        "x": 1636.26,
+        "y": 2399.71,
+        "z": 15.89
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2058.1,
-        "y": -2677.52,
-        "z": 15.49
+        "x": 1636.26,
+        "y": 2399.71,
+        "z": 15.89
       },
       "description_en": "Northbound past the Steakhouse into the container yard, the wooden ramp is on the east side of the containers.",
       "description_ru": "Двигайтесь на север мимо Steakhouse во двор с контейнерами: деревянный трамплин находится с восточной стороны контейнеров.",
@@ -5935,15 +5935,15 @@
       "canonical_id": 67,
       "wiki_ref": 67,
       "world": {
-        "x": 586.01,
-        "y": -1773.77,
-        "z": 15.23
+        "x": 1482.38,
+        "y": 2037.0,
+        "z": 17.06
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 586.01,
-        "y": -1773.77,
-        "z": 15.23
+        "x": 1482.38,
+        "y": 2037.0,
+        "z": 17.06
       },
       "description_en": "Northbound from the Las Venturas Airport , just east of the Redsands West Safehouse , into an apartment complex that has the same design as the Creek Safehouse , with the same jump setup as jump #65, a wooden ramp directly ahead through the entry structure right beside one of the buildings.",
       "description_ru": "Двигайтесь на север от аэропорта Лас-Вентураса, чуть восточнее убежища в Западном Рэдсэндс, в жилой комплекс того же типа, что убежище в Крике. Здесь повторяется схема прыжка №65: деревянный трамплин находится прямо впереди за въездной конструкцией рядом с одним из зданий.",
@@ -5954,15 +5954,15 @@
       "canonical_id": 68,
       "wiki_ref": 68,
       "world": {
-        "x": 2172.08,
-        "y": 2430.51,
-        "z": 61.75
+        "x": 2407.31,
+        "y": 1364.38,
+        "z": 14.57
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2172.08,
-        "y": 2430.51,
-        "z": 61.75
+        "x": 2407.31,
+        "y": 1364.38,
+        "z": 14.57
       },
       "description_en": "Northbound on the east side of the casino, down the steps into the recessed surround of the pyramid, the ramp is the north facing steps in the northeast corner.",
       "description_ru": "Двигайтесь на север по восточной стороне казино, спуститесь по ступеням в углубление вокруг пирамиды: трамплин — ступени, направленные на север, в северо-восточном углу.",
@@ -5973,15 +5973,15 @@
       "canonical_id": 69,
       "wiki_ref": 69,
       "world": {
-        "x": 2176.13,
-        "y": 2268.2,
-        "z": 13.47
+        "x": 2418.06,
+        "y": 1353.23,
+        "z": 12.36
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": 2176.13,
-        "y": 2268.2,
-        "z": 13.47
+        "x": 2418.06,
+        "y": 1353.23,
+        "z": 12.36
       },
       "description_en": "Virtually identical to jump #68, this time eastbound on the north side of the pyramid up the east facing steps in the same northeast corner.",
       "description_ru": "Почти идентично прыжку №68: на этот раз двигайтесь на восток по северной стороне пирамиды вверх по ступеням, направленным на восток, в том же северо-восточном углу.",
@@ -5992,15 +5992,15 @@
       "canonical_id": 70,
       "wiki_ref": 70,
       "world": {
-        "x": -2213.77,
-        "y": -311.08,
-        "z": 38.53
+        "x": 1749.72,
+        "y": 779.6,
+        "z": 13.48
       },
       "lookup": {
         "strategy": "nearest_world_coordinate",
-        "x": -2213.77,
-        "y": -311.08,
-        "z": 38.53
+        "x": 1749.72,
+        "y": 779.6,
+        "z": 13.48
       },
       "description_en": "Northbound on the far east side of the warehouses, the wooden ramp is in the north east corner of the yard.",
       "description_ru": "Двигайтесь на север вдоль крайней восточной стороны складов: деревянный трамплин находится в северо-восточном углу двора.",

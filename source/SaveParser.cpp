@@ -245,7 +245,10 @@ ParseResult SaveParser::parseBytes(const std::vector<std::uint8_t>& data, const 
         const bool disabled = (data[p + 0x1D] & 0x01u) != 0;
         if (disabled) continue;
 
-        CollectibleType collectibleType;
+        // MSVC cannot prove that every non-null missingCounter assignment also
+        // initializes this value.  The default is unreachable after the guard
+        // below, but keeps the compiler's definite-assignment analysis sound.
+        CollectibleType collectibleType = CollectibleType::Oyster;
         bool isCollectible = false;
         int* missingCounter = nullptr;
         if (model == kModelOyster && type == kPickupOnce) {
