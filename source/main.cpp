@@ -3,6 +3,7 @@
 #include "CollectibleInfo.hpp"
 #include "CollectibleMedia.hpp"
 #include "MapTexture.hpp"
+#include "MarkerSelection.hpp"
 #include "Platform.hpp"
 #include "PoiInfo.hpp"
 #include "PoiMedia.hpp"
@@ -32,6 +33,7 @@ constexpr SDL_Rect kPanelRect{955, 0, 325, 720};
 constexpr float kWorldHalf = 3000.0f;
 constexpr float kTouchHitRadius = 48.0f;
 constexpr float kControllerHitRadius = 32.0f;
+constexpr float kOverlapGroupRadius = 24.0f;
 
 struct Palette {
     SDL_Color bg{15, 18, 22, 255};
@@ -375,6 +377,56 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
     a.selectedPoi = selectedPoi;
 }
 
+bool selectedMarkerScreen(const AppState& a, int& x, int& y) {
+    const auto* parsed = currentParse(a);
+    if (parsed && a.selected >= 0 && a.selected < static_cast<int>(parsed->missing.size())) {
+        std::tie(x, y) = collectibleToScreen(a, parsed->missing[static_cast<std::size_t>(a.selected)].x,
+                                              parsed->missing[static_cast<std::size_t>(a.selected)].y);
+        return true;
+    }
+    if (const auto* poi = a.selectedPoi >= 0 ? gtasa::poiInfo(static_cast<std::size_t>(a.selectedPoi)) : nullptr) {
+        std::tie(x, y) = collectibleToScreen(a, poi->x, poi->y);
+        return true;
+    }
+    return false;
+}
+
+bool selectedMarkerHit(const AppState& a, int x, int y, float radius) {
+    int sx = 0, sy = 0;
+    if (!selectedMarkerScreen(a, sx, sy)) return false;
+    const float dx = sx - x, dy = sy - y;
+    return dx * dx + dy * dy <= radius * radius;
+}
+
+bool cycleOverlappingMarkers(AppState& a, int direction) {
+    std::vector<gtasa::MarkerSelectionPoint> points;
+    const auto* parsed = currentParse(a);
+    if (parsed) for (std::size_t i = 0; i < parsed->missing.size(); ++i) {
+        const auto& item = parsed->missing[i];
+        if (!a.filters[static_cast<int>(item.type)]) continue;
+        const auto [x, y] = collectibleToScreen(a, item.x, item.y);
+        if (insideMap(a, x, y)) points.push_back({static_cast<int>(i) + 1, static_cast<float>(x), static_cast<float>(y)});
+    }
+    if (a.config.showPoi) for (std::size_t i = 0; i < gtasa::poiInfoCount(); ++i) {
+        const auto* poi = gtasa::poiInfo(i);
+        if (!poi || !poi->visibleOnMap) continue;
+        const auto [x, y] = collectibleToScreen(a, poi->x, poi->y);
+        if (insideMap(a, x, y)) points.push_back({-static_cast<int>(i) - 1, static_cast<float>(x), static_cast<float>(y)});
+    }
+    const int current = a.selected >= 0 ? a.selected + 1 : (a.selectedPoi >= 0 ? -a.selectedPoi - 1 : 0);
+    int next = 0;
+    if (!gtasa::cycleOverlappingMarker(points, current, direction, kOverlapGroupRadius, next)) return false;
+    a.selected = next > 0 ? next - 1 : -1;
+    a.selectedPoi = next < 0 ? -next - 1 : -1;
+    if (const auto* parsedAgain = currentParse(a); parsedAgain && a.selected >= 0) {
+        const auto& item = parsedAgain->missing[static_cast<std::size_t>(a.selected)];
+        a.cursorX = item.x; a.cursorY = item.y;
+    } else if (const auto* poi = a.selectedPoi >= 0 ? gtasa::poiInfo(static_cast<std::size_t>(a.selectedPoi)) : nullptr) {
+        a.cursorX = poi->x; a.cursorY = poi->y;
+    }
+    return true;
+}
+
 void drawMap(SDL_Renderer* r, const AppState& a) {
     const auto& rect = mapRect(a);
     fill(r, rect, kColors.mapBg);
@@ -475,6 +527,11 @@ void centerSelectedIfNeeded(AppState& a) {
 }
 
 void selectAdjacent(AppState& a, int direction, SDL_Renderer* renderer) {
+    if (cycleOverlappingMarkers(a, direction)) {
+        centerSelectedIfNeeded(a);
+        if (a.detailOpen) openDetails(a, renderer);
+        return;
+    }
     const auto* parsed = currentParse(a);
     if (!parsed || parsed->missing.empty()) return;
     const int n = static_cast<int>(parsed->missing.size());
@@ -872,9 +929,10 @@ int main(int, char**) {
                     const int dx = x - lastTapX, dy = y - lastTapY;
                     const int previous = app.selected;
                     const int previousPoi = app.selectedPoi;
-                    selectNearest(app, x, y, kTouchHitRadius);
+                    const bool selectedHit = selectedMarkerHit(app, x, y, kTouchHitRadius);
+                    if (!selectedHit) selectNearest(app, x, y, kTouchHitRadius);
                     const bool hitMarker = app.selected >= 0 || app.selectedPoi >= 0;
-                    if (hitMarker && (app.selected == previous || app.selectedPoi == previousPoi)) {
+                    if (selectedHit || (hitMarker && (app.selected == previous || app.selectedPoi == previousPoi))) {
                         // A repeated touch on an already selected marker always
                         // opens its card, including when nearby markers overlap.
                         openDetails(app, renderer);
@@ -948,8 +1006,9 @@ int main(int, char**) {
                 const auto [cursorX, cursorY] = collectibleToScreen(app, app.cursorX, app.cursorY);
                 const int previous = app.selected;
                 const int previousPoi = app.selectedPoi;
-                selectNearest(app, cursorX, cursorY, kControllerHitRadius);
-                if ((app.selected >= 0 && app.selected == previous) ||
+                const bool selectedHit = selectedMarkerHit(app, cursorX, cursorY, kControllerHitRadius);
+                if (!selectedHit) selectNearest(app, cursorX, cursorY, kControllerHitRadius);
+                if (selectedHit || (app.selected >= 0 && app.selected == previous) ||
                     (app.selectedPoi >= 0 && app.selectedPoi == previousPoi)) openDetails(app, renderer);
             }
             if (down & HidNpadButton_B) { app.selected = -1; app.selectedPoi = -1; }

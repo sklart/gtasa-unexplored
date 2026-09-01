@@ -1,5 +1,6 @@
 #include "CollectibleIcons.hpp"
 #include "MapProjection.hpp"
+#include "MarkerSelection.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -52,5 +53,13 @@ int main() {
     const float calibratedWorld = mapScreenToWorldAxis(calibratedScreen, 0.0f, 1280.0f,
                                                         100.0f, 800.0f, -1000.0f, 1000.0f, 2048.0f);
     assert(std::fabs(calibratedWorld - 175.0f) < 0.01f);
+    const std::vector<MarkerSelectionPoint> overlapping{{1, 100.0f, 100.0f}, {2, 111.0f, 105.0f},
+                                                         {3, 118.0f, 103.0f}, {4, 190.0f, 100.0f}};
+    int selected = 0;
+    assert(cycleOverlappingMarker(overlapping, 1, 1, 24.0f, selected) && selected == 2);
+    assert(cycleOverlappingMarker(overlapping, selected, 1, 24.0f, selected) && selected == 3);
+    assert(cycleOverlappingMarker(overlapping, selected, 1, 24.0f, selected) && selected == 1);
+    assert(cycleOverlappingMarker(overlapping, selected, -1, 24.0f, selected) && selected == 3);
+    assert(!cycleOverlappingMarker(overlapping, 4, 1, 24.0f, selected));
     std::cout << "map UI tests passed\n";
 }
