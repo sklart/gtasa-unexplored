@@ -527,25 +527,25 @@ void centerSelectedIfNeeded(AppState& a) {
 }
 
 void selectAdjacent(AppState& a, int direction, SDL_Renderer* renderer) {
-    if (cycleOverlappingMarkers(a, direction)) {
-        centerSelectedIfNeeded(a);
-        if (a.detailOpen) openDetails(a, renderer);
-        return;
-    }
     const auto* parsed = currentParse(a);
     if (!parsed || parsed->missing.empty()) return;
     const int n = static_cast<int>(parsed->missing.size());
-    int index = a.selected;
-    for (int step = 0; step < n; ++step) {
-        index = (index + direction + n) % n;
-        if (a.filters[static_cast<int>(parsed->missing[static_cast<std::size_t>(index)].type)]) {
-            a.selected = index;
-            a.selectedPoi = -1;
-            centerSelectedIfNeeded(a);
-            if (a.detailOpen) openDetails(a, renderer);
-            return;
-        }
+    const int index = gtasa::nextVisibleMarkerIndex(a.selected, n, direction, [&](int candidate) {
+        return a.filters[static_cast<int>(parsed->missing[static_cast<std::size_t>(candidate)].type)];
+    });
+    if (index < 0) return;
+    a.selected = index;
+    a.selectedPoi = -1;
+    centerSelectedIfNeeded(a);
+    if (a.detailOpen) openDetails(a, renderer);
+}
+
+void navigateMarker(AppState& a, int direction, bool groupCycle, SDL_Renderer* renderer) {
+    if (groupCycle) {
+        if (cycleOverlappingMarkers(a, direction) && a.detailOpen) openDetails(a, renderer);
+        return;
     }
+    selectAdjacent(a, direction, renderer);
 }
 
 void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
@@ -611,7 +611,7 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     coordinates.setf(std::ios::fixed); coordinates.precision(1);
     coordinates << "X " << info->x << "   Y " << info->y << "   Z " << info->z;
     text.draw(coordinates.str(), 112, 615, 15, kColors.muted);
-    text.draw(tr(a, "B — назад    ↑/↓ — текст    L3/R3 — объект", "B — back    ↑/↓ — text    L3/R3 — object"),
+    text.draw(tr(a, "B — назад    ↑/↓ — текст    L3/R3 — объект    ZL+L3/R3 — группа", "B — back    ↑/↓ — text    L3/R3 — item    ZL+L3/R3 — group"),
               720, 646, 15, kColors.muted, 440);
 }
 
@@ -682,7 +682,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     text.draw(tr(a, "L/R / щипок — масштаб", "L/R / pinch — zoom"), 980, cy + 45, 14, kColors.muted, 290);
     text.draw(tr(a, "A — выбрать, L3/R3 — объект", "A — select, L3/R3 — item"), 980, cy + 64, 14, kColors.muted, 290);
     text.draw(tr(a, "X — фильтры, Y — карты", "X — filters, Y — maps"), 980, cy + 83, 14, kColors.muted, 290);
-    text.draw(tr(a, "Правый стик / 2 пальца — панель", "Right stick / 2 fingers — panel"), 980, cy + 102, 14, kColors.muted, 290);
+    text.draw(tr(a, "ZL+L3/R3 — группа, ZR+R3 / 2 пальца — панель", "ZL+L3/R3 — group, ZR+R3 / 2 fingers — panel"), 980, cy + 102, 14, kColors.muted, 290);
     text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 121, 14, kColors.muted, 290);
     if (!a.status.empty()) text.draw(a.status, 980, 664, 13, kColors.warning, 285);
 }
@@ -961,7 +961,8 @@ int main(int, char**) {
         const HidAnalogStickState left = padGetStickPos(&pad, 0);
 
         if (down & HidNpadButton_Plus) running = false;
-        if (down & HidNpadButton_ZL) {
+        const bool groupModifier = (held & HidNpadButton_ZL) != 0;
+        if ((down & HidNpadButton_ZL) && !(down & (HidNpadButton_StickL | HidNpadButton_StickR))) {
             app.config.language = isRu(app) ? "en" : "ru";
             app.platform.saveConfig(app.config);
             text.clearCache();
@@ -972,8 +973,8 @@ int main(int, char**) {
             if (down & HidNpadButton_B) { app.detailOpen = false; app.media.unload(); app.poiMedia.unload(); }
             if (down & HidNpadButton_Up) app.detailScroll = std::max(0, app.detailScroll - 20);
             if (down & HidNpadButton_Down) app.detailScroll = std::min(120, app.detailScroll + 20);
-            if (down & HidNpadButton_StickL) selectAdjacent(app, -1, renderer);
-            if (down & HidNpadButton_StickR) selectAdjacent(app, 1, renderer);
+            if (down & HidNpadButton_StickL) navigateMarker(app, -1, groupModifier, renderer);
+            if (down & HidNpadButton_StickR) navigateMarker(app, 1, groupModifier, renderer);
         } else if (app.legendOpen) {
             if (down & HidNpadButton_X) app.legendOpen = false;
             constexpr int kFilterCount = static_cast<int>(gtasa::CollectibleType::Count) + 1;
@@ -995,7 +996,11 @@ int main(int, char**) {
             if (down & HidNpadButton_Down) app.mapTexture.cycle(renderer, 1, app.status);
             if (down & HidNpadButton_Left) switchSlot(app, -1);
             if (down & HidNpadButton_Right) switchSlot(app, 1);
-            if (down & HidNpadButton_StickR) app.showPanel = !app.showPanel;
+            if (down & HidNpadButton_StickL) navigateMarker(app, -1, groupModifier, renderer);
+            if (down & HidNpadButton_StickR) {
+                if ((held & HidNpadButton_ZR) != 0) app.showPanel = !app.showPanel;
+                else navigateMarker(app, 1, groupModifier, renderer);
+            }
             if (down & HidNpadButton_Y) {
                 app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.zoom = 1.0f; app.selected = -1; app.selectedPoi = -1;
                 if (!app.mapTexture.discoverAndLoad(renderer, app.mapTexture.currentId(), app.status)) {

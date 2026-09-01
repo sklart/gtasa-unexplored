@@ -7,6 +7,16 @@ namespace gtasa {
 
 struct MarkerSelectionPoint { int id{}; float x{}; float y{}; };
 
+template <typename IsVisible>
+inline int nextVisibleMarkerIndex(int current, int count, int direction, IsVisible isVisible) {
+    if (count <= 0) return -1;
+    for (int step = 0; step < count; ++step) {
+        current = (current + (direction < 0 ? count - 1 : 1)) % count;
+        if (isVisible(current)) return current;
+    }
+    return -1;
+}
+
 inline bool cycleOverlappingMarker(const std::vector<MarkerSelectionPoint>& points, int currentId,
                                    int direction, float groupRadius, int& nextId) {
     const MarkerSelectionPoint* current = nullptr;

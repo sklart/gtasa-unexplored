@@ -61,5 +61,9 @@ int main() {
     assert(cycleOverlappingMarker(overlapping, selected, 1, 24.0f, selected) && selected == 1);
     assert(cycleOverlappingMarker(overlapping, selected, -1, 24.0f, selected) && selected == 3);
     assert(!cycleOverlappingMarker(overlapping, 4, 1, 24.0f, selected));
+    const std::vector<bool> visible{true, true, true, true};
+    // Global L3/R3 navigation remains independent from the overlap group.
+    assert(nextVisibleMarkerIndex(1, 4, 1, [&](int index) { return visible[index]; }) == 2);
+    assert(nextVisibleMarkerIndex(1, 4, -1, [&](int index) { return visible[index]; }) == 0);
     std::cout << "map UI tests passed\n";
 }
