@@ -171,7 +171,9 @@ const SDL_Rect& mapRect(const AppState& a) {
     return a.showPanel ? kMapRectWithPanel : kMapRectFull;
 }
 
-SDL_Rect mapContentRect(const AppState& a) { return a.mapTexture.contentRect(mapRect(a)); }
+SDL_Rect mapContentRect(const AppState& a) {
+    return a.mapTexture.contentRect(gtasa::MapView{a.centerX, a.centerY, a.zoom}, mapRect(a));
+}
 
 bool isRu(const AppState& a) { return a.config.language == "ru"; }
 
@@ -343,8 +345,9 @@ const gtasa::SaveEntry* currentSave(const AppState& a) {
 
 void selectNearest(AppState& a, int px, int py, float maxDist) {
     const auto* p = currentParse(a);
-    struct Candidate { float distance; int collectible; int poi; };
-    std::vector<Candidate> candidates;
+    float best = maxDist * maxDist;
+    int selected = -1;
+    int selectedPoi = -1;
     if (p) {
         for (std::size_t i = 0; i < p->missing.size(); ++i) {
             const auto& c = p->missing[i];
@@ -354,7 +357,7 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
             const float dx = static_cast<float>(sx - px);
             const float dy = static_cast<float>(sy - py);
             const float d2 = dx * dx + dy * dy;
-            if (d2 <= maxDist * maxDist) candidates.push_back({d2, static_cast<int>(i), -1});
+            if (d2 <= best) { best = d2; selected = static_cast<int>(i); selectedPoi = -1; }
         }
     }
     if (a.config.showPoi) {
@@ -365,22 +368,11 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
             if (!insideMap(a, sx, sy)) continue;
             const float dx = static_cast<float>(sx - px), dy = static_cast<float>(sy - py);
             const float d2 = dx * dx + dy * dy;
-            if (d2 <= maxDist * maxDist) candidates.push_back({d2, -1, static_cast<int>(i)});
+            if (d2 <= best) { best = d2; selected = -1; selectedPoi = static_cast<int>(i); }
         }
     }
-    if (candidates.empty()) { a.selected = -1; a.selectedPoi = -1; return; }
-    std::sort(candidates.begin(), candidates.end(), [](const Candidate& lhs, const Candidate& rhs) {
-        return lhs.distance < rhs.distance;
-    });
-    std::size_t choice = 0;
-    for (std::size_t i = 0; i < candidates.size(); ++i) {
-        if (candidates[i].collectible == a.selected && candidates[i].poi == a.selectedPoi) {
-            choice = (i + 1) % candidates.size();
-            break;
-        }
-    }
-    a.selected = candidates[choice].collectible;
-    a.selectedPoi = candidates[choice].poi;
+    a.selected = selected;
+    a.selectedPoi = selectedPoi;
 }
 
 void drawMap(SDL_Renderer* r, const AppState& a) {
@@ -878,15 +870,20 @@ int main(int, char**) {
                 if (singleTap && !app.legendOpen && !app.detailOpen && insideMap(app, x, y)) {
                     const Uint32 now = SDL_GetTicks();
                     const int dx = x - lastTapX, dy = y - lastTapY;
-                    if (now - lastTapTime <= 350 && dx * dx + dy * dy <= 900) {
-                        app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.zoom = 1.0f; app.selected = -1; app.selectedPoi = -1;
+                    const int previous = app.selected;
+                    const int previousPoi = app.selectedPoi;
+                    selectNearest(app, x, y, kTouchHitRadius);
+                    const bool hitMarker = app.selected >= 0 || app.selectedPoi >= 0;
+                    if (hitMarker && (app.selected == previous || app.selectedPoi == previousPoi)) {
+                        // A repeated touch on an already selected marker always
+                        // opens its card, including when nearby markers overlap.
+                        openDetails(app, renderer);
                         lastTapTime = 0;
+                    } else if (!hitMarker && now - lastTapTime <= 350 && dx * dx + dy * dy <= 900) {
+                        // Reserve double-tap reset for genuinely empty map space.
+                        app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.zoom = 1.0f;
+                        app.selected = -1; app.selectedPoi = -1; lastTapTime = 0;
                     } else {
-                        const int previous = app.selected;
-                        const int previousPoi = app.selectedPoi;
-                        selectNearest(app, x, y, kTouchHitRadius);
-                        if ((app.selected >= 0 && app.selected == previous) ||
-                            (app.selectedPoi >= 0 && app.selectedPoi == previousPoi)) openDetails(app, renderer);
                         lastTapTime = now;
                         lastTapX = x;
                         lastTapY = y;

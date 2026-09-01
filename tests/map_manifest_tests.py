@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Lightweight manifest compatibility checks without requiring image assets."""
+"""Map manifest compatibility and repeated-[map] parser regression tests."""
+import importlib.util
 import pathlib
-import subprocess
-import sys
 import tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-VALIDATOR = ROOT / "tools" / "validate_map_pack.py"
+SPEC = importlib.util.spec_from_file_location("map_validator", ROOT / "tools" / "validate_map_pack.py")
+validator = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(validator)
 
 
 def check(pack_fields, expected_canvas):
@@ -14,13 +15,15 @@ def check(pack_fields, expected_canvas):
         root = pathlib.Path(directory)
         (root / "maps.ini").write_text(
             "[pack]\nformat=1\nprojection=sa-world-v1\n" + pack_fields + "\n"
-            "[map]\nkind=overlay\nid=test\nfile=missing.png\n", encoding="utf-8")
-        completed = subprocess.run([sys.executable, str(VALIDATOR), str(root),], text=True,
-                                   capture_output=True, check=False)
-        if completed.returncode != 0:
-            raise AssertionError(completed.stderr or completed.stdout)
-        if f"canvas_size={expected_canvas}" not in completed.stdout:
-            raise AssertionError(completed.stdout)
+            "[map]\nkind=base\nid=first\nfile=first.png\n"
+            "[map]\nkind=base\nid=second\nfile=second.png\n"
+            "[map]\nkind=base\nid=third\nfile=third.png\n", encoding="utf-8")
+        for name in ("first.png", "second.png", "third.png"):
+            (root / name).write_bytes(b"\x89PNG\r\n\x1a\n" + b"\x00\x00\x00\rIHDR" +
+                                      expected_canvas.to_bytes(4, "big") + expected_canvas.to_bytes(4, "big"))
+        canvas, count = validator.validate(root)
+        assert canvas == expected_canvas
+        assert count == 3
 
 
 check("canvas_size=2048", 2048)

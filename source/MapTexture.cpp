@@ -300,10 +300,6 @@ bool MapTexture::cycle(SDL_Renderer* renderer, int delta, std::string& status) {
     return false;
 }
 
-SDL_Rect MapTexture::contentRect(const SDL_Rect& viewport) const {
-    return viewport;
-}
-
 namespace {
 struct SourceWindow { int x{}, y{}, w{}, h{}; };
 
@@ -323,12 +319,23 @@ SourceWindow sourceWindow(const MapView& input, int width, int height, const Map
     const int sy = std::clamp(static_cast<int>(std::lround(py - sh * 0.5)), 0, height - sh);
     return SourceWindow{sx, sy, sw, sh};
 }
+
+SDL_Rect destinationRect(const SDL_Rect& viewport, const SourceWindow& source) {
+    const MapDestinationSize size = mapDestinationSize({source.w, source.h}, viewport.w, viewport.h);
+    return SDL_Rect{viewport.x + (viewport.w - size.width) / 2,
+                    viewport.y + (viewport.h - size.height) / 2, size.width, size.height};
+}
 } // namespace
+
+SDL_Rect MapTexture::contentRect(const MapView& view, const SDL_Rect& viewport) const {
+    if (width_ <= 0 || height_ <= 0 || viewport.w <= 0 || viewport.h <= 0) return viewport;
+    return destinationRect(viewport, sourceWindow(view, width_, height_, activeCalibration(), viewport));
+}
 
 bool MapTexture::render(SDL_Renderer* renderer, const MapView& inputView, const SDL_Rect& dst) const {
     if (!texture_ || width_ <= 0 || height_ <= 0 || dst.w <= 0 || dst.h <= 0) return false;
-    const SDL_Rect content = contentRect(dst);
-    const SourceWindow source = sourceWindow(inputView, width_, height_, activeCalibration(), content);
+    const SourceWindow source = sourceWindow(inputView, width_, height_, activeCalibration(), dst);
+    const SDL_Rect content = destinationRect(dst, source);
     const SDL_Rect src{source.x, source.y, source.w, source.h};
     return SDL_RenderCopy(renderer, texture_, &src, &content) == 0;
 }
@@ -336,10 +343,10 @@ bool MapTexture::render(SDL_Renderer* renderer, const MapView& inputView, const 
 bool MapTexture::projectWorldPoint(const MapView& inputView, const SDL_Rect& dst,
                                    float x, float y, int& screenX, int& screenY) const {
     if (!texture_ || width_ <= 0 || height_ <= 0 || dst.w <= 0 || dst.h <= 0) return false;
-    const SDL_Rect content = contentRect(dst);
-    if (content.w <= 0 || content.h <= 0) return false;
     const MapEntry calibration = activeCalibration();
-    const SourceWindow source = sourceWindow(inputView, width_, height_, calibration, content);
+    const SourceWindow source = sourceWindow(inputView, width_, height_, calibration, dst);
+    const SDL_Rect content = destinationRect(dst, source);
+    if (content.w <= 0 || content.h <= 0) return false;
     const double pointX = (x - calibration.left) * width_ / (calibration.right - calibration.left);
     const double pointY = (calibration.top - y) * height_ / (calibration.top - calibration.bottom);
     screenX = content.x + static_cast<int>(std::lround((pointX - source.x) * content.w / source.w));
@@ -350,10 +357,10 @@ bool MapTexture::projectWorldPoint(const MapView& inputView, const SDL_Rect& dst
 bool MapTexture::screenToWorld(const MapView& inputView, const SDL_Rect& dst, int screenX, int screenY,
                                float& worldX, float& worldY) const {
     if (!texture_ || width_ <= 0 || height_ <= 0) return false;
-    const SDL_Rect content = contentRect(dst);
-    if (screenX < content.x || screenX >= content.x + content.w || screenY < content.y || screenY >= content.y + content.h) return false;
     const MapEntry calibration = activeCalibration();
-    const SourceWindow source = sourceWindow(inputView, width_, height_, calibration, content);
+    const SourceWindow source = sourceWindow(inputView, width_, height_, calibration, dst);
+    const SDL_Rect content = destinationRect(dst, source);
+    if (screenX < content.x || screenX >= content.x + content.w || screenY < content.y || screenY >= content.y + content.h) return false;
     const float px = source.x + static_cast<float>(screenX - content.x) * source.w / content.w;
     const float py = source.y + static_cast<float>(screenY - content.y) * source.h / content.h;
     worldX = calibration.left + px * (calibration.right - calibration.left) / width_;
@@ -362,10 +369,15 @@ bool MapTexture::screenToWorld(const MapView& inputView, const SDL_Rect& dst, in
 }
 
 void MapTexture::panByScreenDelta(MapView& view, const SDL_Rect& dst, float dx, float dy) const {
-    const SDL_Rect content = contentRect(dst);
+    if (width_ <= 0 || height_ <= 0) return;
+    const MapEntry calibration = activeCalibration();
+    const SourceWindow source = sourceWindow(view, width_, height_, calibration, dst);
+    const SDL_Rect content = destinationRect(dst, source);
     if (content.w <= 0 || content.h <= 0) return;
-    view.centerX -= dx * 6000.0f / (view.zoom * content.w);
-    view.centerY += dy * 6000.0f / (view.zoom * content.h);
+    const float worldPerPixelX = (calibration.right - calibration.left) * source.w / (width_ * content.w);
+    const float worldPerPixelY = (calibration.top - calibration.bottom) * source.h / (height_ * content.h);
+    view.centerX -= dx * worldPerPixelX;
+    view.centerY += dy * worldPerPixelY;
     clampMapView(view, 8.0f);
 }
 
