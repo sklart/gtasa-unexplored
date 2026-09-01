@@ -1,7 +1,7 @@
 """Build the external GTASA Unexplored v1 map pack from user-supplied sources.
 
 The input files stay untouched in maps/source.  Output is deterministic PNG
-at 2048x2048, the canvas required by maps/maps.ini.
+at 2048x2048, the recommended Switch canvas used by maps/maps.ini.
 """
 
 from pathlib import Path

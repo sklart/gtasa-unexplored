@@ -19,6 +19,7 @@ SDL_Texture* loadEmbedded(SDL_Renderer* renderer, const unsigned char* data, std
     if (!surface) return nullptr;
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
     SDL_FreeSurface(surface);
+    if (texture) SDL_SetTextureBlendMode(texture, SDL_BLENDMODE_BLEND);
     return texture;
 }
 

@@ -99,6 +99,7 @@ AppConfig Platform::loadConfig() const {
             else if (key == "uid0") cfg.uid0 = std::stoull(value, nullptr, 16);
             else if (key == "uid1") cfg.uid1 = std::stoull(value, nullptr, 16);
             else if (key == "slot") cfg.preferredSlot = std::max(1, std::min(10, std::stoi(value)));
+            else if (key == "show_poi") cfg.showPoi = value != "0" && value != "false";
         } catch (...) {
             // Ignore malformed config values. This file is not game data.
         }
@@ -114,6 +115,7 @@ bool Platform::saveConfig(const AppConfig& cfg) const {
     f << "uid0=" << std::hex << cfg.uid0 << "\n";
     f << "uid1=" << std::hex << cfg.uid1 << "\n";
     f << std::dec << "slot=" << cfg.preferredSlot << "\n";
+    f << "show_poi=" << (cfg.showPoi ? 1 : 0) << "\n";
     return static_cast<bool>(f);
 }
 

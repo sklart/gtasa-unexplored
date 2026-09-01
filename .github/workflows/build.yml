@@ -18,6 +18,7 @@ jobs:
           python3 tools/generate_collectible_info.py --check
           python3 tools/validate_poi_pack.py
           python3 tools/generate_poi_info.py --check
+          python3 tests/map_manifest_tests.py
       - name: Build and run parser regression test
         run: |
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
@@ -35,6 +36,11 @@ jobs:
             tests/collectible_info_tests.cpp source/CollectibleInfoData.cpp \
             -o collectible-info-tests
           ./collectible-info-tests
+      - name: Build and run map UI math test
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
+            tests/map_ui_tests.cpp -o map-ui-tests
+          ./map-ui-tests
 
   switch-build:
     runs-on: ubuntu-latest

@@ -8,7 +8,7 @@
 namespace gtasa {
 inline constexpr const char* kAppDir = "sdmc:/switch/gtasa-unexplored";
 inline constexpr std::uint64_t kGtaSaTitleId = 0x010065A014024000ULL;
-struct AppConfig { std::string language{"ru"}; std::uint64_t uid0{}; std::uint64_t uid1{}; int preferredSlot{1}; };
+struct AppConfig { std::string language{"ru"}; std::uint64_t uid0{}; std::uint64_t uid1{}; int preferredSlot{1}; bool showPoi{true}; };
 struct SaveEntry { int slot{-1}; std::string path; std::string displayName; bool fromBackup{}; };
 struct SaveDiscovery { bool ok{}; std::string error; bool gameRunningOrBusy{}; bool usingBackup{}; std::vector<SaveEntry> saves;
 #ifdef __SWITCH__

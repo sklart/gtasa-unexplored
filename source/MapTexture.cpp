@@ -1,4 +1,5 @@
 #include "MapTexture.hpp"
+#include "MapProjection.hpp"
 #include "Platform.hpp"
 #include "fallback_map_bin.h"
 #include <SDL_image.h>
@@ -134,6 +135,8 @@ bool MapTexture::parseManifest(const std::string& path, std::string& error) {
     enum class Section { None, Pack, Map, Other } section = Section::None;
     bool mapUsable = false;
     std::set<std::string> ids;
+    int legacyCanvasSize = 0;
+    bool hasCanvasSize = false;
 
     auto resetMap = [&]() { current = {}; mapUsable = false; };
     auto commitMap = [&]() {
@@ -166,7 +169,10 @@ bool MapTexture::parseManifest(const std::string& path, std::string& error) {
         const auto value = trim(line.substr(eq + 1));
         if (section == Section::Pack) {
             if (key == "format" && !parseIntStrict(value, pack_.format)) error = "Invalid format value in [pack]";
-            else if (key == "canvas_size" && !parseIntStrict(value, pack_.canvasSize)) error = "Invalid canvas_size value in [pack]";
+            else if (key == "canvas_size") {
+                hasCanvasSize = parseIntStrict(value, pack_.canvasSize);
+                if (!hasCanvasSize) error = "Invalid canvas_size value in [pack]";
+            } else if (key == "canvas" && !parseIntStrict(value, legacyCanvasSize)) error = "Invalid canvas value in [pack]";
             else if (key == "projection") pack_.projection = lower(value);
             else if (key == "name") pack_.name = value;
         } else if (section == Section::Map) {
@@ -186,6 +192,7 @@ bool MapTexture::parseManifest(const std::string& path, std::string& error) {
         if (!error.empty()) break;
     }
     if (error.empty()) commitMap();
+    if (error.empty() && !hasCanvasSize) pack_.canvasSize = legacyCanvasSize;
     if (!error.empty()) { maps_.clear(); pack_ = {}; return false; }
     if (pack_.format != kMapPackFormat) { error = "Unsupported map-pack format (expected 1)"; maps_.clear(); return false; }
     if (pack_.projection != kProjection) { error = "Unsupported projection (expected sa-world-v1)"; maps_.clear(); return false; }
@@ -294,18 +301,22 @@ bool MapTexture::cycle(SDL_Renderer* renderer, int delta, std::string& status) {
 }
 
 SDL_Rect MapTexture::contentRect(const SDL_Rect& viewport) const {
-    const int side = std::max(0, std::min(viewport.w, viewport.h));
-    return SDL_Rect{viewport.x + (viewport.w - side) / 2, viewport.y + (viewport.h - side) / 2, side, side};
+    return viewport;
 }
 
 namespace {
 struct SourceWindow { int x{}, y{}, w{}, h{}; };
 
-SourceWindow sourceWindow(const MapView& input, int width, int height, const MapEntry& calibration) {
+SourceWindow sourceWindow(const MapView& input, int width, int height, const MapEntry& calibration,
+                          const SDL_Rect& destination) {
     MapView view = input;
     clampMapView(view, 8.0f);
-    const int sw = std::clamp(static_cast<int>(std::lround(static_cast<double>(width) / view.zoom)), 1, width);
-    const int sh = std::clamp(static_cast<int>(std::lround(static_cast<double>(height) / view.zoom)), 1, height);
+    const MapSourceSize sourceSize = mapSourceSize(width, height, view.zoom, destination.w, destination.h);
+    // At zoomed views, a widescreen viewport exposes more world horizontally
+    // while the vertical scale remains unchanged. At the outermost map edge
+    // the finite raster naturally limits the available source rectangle.
+    const int sw = sourceSize.width;
+    const int sh = sourceSize.height;
     const float px = (view.centerX - calibration.left) * width / (calibration.right - calibration.left);
     const float py = (calibration.top - view.centerY) * height / (calibration.top - calibration.bottom);
     const int sx = std::clamp(static_cast<int>(std::lround(px - sw * 0.5)), 0, width - sw);
@@ -317,7 +328,7 @@ SourceWindow sourceWindow(const MapView& input, int width, int height, const Map
 bool MapTexture::render(SDL_Renderer* renderer, const MapView& inputView, const SDL_Rect& dst) const {
     if (!texture_ || width_ <= 0 || height_ <= 0 || dst.w <= 0 || dst.h <= 0) return false;
     const SDL_Rect content = contentRect(dst);
-    const SourceWindow source = sourceWindow(inputView, width_, height_, activeCalibration());
+    const SourceWindow source = sourceWindow(inputView, width_, height_, activeCalibration(), content);
     const SDL_Rect src{source.x, source.y, source.w, source.h};
     return SDL_RenderCopy(renderer, texture_, &src, &content) == 0;
 }
@@ -328,7 +339,7 @@ bool MapTexture::projectWorldPoint(const MapView& inputView, const SDL_Rect& dst
     const SDL_Rect content = contentRect(dst);
     if (content.w <= 0 || content.h <= 0) return false;
     const MapEntry calibration = activeCalibration();
-    const SourceWindow source = sourceWindow(inputView, width_, height_, calibration);
+    const SourceWindow source = sourceWindow(inputView, width_, height_, calibration, content);
     const double pointX = (x - calibration.left) * width_ / (calibration.right - calibration.left);
     const double pointY = (calibration.top - y) * height_ / (calibration.top - calibration.bottom);
     screenX = content.x + static_cast<int>(std::lround((pointX - source.x) * content.w / source.w));
@@ -342,7 +353,7 @@ bool MapTexture::screenToWorld(const MapView& inputView, const SDL_Rect& dst, in
     const SDL_Rect content = contentRect(dst);
     if (screenX < content.x || screenX >= content.x + content.w || screenY < content.y || screenY >= content.y + content.h) return false;
     const MapEntry calibration = activeCalibration();
-    const SourceWindow source = sourceWindow(inputView, width_, height_, calibration);
+    const SourceWindow source = sourceWindow(inputView, width_, height_, calibration, content);
     const float px = source.x + static_cast<float>(screenX - content.x) * source.w / content.w;
     const float py = source.y + static_cast<float>(screenY - content.y) * source.h / content.h;
     worldX = calibration.left + px * (calibration.right - calibration.left) / width_;

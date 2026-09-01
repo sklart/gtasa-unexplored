@@ -30,6 +30,8 @@ constexpr SDL_Rect kMapRectWithPanel{0, 0, 955, 720};
 constexpr SDL_Rect kMapRectFull{0, 0, kScreenW, kScreenH};
 constexpr SDL_Rect kPanelRect{955, 0, 325, 720};
 constexpr float kWorldHalf = 3000.0f;
+constexpr float kTouchHitRadius = 48.0f;
+constexpr float kControllerHitRadius = 32.0f;
 
 struct Palette {
     SDL_Color bg{15, 18, 22, 255};
@@ -264,56 +266,59 @@ void drawIconRing(SDL_Renderer* r, int cx, int cy, int radius, SDL_Color c) {
     }
 }
 
-// Compact map pictograms modelled after the GTA collectible symbols, rather
-// than using indistinguishable coloured squares.
-void drawCollectibleIcon(SDL_Renderer* r, const gtasa::CollectibleIcons& icons,
-                         int x, int y, gtasa::CollectibleType type, int size = 18) {
-    // Use the same compact vector-style silhouettes at every scale.  The
-    // previous source PNGs were designed for larger UI and became visual noise
-    // over a detailed map.
-    (void)icons;
+void drawCollectibleFallback(SDL_Renderer* r, int x, int y, gtasa::CollectibleType type, int size) {
     const SDL_Color c = typeColor(type);
-    const SDL_Color shade{10, 14, 18, 230};
     const int h = std::max(5, size / 2);
-    drawIconRing(r, x, y, h, shade);
     switch (type) {
         case gtasa::CollectibleType::Tag:
             fill(r, SDL_Rect{x - h / 3, y - h / 3, 2 * h / 3, h}, c);
-            fill(r, SDL_Rect{x - h / 4, y - h / 2, h / 2, std::max(2, h / 4)}, c);
-            line(r, x + h / 3, y - h / 6, x + h / 2, y - h / 6, c);
-            break;
+            fill(r, SDL_Rect{x - h / 4, y - h / 2, h / 2, std::max(2, h / 4)}, c); break;
         case gtasa::CollectibleType::Snapshot:
-            fill(r, SDL_Rect{x - h / 2, y - h / 3, h, 2 * h / 3}, c);
-            fill(r, SDL_Rect{x - h / 4, y - h / 2, h / 2, std::max(2, h / 4)}, c);
-            drawIconRing(r, x, y, std::max(2, h / 4), shade);
-            break;
+            fill(r, SDL_Rect{x - h / 2, y - h / 3, h, 2 * h / 3}, c); break;
         case gtasa::CollectibleType::Horseshoe:
             line(r, x - h / 2, y - h / 2, x - h / 2, y + h / 3, c);
             line(r, x - h / 2, y + h / 3, x, y + h / 2, c);
             line(r, x, y + h / 2, x + h / 2, y + h / 3, c);
-            line(r, x + h / 2, y + h / 3, x + h / 2, y - h / 2, c);
-            break;
+            line(r, x + h / 2, y + h / 3, x + h / 2, y - h / 2, c); break;
         case gtasa::CollectibleType::Oyster:
             line(r, x - h / 2, y + h / 3, x + h / 2, y + h / 3, c);
-            line(r, x - h / 2, y + h / 3, x - h / 3, y - h / 2, c);
-            line(r, x - h / 3, y - h / 2, x, y + h / 3, c);
-            line(r, x, y + h / 3, x + h / 3, y - h / 2, c);
-            line(r, x + h / 3, y - h / 2, x + h / 2, y + h / 3, c);
-            break;
+            line(r, x - h / 2, y + h / 3, x, y - h / 2, c);
+            line(r, x, y - h / 2, x + h / 2, y + h / 3, c); break;
         case gtasa::CollectibleType::StuntJump:
             line(r, x, y - h / 2, x + h / 2, y, c);
             line(r, x + h / 2, y, x, y + h / 2, c);
             line(r, x, y + h / 2, x - h / 2, y, c);
-            line(r, x - h / 2, y, x, y - h / 2, c);
-            line(r, x - h / 5, y + h / 8, x + h / 3, y - h / 3, c);
-            break;
+            line(r, x - h / 2, y, x, y - h / 2, c); break;
         default: break;
     }
 }
 
+void drawCollectibleIcon(SDL_Renderer* r, const gtasa::CollectibleIcons& icons,
+                         int x, int y, gtasa::CollectibleType type, int size = 18, Uint8 alpha = 255) {
+    SDL_Texture* texture = icons.texture(type);
+    if (!texture) { drawCollectibleFallback(r, x, y, type, size); return; }
+    int sourceW = 0, sourceH = 0;
+    SDL_QueryTexture(texture, nullptr, nullptr, &sourceW, &sourceH);
+    if (sourceW <= 0 || sourceH <= 0) { drawCollectibleFallback(r, x, y, type, size); return; }
+    const float ratio = static_cast<float>(sourceW) / sourceH;
+    const int w = std::max(1, static_cast<int>(std::lround(ratio >= 1.0f ? size : size * ratio)));
+    const int h = std::max(1, static_cast<int>(std::lround(ratio >= 1.0f ? size / ratio : size)));
+    SDL_Rect target{x - w / 2, y - h / 2, w, h};
+    // A tiny alpha shadow separates the icon from both light terrain and dark water.
+    SDL_SetTextureColorMod(texture, 8, 12, 16);
+    SDL_SetTextureAlphaMod(texture, static_cast<Uint8>(std::min(220, static_cast<int>(alpha))));
+    for (const auto& offset : std::array<std::pair<int, int>, 4>{{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}}) {
+        SDL_Rect shadow = target; shadow.x += offset.first; shadow.y += offset.second;
+        SDL_RenderCopy(r, texture, nullptr, &shadow);
+    }
+    SDL_SetTextureColorMod(texture, 255, 255, 255);
+    SDL_SetTextureAlphaMod(texture, alpha);
+    SDL_RenderCopy(r, texture, nullptr, &target);
+    SDL_SetTextureAlphaMod(texture, 255);
+}
+
 void drawPoiIcon(SDL_Renderer* r, int x, int y, bool representative, int size = 18) {
     const SDL_Color c = representative ? SDL_Color{255, 176, 72, 255} : kColors.poi;
-    drawIconRing(r, x, y, size / 2, SDL_Color{8, 12, 16, 230});
     const SDL_Rect body{x - size / 4, y - size / 2, size / 2, size / 2 + 3};
     fill(r, body, c);
     line(r, x - size / 4, y + 3, x, y + size / 2, c);
@@ -338,8 +343,8 @@ const gtasa::SaveEntry* currentSave(const AppState& a) {
 
 void selectNearest(AppState& a, int px, int py, float maxDist) {
     const auto* p = currentParse(a);
-    float best = maxDist * maxDist;
-    int bestIndex = -1;
+    struct Candidate { float distance; int collectible; int poi; };
+    std::vector<Candidate> candidates;
     if (p) {
         for (std::size_t i = 0; i < p->missing.size(); ++i) {
             const auto& c = p->missing[i];
@@ -349,20 +354,33 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
             const float dx = static_cast<float>(sx - px);
             const float dy = static_cast<float>(sy - py);
             const float d2 = dx * dx + dy * dy;
-            if (d2 < best) { best = d2; bestIndex = static_cast<int>(i); }
+            if (d2 <= maxDist * maxDist) candidates.push_back({d2, static_cast<int>(i), -1});
         }
     }
-    a.selected = bestIndex;
-    a.selectedPoi = -1;
-    for (std::size_t i = 0; i < gtasa::poiInfoCount(); ++i) {
-        const auto* poi = gtasa::poiInfo(i);
-        if (!poi || !poi->visibleOnMap) continue;
-        const auto [sx, sy] = collectibleToScreen(a, poi->x, poi->y);
-        if (!insideMap(a, sx, sy)) continue;
-        const float dx = static_cast<float>(sx - px), dy = static_cast<float>(sy - py);
-        const float d2 = dx * dx + dy * dy;
-        if (d2 < best) { best = d2; a.selected = -1; a.selectedPoi = static_cast<int>(i); }
+    if (a.config.showPoi) {
+        for (std::size_t i = 0; i < gtasa::poiInfoCount(); ++i) {
+            const auto* poi = gtasa::poiInfo(i);
+            if (!poi || !poi->visibleOnMap) continue;
+            const auto [sx, sy] = collectibleToScreen(a, poi->x, poi->y);
+            if (!insideMap(a, sx, sy)) continue;
+            const float dx = static_cast<float>(sx - px), dy = static_cast<float>(sy - py);
+            const float d2 = dx * dx + dy * dy;
+            if (d2 <= maxDist * maxDist) candidates.push_back({d2, -1, static_cast<int>(i)});
+        }
     }
+    if (candidates.empty()) { a.selected = -1; a.selectedPoi = -1; return; }
+    std::sort(candidates.begin(), candidates.end(), [](const Candidate& lhs, const Candidate& rhs) {
+        return lhs.distance < rhs.distance;
+    });
+    std::size_t choice = 0;
+    for (std::size_t i = 0; i < candidates.size(); ++i) {
+        if (candidates[i].collectible == a.selected && candidates[i].poi == a.selectedPoi) {
+            choice = (i + 1) % candidates.size();
+            break;
+        }
+    }
+    a.selected = candidates[choice].collectible;
+    a.selectedPoi = candidates[choice].poi;
 }
 
 void drawMap(SDL_Renderer* r, const AppState& a) {
@@ -389,22 +407,25 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
             if (!a.filters[static_cast<int>(c.type)]) continue;
             const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
             if (!insideMap(a, sx, sy)) continue;
-            const int iconSize = std::clamp(17 + static_cast<int>(std::lround(std::log2(a.zoom) * 5.0f)), 14, 31);
-            drawIconRing(r, sx, sy, iconSize / 2 + 2, SDL_Color{8, 12, 16, 190});
-            drawCollectibleIcon(r, a.icons, sx, sy, c.type, iconSize);
-            if (static_cast<int>(i) == a.selected) {
-                drawIconRing(r, sx, sy, iconSize / 2 + 6, kColors.selected);
+            const int iconSize = gtasa::collectibleIconSize(a.zoom);
+            const bool selected = static_cast<int>(i) == a.selected;
+            const int selectedSize = selected ? static_cast<int>(std::lround(iconSize * 1.18f)) : iconSize;
+            const Uint8 alpha = selected ? 255 : (c.completed ? 135 : 255);
+            drawCollectibleIcon(r, a.icons, sx, sy, c.type, selectedSize, alpha);
+            if (selected) {
+                drawIconRing(r, sx, sy, selectedSize / 2 + 2, kColors.selected);
             }
         }
     }
-    for (std::size_t i = 0; i < gtasa::poiInfoCount(); ++i) {
+    for (std::size_t i = 0; a.config.showPoi && i < gtasa::poiInfoCount(); ++i) {
         const auto* poi = gtasa::poiInfo(i);
         if (!poi || !poi->visibleOnMap) continue;
         const auto [sx, sy] = collectibleToScreen(a, poi->x, poi->y);
         if (!insideMap(a, sx, sy)) continue;
-        const int iconSize = std::clamp(17 + static_cast<int>(std::lround(std::log2(a.zoom) * 5.0f)), 14, 31);
+        const bool selected = static_cast<int>(i) == a.selectedPoi;
+        const int iconSize = selected ? 32 : 28;
         drawPoiIcon(r, sx, sy, poi->representative, iconSize);
-        if (static_cast<int>(i) == a.selectedPoi) drawIconRing(r, sx, sy, iconSize / 2 + 6, kColors.selected);
+        if (selected) drawIconRing(r, sx, sy, iconSize / 2 + 2, kColors.selected);
     }
 
     // Controller cursor lives in world space, so it uses the exact same
@@ -446,6 +467,21 @@ void openDetails(AppState& a, SDL_Renderer* renderer) {
     }
 }
 
+void centerSelectedIfNeeded(AppState& a) {
+    const auto* info = selectedInfo(a);
+    if (!info) return;
+    const auto [x, y] = collectibleToScreen(a, info->x, info->y);
+    const SDL_Rect map = mapContentRect(a);
+    // Preserve the user's camera when the item is already comfortably visible.
+    const SDL_Rect safe{map.x + map.w / 6, map.y + map.h / 6, map.w * 2 / 3, map.h * 2 / 3};
+    if (x >= safe.x && x < safe.x + safe.w && y >= safe.y && y < safe.y + safe.h) return;
+    a.centerX = info->x;
+    a.centerY = info->y;
+    a.cursorX = info->x;
+    a.cursorY = info->y;
+    clampCamera(a);
+}
+
 void selectAdjacent(AppState& a, int direction, SDL_Renderer* renderer) {
     const auto* parsed = currentParse(a);
     if (!parsed || parsed->missing.empty()) return;
@@ -455,6 +491,8 @@ void selectAdjacent(AppState& a, int direction, SDL_Renderer* renderer) {
         index = (index + direction + n) % n;
         if (a.filters[static_cast<int>(parsed->missing[static_cast<std::size_t>(index)].type)]) {
             a.selected = index;
+            a.selectedPoi = -1;
+            centerSelectedIfNeeded(a);
             if (a.detailOpen) openDetails(a, renderer);
             return;
         }
@@ -591,16 +629,12 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     // space and this avoids wrapping or visually joining unrelated shortcuts.
     const int cy = 425;
     text.draw(tr(a, "Управление", "Controls"), 980, cy, 18, kColors.text);
-    text.draw(tr(a, "L/R / щипок — масштаб", "L/R / pinch — zoom"), 980, cy + 26, 14, kColors.muted, 290);
-    text.draw(tr(a, "Стик — курсор, экран — карта", "Stick — cursor, touch — pan"), 980, cy + 45, 14, kColors.muted, 290);
-    text.draw(tr(a, "Правый стик / 2 пальца — панель", "Right stick / 2 fingers — panel"), 980, cy + 64, 14, kColors.muted, 290);
-    text.draw(tr(a, "↑/↓ — подложка", "↑/↓ — map layer"), 980, cy + 83, 14, kColors.muted, 290);
-    text.draw(tr(a, "←/→ — слот", "←/→ — slot"), 980, cy + 102, 14, kColors.muted, 290);
-    text.draw(tr(a, "− — перечитать профиль", "− — reload profile"), 980, cy + 121, 14, kColors.muted, 290);
-    text.draw(tr(a, "Y — перечитать карты", "Y — reload maps"), 980, cy + 140, 14, kColors.muted, 290);
-    text.draw(tr(a, "X — фильтры", "X — filters"), 980, cy + 159, 14, kColors.muted, 290);
-    text.draw(tr(a, "ZL — язык", "ZL — language"), 980, cy + 178, 14, kColors.muted, 290);
-    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 197, 14, kColors.muted, 290);
+    text.draw(tr(a, "Стик / touch — карта", "Stick / touch — map"), 980, cy + 26, 14, kColors.muted, 290);
+    text.draw(tr(a, "L/R / щипок — масштаб", "L/R / pinch — zoom"), 980, cy + 45, 14, kColors.muted, 290);
+    text.draw(tr(a, "A — выбрать, L3/R3 — объект", "A — select, L3/R3 — item"), 980, cy + 64, 14, kColors.muted, 290);
+    text.draw(tr(a, "X — фильтры, Y — карты", "X — filters, Y — maps"), 980, cy + 83, 14, kColors.muted, 290);
+    text.draw(tr(a, "Правый стик / 2 пальца — панель", "Right stick / 2 fingers — panel"), 980, cy + 102, 14, kColors.muted, 290);
+    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 121, 14, kColors.muted, 290);
     if (!a.status.empty()) text.draw(a.status, 980, 664, 13, kColors.warning, 285);
 }
 
@@ -614,12 +648,17 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     text.draw(tr(a, "↑/↓ — выбор, A — включить/выключить, X — закрыть", "↑/↓ select, A toggle, X close"),
               205, 169, 15, kColors.muted, 540);
     int y = 220;
-    for (int i = 0; i < static_cast<int>(gtasa::CollectibleType::Count); ++i) {
+    for (int i = 0; i <= static_cast<int>(gtasa::CollectibleType::Count); ++i) {
         SDL_Rect row{195, y - 8, 555, 44};
         if (i == a.legendIndex) fill(r, row, SDL_Color{45, 53, 61, 255});
-        drawCollectibleIcon(r, a.icons, 223, y + 10, static_cast<gtasa::CollectibleType>(i), 28);
-        text.draw(typeName(a, static_cast<gtasa::CollectibleType>(i)), 250, y - 2, 20,
-                  a.filters[i] ? kColors.text : kColors.muted);
+        if (i < static_cast<int>(gtasa::CollectibleType::Count)) {
+            drawCollectibleIcon(r, a.icons, 223, y + 10, static_cast<gtasa::CollectibleType>(i), 28);
+            text.draw(typeName(a, static_cast<gtasa::CollectibleType>(i)), 250, y - 2, 20,
+                      a.filters[i] ? kColors.text : kColors.muted);
+        } else {
+            drawPoiIcon(r, 223, y + 10, false, 28);
+            text.draw("POI", 250, y - 2, 20, a.config.showPoi ? kColors.text : kColors.muted);
+        }
         y += 58;
     }
 }
@@ -845,7 +884,7 @@ int main(int, char**) {
                     } else {
                         const int previous = app.selected;
                         const int previousPoi = app.selectedPoi;
-                        selectNearest(app, x, y, 34.0f);
+                        selectNearest(app, x, y, kTouchHitRadius);
                         if ((app.selected >= 0 && app.selected == previous) ||
                             (app.selectedPoi >= 0 && app.selectedPoi == previousPoi)) openDetails(app, renderer);
                         lastTapTime = now;
@@ -882,9 +921,18 @@ int main(int, char**) {
             if (down & HidNpadButton_StickR) selectAdjacent(app, 1, renderer);
         } else if (app.legendOpen) {
             if (down & HidNpadButton_X) app.legendOpen = false;
-            if (down & HidNpadButton_Up) app.legendIndex = (app.legendIndex + 4) % 5;
-            if (down & HidNpadButton_Down) app.legendIndex = (app.legendIndex + 1) % 5;
-            if (down & HidNpadButton_A) app.filters[app.legendIndex] = !app.filters[app.legendIndex];
+            constexpr int kFilterCount = static_cast<int>(gtasa::CollectibleType::Count) + 1;
+            if (down & HidNpadButton_Up) app.legendIndex = (app.legendIndex + kFilterCount - 1) % kFilterCount;
+            if (down & HidNpadButton_Down) app.legendIndex = (app.legendIndex + 1) % kFilterCount;
+            if (down & HidNpadButton_A) {
+                if (app.legendIndex < static_cast<int>(gtasa::CollectibleType::Count))
+                    app.filters[app.legendIndex] = !app.filters[app.legendIndex];
+                else {
+                    app.config.showPoi = !app.config.showPoi;
+                    app.platform.saveConfig(app.config);
+                    if (!app.config.showPoi) app.selectedPoi = -1;
+                }
+            }
         } else {
             if (down & HidNpadButton_X) app.legendOpen = true;
             if (down & HidNpadButton_Minus) loadSaves(app, true);
@@ -903,7 +951,7 @@ int main(int, char**) {
                 const auto [cursorX, cursorY] = collectibleToScreen(app, app.cursorX, app.cursorY);
                 const int previous = app.selected;
                 const int previousPoi = app.selectedPoi;
-                selectNearest(app, cursorX, cursorY, 48.0f);
+                selectNearest(app, cursorX, cursorY, kControllerHitRadius);
                 if ((app.selected >= 0 && app.selected == previous) ||
                     (app.selectedPoi >= 0 && app.selectedPoi == previousPoi)) openDetails(app, renderer);
             }

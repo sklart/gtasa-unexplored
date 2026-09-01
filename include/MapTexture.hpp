@@ -27,7 +27,7 @@ public:
     bool discoverAndLoad(SDL_Renderer* renderer, const std::string& preferredId, std::string& status);
     bool loadFallback(SDL_Renderer* renderer, std::string& status);
     bool cycle(SDL_Renderer* renderer, int delta, std::string& status);
-    // The actual, aspect-correct area occupied by the map in a UI viewport.
+    // Map output uses the whole viewport. Source cropping preserves world scale.
     SDL_Rect contentRect(const SDL_Rect& viewport) const;
     bool render(SDL_Renderer* renderer, const MapView& view, const SDL_Rect& dst) const;
     // Projects with precisely the same cropped source rectangle as render().

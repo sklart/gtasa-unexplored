@@ -1,0 +1,37 @@
+#include "CollectibleIcons.hpp"
+#include "MapProjection.hpp"
+
+#include <cassert>
+#include <cmath>
+#include <iostream>
+#include <utility>
+
+int main() {
+    using namespace gtasa;
+    assert(collectibleIconSize(0.85f) >= 28);
+    assert(collectibleIconSize(1.0f) == 28);
+    assert(collectibleIconSize(8.0f) == 42);
+    int previous = collectibleIconSize(0.85f);
+    for (float zoom = 1.0f; zoom <= 8.0f; zoom += 0.1f) {
+        const int size = collectibleIconSize(zoom);
+        assert(size >= previous && size >= 28 && size <= 42);
+        previous = size;
+    }
+    for (const auto viewport : {std::pair<int, int>{955, 720}, {1280, 720}}) {
+        for (const float zoom : {1.0f, 2.0f, 8.0f}) {
+            const auto source = mapSourceSize(2048, 2048, zoom, viewport.first, viewport.second);
+            const float sx = mapWorldToScreenAxis(350.0f, 320.0f, static_cast<float>(source.width),
+                                                  -3000.0f, 3000.0f, 2048.0f, 0.0f, static_cast<float>(viewport.first));
+            const float world = mapScreenToWorldAxis(sx, 0.0f, static_cast<float>(viewport.first),
+                                                     320.0f, static_cast<float>(source.width),
+                                                     -3000.0f, 3000.0f, 2048.0f);
+            assert(std::fabs(world - 350.0f) < 0.01f);
+        }
+    }
+    const float calibratedScreen = mapWorldToScreenAxis(175.0f, 100.0f, 800.0f,
+                                                        -1000.0f, 1000.0f, 2048.0f, 0.0f, 1280.0f);
+    const float calibratedWorld = mapScreenToWorldAxis(calibratedScreen, 0.0f, 1280.0f,
+                                                        100.0f, 800.0f, -1000.0f, 1000.0f, 2048.0f);
+    assert(std::fabs(calibratedWorld - 175.0f) < 0.01f);
+    std::cout << "map UI tests passed\n";
+}
