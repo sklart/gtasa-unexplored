@@ -65,5 +65,10 @@ int main() {
     // Global L3/R3 navigation remains independent from the overlap group.
     assert(nextVisibleMarkerIndex(1, 4, 1, [&](int index) { return visible[index]; }) == 2);
     assert(nextVisibleMarkerIndex(1, 4, -1, [&](int index) { return visible[index]; }) == 0);
+    assert(!shouldToggleLanguage(false, true));
+    assert(shouldToggleLanguage(true, true));
+    assert(shouldCycleOverlap(false, true, true));
+    assert(!shouldCycleOverlap(true, true, true));
+    assert(!shouldCycleOverlap(false, false, true));
     std::cout << "map UI tests passed\n";
 }

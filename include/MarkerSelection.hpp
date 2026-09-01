@@ -7,6 +7,14 @@ namespace gtasa {
 
 struct MarkerSelectionPoint { int id{}; float x{}; float y{}; };
 
+inline bool shouldToggleLanguage(bool filtersOpen, bool zlPressed) {
+    return filtersOpen && zlPressed;
+}
+
+inline bool shouldCycleOverlap(bool filtersOpen, bool zlHeld, bool stickPressed) {
+    return !filtersOpen && zlHeld && stickPressed;
+}
+
 template <typename IsVisible>
 inline int nextVisibleMarkerIndex(int current, int count, int direction, IsVisible isVisible) {
     if (count <= 0) return -1;

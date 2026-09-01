@@ -962,21 +962,22 @@ int main(int, char**) {
 
         if (down & HidNpadButton_Plus) running = false;
         const bool groupModifier = (held & HidNpadButton_ZL) != 0;
-        if ((down & HidNpadButton_ZL) && !(down & (HidNpadButton_StickL | HidNpadButton_StickR))) {
-            app.config.language = isRu(app) ? "en" : "ru";
-            app.platform.saveConfig(app.config);
-            text.clearCache();
-            app.status = tr(app, "Язык: Русский", "Language: English");
-        }
-
         if (app.detailOpen) {
             if (down & HidNpadButton_B) { app.detailOpen = false; app.media.unload(); app.poiMedia.unload(); }
             if (down & HidNpadButton_Up) app.detailScroll = std::max(0, app.detailScroll - 20);
             if (down & HidNpadButton_Down) app.detailScroll = std::min(120, app.detailScroll + 20);
-            if (down & HidNpadButton_StickL) navigateMarker(app, -1, groupModifier, renderer);
-            if (down & HidNpadButton_StickR) navigateMarker(app, 1, groupModifier, renderer);
+            if (down & HidNpadButton_StickL)
+                navigateMarker(app, -1, gtasa::shouldCycleOverlap(false, groupModifier, true), renderer);
+            if (down & HidNpadButton_StickR)
+                navigateMarker(app, 1, gtasa::shouldCycleOverlap(false, groupModifier, true), renderer);
         } else if (app.legendOpen) {
             if (down & HidNpadButton_X) app.legendOpen = false;
+            if (gtasa::shouldToggleLanguage(true, (down & HidNpadButton_ZL) != 0)) {
+                app.config.language = isRu(app) ? "en" : "ru";
+                app.platform.saveConfig(app.config);
+                text.clearCache();
+                app.status = tr(app, "Язык: Русский", "Language: English");
+            }
             constexpr int kFilterCount = static_cast<int>(gtasa::CollectibleType::Count) + 1;
             if (down & HidNpadButton_Up) app.legendIndex = (app.legendIndex + kFilterCount - 1) % kFilterCount;
             if (down & HidNpadButton_Down) app.legendIndex = (app.legendIndex + 1) % kFilterCount;
@@ -996,10 +997,11 @@ int main(int, char**) {
             if (down & HidNpadButton_Down) app.mapTexture.cycle(renderer, 1, app.status);
             if (down & HidNpadButton_Left) switchSlot(app, -1);
             if (down & HidNpadButton_Right) switchSlot(app, 1);
-            if (down & HidNpadButton_StickL) navigateMarker(app, -1, groupModifier, renderer);
+            if (down & HidNpadButton_StickL)
+                navigateMarker(app, -1, gtasa::shouldCycleOverlap(false, groupModifier, true), renderer);
             if (down & HidNpadButton_StickR) {
                 if ((held & HidNpadButton_ZR) != 0) app.showPanel = !app.showPanel;
-                else navigateMarker(app, 1, groupModifier, renderer);
+                else navigateMarker(app, 1, gtasa::shouldCycleOverlap(false, groupModifier, true), renderer);
             }
             if (down & HidNpadButton_Y) {
                 app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.zoom = 1.0f; app.selected = -1; app.selectedPoi = -1;
