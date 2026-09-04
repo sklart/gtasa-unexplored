@@ -3,9 +3,11 @@
 #include "CollectibleInfo.hpp"
 #include "CollectibleMedia.hpp"
 #include "MapTexture.hpp"
+#include "MapUi.hpp"
 #include "MarkerSelection.hpp"
 #include "Platform.hpp"
 #include "PoiInfo.hpp"
+#include "PoiIcon.hpp"
 #include "PoiMedia.hpp"
 #include "SaveParser.hpp"
 
@@ -145,6 +147,7 @@ private:
 struct AppState {
     gtasa::Platform platform;
     gtasa::CollectibleIcons icons;
+    gtasa::PoiIcon poiIcon;
     gtasa::CollectibleMedia media;
     gtasa::PoiMedia poiMedia;
     gtasa::AppConfig config;
@@ -321,13 +324,36 @@ void drawCollectibleIcon(SDL_Renderer* r, const gtasa::CollectibleIcons& icons,
     SDL_SetTextureAlphaMod(texture, 255);
 }
 
-void drawPoiIcon(SDL_Renderer* r, int x, int y, bool representative, int size = 18) {
-    const SDL_Color c = representative ? SDL_Color{255, 176, 72, 255} : kColors.poi;
-    const SDL_Rect body{x - size / 4, y - size / 2, size / 2, size / 2 + 3};
-    fill(r, body, c);
-    line(r, x - size / 4, y + 3, x, y + size / 2, c);
-    line(r, x, y + size / 2, x + size / 4, y + 3, c);
-    drawIconRing(r, x, y - size / 4, std::max(2, size / 8), kColors.bg);
+std::pair<int, int> collectibleIconDimensions(const gtasa::CollectibleIcons& icons,
+                                               gtasa::CollectibleType type, int size) {
+    SDL_Texture* texture = icons.texture(type);
+    int sourceW = 0, sourceH = 0;
+    if (!texture || SDL_QueryTexture(texture, nullptr, nullptr, &sourceW, &sourceH) != 0 ||
+        sourceW <= 0 || sourceH <= 0) return {size, size};
+    const float ratio = static_cast<float>(sourceW) / sourceH;
+    const int w = std::max(1, static_cast<int>(std::lround(ratio >= 1.0f ? size : size * ratio)));
+    const int h = std::max(1, static_cast<int>(std::lround(ratio >= 1.0f ? size / ratio : size)));
+    return {w, h};
+}
+
+void drawPoiIcon(SDL_Renderer* r, const gtasa::PoiIcon& icon, int x, int y, int size = 18, bool selected = false) {
+    SDL_Texture* texture = icon.texture();
+    int sourceW = 0, sourceH = 0;
+    if (!texture || SDL_QueryTexture(texture, nullptr, nullptr, &sourceW, &sourceH) != 0 ||
+        sourceW <= 0 || sourceH <= 0) return;
+    const int height = std::max(1, static_cast<int>(std::lround(size * static_cast<float>(sourceH) / sourceW)));
+    const SDL_Rect target{x - size / 2, y - height, size, height};
+    if (selected) {
+        const int glowW = std::max(size + 2, static_cast<int>(std::lround(size * 1.10f)));
+        const int glowH = std::max(height + 2, static_cast<int>(std::lround(height * 1.10f)));
+        const SDL_Rect glow{x - glowW / 2, y - glowH, glowW, glowH};
+        SDL_SetTextureColorMod(texture, 255, 245, 190);
+        SDL_SetTextureAlphaMod(texture, 110);
+        SDL_RenderCopy(r, texture, nullptr, &glow);
+        SDL_SetTextureColorMod(texture, 255, 255, 255);
+        SDL_SetTextureAlphaMod(texture, 255);
+    }
+    SDL_RenderCopy(r, texture, nullptr, &target);
 }
 
 void clampCamera(AppState& a) {
@@ -450,26 +476,32 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
             const auto& c = p->missing[i];
             if (!a.filters[static_cast<int>(c.type)]) continue;
             const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
-            if (!insideMap(a, sx, sy)) continue;
             const int iconSize = gtasa::collectibleIconSize(a.zoom);
             const bool selected = static_cast<int>(i) == a.selected;
             const int selectedSize = selected ? static_cast<int>(std::lround(iconSize * 1.18f)) : iconSize;
+            const auto [iconW, iconH] = collectibleIconDimensions(a.icons, c.type, selectedSize);
+            const auto& content = mapContentRect(a);
+            if (!gtasa::markerFullyVisible(sx, sy, iconW, iconH,
+                                           content.x, content.y, content.w, content.h)) continue;
             const Uint8 alpha = selected ? 255 : (c.completed ? 135 : 255);
             drawCollectibleIcon(r, a.icons, sx, sy, c.type, selectedSize, alpha);
-            if (selected) {
-                drawIconRing(r, sx, sy, selectedSize / 2 + 2, kColors.selected);
-            }
+            if (selected) drawIconRing(r, sx, sy, std::max(iconW, iconH) / 2 + 2, kColors.selected);
         }
     }
     for (std::size_t i = 0; a.config.showPoi && i < gtasa::poiInfoCount(); ++i) {
         const auto* poi = gtasa::poiInfo(i);
         if (!poi || !poi->visibleOnMap) continue;
         const auto [sx, sy] = collectibleToScreen(a, poi->x, poi->y);
-        if (!insideMap(a, sx, sy)) continue;
         const bool selected = static_cast<int>(i) == a.selectedPoi;
-        const int iconSize = selected ? 32 : 28;
-        drawPoiIcon(r, sx, sy, poi->representative, iconSize);
-        if (selected) drawIconRing(r, sx, sy, iconSize / 2 + 2, kColors.selected);
+        const int baseIconSize = gtasa::poiMarkerSize(a.zoom);
+        const int iconSize = selected ? static_cast<int>(std::lround(baseIconSize * 1.15f)) : baseIconSize;
+        int sourceW = 0, sourceH = 0;
+        if (SDL_Texture* texture = a.poiIcon.texture()) SDL_QueryTexture(texture, nullptr, nullptr, &sourceW, &sourceH);
+        const int iconHeight = sourceW > 0 ? static_cast<int>(std::lround(iconSize * static_cast<float>(sourceH) / sourceW)) : iconSize;
+        const auto& content = mapContentRect(a);
+        if (!gtasa::markerFullyVisible(sx, sy, iconSize, iconHeight,
+                                       content.x, content.y, content.w, content.h, true)) continue;
+        drawPoiIcon(r, a.poiIcon, sx, sy, iconSize, selected);
     }
 
     // Controller cursor lives in world space, so it uses the exact same
@@ -555,25 +587,22 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         SDL_Rect card{66, 38, 1148, 644};
         fill(r, card, kColors.bg);
         SDL_SetRenderDrawColor(r, 92, 106, 118, 255); SDL_RenderDrawRect(r, &card);
-        drawPoiIcon(r, 110, 83, poi->representative, 42);
+        drawPoiIcon(r, a.poiIcon, 110, 102, 42);
         text.draw(isRu(a) ? poi->nameRu : poi->nameEn, 145, 60, 28, kColors.text, 800);
-        text.draw(poi->representative ? tr(a, "Репрезентативная точка", "Representative point")
-                                      : tr(a, "Подтверждённая точка", "Verified point"),
+        text.draw(gtasa::poiLocationStatus(poi->representative, isRu(a)),
                   930, 66, 16, poi->representative ? kColors.warning : kColors.accent, 235);
-        SDL_Rect imageRect{260, 108, 760, 340};
+        SDL_Rect imageRect{260, 108, 760, 350};
         if (SDL_Texture* image = a.poiMedia.texture()) SDL_RenderCopy(r, image, nullptr, &imageRect);
         else { fill(r, imageRect, SDL_Color{26, 32, 38, 255});
                text.draw(a.poiMedia.error().empty() ? tr(a, "Пакет POI не установлен", "POI pack not installed")
                                                      : tr(a, "Изображение недоступно", "Image unavailable"),
                          640, 300, 20, kColors.muted, 600, true); }
-        const SDL_Rect textClip{102, 470, 1070, 128};
+        const SDL_Rect textClip{102, 470, 1070, 134};
         SDL_RenderSetClipRect(r, &textClip);
-        text.draw(isRu(a) ? poi->descriptionRu : poi->descriptionEn, 112, 480 - a.detailScroll, 19, kColors.text, 1040);
+        text.draw(isRu(a) ? poi->descriptionRu : poi->descriptionEn, 112, 474 - a.detailScroll, 19, kColors.text, 1040);
         SDL_RenderSetClipRect(r, nullptr);
-        std::ostringstream pos; pos.setf(std::ios::fixed); pos.precision(1);
-        pos << "X " << poi->x << "   Y " << poi->y << (poi->representative ? "   2D" : "   Z " + std::to_string(poi->z));
-        text.draw(pos.str(), 112, 615, 15, kColors.muted);
-        text.draw(tr(a, "B — назад    ↑/↓ — текст", "B — back    ↑/↓ — text"), 835, 646, 15, kColors.muted, 360);
+        text.draw(gtasa::formatMapCoordinates(poi->x, poi->y, poi->z, !poi->representative), 112, 615, 15, kColors.muted);
+        text.draw(tr(a, "B — назад    ↑/↓ — текст", "B — back    ↑/↓ — text"), 835, 646, 15, kColors.text, 360);
         return;
     }
     const auto* parsed = currentParse(a);
@@ -592,7 +621,7 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         : item.found ? tr(a, "Обнаружено", "Found") : tr(a, "Не найдено", "Missing");
     text.draw(state, 1040, 66, 18, item.completed ? kColors.accent : kColors.warning, 140);
 
-    SDL_Rect imageRect{260, 108, 760, 340};
+    SDL_Rect imageRect{260, 108, 760, 350};
     if (SDL_Texture* image = a.media.texture()) {
         SDL_RenderCopy(r, image, nullptr, &imageRect);
     } else {
@@ -603,16 +632,13 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
                   640, 300, 20, kColors.muted, 600, true);
     }
     const char* description = isRu(a) ? info->descriptionRu : info->descriptionEn;
-    const SDL_Rect textClip{102, 470, 1070, 128};
+    const SDL_Rect textClip{102, 470, 1070, 134};
     SDL_RenderSetClipRect(r, &textClip);
-    text.draw(description, 112, 480 - a.detailScroll, 19, kColors.text, 1040);
+    text.draw(description, 112, 474 - a.detailScroll, 19, kColors.text, 1040);
     SDL_RenderSetClipRect(r, nullptr);
-    std::ostringstream coordinates;
-    coordinates.setf(std::ios::fixed); coordinates.precision(1);
-    coordinates << "X " << info->x << "   Y " << info->y << "   Z " << info->z;
-    text.draw(coordinates.str(), 112, 615, 15, kColors.muted);
+    text.draw(gtasa::formatMapCoordinates(info->x, info->y, info->z), 112, 615, 15, kColors.muted);
     text.draw(tr(a, "B — назад    ↑/↓ — текст    L3/R3 — объект    ZL+L3/R3 — группа", "B — back    ↑/↓ — text    L3/R3 — item    ZL+L3/R3 — group"),
-              720, 646, 15, kColors.muted, 440);
+              720, 646, 15, kColors.text, 440);
 }
 
 void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
@@ -653,10 +679,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
             const auto* info = gtasa::collectibleInfoForRuntime(c);
             const std::string id = info ? std::to_string(info->canonicalId) : "?";
             text.draw(typeName(a, c.type) + " #" + id, 980, y, 20, typeColor(c.type));
-            std::ostringstream pos;
-            pos.setf(std::ios::fixed); pos.precision(1);
-            pos << "X " << c.x << "   Y " << c.y << "   Z " << c.z;
-            text.draw(pos.str(), 980, y + 30, 15, kColors.muted, 285);
+            text.draw(gtasa::formatMapCoordinates(c.x, c.y, c.z), 980, y + 30, 15, kColors.muted, 285);
             text.draw(info ? tr(a, "A — подробности", "A — details")
                            : tr(a, "Карточка недоступна", "Card unavailable"),
                       980, y + 50, 14, info ? kColors.accent : kColors.warning, 285);
@@ -667,8 +690,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         }
         if (const auto* poi = selectedPoiInfo(a)) {
             text.draw(isRu(a) ? poi->nameRu : poi->nameEn, 980, y, 19, kColors.poi, 285);
-            text.draw(poi->representative ? tr(a, "Репрезентативная точка", "Representative point")
-                                          : tr(a, "Подтверждённая точка", "Verified point"),
+            text.draw(gtasa::poiLocationStatus(poi->representative, isRu(a)),
                       980, y + 28, 15, kColors.muted, 285);
             text.draw(tr(a, "A — подробности", "A — details"), 980, y + 48, 14, kColors.accent, 285);
         }
@@ -705,11 +727,14 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
             text.draw(typeName(a, static_cast<gtasa::CollectibleType>(i)), 250, y - 2, 20,
                       a.filters[i] ? kColors.text : kColors.muted);
         } else {
-            drawPoiIcon(r, 223, y + 10, false, 28);
+            drawPoiIcon(r, a.poiIcon, 223, y + 20, 22);
             text.draw("POI", 250, y - 2, 20, a.config.showPoi ? kColors.text : kColors.muted);
         }
         y += 58;
     }
+    text.draw(tr(a, "POI: Проверено — точное место; Ориентировочно — район или маршрут",
+                    "POI: Verified — exact place; Approximate — area or route"),
+              205, 560, 13, kColors.muted, 540);
 }
 
 std::string diagnosticsText(const AppState& a) {
@@ -834,6 +859,7 @@ int main(int, char**) {
     if (!renderer) return 5;
 
     if (!app.icons.load(renderer)) app.platform.log("Embedded collectible icons unavailable; using procedural fallback");
+    if (!app.poiIcon.load(renderer)) app.platform.log("Embedded POI icon unavailable; POI markers disabled");
 
     TextRenderer text;
     if (!text.init(renderer)) {
@@ -857,6 +883,7 @@ int main(int, char**) {
 
     bool running = true;
     std::map<SDL_FingerID, SDL_FPoint> touches;
+    std::map<SDL_FingerID, SDL_FPoint> touchStarts;
     bool touchMoved = false;
     bool multiTouch = false;
     bool twoFingerTapCandidate = false;
@@ -871,10 +898,13 @@ int main(int, char**) {
                 const int x = static_cast<int>(event.tfinger.x * kScreenW);
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
                 if (insideMap(app, x, y)) {
-                    touches[event.tfinger.fingerId] = SDL_FPoint{static_cast<float>(x), static_cast<float>(y)};
+                    const SDL_FPoint point{static_cast<float>(x), static_cast<float>(y)};
+                    touches[event.tfinger.fingerId] = point;
+                    touchStarts[event.tfinger.fingerId] = point;
                     if (touches.size() == 1) {
                         touchMoved = false;
                         multiTouch = false;
+                        twoFingerTapCandidate = false;
                     } else if (touches.size() == 2) {
                         auto first = touches.begin();
                         auto second = std::next(first);
@@ -882,7 +912,9 @@ int main(int, char**) {
                         const float dy = second->second.y - first->second.y;
                         pinchDistance = std::sqrt(dx * dx + dy * dy);
                         multiTouch = true;
-                        twoFingerTapCandidate = true;
+                        // A second finger added after a drag must never turn
+                        // that gesture into a two-finger panel tap.
+                        twoFingerTapCandidate = !touchMoved;
                     }
                 }
             }
@@ -893,15 +925,22 @@ int main(int, char**) {
                 const SDL_FPoint point{event.tfinger.x * kScreenW, event.tfinger.y * kScreenH};
                 current->second = point;
                 if (touches.size() == 1) {
-                    const float dx = point.x - previous.x;
-                    const float dy = point.y - previous.y;
-                    if (std::abs(dx) >= 1.0f || std::abs(dy) >= 1.0f) {
+                    const auto start = touchStarts.find(event.tfinger.fingerId);
+                    if (start == touchStarts.end()) continue;
+                    const bool wasDragging = touchMoved;
+                    if (!touchMoved && !gtasa::exceedsTouchDragThreshold(start->second.x, start->second.y,
+                                                                          point.x, point.y)) continue;
+                    const float dx = wasDragging ? point.x - previous.x : point.x - start->second.x;
+                    const float dy = wasDragging ? point.y - previous.y : point.y - start->second.y;
+                    if (dx != 0.0f || dy != 0.0f) {
                         gtasa::MapView view{app.centerX, app.centerY, app.zoom};
                         app.mapTexture.panByScreenDelta(view, mapRect(app), dx, dy);
                         app.centerX = view.centerX;
                         app.centerY = view.centerY;
                         clampCamera(app);
                         touchMoved = true;
+                        // A drag cannot be the first half of a later double tap.
+                        lastTapTime = 0;
                     }
                 } else if (touches.size() == 2) {
                     auto first = touches.begin();
@@ -909,10 +948,21 @@ int main(int, char**) {
                     const float dx = second->second.x - first->second.x;
                     const float dy = second->second.y - first->second.y;
                     const float distance = std::sqrt(dx * dx + dy * dy);
+                    const auto firstStart = touchStarts.find(first->first);
+                    const auto secondStart = touchStarts.find(second->first);
+                    if (firstStart != touchStarts.end() && secondStart != touchStarts.end() &&
+                        (gtasa::exceedsTouchDragThreshold(firstStart->second.x, firstStart->second.y,
+                                                           first->second.x, first->second.y) ||
+                         gtasa::exceedsTouchDragThreshold(secondStart->second.x, secondStart->second.y,
+                                                           second->second.x, second->second.y))) {
+                        twoFingerTapCandidate = false;
+                    }
                     if (pinchDistance > 1.0f && std::abs(distance - pinchDistance) >= 2.0f) {
                         app.zoom *= distance / pinchDistance;
                         clampCamera(app);
                         twoFingerTapCandidate = false;
+                        touchMoved = true;
+                        lastTapTime = 0;
                     }
                     pinchDistance = distance;
                 }
@@ -922,8 +972,9 @@ int main(int, char**) {
                 if (current == touches.end()) continue;
                 const int x = static_cast<int>(event.tfinger.x * kScreenW);
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
-                const bool singleTap = touches.size() == 1 && !multiTouch && !touchMoved;
+                const bool singleTap = touches.size() == 1 && gtasa::isTapGesture(touchMoved, multiTouch);
                 touches.erase(current);
+                touchStarts.erase(event.tfinger.fingerId);
                 if (singleTap && !app.legendOpen && !app.detailOpen && insideMap(app, x, y)) {
                     const Uint32 now = SDL_GetTicks();
                     const int dx = x - lastTapX, dy = y - lastTapY;
@@ -937,7 +988,8 @@ int main(int, char**) {
                         // opens its card, including when nearby markers overlap.
                         openDetails(app, renderer);
                         lastTapTime = 0;
-                    } else if (!hitMarker && now - lastTapTime <= 350 && dx * dx + dy * dy <= 900) {
+                    } else if (gtasa::canResetMapFromDoubleTap(singleTap, hitMarker) &&
+                               now - lastTapTime <= 350 && dx * dx + dy * dy <= 900) {
                         // Reserve double-tap reset for genuinely empty map space.
                         app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.zoom = 1.0f;
                         app.selected = -1; app.selectedPoi = -1; lastTapTime = 0;
@@ -1046,6 +1098,7 @@ int main(int, char**) {
     text.shutdown();
     app.media.unload();
     app.poiMedia.unload();
+    app.poiIcon.unload();
     app.icons.unload();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
