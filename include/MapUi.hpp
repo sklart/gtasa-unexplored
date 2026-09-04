@@ -67,14 +67,6 @@ inline bool hasMarkerVisibleThreshold(int anchorX, int anchorY, int width, int h
                                  viewportWidth, viewportHeight, anchorBottom) >= threshold;
 }
 
-inline bool pointInComfortZone(int x, int y, int viewportX, int viewportY,
-                               int viewportWidth, int viewportHeight) {
-    const int marginX = viewportWidth / 6;
-    const int marginY = viewportHeight / 6;
-    return x >= viewportX + marginX && x < viewportX + viewportWidth - marginX &&
-           y >= viewportY + marginY && y < viewportY + viewportHeight - marginY;
-}
-
 inline const char* poiLocationStatus(bool representative, bool russian) {
     if (representative) return russian ? "Ориентировочно" : "Approximate";
     return russian ? "Проверено" : "Verified";

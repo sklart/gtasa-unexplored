@@ -588,16 +588,13 @@ void centerSelectedIfNeeded(AppState& a) {
     const auto* parsed = currentParse(a);
     if (!parsed || a.selected < 0 || a.selected >= static_cast<int>(parsed->objects.size())) return;
     const auto& item = parsed->objects[static_cast<std::size_t>(a.selected)];
-    // Selection and cursor are one state transition: navigation must never
-    // leave the cursor at the previously selected point.
-    gtasa::moveCursorToSelectedMarker(a.cursorX, a.cursorY, a.cameraOwner, item.x, item.y);
-    const auto [x, y] = collectibleToScreen(a, item.x, item.y);
-    const SDL_Rect map = mapContentRect(a);
-    // Preserve the user's camera when the selected point is already in the
-    // comfort zone, while still moving the controller cursor to that point.
-    if (gtasa::pointInComfortZone(x, y, map.x, map.y, map.w, map.h)) return;
-    a.centerX = item.x;
-    a.centerY = item.y;
+    // L3/R3 selection and ordinary cursor-follow share this same world-space
+    // zone. A point inside it moves only the cursor; an outside point recentres.
+    gtasa::CameraCenter camera{a.centerX, a.centerY};
+    const gtasa::CameraComfortZone comfort{1800.0f / a.zoom, 1800.0f / a.zoom};
+    gtasa::focusSelectedMarker(camera, a.cursorX, a.cursorY, a.cameraOwner, item.x, item.y, comfort);
+    a.centerX = camera.x;
+    a.centerY = camera.y;
     clampCamera(a);
 }
 
@@ -1092,9 +1089,9 @@ int main(int, char**) {
             app.cursorX = std::clamp(app.cursorX, -3000.0f, 3000.0f);
             app.cursorY = std::clamp(app.cursorY, -3000.0f, 3000.0f);
             gtasa::CameraCenter camera{app.centerX, app.centerY};
-            const float comfort = 1800.0f / app.zoom;
+            const gtasa::CameraComfortZone comfort{1800.0f / app.zoom, 1800.0f / app.zoom};
             gtasa::updateCameraForCursor(camera, app.cursorX, app.cursorY, cursorMoved,
-                                         app.cameraOwner, comfort, comfort);
+                                         app.cameraOwner, comfort);
             app.centerX = camera.x;
             app.centerY = camera.y;
             if (held & HidNpadButton_L) app.zoom *= 0.985f;

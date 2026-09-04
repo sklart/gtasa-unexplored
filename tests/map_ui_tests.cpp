@@ -53,8 +53,6 @@ int main() {
     assert(!markerFullyVisible(90, 90, 22, 22, 0, 0, 100, 100));
     assert(hasMarkerVisibleThreshold(5, 50, 20, 20, 0, 0, 100, 100));
     assert(!hasMarkerVisibleThreshold(-5, 50, 20, 20, 0, 0, 100, 100));
-    assert(pointInComfortZone(50, 50, 0, 0, 100, 100));
-    assert(!pointInComfortZone(10, 50, 0, 0, 100, 100));
     assert(markerFullyVisible(50, 20, 20, 20, 0, 0, 100, 100, true));
     assert(!markerFullyVisible(50, 19, 20, 20, 0, 0, 100, 100, true));
     assert(std::string(poiLocationStatus(true, true)) == "Ориентировочно");
@@ -63,16 +61,26 @@ int main() {
     assert(formatMapCoordinates(605.14f, 902.24f, 0.0f, false) == "X 605.1   Y 902.2   Z —");
     // Integration regression: a touch-owned camera must retain its centre on
     // the next frame while the controller cursor is idle.
+    const CameraComfortZone comfort{100.0f, 100.0f};
     CameraCenter touchCamera{850.0f, -640.0f};
     CameraOwner owner = CameraOwner::Touch;
-    updateCameraForCursor(touchCamera, 0.0f, 0.0f, false, owner, 100.0f, 100.0f);
+    updateCameraForCursor(touchCamera, 0.0f, 0.0f, false, owner, comfort);
     assert(touchCamera.x == 850.0f && touchCamera.y == -640.0f);
-    updateCameraForCursor(touchCamera, 25.0f, 30.0f, true, owner, 100.0f, 100.0f);
+    updateCameraForCursor(touchCamera, 25.0f, 30.0f, true, owner, comfort);
     assert(owner == CameraOwner::Cursor && touchCamera.x == 25.0f && touchCamera.y == 30.0f);
+
+    // L3/R3 selection uses the same world-space comfort zone as follow.
+    CameraCenter selectedCamera{0.0f, 0.0f};
     float cursorX = -50.0f, cursorY = 25.0f;
     owner = CameraOwner::Touch;
-    moveCursorToSelectedMarker(cursorX, cursorY, owner, 420.0f, -315.0f);
-    assert(cursorX == 420.0f && cursorY == -315.0f && owner == CameraOwner::Cursor);
+    assert(!focusSelectedMarker(selectedCamera, cursorX, cursorY, owner, 50.0f, -75.0f, comfort));
+    assert(cursorX == 50.0f && cursorY == -75.0f && owner == CameraOwner::Cursor);
+    assert(selectedCamera.x == 0.0f && selectedCamera.y == 0.0f);
+    updateCameraForCursor(selectedCamera, cursorX, cursorY, false, owner, comfort);
+    assert(selectedCamera.x == 0.0f && selectedCamera.y == 0.0f);
+    assert(focusSelectedMarker(selectedCamera, cursorX, cursorY, owner, 420.0f, -315.0f, comfort));
+    assert(cursorX == 420.0f && cursorY == -315.0f);
+    assert(selectedCamera.x == 420.0f && selectedCamera.y == -315.0f);
     TouchGestureState touch;
     touch.begin(1, 100.0f, 100.0f);
     assert(touch.move(1, 105.0f, 100.0f).kind == TouchMotion::Kind::None);
