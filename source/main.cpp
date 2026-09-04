@@ -14,7 +14,10 @@
 #include "PoiInfo.hpp"
 #include "PoiIcon.hpp"
 #include "PoiMedia.hpp"
+#include "PoiRegions.hpp"
 #include "RegionProgress.hpp"
+#include "ProgressMatrix.hpp"
+#include "RoutePlanner.hpp"
 #include "SaveParser.hpp"
 #include "TouchGesture.hpp"
 
@@ -170,6 +173,10 @@ struct AppState {
     int legendIndex = 0;
     int listIndex = 0;
     gtasa::ObjectListSort listSort{gtasa::ObjectListSort::Id};
+    bool routeMode = false;
+    int routeLimit = 5;
+    int routeIndex = 0;
+    std::vector<int> route;
     float centerX = 0.0f;
     float centerY = 0.0f;
     float cursorX = 0.0f;
@@ -397,7 +404,7 @@ bool isMarkerEnabled(const AppState& a, const gtasa::Collectible& item) {
 
 bool isMarkerEnabled(const AppState& a, const gtasa::PoiInfo& poi) {
     return a.config.showPoi && gtasa::poiCategoryEnabled(a.config.poiCategoryFilters, poi.category) && poi.visibleOnMap &&
-           gtasa::regionEnabled(a.config.regionFilters, gtasa::regionForPoiCoordinate(poi.x, poi.y)) &&
+           gtasa::regionEnabled(a.config.regionFilters, gtasa::regionForPoi(poi.id)) &&
            (!a.config.favoritesOnly || a.config.favorites.contains(
                {gtasa::FavoriteKind::Poi, gtasa::CollectibleType::Tag, poi.id}));
 }
@@ -465,7 +472,21 @@ std::vector<gtasa::ObjectListItem> currentObjectList(const AppState& a) {
     if (!parsed) return {};
     auto items = gtasa::buildObjectList(*parsed, objectListOptions(a), a.config.favorites);
     gtasa::sortObjectList(items, a.listSort, a.cursorX, a.cursorY);
+    if (a.routeMode) {
+        std::vector<gtasa::ObjectListItem> routeItems;
+        for (const int sourceIndex : a.route) for (const auto& item : items)
+            if (item.kind == gtasa::ObjectListKind::Collectible && item.sourceIndex == sourceIndex) routeItems.push_back(item);
+        return routeItems;
+    }
     return items;
+}
+
+void rebuildRoute(AppState& a) {
+    const auto* parsed = currentParse(a);
+    a.route.clear();
+    a.routeIndex = 0;
+    if (parsed) a.route = gtasa::planMissingRoute(*parsed, a.cursorX, a.cursorY, a.filters,
+                                                   a.config.regionFilters, a.routeLimit);
 }
 
 void toggleSelectedFavorite(AppState& a) {
@@ -811,6 +832,17 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
             text.draw(row.str(), 980, y, 13, kColors.muted, 285);
             y += 16;
         }
+        const auto matrix = gtasa::calculateProgressMatrix(*p);
+        for (std::size_t region = 0; region < gtasa::kSanAndreasRegionCount; ++region) {
+            std::ostringstream row;
+            row << gtasa::sanAndreasRegionName(static_cast<gtasa::SanAndreasRegion>(region), isRu(a)) << "  ";
+            for (std::size_t type = 0; type < static_cast<std::size_t>(gtasa::CollectibleType::Count); ++type) {
+                if (type) row << ' ';
+                row << matrix[region][type].completed << '/' << matrix[region][type].total;
+            }
+            text.draw(row.str(), 980, y, 11, kColors.muted, 285);
+            y += 13;
+        }
         y += 4;
         if (a.selected >= 0 && a.selected < static_cast<int>(p->objects.size())) {
             const auto& c = p->objects[a.selected];
@@ -932,15 +964,15 @@ void drawObjectList(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     SDL_SetRenderDrawColor(r, 95, 105, 115, 255);
     SDL_RenderDrawRect(r, &shade);
     const auto items = currentObjectList(a);
-    text.draw(tr(a, "Список объектов", "Object list"), 115, 50, 28, kColors.text);
+    text.draw(a.routeMode ? tr(a, "Маршрут Missing", "Missing route") : tr(a, "Список объектов", "Object list"), 115, 50, 28, kColors.text);
     std::ostringstream state;
     state << tr(a, "Сортировка: ", "Sort: ") << objectListSortName(a.listSort, isRu(a))
           << "   " << tr(a, "Избранное: ", "Favorites: ")
           << (a.config.favoritesOnly ? tr(a, "только", "only") : tr(a, "все", "all"))
           << "   " << tr(a, "Объектов: ", "Items: ") << items.size();
     text.draw(state.str(), 115, 88, 15, kColors.muted, 1030);
-    text.draw(tr(a, "↑/↓ — выбор, A — перейти к метке, Y — избранное, L/R — сортировка, X — только избранное, B — закрыть",
-                    "↑/↓ select, A go to marker, Y favorite, L/R sort, X favorites only, B close"),
+    text.draw(tr(a, "↑/↓ — выбор, A — перейти, ZR+A — маршрут 5/10/все, Y — избранное, L/R — сортировка, X — избранное, B — закрыть",
+                    "↑/↓ select, A go, ZR+A route 5/10/all, Y favorite, L/R sort, X favorites, B close"),
               115, 111, 14, kColors.muted, 1030);
     if (items.empty()) {
         text.draw(tr(a, "Нет объектов с активными фильтрами", "No objects match active filters"),
@@ -1203,6 +1235,15 @@ int main(int, char**) {
             if (items.empty()) app.listIndex = 0;
             else app.listIndex = std::clamp(app.listIndex, 0, static_cast<int>(items.size()) - 1);
             if (down & HidNpadButton_B) app.listOpen = false;
+            if ((down & HidNpadButton_A) && (held & HidNpadButton_ZR)) {
+                if (!app.routeMode) { app.routeMode = true; app.routeLimit = 5; }
+                else if (app.routeLimit == 5) app.routeLimit = 10;
+                else if (app.routeLimit == 10) app.routeLimit = 0;
+                else { app.routeMode = false; app.routeLimit = 5; }
+                rebuildRoute(app);
+                app.listIndex = 0;
+                continue;
+            }
             if (!items.empty() && (down & HidNpadButton_Up))
                 app.listIndex = (app.listIndex + static_cast<int>(items.size()) - 1) % static_cast<int>(items.size());
             if (!items.empty() && (down & HidNpadButton_Down))
@@ -1218,7 +1259,10 @@ int main(int, char**) {
                 app.config.favorites.toggle(gtasa::favoriteIdForListItem(items[static_cast<std::size_t>(app.listIndex)]));
                 app.platform.saveConfig(app.config);
             }
-            if (!items.empty() && (down & HidNpadButton_A)) focusListItem(app, items[static_cast<std::size_t>(app.listIndex)]);
+            if (!items.empty() && (down & HidNpadButton_A)) {
+                focusListItem(app, items[static_cast<std::size_t>(app.listIndex)]);
+                if (app.routeMode && !app.route.empty()) app.routeIndex = (app.routeIndex + 1) % static_cast<int>(app.route.size());
+            }
         } else if (app.legendOpen) {
             if (down & HidNpadButton_X) app.legendOpen = false;
             if (gtasa::shouldToggleLanguage(true, (down & HidNpadButton_ZL) != 0)) {

@@ -75,6 +75,14 @@ jobs:
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
             tests/object_list_tests.cpp source/ObjectList.cpp source/Favorites.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/PoiCategories.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp source/PoiInfoData.cpp -o object-list-tests
           ./object-list-tests
+      - name: Build and run POI regions, route and matrix tests
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude tests/poi_regions_tests.cpp source/PoiRegions.cpp source/PoiInfoData.cpp -o poi-regions-tests
+          ./poi-regions-tests
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude tests/route_planner_tests.cpp source/RoutePlanner.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o route-planner-tests
+          ./route-planner-tests
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude tests/progress_matrix_tests.cpp source/ProgressMatrix.cpp source/RegionProgress.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o progress-matrix-tests
+          ./progress-matrix-tests
 
   host-sanitizers:
     runs-on: ubuntu-latest
@@ -108,6 +116,12 @@ jobs:
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
             tests/object_list_tests.cpp source/ObjectList.cpp source/Favorites.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/PoiCategories.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp source/PoiInfoData.cpp -o object-list-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./object-list-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude tests/poi_regions_tests.cpp source/PoiRegions.cpp source/PoiInfoData.cpp -o poi-regions-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./poi-regions-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude tests/route_planner_tests.cpp source/RoutePlanner.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o route-planner-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./route-planner-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude tests/progress_matrix_tests.cpp source/ProgressMatrix.cpp source/RegionProgress.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o progress-matrix-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./progress-matrix-sanitized
 
   switch-build:
     runs-on: ubuntu-latest

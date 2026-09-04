@@ -2,6 +2,7 @@
 
 #include "CollectibleView.hpp"
 #include "PoiInfo.hpp"
+#include "PoiRegions.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -46,7 +47,7 @@ std::vector<ObjectListItem> buildObjectList(const ParseResult& result, const Obj
     if (options.showPoi) for (std::size_t index = 0; index < poiInfoCount(); ++index) {
         const auto* poi = poiInfo(index);
         if (!poi || !poi->visibleOnMap || !poiCategoryEnabled(options.poiCategoryFilters, poi->category)) continue;
-        const auto region = regionForPoiCoordinate(poi->x, poi->y);
+        const auto region = regionForPoi(poi->id);
         if (!regionEnabled(options.regionFilters, region)) continue;
         ObjectListItem listItem{ObjectListKind::Poi, CollectibleType::Tag, poi->id, static_cast<int>(index), region,
                                 poi->category, poi->x, poi->y, false, false};
