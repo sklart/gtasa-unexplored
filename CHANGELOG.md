@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0-rc2
+
+> Release candidate: не проверен на физическом Nintendo Switch.
+
+- UI-independent navigation Filters и Object List/Route вынесена в отдельные
+  screen-модули с host/ASan-проверками без изменения hotkeys.
+
 ## 0.5.0-rc1
 
 > Release candidate: не проверен на физическом Nintendo Switch.

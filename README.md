@@ -2,7 +2,7 @@
 
 Nintendo Switch homebrew-companion для **Grand Theft Auto: San Andreas — The Definitive Edition**. Приложение читает сохранение выбранного пользователя **только для чтения** и показывает на интерактивной карте состояние пяти типов коллекционных объектов.
 
-Текущая версия — **0.5.0-rc1**. Это release candidate: он ещё не проверен на
+Текущая версия — **0.5.0-rc2**. Это release candidate: он ещё не проверен на
 физическом Nintendo Switch.
 
 ## Целевая версия
