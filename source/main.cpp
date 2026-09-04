@@ -161,6 +161,7 @@ struct AppState {
     gtasa::MapTexture mapTexture;
     std::vector<gtasa::SaveEntry> validSaves;
     std::vector<gtasa::ParseResult> parsed;
+    std::array<gtasa::RegionProgress, gtasa::kSanAndreasRegionCount> regionProgress{};
     int saveIndex = 0;
     std::array<bool, static_cast<int>(gtasa::CollectibleType::Count)> filters{true, true, true, true, true};
     bool legendOpen = false;
@@ -423,6 +424,11 @@ void clampCamera(AppState& a) {
 const gtasa::ParseResult* currentParse(const AppState& a) {
     if (a.saveIndex < 0 || a.saveIndex >= static_cast<int>(a.parsed.size())) return nullptr;
     return &a.parsed[a.saveIndex];
+}
+
+void refreshRegionProgress(AppState& a) {
+    a.regionProgress = {};
+    if (const auto* parsed = currentParse(a)) a.regionProgress = gtasa::calculateRegionProgress(*parsed);
 }
 const gtasa::SaveEntry* currentSave(const AppState& a) {
     if (a.saveIndex < 0 || a.saveIndex >= static_cast<int>(a.validSaves.size())) return nullptr;
@@ -735,9 +741,8 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         y += 8;
         text.draw(tr(a, "Прогресс по регионам", "Regional progress"), 980, y, 15, kColors.text, 285);
         y += 18;
-        const auto regionProgress = gtasa::calculateRegionProgress(*p);
         for (std::size_t i = 0; i < gtasa::kSanAndreasRegionCount; ++i) {
-            const auto& stats = regionProgress[i];
+            const auto& stats = a.regionProgress[i];
             std::ostringstream row;
             row << gtasa::sanAndreasRegionName(static_cast<gtasa::SanAndreasRegion>(i), isRu(a)) << ": "
                 << stats.completed << "/" << stats.total;
@@ -889,6 +894,7 @@ void loadSaves(AppState& a, bool forceProfile) {
     gtasa::SaveParser parser;
     a.validSaves.clear();
     a.parsed.clear();
+    a.regionProgress = {};
     a.selected = -1;
     a.selectedPoi = -1;
     a.discovery = a.platform.discoverSaves(a.config, forceProfile);
@@ -931,6 +937,7 @@ void loadSaves(AppState& a, bool forceProfile) {
         }
     }
     if (a.validSaves[a.saveIndex].slot > 0) a.config.preferredSlot = a.validSaves[a.saveIndex].slot;
+    refreshRegionProgress(a);
     a.platform.saveConfig(a.config);
     a.status = a.discovery.usingBackup
         ? tr(a, "Используется резервная копия", "Using backup")
@@ -943,6 +950,7 @@ void switchSlot(AppState& a, int delta) {
     a.saveIndex = (a.saveIndex + delta + n) % n;
     a.selected = -1;
     a.selectedPoi = -1;
+    refreshRegionProgress(a);
     if (a.validSaves[a.saveIndex].slot > 0) {
         a.config.preferredSlot = a.validSaves[a.saveIndex].slot;
         a.platform.saveConfig(a.config);

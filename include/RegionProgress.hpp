@@ -16,7 +16,10 @@ struct RegionProgress {
     int completionUnknown{};
 };
 
-SanAndreasRegion regionForWorldPoint(float x, float y);
+// Every canonical collectible has an explicit, embedded regional assignment.
+// Count is returned only for an invalid type/ID pair; valid catalogue entries
+// are always assigned to exactly one of the four regions.
+SanAndreasRegion regionForCollectible(CollectibleType type, int canonicalId);
 const char* sanAndreasRegionName(SanAndreasRegion region, bool russian);
 std::array<RegionProgress, kSanAndreasRegionCount> calculateRegionProgress(const ParseResult& result);
 

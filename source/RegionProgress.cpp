@@ -1,18 +1,59 @@
 #include "RegionProgress.hpp"
 
-#include "CollectibleInfo.hpp"
 #include "CollectibleView.hpp"
+
+#include <array>
 
 namespace gtasa {
 
-SanAndreasRegion regionForWorldPoint(float x, float y) {
-    // These broad, mutually exclusive areas are intentionally based only on
-    // canonical world coordinates. They avoid inventing fine-grained zone
-    // membership while keeping all 320 collectibles in one readable region.
-    if (y < -700.0f) return SanAndreasRegion::LosSantos;
-    if (x < -1000.0f && y >= 0.0f) return SanAndreasRegion::SanFierro;
-    if (x > 650.0f && y >= 450.0f) return SanAndreasRegion::LasVenturas;
-    return SanAndreasRegion::Countryside;
+namespace {
+
+// Canonical ID order: Tags 1..100, Snapshots 1..50, Horseshoes 1..50,
+// Oysters 1..50, Unique Stunt Jumps 1..70. L/S/V/C are Los Santos,
+// San Fierro, Las Venturas and Countryside respectively. This is deliberately
+// data, not a coordinate-derived heuristic: a collectible's region remains
+// stable if a future coordinate correction changes its X/Y value.
+constexpr char kRegionCatalogue[] =
+    // Tags (1..100)
+    "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL"
+    // Snapshots (1..50)
+    "CCCSLLCLCCCCSSCSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSCSSS"
+    // Horseshoes (1..50)
+    "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV"
+    // Oysters (1..50)
+    "CCCCLLLLLLLLLLLLLLLLLLLCSCSSSSSSSSSSSCCCCCVVVVVVVV"
+    // Unique Stunt Jumps (1..70)
+    "LLLLLLLLLLLLLLLLLLLLLLLLCCCCCCCCCCCLLLCCCCCSSSSSSSSSSCCCCCVVVVVVVVVVVV";
+
+constexpr std::array<CollectibleType, 5> kTypes{
+    CollectibleType::Tag, CollectibleType::Snapshot, CollectibleType::Horseshoe,
+    CollectibleType::Oyster, CollectibleType::StuntJump,
+};
+
+constexpr int typeCount(CollectibleType type) {
+    return type == CollectibleType::Tag ? 100 : type == CollectibleType::StuntJump ? 70 : 50;
+}
+
+constexpr int catalogueOffset(CollectibleType type) {
+    return type == CollectibleType::Tag ? 0 : type == CollectibleType::Snapshot ? 100 :
+           type == CollectibleType::Horseshoe ? 150 : type == CollectibleType::Oyster ? 200 :
+           type == CollectibleType::StuntJump ? 250 : -1;
+}
+
+static_assert(sizeof(kRegionCatalogue) == 321, "The fixed region catalogue must cover all 320 collectibles");
+
+} // namespace
+
+SanAndreasRegion regionForCollectible(CollectibleType type, int canonicalId) {
+    const int offset = catalogueOffset(type);
+    if (offset < 0 || canonicalId < 1 || canonicalId > typeCount(type)) return SanAndreasRegion::Count;
+    switch (kRegionCatalogue[offset + canonicalId - 1]) {
+        case 'L': return SanAndreasRegion::LosSantos;
+        case 'S': return SanAndreasRegion::SanFierro;
+        case 'V': return SanAndreasRegion::LasVenturas;
+        case 'C': return SanAndreasRegion::Countryside;
+        default: return SanAndreasRegion::Count;
+    }
 }
 
 const char* sanAndreasRegionName(SanAndreasRegion region, bool russian) {
@@ -27,31 +68,21 @@ const char* sanAndreasRegionName(SanAndreasRegion region, bool russian) {
 
 std::array<RegionProgress, kSanAndreasRegionCount> calculateRegionProgress(const ParseResult& result) {
     std::array<RegionProgress, kSanAndreasRegionCount> progress{};
-    for (std::size_t i = 0; i < collectibleInfoCount(); ++i) {
-        // The generated catalogue is ordered by type/canonical ID. Look up the
-        // record through the public API rather than relying on table layout.
-        const CollectibleInfo* info = nullptr;
-        for (const auto type : {CollectibleType::Tag, CollectibleType::Snapshot, CollectibleType::Horseshoe,
-                                CollectibleType::Oyster, CollectibleType::StuntJump}) {
-            const int typeOffset = type == CollectibleType::Tag ? 0 : type == CollectibleType::Snapshot ? 100 :
-                                   type == CollectibleType::Horseshoe ? 150 : type == CollectibleType::Oyster ? 200 : 250;
-            const int typeCount = type == CollectibleType::Tag ? 100 : type == CollectibleType::StuntJump ? 70 : 50;
-            if (static_cast<int>(i) >= typeOffset && static_cast<int>(i) < typeOffset + typeCount) {
-                info = collectibleInfo(type, static_cast<int>(i) - typeOffset + 1);
-                break;
+    for (const auto type : kTypes) {
+        for (int canonicalId = 1; canonicalId <= typeCount(type); ++canonicalId) {
+            const auto region = regionForCollectible(type, canonicalId);
+            if (region == SanAndreasRegion::Count) continue;
+            auto& stats = progress[static_cast<std::size_t>(region)];
+            ++stats.total;
+            if (!collectibleCategoryHasReliableCompleted(result, type)) {
+                ++stats.completionUnknown;
+                continue;
             }
-        }
-        if (!info) continue;
-        auto& stats = progress[static_cast<std::size_t>(regionForWorldPoint(info->x, info->y))];
-        ++stats.total;
-        if (!collectibleCategoryHasReliableCompleted(result, info->type)) {
-            ++stats.completionUnknown;
-            continue;
-        }
-        for (const auto& item : result.objects) {
-            if (item.type == info->type && item.id == info->canonicalId) {
-                if (item.completed) ++stats.completed;
-                break;
+            for (const auto& item : result.objects) {
+                if (item.type == type && item.id == canonicalId) {
+                    if (item.completed) ++stats.completed;
+                    break;
+                }
             }
         }
     }
