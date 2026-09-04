@@ -1,7 +1,9 @@
 #include "CollectibleIcons.hpp"
+#include "CameraInput.hpp"
 #include "MapProjection.hpp"
 #include "MapUi.hpp"
 #include "MarkerSelection.hpp"
+#include "TouchGesture.hpp"
 
 #include <cassert>
 #include <cmath>
@@ -49,12 +51,32 @@ int main() {
     assert(markerFullyVisible(20, 20, 20, 20, 0, 0, 100, 100));
     assert(!markerFullyVisible(9, 20, 20, 20, 0, 0, 100, 100));
     assert(!markerFullyVisible(90, 90, 22, 22, 0, 0, 100, 100));
+    assert(hasMarkerVisibleThreshold(5, 50, 20, 20, 0, 0, 100, 100));
+    assert(!hasMarkerVisibleThreshold(-5, 50, 20, 20, 0, 0, 100, 100));
     assert(markerFullyVisible(50, 20, 20, 20, 0, 0, 100, 100, true));
     assert(!markerFullyVisible(50, 19, 20, 20, 0, 0, 100, 100, true));
     assert(std::string(poiLocationStatus(true, true)) == "Ориентировочно");
     assert(std::string(poiLocationStatus(false, false)) == "Verified");
     assert(formatMapCoordinates(1272.24f, 295.25f, 20.14f) == "X 1272.2   Y 295.2   Z 20.1");
     assert(formatMapCoordinates(605.14f, 902.24f, 0.0f, false) == "X 605.1   Y 902.2   Z —");
+    // Integration regression: a touch-owned camera must retain its centre on
+    // the next frame while the controller cursor is idle.
+    CameraCenter touchCamera{850.0f, -640.0f};
+    CameraOwner owner = CameraOwner::Touch;
+    updateCameraForCursor(touchCamera, 0.0f, 0.0f, false, owner, 100.0f, 100.0f);
+    assert(touchCamera.x == 850.0f && touchCamera.y == -640.0f);
+    updateCameraForCursor(touchCamera, 25.0f, 30.0f, true, owner, 100.0f, 100.0f);
+    assert(owner == CameraOwner::Cursor && touchCamera.x == 25.0f && touchCamera.y == 30.0f);
+    TouchGestureState touch;
+    touch.begin(1, 100.0f, 100.0f);
+    assert(touch.move(1, 105.0f, 100.0f).kind == TouchMotion::Kind::None);
+    assert(touch.move(1, 109.0f, 100.0f).kind == TouchMotion::Kind::Pan);
+    assert(!touch.end(1).singleTap);
+    touch.begin(1, 100.0f, 100.0f);
+    assert(touch.end(1).singleTap);
+    touch.begin(1, 100.0f, 100.0f); touch.begin(2, 200.0f, 100.0f);
+    assert(touch.end(1).twoFingerTap == false);
+    assert(touch.end(2).twoFingerTap);
     for (const auto& viewport : {std::pair<int, int>{955, 720}, {1280, 720}}) {
         for (const float zoom : {1.0f, 2.0f, 8.0f}) {
             const auto source = mapSourceSize(2048, 2048, zoom, viewport.first, viewport.second);

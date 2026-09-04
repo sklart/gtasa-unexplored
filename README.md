@@ -155,6 +155,7 @@ python tools/validate_map_pack.py path/to/maps
 
 - **↑ / ↓** — категория;
 - **A** — включить/выключить категорию;
+- **A** на строке **«Объекты»** — переключить **Missing → Completed → All**;
 - **ZL** — RU/EN (только в окне Filters);
 - **X** — закрыть.
 
@@ -209,6 +210,10 @@ Host regression:
 ```
 
 GitHub Actions сначала запускает host + ASan/UBSan, затем выполняет devkitA64-сборку.
+
+Текущий Switch job намеренно использует поддерживаемый образ devkitPro; отдельное
+ТЗ для его последующего закрепления по digest находится в
+[`docs/devkitpro-pinned-image-tz.md`](docs/devkitpro-pinned-image-tz.md).
 
 ## Статус проверки
 

@@ -36,11 +36,35 @@ jobs:
             tests/collectible_info_tests.cpp source/CollectibleInfoData.cpp \
             -o collectible-info-tests
           ./collectible-info-tests
+      - name: Build and run collectible view test
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
+            tests/collectible_view_tests.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp \
+            -o collectible-view-tests
+          ./collectible-view-tests
       - name: Build and run map UI math test
         run: |
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
             tests/map_ui_tests.cpp -o map-ui-tests
           ./map-ui-tests
+
+  host-sanitizers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: ASan and UBSan parser regression test
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
+            tests/parser_tests.cpp source/SaveParser.cpp source/TagData.cpp -o parser-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./parser-sanitized
+      - name: ASan and UBSan UI/view tests
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
+            tests/map_ui_tests.cpp -o map-ui-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./map-ui-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
+            tests/collectible_view_tests.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o collectible-view-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./collectible-view-sanitized
 
   switch-build:
     runs-on: ubuntu-latest

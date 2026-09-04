@@ -1,5 +1,6 @@
 #pragma once
 
+#include <algorithm>
 #include <cmath>
 #include <iomanip>
 #include <sstream>
@@ -45,6 +46,25 @@ inline bool markerFullyVisible(int anchorX, int anchorY, int width, int height,
     return left >= viewportX && top >= viewportY &&
            left + width <= viewportX + viewportWidth &&
            top + height <= viewportY + viewportHeight;
+}
+
+inline float markerVisibleFraction(int anchorX, int anchorY, int width, int height,
+                                   int viewportX, int viewportY, int viewportWidth, int viewportHeight,
+                                   bool anchorBottom = false) {
+    const int left = anchorX - width / 2;
+    const int top = anchorBottom ? anchorY - height : anchorY - height / 2;
+    const int right = left + width;
+    const int bottom = top + height;
+    const int visibleW = std::max(0, std::min(right, viewportX + viewportWidth) - std::max(left, viewportX));
+    const int visibleH = std::max(0, std::min(bottom, viewportY + viewportHeight) - std::max(top, viewportY));
+    return width > 0 && height > 0 ? static_cast<float>(visibleW * visibleH) / (width * height) : 0.0f;
+}
+
+inline bool hasMarkerVisibleThreshold(int anchorX, int anchorY, int width, int height,
+                                      int viewportX, int viewportY, int viewportWidth, int viewportHeight,
+                                      bool anchorBottom = false, float threshold = 0.45f) {
+    return markerVisibleFraction(anchorX, anchorY, width, height, viewportX, viewportY,
+                                 viewportWidth, viewportHeight, anchorBottom) >= threshold;
 }
 
 inline const char* poiLocationStatus(bool representative, bool russian) {

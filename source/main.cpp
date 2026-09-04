@@ -2,6 +2,8 @@
 #include "CollectibleIcons.hpp"
 #include "CollectibleInfo.hpp"
 #include "CollectibleMedia.hpp"
+#include "CollectibleView.hpp"
+#include "CameraInput.hpp"
 #include "MapTexture.hpp"
 #include "MapUi.hpp"
 #include "MarkerSelection.hpp"
@@ -10,6 +12,7 @@
 #include "PoiIcon.hpp"
 #include "PoiMedia.hpp"
 #include "SaveParser.hpp"
+#include "TouchGesture.hpp"
 
 #include <SDL.h>
 #include <SDL_ttf.h>
@@ -163,6 +166,7 @@ struct AppState {
     float centerY = 0.0f;
     float cursorX = 0.0f;
     float cursorY = 0.0f;
+    gtasa::CameraOwner cameraOwner = gtasa::CameraOwner::Cursor;
     float zoom = 1.0f;
     int selected = -1;
     int selectedPoi = -1;
@@ -227,6 +231,18 @@ int totalFor(const gtasa::ParseSummary& s, gtasa::CollectibleType t) {
         case gtasa::CollectibleType::StuntJump: return s.stuntJumpsTotal;
         default: return 0;
     }
+}
+
+gtasa::CollectibleViewMode collectibleViewMode(const AppState& a) {
+    return static_cast<gtasa::CollectibleViewMode>(std::clamp(a.config.collectibleViewMode, 0, 2));
+}
+
+bool collectibleVisibleInView(const AppState& a, const gtasa::Collectible& item) {
+    return a.filters[static_cast<int>(item.type)] && gtasa::collectibleMatchesView(item, collectibleViewMode(a));
+}
+
+const gtasa::CollectibleInfo* collectibleInfoForView(const gtasa::Collectible& item) {
+    return gtasa::collectibleInfo(item.type, item.id);
 }
 
 void fill(SDL_Renderer* r, const SDL_Rect& rect, SDL_Color c) {
@@ -356,6 +372,31 @@ void drawPoiIcon(SDL_Renderer* r, const gtasa::PoiIcon& icon, int x, int y, int 
     SDL_RenderCopy(r, texture, nullptr, &target);
 }
 
+bool isMarkerInteractable(const AppState& a, const gtasa::Collectible& item, int* outX = nullptr, int* outY = nullptr) {
+    if (!collectibleVisibleInView(a, item)) return false;
+    const auto [x, y] = collectibleToScreen(a, item.x, item.y);
+    const auto [width, height] = collectibleIconDimensions(a.icons, item.type, gtasa::collectibleIconSize(a.zoom));
+    const auto content = mapContentRect(a);
+    if (!gtasa::hasMarkerVisibleThreshold(x, y, width, height, content.x, content.y, content.w, content.h)) return false;
+    if (outX) *outX = x;
+    if (outY) *outY = y;
+    return true;
+}
+
+bool isMarkerInteractable(const AppState& a, const gtasa::PoiInfo& poi, int* outX = nullptr, int* outY = nullptr) {
+    if (!a.config.showPoi || !poi.visibleOnMap) return false;
+    const auto [x, y] = collectibleToScreen(a, poi.x, poi.y);
+    int sourceW = 0, sourceH = 0;
+    if (SDL_Texture* texture = a.poiIcon.texture()) SDL_QueryTexture(texture, nullptr, nullptr, &sourceW, &sourceH);
+    const int width = gtasa::poiMarkerSize(a.zoom);
+    const int height = sourceW > 0 ? static_cast<int>(std::lround(width * static_cast<float>(sourceH) / sourceW)) : width;
+    const auto content = mapContentRect(a);
+    if (!gtasa::hasMarkerVisibleThreshold(x, y, width, height, content.x, content.y, content.w, content.h, true)) return false;
+    if (outX) *outX = x;
+    if (outY) *outY = y;
+    return true;
+}
+
 void clampCamera(AppState& a) {
     a.zoom = std::max(0.85f, std::min(8.0f, a.zoom));
     a.centerX = std::max(-kWorldHalf, std::min(kWorldHalf, a.centerX));
@@ -377,11 +418,10 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
     int selected = -1;
     int selectedPoi = -1;
     if (p) {
-        for (std::size_t i = 0; i < p->missing.size(); ++i) {
-            const auto& c = p->missing[i];
-            if (!a.filters[static_cast<int>(c.type)]) continue;
-            const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
-            if (!insideMap(a, sx, sy)) continue;
+        for (std::size_t i = 0; i < p->objects.size(); ++i) {
+            const auto& c = p->objects[i];
+            int sx = 0, sy = 0;
+            if (!isMarkerInteractable(a, c, &sx, &sy)) continue;
             const float dx = static_cast<float>(sx - px);
             const float dy = static_cast<float>(sy - py);
             const float d2 = dx * dx + dy * dy;
@@ -391,9 +431,9 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
     if (a.config.showPoi) {
         for (std::size_t i = 0; i < gtasa::poiInfoCount(); ++i) {
             const auto* poi = gtasa::poiInfo(i);
-            if (!poi || !poi->visibleOnMap) continue;
-            const auto [sx, sy] = collectibleToScreen(a, poi->x, poi->y);
-            if (!insideMap(a, sx, sy)) continue;
+            if (!poi) continue;
+            int sx = 0, sy = 0;
+            if (!isMarkerInteractable(a, *poi, &sx, &sy)) continue;
             const float dx = static_cast<float>(sx - px), dy = static_cast<float>(sy - py);
             const float d2 = dx * dx + dy * dy;
             if (d2 <= best) { best = d2; selected = -1; selectedPoi = static_cast<int>(i); }
@@ -405,14 +445,11 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
 
 bool selectedMarkerScreen(const AppState& a, int& x, int& y) {
     const auto* parsed = currentParse(a);
-    if (parsed && a.selected >= 0 && a.selected < static_cast<int>(parsed->missing.size())) {
-        std::tie(x, y) = collectibleToScreen(a, parsed->missing[static_cast<std::size_t>(a.selected)].x,
-                                              parsed->missing[static_cast<std::size_t>(a.selected)].y);
-        return true;
+    if (parsed && a.selected >= 0 && a.selected < static_cast<int>(parsed->objects.size())) {
+        return isMarkerInteractable(a, parsed->objects[static_cast<std::size_t>(a.selected)], &x, &y);
     }
     if (const auto* poi = a.selectedPoi >= 0 ? gtasa::poiInfo(static_cast<std::size_t>(a.selectedPoi)) : nullptr) {
-        std::tie(x, y) = collectibleToScreen(a, poi->x, poi->y);
-        return true;
+        return isMarkerInteractable(a, *poi, &x, &y);
     }
     return false;
 }
@@ -427,17 +464,16 @@ bool selectedMarkerHit(const AppState& a, int x, int y, float radius) {
 bool cycleOverlappingMarkers(AppState& a, int direction) {
     std::vector<gtasa::MarkerSelectionPoint> points;
     const auto* parsed = currentParse(a);
-    if (parsed) for (std::size_t i = 0; i < parsed->missing.size(); ++i) {
-        const auto& item = parsed->missing[i];
-        if (!a.filters[static_cast<int>(item.type)]) continue;
-        const auto [x, y] = collectibleToScreen(a, item.x, item.y);
-        if (insideMap(a, x, y)) points.push_back({static_cast<int>(i) + 1, static_cast<float>(x), static_cast<float>(y)});
+    if (parsed) for (std::size_t i = 0; i < parsed->objects.size(); ++i) {
+        const auto& item = parsed->objects[i];
+        int x = 0, y = 0;
+        if (isMarkerInteractable(a, item, &x, &y)) points.push_back({static_cast<int>(i) + 1, static_cast<float>(x), static_cast<float>(y)});
     }
     if (a.config.showPoi) for (std::size_t i = 0; i < gtasa::poiInfoCount(); ++i) {
         const auto* poi = gtasa::poiInfo(i);
-        if (!poi || !poi->visibleOnMap) continue;
-        const auto [x, y] = collectibleToScreen(a, poi->x, poi->y);
-        if (insideMap(a, x, y)) points.push_back({-static_cast<int>(i) - 1, static_cast<float>(x), static_cast<float>(y)});
+        if (!poi) continue;
+        int x = 0, y = 0;
+        if (isMarkerInteractable(a, *poi, &x, &y)) points.push_back({-static_cast<int>(i) - 1, static_cast<float>(x), static_cast<float>(y)});
     }
     const int current = a.selected >= 0 ? a.selected + 1 : (a.selectedPoi >= 0 ? -a.selectedPoi - 1 : 0);
     int next = 0;
@@ -445,7 +481,7 @@ bool cycleOverlappingMarkers(AppState& a, int direction) {
     a.selected = next > 0 ? next - 1 : -1;
     a.selectedPoi = next < 0 ? -next - 1 : -1;
     if (const auto* parsedAgain = currentParse(a); parsedAgain && a.selected >= 0) {
-        const auto& item = parsedAgain->missing[static_cast<std::size_t>(a.selected)];
+        const auto& item = parsedAgain->objects[static_cast<std::size_t>(a.selected)];
         a.cursorX = item.x; a.cursorY = item.y;
     } else if (const auto* poi = a.selectedPoi >= 0 ? gtasa::poiInfo(static_cast<std::size_t>(a.selectedPoi)) : nullptr) {
         a.cursorX = poi->x; a.cursorY = poi->y;
@@ -472,35 +508,26 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
 
     const auto* p = currentParse(a);
     if (p) {
-        for (std::size_t i = 0; i < p->missing.size(); ++i) {
-            const auto& c = p->missing[i];
-            if (!a.filters[static_cast<int>(c.type)]) continue;
-            const auto [sx, sy] = collectibleToScreen(a, c.x, c.y);
+        for (std::size_t i = 0; i < p->objects.size(); ++i) {
+            const auto& c = p->objects[i];
+            int sx = 0, sy = 0;
+            if (!isMarkerInteractable(a, c, &sx, &sy)) continue;
             const int iconSize = gtasa::collectibleIconSize(a.zoom);
             const bool selected = static_cast<int>(i) == a.selected;
             const int selectedSize = selected ? static_cast<int>(std::lround(iconSize * 1.18f)) : iconSize;
-            const auto [iconW, iconH] = collectibleIconDimensions(a.icons, c.type, selectedSize);
-            const auto& content = mapContentRect(a);
-            if (!gtasa::markerFullyVisible(sx, sy, iconW, iconH,
-                                           content.x, content.y, content.w, content.h)) continue;
             const Uint8 alpha = selected ? 255 : (c.completed ? 135 : 255);
             drawCollectibleIcon(r, a.icons, sx, sy, c.type, selectedSize, alpha);
-            if (selected) drawIconRing(r, sx, sy, std::max(iconW, iconH) / 2 + 2, kColors.selected);
+            if (selected) drawIconRing(r, sx, sy, selectedSize / 2 + 2, kColors.selected);
         }
     }
     for (std::size_t i = 0; a.config.showPoi && i < gtasa::poiInfoCount(); ++i) {
         const auto* poi = gtasa::poiInfo(i);
-        if (!poi || !poi->visibleOnMap) continue;
-        const auto [sx, sy] = collectibleToScreen(a, poi->x, poi->y);
+        if (!poi) continue;
+        int sx = 0, sy = 0;
+        if (!isMarkerInteractable(a, *poi, &sx, &sy)) continue;
         const bool selected = static_cast<int>(i) == a.selectedPoi;
         const int baseIconSize = gtasa::poiMarkerSize(a.zoom);
         const int iconSize = selected ? static_cast<int>(std::lround(baseIconSize * 1.15f)) : baseIconSize;
-        int sourceW = 0, sourceH = 0;
-        if (SDL_Texture* texture = a.poiIcon.texture()) SDL_QueryTexture(texture, nullptr, nullptr, &sourceW, &sourceH);
-        const int iconHeight = sourceW > 0 ? static_cast<int>(std::lround(iconSize * static_cast<float>(sourceH) / sourceW)) : iconSize;
-        const auto& content = mapContentRect(a);
-        if (!gtasa::markerFullyVisible(sx, sy, iconSize, iconHeight,
-                                       content.x, content.y, content.w, content.h, true)) continue;
         drawPoiIcon(r, a.poiIcon, sx, sy, iconSize, selected);
     }
 
@@ -513,8 +540,8 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
 
 const gtasa::CollectibleInfo* selectedInfo(const AppState& a) {
     const auto* parsed = currentParse(a);
-    if (!parsed || a.selected < 0 || a.selected >= static_cast<int>(parsed->missing.size())) return nullptr;
-    return gtasa::collectibleInfoForRuntime(parsed->missing[static_cast<std::size_t>(a.selected)]);
+    if (!parsed || a.selected < 0 || a.selected >= static_cast<int>(parsed->objects.size())) return nullptr;
+    return collectibleInfoForView(parsed->objects[static_cast<std::size_t>(a.selected)]);
 }
 
 const gtasa::PoiInfo* selectedPoiInfo(const AppState& a) {
@@ -555,15 +582,16 @@ void centerSelectedIfNeeded(AppState& a) {
     a.centerY = info->y;
     a.cursorX = info->x;
     a.cursorY = info->y;
+    a.cameraOwner = gtasa::CameraOwner::Cursor;
     clampCamera(a);
 }
 
 void selectAdjacent(AppState& a, int direction, SDL_Renderer* renderer) {
     const auto* parsed = currentParse(a);
-    if (!parsed || parsed->missing.empty()) return;
-    const int n = static_cast<int>(parsed->missing.size());
+    if (!parsed || parsed->objects.empty()) return;
+    const int n = static_cast<int>(parsed->objects.size());
     const int index = gtasa::nextVisibleMarkerIndex(a.selected, n, direction, [&](int candidate) {
-        return a.filters[static_cast<int>(parsed->missing[static_cast<std::size_t>(candidate)].type)];
+        return isMarkerInteractable(a, parsed->objects[static_cast<std::size_t>(candidate)]);
     });
     if (index < 0) return;
     a.selected = index;
@@ -608,7 +636,7 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     const auto* parsed = currentParse(a);
     const auto* info = selectedInfo(a);
     if (!parsed || !info || a.selected < 0) return;
-    const auto& item = parsed->missing[static_cast<std::size_t>(a.selected)];
+    const auto& item = parsed->objects[static_cast<std::size_t>(a.selected)];
     fill(r, SDL_Rect{0, 0, kScreenW, kScreenH}, SDL_Color{7, 10, 13, 244});
     SDL_Rect card{66, 38, 1148, 644};
     fill(r, card, kColors.bg);
@@ -674,9 +702,9 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         }
 
         y += 8;
-        if (a.selected >= 0 && a.selected < static_cast<int>(p->missing.size())) {
-            const auto& c = p->missing[a.selected];
-            const auto* info = gtasa::collectibleInfoForRuntime(c);
+        if (a.selected >= 0 && a.selected < static_cast<int>(p->objects.size())) {
+            const auto& c = p->objects[a.selected];
+            const auto* info = collectibleInfoForView(c);
             const std::string id = info ? std::to_string(info->canonicalId) : "?";
             text.draw(typeName(a, c.type) + " #" + id, 980, y, 20, typeColor(c.type));
             text.draw(gtasa::formatMapCoordinates(c.x, c.y, c.z), 980, y + 30, 15, kColors.muted, 285);
@@ -711,7 +739,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
 
 void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     if (!a.legendOpen) return;
-    SDL_Rect shade{170, 100, 610, 500};
+    SDL_Rect shade{170, 100, 610, 560};
     fill(r, shade, SDL_Color{11, 14, 17, 245});
     SDL_SetRenderDrawColor(r, 95, 105, 115, 255);
     SDL_RenderDrawRect(r, &shade);
@@ -719,22 +747,31 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     text.draw(tr(a, "↑/↓ — выбор, A — включить/выключить, X — закрыть", "↑/↓ select, A toggle, X close"),
               205, 169, 15, kColors.muted, 540);
     int y = 220;
-    for (int i = 0; i <= static_cast<int>(gtasa::CollectibleType::Count); ++i) {
+    constexpr int kModeRow = static_cast<int>(gtasa::CollectibleType::Count) + 1;
+    for (int i = 0; i <= kModeRow; ++i) {
         SDL_Rect row{195, y - 8, 555, 44};
         if (i == a.legendIndex) fill(r, row, SDL_Color{45, 53, 61, 255});
         if (i < static_cast<int>(gtasa::CollectibleType::Count)) {
             drawCollectibleIcon(r, a.icons, 223, y + 10, static_cast<gtasa::CollectibleType>(i), 28);
             text.draw(typeName(a, static_cast<gtasa::CollectibleType>(i)), 250, y - 2, 20,
                       a.filters[i] ? kColors.text : kColors.muted);
-        } else {
+        } else if (i == static_cast<int>(gtasa::CollectibleType::Count)) {
             drawPoiIcon(r, a.poiIcon, 223, y + 20, 22);
             text.draw("POI", 250, y - 2, 20, a.config.showPoi ? kColors.text : kColors.muted);
+        } else {
+            const auto mode = collectibleViewMode(a);
+            const std::string label = mode == gtasa::CollectibleViewMode::Missing
+                ? tr(a, "Объекты: не найдены", "Objects: Missing")
+                : mode == gtasa::CollectibleViewMode::Completed
+                    ? tr(a, "Объекты: найдены", "Objects: Completed")
+                    : tr(a, "Объекты: все", "Objects: All");
+            text.draw(label, 205, y - 2, 20, kColors.text);
         }
         y += 58;
     }
     text.draw(tr(a, "POI: Проверено — точное место; Ориентировочно — район или маршрут",
                     "POI: Verified — exact place; Approximate — area or route"),
-              205, 560, 13, kColors.muted, 540);
+              205, 618, 13, kColors.muted, 540);
 }
 
 std::string diagnosticsText(const AppState& a) {
@@ -773,7 +810,7 @@ std::string diagnosticsText(const AppState& a) {
         ss << "Horseshoes: " << p->summary.horseshoesCompleted << '/' << p->summary.horseshoesTotal << "\n";
         ss << "Oysters: " << p->summary.oystersCompleted << '/' << p->summary.oystersTotal << "\n";
         ss << "Stunt jumps: " << p->summary.stuntJumpsCompleted << '/' << p->summary.stuntJumpsTotal << "\n";
-        ss << "Missing objects: " << p->missing.size() << "\n";
+        ss << "Collectible objects: " << p->objects.size() << " (missing raw: " << p->missing.size() << ")\n";
     } else {
         ss << "No parsed save\nError/status: " << a.status << "\n";
     }
@@ -802,6 +839,9 @@ void loadSaves(AppState& a, bool forceProfile) {
     for (const auto& save : a.discovery.saves) {
         auto result = parser.parseFile(save.path);
         if (result.ok) {
+            if (!gtasa::buildCollectibleObjects(result)) {
+                a.platform.log("Collectible catalogue incomplete; unreliable categories are fail-closed");
+            }
             a.validSaves.push_back(save);
             a.parsed.push_back(std::move(result));
         } else {
@@ -882,12 +922,7 @@ int main(int, char**) {
     padInitializeDefault(&pad);
 
     bool running = true;
-    std::map<SDL_FingerID, SDL_FPoint> touches;
-    std::map<SDL_FingerID, SDL_FPoint> touchStarts;
-    bool touchMoved = false;
-    bool multiTouch = false;
-    bool twoFingerTapCandidate = false;
-    float pinchDistance = 0.0f;
+    gtasa::TouchGestureState touchGesture;
     Uint32 lastTapTime = 0;
     int lastTapX = 0, lastTapY = 0;
     while (running && appletMainLoop()) {
@@ -898,83 +933,31 @@ int main(int, char**) {
                 const int x = static_cast<int>(event.tfinger.x * kScreenW);
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
                 if (insideMap(app, x, y)) {
-                    const SDL_FPoint point{static_cast<float>(x), static_cast<float>(y)};
-                    touches[event.tfinger.fingerId] = point;
-                    touchStarts[event.tfinger.fingerId] = point;
-                    if (touches.size() == 1) {
-                        touchMoved = false;
-                        multiTouch = false;
-                        twoFingerTapCandidate = false;
-                    } else if (touches.size() == 2) {
-                        auto first = touches.begin();
-                        auto second = std::next(first);
-                        const float dx = second->second.x - first->second.x;
-                        const float dy = second->second.y - first->second.y;
-                        pinchDistance = std::sqrt(dx * dx + dy * dy);
-                        multiTouch = true;
-                        // A second finger added after a drag must never turn
-                        // that gesture into a two-finger panel tap.
-                        twoFingerTapCandidate = !touchMoved;
-                    }
+                    touchGesture.begin(event.tfinger.fingerId, static_cast<float>(x), static_cast<float>(y));
                 }
             }
             if (event.type == SDL_FINGERMOTION && !app.legendOpen && !app.detailOpen) {
-                const auto current = touches.find(event.tfinger.fingerId);
-                if (current == touches.end()) continue;
-                const SDL_FPoint previous = current->second;
                 const SDL_FPoint point{event.tfinger.x * kScreenW, event.tfinger.y * kScreenH};
-                current->second = point;
-                if (touches.size() == 1) {
-                    const auto start = touchStarts.find(event.tfinger.fingerId);
-                    if (start == touchStarts.end()) continue;
-                    const bool wasDragging = touchMoved;
-                    if (!touchMoved && !gtasa::exceedsTouchDragThreshold(start->second.x, start->second.y,
-                                                                          point.x, point.y)) continue;
-                    const float dx = wasDragging ? point.x - previous.x : point.x - start->second.x;
-                    const float dy = wasDragging ? point.y - previous.y : point.y - start->second.y;
-                    if (dx != 0.0f || dy != 0.0f) {
+                const auto motion = touchGesture.move(event.tfinger.fingerId, point.x, point.y);
+                if (motion.kind == gtasa::TouchMotion::Kind::Pan && (motion.x != 0.0f || motion.y != 0.0f)) {
                         gtasa::MapView view{app.centerX, app.centerY, app.zoom};
-                        app.mapTexture.panByScreenDelta(view, mapRect(app), dx, dy);
+                        app.mapTexture.panByScreenDelta(view, mapRect(app), motion.x, motion.y);
                         app.centerX = view.centerX;
                         app.centerY = view.centerY;
+                        app.cameraOwner = gtasa::CameraOwner::Touch;
                         clampCamera(app);
-                        touchMoved = true;
-                        // A drag cannot be the first half of a later double tap.
                         lastTapTime = 0;
-                    }
-                } else if (touches.size() == 2) {
-                    auto first = touches.begin();
-                    auto second = std::next(first);
-                    const float dx = second->second.x - first->second.x;
-                    const float dy = second->second.y - first->second.y;
-                    const float distance = std::sqrt(dx * dx + dy * dy);
-                    const auto firstStart = touchStarts.find(first->first);
-                    const auto secondStart = touchStarts.find(second->first);
-                    if (firstStart != touchStarts.end() && secondStart != touchStarts.end() &&
-                        (gtasa::exceedsTouchDragThreshold(firstStart->second.x, firstStart->second.y,
-                                                           first->second.x, first->second.y) ||
-                         gtasa::exceedsTouchDragThreshold(secondStart->second.x, secondStart->second.y,
-                                                           second->second.x, second->second.y))) {
-                        twoFingerTapCandidate = false;
-                    }
-                    if (pinchDistance > 1.0f && std::abs(distance - pinchDistance) >= 2.0f) {
-                        app.zoom *= distance / pinchDistance;
-                        clampCamera(app);
-                        twoFingerTapCandidate = false;
-                        touchMoved = true;
-                        lastTapTime = 0;
-                    }
-                    pinchDistance = distance;
+                } else if (motion.kind == gtasa::TouchMotion::Kind::Pinch) {
+                    app.zoom *= motion.x;
+                    clampCamera(app);
+                    lastTapTime = 0;
                 }
             }
             if (event.type == SDL_FINGERUP) {
-                const auto current = touches.find(event.tfinger.fingerId);
-                if (current == touches.end()) continue;
                 const int x = static_cast<int>(event.tfinger.x * kScreenW);
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
-                const bool singleTap = touches.size() == 1 && gtasa::isTapGesture(touchMoved, multiTouch);
-                touches.erase(current);
-                touchStarts.erase(event.tfinger.fingerId);
+                const auto ended = touchGesture.end(event.tfinger.fingerId);
+                const bool singleTap = ended.singleTap;
                 if (singleTap && !app.legendOpen && !app.detailOpen && insideMap(app, x, y)) {
                     const Uint32 now = SDL_GetTicks();
                     const int dx = x - lastTapX, dy = y - lastTapY;
@@ -991,7 +974,7 @@ int main(int, char**) {
                     } else if (gtasa::canResetMapFromDoubleTap(singleTap, hitMarker) &&
                                now - lastTapTime <= 350 && dx * dx + dy * dy <= 900) {
                         // Reserve double-tap reset for genuinely empty map space.
-                        app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.zoom = 1.0f;
+                        app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.cameraOwner = gtasa::CameraOwner::Cursor; app.zoom = 1.0f;
                         app.selected = -1; app.selectedPoi = -1; lastTapTime = 0;
                     } else {
                         lastTapTime = now;
@@ -999,11 +982,7 @@ int main(int, char**) {
                         lastTapY = y;
                     }
                 }
-                if (multiTouch && touches.empty()) {
-                    if (twoFingerTapCandidate) app.showPanel = !app.showPanel;
-                    multiTouch = false;
-                    twoFingerTapCandidate = false;
-                }
+                if (ended.twoFingerTap) app.showPanel = !app.showPanel;
             }
         }
 
@@ -1030,16 +1009,21 @@ int main(int, char**) {
                 text.clearCache();
                 app.status = tr(app, "Язык: Русский", "Language: English");
             }
-            constexpr int kFilterCount = static_cast<int>(gtasa::CollectibleType::Count) + 1;
+            constexpr int kFilterCount = static_cast<int>(gtasa::CollectibleType::Count) + 2;
             if (down & HidNpadButton_Up) app.legendIndex = (app.legendIndex + kFilterCount - 1) % kFilterCount;
             if (down & HidNpadButton_Down) app.legendIndex = (app.legendIndex + 1) % kFilterCount;
             if (down & HidNpadButton_A) {
                 if (app.legendIndex < static_cast<int>(gtasa::CollectibleType::Count))
                     app.filters[app.legendIndex] = !app.filters[app.legendIndex];
-                else {
+                else if (app.legendIndex == static_cast<int>(gtasa::CollectibleType::Count)) {
                     app.config.showPoi = !app.config.showPoi;
                     app.platform.saveConfig(app.config);
                     if (!app.config.showPoi) app.selectedPoi = -1;
+                } else {
+                    app.config.collectibleViewMode = (app.config.collectibleViewMode + 1) % 3;
+                    app.selected = -1;
+                    app.selectedPoi = -1;
+                    app.platform.saveConfig(app.config);
                 }
             }
         } else {
@@ -1056,7 +1040,7 @@ int main(int, char**) {
                 else navigateMarker(app, 1, gtasa::shouldCycleOverlap(false, groupModifier, true), renderer);
             }
             if (down & HidNpadButton_Y) {
-                app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.zoom = 1.0f; app.selected = -1; app.selectedPoi = -1;
+                app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.cameraOwner = gtasa::CameraOwner::Cursor; app.zoom = 1.0f; app.selected = -1; app.selectedPoi = -1;
                 if (!app.mapTexture.discoverAndLoad(renderer, app.mapTexture.currentId(), app.status)) {
                     app.mapTexture.loadFallback(renderer, app.status);
                 }
@@ -1073,14 +1057,17 @@ int main(int, char**) {
             if (down & HidNpadButton_B) { app.selected = -1; app.selectedPoi = -1; }
 
             const float cursorSpeed = 16.0f / app.zoom;
-            if (std::abs(left.x) > 2500) app.cursorX += (static_cast<float>(left.x) / 32768.0f) * cursorSpeed;
-            if (std::abs(left.y) > 2500) app.cursorY += (static_cast<float>(left.y) / 32768.0f) * cursorSpeed;
+            bool cursorMoved = false;
+            if (std::abs(left.x) > 2500) { app.cursorX += (static_cast<float>(left.x) / 32768.0f) * cursorSpeed; cursorMoved = true; }
+            if (std::abs(left.y) > 2500) { app.cursorY += (static_cast<float>(left.y) / 32768.0f) * cursorSpeed; cursorMoved = true; }
             app.cursorX = std::clamp(app.cursorX, -3000.0f, 3000.0f);
             app.cursorY = std::clamp(app.cursorY, -3000.0f, 3000.0f);
-            // Following the cursor makes every edge marker reachable without
-            // relying on an invisible inner cursor rectangle.
-            app.centerX = app.cursorX;
-            app.centerY = app.cursorY;
+            gtasa::CameraCenter camera{app.centerX, app.centerY};
+            const float comfort = 1800.0f / app.zoom;
+            gtasa::updateCameraForCursor(camera, app.cursorX, app.cursorY, cursorMoved,
+                                         app.cameraOwner, comfort, comfort);
+            app.centerX = camera.x;
+            app.centerY = camera.y;
             if (held & HidNpadButton_L) app.zoom *= 0.985f;
             if (held & HidNpadButton_R) app.zoom *= 1.015f;
             clampCamera(app);
