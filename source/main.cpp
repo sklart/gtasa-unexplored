@@ -4,12 +4,14 @@
 #include "CollectibleMedia.hpp"
 #include "CollectibleView.hpp"
 #include "FiltersUi.hpp"
+#include "FiltersScreen.hpp"
 #include "CameraInput.hpp"
 #include "MapTexture.hpp"
 #include "MapUi.hpp"
 #include "MarkerSelection.hpp"
 #include "NearestCollectible.hpp"
 #include "ObjectList.hpp"
+#include "ObjectListScreen.hpp"
 #include "Platform.hpp"
 #include "PoiCategories.hpp"
 #include "PoiInfo.hpp"
@@ -481,7 +483,7 @@ std::vector<gtasa::ObjectListItem> currentObjectList(const AppState& a) {
     gtasa::sortObjectList(items, a.listSort, a.cursorX, a.cursorY);
     if (a.routeMode) {
         std::vector<gtasa::ObjectListItem> routeItems;
-        for (const int sourceIndex : gtasa::orderedRouteIndices(a.route, a.routeIndex)) for (const auto& item : items)
+        for (const int sourceIndex : gtasa::objectListRouteOrder(a.route, a.routeIndex)) for (const auto& item : items)
             if (item.kind == gtasa::ObjectListKind::Collectible && item.sourceIndex == sourceIndex) routeItems.push_back(item);
         return routeItems;
     }
@@ -1240,7 +1242,7 @@ int main(int, char**) {
         } else if (app.listOpen) {
             auto items = currentObjectList(app);
             if (items.empty()) app.listIndex = 0;
-            else app.listIndex = std::clamp(app.listIndex, 0, static_cast<int>(items.size()) - 1);
+            else app.listIndex = gtasa::clampObjectListIndex(app.listIndex, static_cast<int>(items.size()));
             if (down & HidNpadButton_B) app.listOpen = false;
             if ((down & HidNpadButton_A) && (held & HidNpadButton_ZR)) {
                 if (!app.routeMode) { app.routeMode = true; app.routeLimit = 5; }
@@ -1252,9 +1254,9 @@ int main(int, char**) {
                 continue;
             }
             if (!items.empty() && (down & HidNpadButton_Up))
-                app.listIndex = (app.listIndex + static_cast<int>(items.size()) - 1) % static_cast<int>(items.size());
+                app.listIndex = gtasa::nextObjectListIndex(app.listIndex, static_cast<int>(items.size()), -1);
             if (!items.empty() && (down & HidNpadButton_Down))
-                app.listIndex = (app.listIndex + 1) % static_cast<int>(items.size());
+                app.listIndex = gtasa::nextObjectListIndex(app.listIndex, static_cast<int>(items.size()), 1);
             if (down & HidNpadButton_L) app.listSort = static_cast<gtasa::ObjectListSort>((static_cast<int>(app.listSort) + 3) % 4);
             if (down & HidNpadButton_R) app.listSort = static_cast<gtasa::ObjectListSort>((static_cast<int>(app.listSort) + 1) % 4);
             if (down & HidNpadButton_X) {
@@ -1278,13 +1280,13 @@ int main(int, char**) {
                 text.clearCache();
                 app.status = tr(app, "Язык: Русский", "Language: English");
             }
-            const auto filterLayout = gtasa::filtersUiLayout();
+            const auto filterLayout = gtasa::filtersScreenLayout();
             const int kRegionFirstRow = filterLayout.regionFirst;
             const int kPoiRow = filterLayout.poiRow;
             const int kPoiCategoryFirstRow = filterLayout.poiCategoryFirst;
             const int kModeRow = filterLayout.modeRow;
-            if (down & HidNpadButton_Up) app.legendIndex = gtasa::nextFilterRow(app.legendIndex, -1);
-            if (down & HidNpadButton_Down) app.legendIndex = gtasa::nextFilterRow(app.legendIndex, 1);
+            if (down & HidNpadButton_Up) app.legendIndex = gtasa::nextFiltersScreenRow(app.legendIndex, -1);
+            if (down & HidNpadButton_Down) app.legendIndex = gtasa::nextFiltersScreenRow(app.legendIndex, 1);
             if (down & HidNpadButton_A) {
                 if (app.legendIndex < static_cast<int>(gtasa::CollectibleType::Count))
                     app.filters[app.legendIndex] = !app.filters[app.legendIndex];
