@@ -18,6 +18,7 @@
 #include "RegionProgress.hpp"
 #include "ProgressMatrix.hpp"
 #include "RoutePlanner.hpp"
+#include "RouteNavigation.hpp"
 #include "SaveParser.hpp"
 #include "TouchGesture.hpp"
 
@@ -166,6 +167,7 @@ struct AppState {
     std::vector<gtasa::SaveEntry> validSaves;
     std::vector<gtasa::ParseResult> parsed;
     std::array<gtasa::RegionProgress, gtasa::kSanAndreasRegionCount> regionProgress{};
+    gtasa::ProgressMatrix progressMatrix{};
     int saveIndex = 0;
     std::array<bool, static_cast<int>(gtasa::CollectibleType::Count)> filters{true, true, true, true, true};
     bool legendOpen = false;
@@ -447,7 +449,11 @@ const gtasa::ParseResult* currentParse(const AppState& a) {
 
 void refreshRegionProgress(AppState& a) {
     a.regionProgress = {};
-    if (const auto* parsed = currentParse(a)) a.regionProgress = gtasa::calculateRegionProgress(*parsed);
+    a.progressMatrix = {};
+    if (const auto* parsed = currentParse(a)) {
+        a.regionProgress = gtasa::calculateRegionProgress(*parsed);
+        a.progressMatrix = gtasa::calculateProgressMatrix(*parsed);
+    }
 }
 const gtasa::SaveEntry* currentSave(const AppState& a) {
     if (a.saveIndex < 0 || a.saveIndex >= static_cast<int>(a.validSaves.size())) return nullptr;
@@ -474,7 +480,7 @@ std::vector<gtasa::ObjectListItem> currentObjectList(const AppState& a) {
     gtasa::sortObjectList(items, a.listSort, a.cursorX, a.cursorY);
     if (a.routeMode) {
         std::vector<gtasa::ObjectListItem> routeItems;
-        for (const int sourceIndex : a.route) for (const auto& item : items)
+        for (const int sourceIndex : gtasa::orderedRouteIndices(a.route, a.routeIndex)) for (const auto& item : items)
             if (item.kind == gtasa::ObjectListKind::Collectible && item.sourceIndex == sourceIndex) routeItems.push_back(item);
         return routeItems;
     }
@@ -832,13 +838,12 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
             text.draw(row.str(), 980, y, 13, kColors.muted, 285);
             y += 16;
         }
-        const auto matrix = gtasa::calculateProgressMatrix(*p);
         for (std::size_t region = 0; region < gtasa::kSanAndreasRegionCount; ++region) {
             std::ostringstream row;
             row << gtasa::sanAndreasRegionName(static_cast<gtasa::SanAndreasRegion>(region), isRu(a)) << "  ";
             for (std::size_t type = 0; type < static_cast<std::size_t>(gtasa::CollectibleType::Count); ++type) {
                 if (type) row << ' ';
-                row << matrix[region][type].completed << '/' << matrix[region][type].total;
+                row << a.progressMatrix[region][type].completed << '/' << a.progressMatrix[region][type].total;
             }
             text.draw(row.str(), 980, y, 11, kColors.muted, 285);
             y += 13;
@@ -1047,6 +1052,7 @@ void loadSaves(AppState& a, bool forceProfile) {
     a.validSaves.clear();
     a.parsed.clear();
     a.regionProgress = {};
+    a.progressMatrix = {};
     a.selected = -1;
     a.selectedPoi = -1;
     a.discovery = a.platform.discoverSaves(a.config, forceProfile);
@@ -1261,7 +1267,7 @@ int main(int, char**) {
             }
             if (!items.empty() && (down & HidNpadButton_A)) {
                 focusListItem(app, items[static_cast<std::size_t>(app.listIndex)]);
-                if (app.routeMode && !app.route.empty()) app.routeIndex = (app.routeIndex + 1) % static_cast<int>(app.route.size());
+                if (app.routeMode && !app.route.empty()) app.routeIndex = gtasa::nextRouteIndex(app.routeIndex, static_cast<int>(app.route.size()));
             }
         } else if (app.legendOpen) {
             if (down & HidNpadButton_X) app.legendOpen = false;
