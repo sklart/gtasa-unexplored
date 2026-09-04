@@ -56,7 +56,7 @@ jobs:
       - name: Build and run nearest collectible test
         run: |
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
-            tests/nearest_collectible_tests.cpp source/NearestCollectible.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp \
+            tests/nearest_collectible_tests.cpp source/NearestCollectible.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp \
             -o nearest-collectible-tests
           ./nearest-collectible-tests
       - name: Build and run region progress test
@@ -94,7 +94,7 @@ jobs:
             tests/collectible_view_tests.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o collectible-view-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./collectible-view-sanitized
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
-            tests/nearest_collectible_tests.cpp source/NearestCollectible.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o nearest-collectible-sanitized
+            tests/nearest_collectible_tests.cpp source/NearestCollectible.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o nearest-collectible-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./nearest-collectible-sanitized
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
             tests/region_progress_tests.cpp source/RegionProgress.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o region-progress-sanitized

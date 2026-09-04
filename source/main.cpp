@@ -686,7 +686,7 @@ void selectNearestMissing(AppState& a) {
     const auto* parsed = currentParse(a);
     if (!parsed) return;
     const int index = gtasa::nearestMissingCollectibleIndex(*parsed, a.cursorX, a.cursorY,
-                                                             a.filters, collectibleViewMode(a));
+                                                             a.filters, a.config.regionFilters, collectibleViewMode(a));
     if (index < 0) {
         a.status = tr(a, "Нет ненайденных объектов с активными фильтрами",
                          "No missing collectibles match active filters");
