@@ -53,6 +53,8 @@ int main() {
     assert(!markerFullyVisible(90, 90, 22, 22, 0, 0, 100, 100));
     assert(hasMarkerVisibleThreshold(5, 50, 20, 20, 0, 0, 100, 100));
     assert(!hasMarkerVisibleThreshold(-5, 50, 20, 20, 0, 0, 100, 100));
+    assert(pointInComfortZone(50, 50, 0, 0, 100, 100));
+    assert(!pointInComfortZone(10, 50, 0, 0, 100, 100));
     assert(markerFullyVisible(50, 20, 20, 20, 0, 0, 100, 100, true));
     assert(!markerFullyVisible(50, 19, 20, 20, 0, 0, 100, 100, true));
     assert(std::string(poiLocationStatus(true, true)) == "Ориентировочно");
@@ -67,6 +69,10 @@ int main() {
     assert(touchCamera.x == 850.0f && touchCamera.y == -640.0f);
     updateCameraForCursor(touchCamera, 25.0f, 30.0f, true, owner, 100.0f, 100.0f);
     assert(owner == CameraOwner::Cursor && touchCamera.x == 25.0f && touchCamera.y == 30.0f);
+    float cursorX = -50.0f, cursorY = 25.0f;
+    owner = CameraOwner::Touch;
+    moveCursorToSelectedMarker(cursorX, cursorY, owner, 420.0f, -315.0f);
+    assert(cursorX == 420.0f && cursorY == -315.0f && owner == CameraOwner::Cursor);
     TouchGestureState touch;
     touch.begin(1, 100.0f, 100.0f);
     assert(touch.move(1, 105.0f, 100.0f).kind == TouchMotion::Kind::None);
@@ -118,10 +124,13 @@ int main() {
     assert(cycleOverlappingMarker(overlapping, selected, 1, 24.0f, selected) && selected == 1);
     assert(cycleOverlappingMarker(overlapping, selected, -1, 24.0f, selected) && selected == 3);
     assert(!cycleOverlappingMarker(overlapping, 4, 1, 24.0f, selected));
-    const std::vector<bool> visible{true, true, true, true};
-    // Global L3/R3 navigation remains independent from the overlap group.
-    assert(nextVisibleMarkerIndex(1, 4, 1, [&](int index) { return visible[index]; }) == 2);
-    assert(nextVisibleMarkerIndex(1, 4, -1, [&](int index) { return visible[index]; }) == 0);
+    // Global L3/R3 follows enabled markers, not merely interactable markers;
+    // a valid object outside the viewport remains reachable and is centred.
+    const std::vector<bool> enabled{true, true, true, true};
+    const std::vector<bool> interactable{true, true, false, true};
+    assert(!interactable[2]);
+    assert(nextVisibleMarkerIndex(1, 4, 1, [&](int index) { return enabled[index]; }) == 2);
+    assert(nextVisibleMarkerIndex(1, 4, -1, [&](int index) { return enabled[index]; }) == 0);
     assert(!shouldToggleLanguage(false, true));
     assert(shouldToggleLanguage(true, true));
     assert(shouldCycleOverlap(false, true, true));

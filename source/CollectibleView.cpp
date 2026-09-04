@@ -47,7 +47,16 @@ bool buildCollectibleObjects(ParseResult& result) {
         const int total = totalForType(type);
         if (static_cast<int>(missingIds.size()) > total) reliable = false;
         setReliable(result, type, reliable);
-        if (!reliable) { allReliable = false; continue; }
+        if (!reliable) {
+            // Pickup coordinates in result.missing come directly from the
+            // save. They remain safe to show even when a canonical identity
+            // cannot be recovered. Only the complementary Completed set is
+            // unknown, so never manufacture it from an unreliable mapping.
+            allReliable = false;
+            for (const auto& raw : result.missing)
+                if (raw.type == type) result.objects.push_back(raw);
+            continue;
+        }
         for (int id = 1; id <= total; ++id) {
             const auto* info = collectibleInfo(type, id);
             if (!info) { allReliable = false; break; }
@@ -72,6 +81,27 @@ bool collectibleMatchesView(const Collectible& item, CollectibleViewMode mode) {
         case CollectibleViewMode::All: return true;
     }
     return false;
+}
+
+bool collectibleCategoryHasReliableCompleted(const ParseResult& result, CollectibleType type) {
+    switch (type) {
+        case CollectibleType::Snapshot: return result.snapshotsCatalogueReliable;
+        case CollectibleType::Horseshoe: return result.horseshoesCatalogueReliable;
+        case CollectibleType::Oyster: return result.oystersCatalogueReliable;
+        case CollectibleType::Tag:
+        case CollectibleType::StuntJump: return true;
+        default: return false;
+    }
+}
+
+bool collectibleMatchesView(const ParseResult& result, const Collectible& item, CollectibleViewMode mode) {
+    if (mode == CollectibleViewMode::Missing) return !item.completed;
+    const bool completedAvailable = collectibleCategoryHasReliableCompleted(result, item.type);
+    if (mode == CollectibleViewMode::Completed) return completedAvailable && item.completed;
+    // In All mode an unreliable category deliberately contains only its raw,
+    // trustworthy Missing entries. Its unavailable Completed complement is not
+    // silently represented by guessed points.
+    return !item.completed || completedAvailable;
 }
 
 } // namespace gtasa

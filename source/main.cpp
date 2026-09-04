@@ -237,12 +237,18 @@ gtasa::CollectibleViewMode collectibleViewMode(const AppState& a) {
     return static_cast<gtasa::CollectibleViewMode>(std::clamp(a.config.collectibleViewMode, 0, 2));
 }
 
+const gtasa::ParseResult* currentParse(const AppState& a);
+
 bool collectibleVisibleInView(const AppState& a, const gtasa::Collectible& item) {
-    return a.filters[static_cast<int>(item.type)] && gtasa::collectibleMatchesView(item, collectibleViewMode(a));
+    const auto* parsed = currentParse(a);
+    return parsed && a.filters[static_cast<int>(item.type)] &&
+           gtasa::collectibleMatchesView(*parsed, item, collectibleViewMode(a));
 }
 
 const gtasa::CollectibleInfo* collectibleInfoForView(const gtasa::Collectible& item) {
-    return gtasa::collectibleInfo(item.type, item.id);
+    // Raw Missing points from an unreliable pickup mapping have no safe Wiki
+    // identity, so details must remain unavailable rather than borrow an ID.
+    return gtasa::collectibleInfoForRuntime(item);
 }
 
 void fill(SDL_Renderer* r, const SDL_Rect& rect, SDL_Color c) {
@@ -372,8 +378,16 @@ void drawPoiIcon(SDL_Renderer* r, const gtasa::PoiIcon& icon, int x, int y, int 
     SDL_RenderCopy(r, texture, nullptr, &target);
 }
 
+bool isMarkerEnabled(const AppState& a, const gtasa::Collectible& item) {
+    return collectibleVisibleInView(a, item);
+}
+
+bool isMarkerEnabled(const AppState& a, const gtasa::PoiInfo& poi) {
+    return a.config.showPoi && poi.visibleOnMap;
+}
+
 bool isMarkerInteractable(const AppState& a, const gtasa::Collectible& item, int* outX = nullptr, int* outY = nullptr) {
-    if (!collectibleVisibleInView(a, item)) return false;
+    if (!isMarkerEnabled(a, item)) return false;
     const auto [x, y] = collectibleToScreen(a, item.x, item.y);
     const auto [width, height] = collectibleIconDimensions(a.icons, item.type, gtasa::collectibleIconSize(a.zoom));
     const auto content = mapContentRect(a);
@@ -384,7 +398,7 @@ bool isMarkerInteractable(const AppState& a, const gtasa::Collectible& item, int
 }
 
 bool isMarkerInteractable(const AppState& a, const gtasa::PoiInfo& poi, int* outX = nullptr, int* outY = nullptr) {
-    if (!a.config.showPoi || !poi.visibleOnMap) return false;
+    if (!isMarkerEnabled(a, poi)) return false;
     const auto [x, y] = collectibleToScreen(a, poi.x, poi.y);
     int sourceW = 0, sourceH = 0;
     if (SDL_Texture* texture = a.poiIcon.texture()) SDL_QueryTexture(texture, nullptr, nullptr, &sourceW, &sourceH);
@@ -571,18 +585,19 @@ void openDetails(AppState& a, SDL_Renderer* renderer) {
 }
 
 void centerSelectedIfNeeded(AppState& a) {
-    const auto* info = selectedInfo(a);
-    if (!info) return;
-    const auto [x, y] = collectibleToScreen(a, info->x, info->y);
+    const auto* parsed = currentParse(a);
+    if (!parsed || a.selected < 0 || a.selected >= static_cast<int>(parsed->objects.size())) return;
+    const auto& item = parsed->objects[static_cast<std::size_t>(a.selected)];
+    // Selection and cursor are one state transition: navigation must never
+    // leave the cursor at the previously selected point.
+    gtasa::moveCursorToSelectedMarker(a.cursorX, a.cursorY, a.cameraOwner, item.x, item.y);
+    const auto [x, y] = collectibleToScreen(a, item.x, item.y);
     const SDL_Rect map = mapContentRect(a);
-    // Preserve the user's camera when the item is already comfortably visible.
-    const SDL_Rect safe{map.x + map.w / 6, map.y + map.h / 6, map.w * 2 / 3, map.h * 2 / 3};
-    if (x >= safe.x && x < safe.x + safe.w && y >= safe.y && y < safe.y + safe.h) return;
-    a.centerX = info->x;
-    a.centerY = info->y;
-    a.cursorX = info->x;
-    a.cursorY = info->y;
-    a.cameraOwner = gtasa::CameraOwner::Cursor;
+    // Preserve the user's camera when the selected point is already in the
+    // comfort zone, while still moving the controller cursor to that point.
+    if (gtasa::pointInComfortZone(x, y, map.x, map.y, map.w, map.h)) return;
+    a.centerX = item.x;
+    a.centerY = item.y;
     clampCamera(a);
 }
 
@@ -591,7 +606,7 @@ void selectAdjacent(AppState& a, int direction, SDL_Renderer* renderer) {
     if (!parsed || parsed->objects.empty()) return;
     const int n = static_cast<int>(parsed->objects.size());
     const int index = gtasa::nextVisibleMarkerIndex(a.selected, n, direction, [&](int candidate) {
-        return isMarkerInteractable(a, parsed->objects[static_cast<std::size_t>(candidate)]);
+        return isMarkerEnabled(a, parsed->objects[static_cast<std::size_t>(candidate)]);
     });
     if (index < 0) return;
     a.selected = index;
@@ -766,6 +781,20 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
                     ? tr(a, "Объекты: найдены", "Objects: Completed")
                     : tr(a, "Объекты: все", "Objects: All");
             text.draw(label, 205, y - 2, 20, kColors.text);
+            const auto* parsed = currentParse(a);
+            bool unreliable = false;
+            if (parsed) for (const auto type : {gtasa::CollectibleType::Snapshot, gtasa::CollectibleType::Horseshoe,
+                                                 gtasa::CollectibleType::Oyster}) {
+                if (!gtasa::collectibleCategoryHasReliableCompleted(*parsed, type)) { unreliable = true; break; }
+            }
+            if (unreliable && mode != gtasa::CollectibleViewMode::Missing) {
+                text.draw(mode == gtasa::CollectibleViewMode::All
+                              ? tr(a, "Найденные недоступны; показаны точные ненайденные",
+                                      "Completed unavailable; showing exact Missing")
+                              : tr(a, "Найденные недоступны: сопоставление не проверено",
+                                      "Completed unavailable: mapping is unverified"),
+                          205, y + 21, 13, kColors.warning, 540);
+            }
         }
         y += 58;
     }
