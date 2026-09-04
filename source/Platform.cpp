@@ -103,6 +103,11 @@ AppConfig Platform::loadConfig() const {
             else if (key == "show_poi") cfg.showPoi = value != "0" && value != "false";
             else if (key == "poi_categories" && !decodePoiCategoryFilters(value, cfg.poiCategoryFilters))
                 throw std::invalid_argument("poi_categories");
+            else if (key == "regions" && !decodeRegionFilters(value, cfg.regionFilters))
+                throw std::invalid_argument("regions");
+            else if (key == "favorites" && !cfg.favorites.decode(value))
+                throw std::invalid_argument("favorites");
+            else if (key == "favorites_only") cfg.favoritesOnly = value == "1" || value == "true";
             else if (key == "collectible_view") cfg.collectibleViewMode = std::max(0, std::min(2, std::stoi(value)));
         } catch (...) {
             // Ignore malformed config values. This file is not game data.
@@ -121,6 +126,9 @@ bool Platform::saveConfig(const AppConfig& cfg) const {
     f << std::dec << "slot=" << cfg.preferredSlot << "\n";
     f << "show_poi=" << (cfg.showPoi ? 1 : 0) << "\n";
     f << "poi_categories=" << encodePoiCategoryFilters(cfg.poiCategoryFilters) << "\n";
+    f << "regions=" << encodeRegionFilters(cfg.regionFilters) << "\n";
+    f << "favorites=" << cfg.favorites.encode() << "\n";
+    f << "favorites_only=" << (cfg.favoritesOnly ? 1 : 0) << "\n";
     f << "collectible_view=" << std::max(0, std::min(2, cfg.collectibleViewMode)) << "\n";
     return static_cast<bool>(f);
 }
