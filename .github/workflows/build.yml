@@ -85,6 +85,8 @@ jobs:
           ./progress-matrix-tests
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude tests/route_navigation_tests.cpp source/RouteNavigation.cpp -o route-navigation-tests
           ./route-navigation-tests
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude tests/filters_ui_tests.cpp source/FiltersUi.cpp -o filters-ui-tests
+          ./filters-ui-tests
 
   host-sanitizers:
     runs-on: ubuntu-latest
@@ -126,6 +128,8 @@ jobs:
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./progress-matrix-sanitized
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude tests/route_navigation_tests.cpp source/RouteNavigation.cpp -o route-navigation-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./route-navigation-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude tests/filters_ui_tests.cpp source/FiltersUi.cpp -o filters-ui-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./filters-ui-sanitized
 
   switch-build:
     runs-on: ubuntu-latest

@@ -3,6 +3,7 @@
 #include "CollectibleInfo.hpp"
 #include "CollectibleMedia.hpp"
 #include "CollectibleView.hpp"
+#include "FiltersUi.hpp"
 #include "CameraInput.hpp"
 #include "MapTexture.hpp"
 #include "MapUi.hpp"
@@ -1277,13 +1278,13 @@ int main(int, char**) {
                 text.clearCache();
                 app.status = tr(app, "Язык: Русский", "Language: English");
             }
-            constexpr int kRegionFirstRow = static_cast<int>(gtasa::CollectibleType::Count);
-            constexpr int kPoiRow = kRegionFirstRow + static_cast<int>(gtasa::kSanAndreasRegionCount);
-            constexpr int kPoiCategoryFirstRow = kPoiRow + 1;
-            constexpr int kModeRow = kPoiCategoryFirstRow + static_cast<int>(gtasa::kPoiCategoryCount);
-            constexpr int kFilterCount = kModeRow + 1;
-            if (down & HidNpadButton_Up) app.legendIndex = (app.legendIndex + kFilterCount - 1) % kFilterCount;
-            if (down & HidNpadButton_Down) app.legendIndex = (app.legendIndex + 1) % kFilterCount;
+            const auto filterLayout = gtasa::filtersUiLayout();
+            const int kRegionFirstRow = filterLayout.regionFirst;
+            const int kPoiRow = filterLayout.poiRow;
+            const int kPoiCategoryFirstRow = filterLayout.poiCategoryFirst;
+            const int kModeRow = filterLayout.modeRow;
+            if (down & HidNpadButton_Up) app.legendIndex = gtasa::nextFilterRow(app.legendIndex, -1);
+            if (down & HidNpadButton_Down) app.legendIndex = gtasa::nextFilterRow(app.legendIndex, 1);
             if (down & HidNpadButton_A) {
                 if (app.legendIndex < static_cast<int>(gtasa::CollectibleType::Count))
                     app.filters[app.legendIndex] = !app.filters[app.legendIndex];
