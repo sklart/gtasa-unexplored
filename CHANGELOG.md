@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.0-rc2
+
+> Release candidate: не проверен на физическом Nintendo Switch.
+
+- Добавлены сохраняемые фильтры Los Santos, San Fierro, Las Venturas и
+  Countryside для карты и списка объектов.
+- Добавлен отдельный список collectibles и POI с переходом к marker, сортировкой
+  по ID, категории, региону и расстоянию от cursor.
+- Добавлено локальное избранное для collectibles и POI, включая режим
+  «только избранное».
+- Добавлены host- и ASan/UBSan-тесты для региональных фильтров, persistence
+  избранного, режимов Missing/Completed/All, сортировки и целей перехода.
+
 ## 0.4.0-rc1
 
 > Release candidate: не проверен на физическом Nintendo Switch.

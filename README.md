@@ -2,7 +2,7 @@
 
 Nintendo Switch homebrew-companion для **Grand Theft Auto: San Andreas — The Definitive Edition**. Приложение читает сохранение выбранного пользователя **только для чтения** и показывает на интерактивной карте состояние пяти типов коллекционных объектов.
 
-Текущая версия — **0.4.0-rc1**. Это release candidate: он ещё не проверен на
+Текущая версия — **0.4.0-rc2**. Это release candidate: он ещё не проверен на
 физическом Nintendo Switch.
 
 ## Целевая версия
@@ -43,6 +43,10 @@ Nintendo Switch homebrew-companion для **Grand Theft Auto: San Andreas — Th
 - Команда выбора ближайшего ненайденного collectible по world-distance с учётом
   активных фильтров и текущего режима отображения.
 - Прогресс 320 collectibles по Los Santos, San Fierro, Las Venturas и Countryside.
+- Сохраняемые фильтры по четырём регионам, для collectibles и POI.
+- Список collectibles и POI: переход к метке, сортировка по ID, категории,
+  региону или расстоянию от cursor; режим «только избранное».
+- Локальное избранное для collectibles и POI в `config.ini`.
 - Выбор Nintendo-профиля и GTA save slot.
 - RU/EN интерфейс.
 - DE-header diagnostics и проверка complemented-MD5 для 1.112+.
@@ -80,6 +84,16 @@ Nintendo Switch homebrew-companion для **Grand Theft Auto: San Andreas — Th
 строк позволяют независимо включать сюжетные места, достопримечательности,
 природу, тайны и заведения. Их настройки сохраняются локально вместе с общим
 переключателем POI.
+
+## Список, регионы и избранное
+
+В Filters после пяти типов collectibles находятся независимые строки Los Santos,
+San Fierro, Las Venturas и Countryside. Они одновременно ограничивают метки на
+карте, `L3/R3`, ближайший Missing и список объектов. Нажмите **ZR + X**, чтобы
+открыть список. В нём **A** переходит к marker на карте, **Y** добавляет или
+удаляет объект из избранного, **L/R** выбирают сортировку, а **X** включает
+режим «только избранное». На карте **ZR + Y** переключает избранное у текущей
+выбранной метки. Все эти параметры хранятся локально в `config.ini`.
 
 ## Installation
 
