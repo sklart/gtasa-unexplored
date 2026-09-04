@@ -73,7 +73,7 @@ jobs:
       - name: Build and run object list test
         run: |
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
-            tests/object_list_tests.cpp source/ObjectList.cpp source/Favorites.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/PoiCategories.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp source/PoiInfoData.cpp -o object-list-tests
+            tests/object_list_tests.cpp source/ObjectList.cpp source/Favorites.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/PoiRegions.cpp source/PoiCategories.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp source/PoiInfoData.cpp -o object-list-tests
           ./object-list-tests
       - name: Build and run POI regions, route and matrix tests
         run: |
@@ -114,7 +114,7 @@ jobs:
             tests/favorites_tests.cpp source/Favorites.cpp -o favorites-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./favorites-sanitized
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
-            tests/object_list_tests.cpp source/ObjectList.cpp source/Favorites.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/PoiCategories.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp source/PoiInfoData.cpp -o object-list-sanitized
+            tests/object_list_tests.cpp source/ObjectList.cpp source/Favorites.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/PoiRegions.cpp source/PoiCategories.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp source/PoiInfoData.cpp -o object-list-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./object-list-sanitized
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude tests/poi_regions_tests.cpp source/PoiRegions.cpp source/PoiInfoData.cpp -o poi-regions-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./poi-regions-sanitized
