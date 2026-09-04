@@ -4,11 +4,14 @@
 
 namespace gtasa {
 
+enum class PoiCategory { Story, Landmark, Nature, Mystery, Business, Count };
+
 struct PoiInfo {
     int id;
     float x, y, z;
     bool visibleOnMap;
     bool representative;
+    PoiCategory category;
     const char* nameEn;
     const char* nameRu;
     const char* descriptionEn;

@@ -47,6 +47,24 @@ jobs:
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
             tests/map_ui_tests.cpp -o map-ui-tests
           ./map-ui-tests
+      - name: Build and run POI category test
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
+            tests/poi_categories_tests.cpp source/PoiCategories.cpp source/PoiInfoData.cpp \
+            -o poi-categories-tests
+          ./poi-categories-tests
+      - name: Build and run nearest collectible test
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
+            tests/nearest_collectible_tests.cpp source/NearestCollectible.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp \
+            -o nearest-collectible-tests
+          ./nearest-collectible-tests
+      - name: Build and run region progress test
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
+            tests/region_progress_tests.cpp source/RegionProgress.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp \
+            -o region-progress-tests
+          ./region-progress-tests
 
   host-sanitizers:
     runs-on: ubuntu-latest
@@ -65,6 +83,15 @@ jobs:
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
             tests/collectible_view_tests.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o collectible-view-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./collectible-view-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
+            tests/nearest_collectible_tests.cpp source/NearestCollectible.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o nearest-collectible-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./nearest-collectible-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
+            tests/region_progress_tests.cpp source/RegionProgress.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o region-progress-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./region-progress-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
+            tests/poi_categories_tests.cpp source/PoiCategories.cpp source/PoiInfoData.cpp -o poi-categories-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./poi-categories-sanitized
 
   switch-build:
     runs-on: ubuntu-latest

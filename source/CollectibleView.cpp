@@ -53,8 +53,14 @@ bool buildCollectibleObjects(ParseResult& result) {
             // cannot be recovered. Only the complementary Completed set is
             // unknown, so never manufacture it from an unreliable mapping.
             allReliable = false;
-            for (const auto& raw : result.missing)
-                if (raw.type == type) result.objects.push_back(raw);
+            for (const auto& raw : result.missing) {
+                if (raw.type != type) continue;
+                Collectible unclassified = raw;
+                // The raw point is safe to render, but its sequential pickup
+                // ordinal is not a canonical Wiki identity.
+                unclassified.id = 0;
+                result.objects.push_back(unclassified);
+            }
             continue;
         }
         for (int id = 1; id <= total; ++id) {

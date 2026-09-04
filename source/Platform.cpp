@@ -10,6 +10,7 @@
 #include <fstream>
 #include <iomanip>
 #include <sstream>
+#include <stdexcept>
 #include <sys/stat.h>
 #include <sys/types.h>
 
@@ -100,6 +101,8 @@ AppConfig Platform::loadConfig() const {
             else if (key == "uid1") cfg.uid1 = std::stoull(value, nullptr, 16);
             else if (key == "slot") cfg.preferredSlot = std::max(1, std::min(10, std::stoi(value)));
             else if (key == "show_poi") cfg.showPoi = value != "0" && value != "false";
+            else if (key == "poi_categories" && !decodePoiCategoryFilters(value, cfg.poiCategoryFilters))
+                throw std::invalid_argument("poi_categories");
             else if (key == "collectible_view") cfg.collectibleViewMode = std::max(0, std::min(2, std::stoi(value)));
         } catch (...) {
             // Ignore malformed config values. This file is not game data.
@@ -117,6 +120,7 @@ bool Platform::saveConfig(const AppConfig& cfg) const {
     f << "uid1=" << std::hex << cfg.uid1 << "\n";
     f << std::dec << "slot=" << cfg.preferredSlot << "\n";
     f << "show_poi=" << (cfg.showPoi ? 1 : 0) << "\n";
+    f << "poi_categories=" << encodePoiCategoryFilters(cfg.poiCategoryFilters) << "\n";
     f << "collectible_view=" << std::max(0, std::min(2, cfg.collectibleViewMode)) << "\n";
     return static_cast<bool>(f);
 }

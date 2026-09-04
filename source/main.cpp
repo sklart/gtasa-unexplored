@@ -7,10 +7,13 @@
 #include "MapTexture.hpp"
 #include "MapUi.hpp"
 #include "MarkerSelection.hpp"
+#include "NearestCollectible.hpp"
 #include "Platform.hpp"
+#include "PoiCategories.hpp"
 #include "PoiInfo.hpp"
 #include "PoiIcon.hpp"
 #include "PoiMedia.hpp"
+#include "RegionProgress.hpp"
 #include "SaveParser.hpp"
 #include "TouchGesture.hpp"
 
@@ -159,7 +162,7 @@ struct AppState {
     std::vector<gtasa::SaveEntry> validSaves;
     std::vector<gtasa::ParseResult> parsed;
     int saveIndex = 0;
-    bool filters[static_cast<int>(gtasa::CollectibleType::Count)]{true, true, true, true, true};
+    std::array<bool, static_cast<int>(gtasa::CollectibleType::Count)> filters{true, true, true, true, true};
     bool legendOpen = false;
     int legendIndex = 0;
     float centerX = 0.0f;
@@ -246,9 +249,9 @@ bool collectibleVisibleInView(const AppState& a, const gtasa::Collectible& item)
 }
 
 const gtasa::CollectibleInfo* collectibleInfoForView(const gtasa::Collectible& item) {
-    // Raw Missing points from an unreliable pickup mapping have no safe Wiki
-    // identity, so details must remain unavailable rather than borrow an ID.
-    return gtasa::collectibleInfoForRuntime(item);
+    // id=0 is a raw Missing point whose canonical Wiki identity is unknown.
+    // Do not attach an arbitrary description or photo to it.
+    return item.id > 0 ? gtasa::collectibleInfo(item.type, item.id) : nullptr;
 }
 
 void fill(SDL_Renderer* r, const SDL_Rect& rect, SDL_Color c) {
@@ -383,7 +386,7 @@ bool isMarkerEnabled(const AppState& a, const gtasa::Collectible& item) {
 }
 
 bool isMarkerEnabled(const AppState& a, const gtasa::PoiInfo& poi) {
-    return a.config.showPoi && poi.visibleOnMap;
+    return a.config.showPoi && gtasa::poiCategoryEnabled(a.config.poiCategoryFilters, poi.category) && poi.visibleOnMap;
 }
 
 bool isMarkerInteractable(const AppState& a, const gtasa::Collectible& item, int* outX = nullptr, int* outY = nullptr) {
@@ -612,6 +615,22 @@ void selectAdjacent(AppState& a, int direction, SDL_Renderer* renderer) {
     if (a.detailOpen) openDetails(a, renderer);
 }
 
+void selectNearestMissing(AppState& a) {
+    const auto* parsed = currentParse(a);
+    if (!parsed) return;
+    const int index = gtasa::nearestMissingCollectibleIndex(*parsed, a.cursorX, a.cursorY,
+                                                             a.filters, collectibleViewMode(a));
+    if (index < 0) {
+        a.status = tr(a, "Нет ненайденных объектов с активными фильтрами",
+                         "No missing collectibles match active filters");
+        return;
+    }
+    a.selected = index;
+    a.selectedPoi = -1;
+    centerSelectedIfNeeded(a);
+    a.status = tr(a, "Выбран ближайший ненайденный объект", "Nearest missing collectible selected");
+}
+
 void navigateMarker(AppState& a, int direction, bool groupCycle, SDL_Renderer* renderer) {
     if (groupCycle) {
         if (cycleOverlappingMarkers(a, direction) && a.detailOpen) openDetails(a, renderer);
@@ -714,6 +733,19 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         }
 
         y += 8;
+        text.draw(tr(a, "Прогресс по регионам", "Regional progress"), 980, y, 15, kColors.text, 285);
+        y += 18;
+        const auto regionProgress = gtasa::calculateRegionProgress(*p);
+        for (std::size_t i = 0; i < gtasa::kSanAndreasRegionCount; ++i) {
+            const auto& stats = regionProgress[i];
+            std::ostringstream row;
+            row << gtasa::sanAndreasRegionName(static_cast<gtasa::SanAndreasRegion>(i), isRu(a)) << ": "
+                << stats.completed << "/" << stats.total;
+            if (stats.completionUnknown) row << " ?";
+            text.draw(row.str(), 980, y, 13, kColors.muted, 285);
+            y += 16;
+        }
+        y += 4;
         if (a.selected >= 0 && a.selected < static_cast<int>(p->objects.size())) {
             const auto& c = p->objects[a.selected];
             const auto* info = collectibleInfoForView(c);
@@ -738,38 +770,48 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
 
     // Keep one control/action pair per line.  The panel has enough vertical
     // space and this avoids wrapping or visually joining unrelated shortcuts.
-    const int cy = 425;
+    const int cy = 480;
     text.draw(tr(a, "Управление", "Controls"), 980, cy, 18, kColors.text);
     text.draw(tr(a, "Стик / touch — карта", "Stick / touch — map"), 980, cy + 26, 14, kColors.muted, 290);
     text.draw(tr(a, "L/R / щипок — масштаб", "L/R / pinch — zoom"), 980, cy + 45, 14, kColors.muted, 290);
     text.draw(tr(a, "A — выбрать, L3/R3 — объект", "A — select, L3/R3 — item"), 980, cy + 64, 14, kColors.muted, 290);
-    text.draw(tr(a, "X — фильтры, Y — карты", "X — filters, Y — maps"), 980, cy + 83, 14, kColors.muted, 290);
-    text.draw(tr(a, "ZL+L3/R3 — группа, ZR+R3 / 2 пальца — панель", "ZL+L3/R3 — group, ZR+R3 / 2 fingers — panel"), 980, cy + 102, 14, kColors.muted, 290);
-    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 121, 14, kColors.muted, 290);
-    if (!a.status.empty()) text.draw(a.status, 980, 664, 13, kColors.warning, 285);
+    text.draw(tr(a, "ZR+A — ближайший ненайденный", "ZR+A — nearest missing"), 980, cy + 83, 14, kColors.muted, 290);
+    text.draw(tr(a, "X — фильтры, Y — карты", "X — filters, Y — maps"), 980, cy + 102, 14, kColors.muted, 290);
+    text.draw(tr(a, "ZL+L3/R3 — группа, ZR+R3 / 2 пальца — панель", "ZL+L3/R3 — group, ZR+R3 / 2 fingers — panel"), 980, cy + 121, 14, kColors.muted, 290);
+    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 140, 14, kColors.muted, 290);
+    if (!a.status.empty()) text.draw(a.status, 980, 690, 13, kColors.warning, 285);
 }
 
 void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     if (!a.legendOpen) return;
-    SDL_Rect shade{170, 100, 610, 560};
+    SDL_Rect shade{120, 24, 760, 672};
     fill(r, shade, SDL_Color{11, 14, 17, 245});
     SDL_SetRenderDrawColor(r, 95, 105, 115, 255);
     SDL_RenderDrawRect(r, &shade);
-    text.draw(tr(a, "Фильтры карты", "Map filters"), 205, 130, 28, kColors.text);
+    text.draw(tr(a, "Фильтры карты", "Map filters"), 155, 52, 28, kColors.text);
     text.draw(tr(a, "↑/↓ — выбор, A — включить/выключить, X — закрыть", "↑/↓ select, A toggle, X close"),
-              205, 169, 15, kColors.muted, 540);
-    int y = 220;
-    constexpr int kModeRow = static_cast<int>(gtasa::CollectibleType::Count) + 1;
+              155, 91, 15, kColors.muted, 690);
+    int y = 132;
+    constexpr int kPoiRow = static_cast<int>(gtasa::CollectibleType::Count);
+    constexpr int kPoiCategoryFirstRow = kPoiRow + 1;
+    constexpr int kModeRow = kPoiCategoryFirstRow + static_cast<int>(gtasa::kPoiCategoryCount);
     for (int i = 0; i <= kModeRow; ++i) {
-        SDL_Rect row{195, y - 8, 555, 44};
+        SDL_Rect row{145, y - 7, 710, 36};
         if (i == a.legendIndex) fill(r, row, SDL_Color{45, 53, 61, 255});
         if (i < static_cast<int>(gtasa::CollectibleType::Count)) {
-            drawCollectibleIcon(r, a.icons, 223, y + 10, static_cast<gtasa::CollectibleType>(i), 28);
-            text.draw(typeName(a, static_cast<gtasa::CollectibleType>(i)), 250, y - 2, 20,
+            drawCollectibleIcon(r, a.icons, 173, y + 10, static_cast<gtasa::CollectibleType>(i), 28);
+            text.draw(typeName(a, static_cast<gtasa::CollectibleType>(i)), 200, y - 2, 20,
                       a.filters[i] ? kColors.text : kColors.muted);
-        } else if (i == static_cast<int>(gtasa::CollectibleType::Count)) {
-            drawPoiIcon(r, a.poiIcon, 223, y + 20, 22);
-            text.draw("POI", 250, y - 2, 20, a.config.showPoi ? kColors.text : kColors.muted);
+        } else if (i == kPoiRow) {
+            drawPoiIcon(r, a.poiIcon, 173, y + 20, 22);
+            text.draw(tr(a, "POI: все категории", "POI: all categories"), 200, y - 2, 20,
+                      a.config.showPoi ? kColors.text : kColors.muted);
+        } else if (i >= kPoiCategoryFirstRow && i < kModeRow) {
+            const auto category = static_cast<gtasa::PoiCategory>(i - kPoiCategoryFirstRow);
+            const bool enabled = gtasa::poiCategoryEnabled(a.config.poiCategoryFilters, category);
+            fill(r, SDL_Rect{164, y + 4, 18, 18}, kColors.poi);
+            text.draw(gtasa::poiCategoryName(category, isRu(a)), 200, y - 2, 20,
+                      enabled ? kColors.text : kColors.muted);
         } else {
             const auto mode = collectibleViewMode(a);
             const std::string label = mode == gtasa::CollectibleViewMode::Missing
@@ -790,14 +832,14 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
                                       "Completed unavailable; showing exact Missing")
                               : tr(a, "Найденные недоступны: сопоставление не проверено",
                                       "Completed unavailable: mapping is unverified"),
-                          205, y + 21, 13, kColors.warning, 540);
+                          200, y + 18, 13, kColors.warning, 640);
             }
         }
-        y += 58;
+        y += 42;
     }
     text.draw(tr(a, "POI: Проверено — точное место; Ориентировочно — район или маршрут",
                     "POI: Verified — exact place; Approximate — area or route"),
-              205, 618, 13, kColors.muted, 540);
+              155, 665, 13, kColors.muted, 690);
 }
 
 std::string diagnosticsText(const AppState& a) {
@@ -1035,16 +1077,27 @@ int main(int, char**) {
                 text.clearCache();
                 app.status = tr(app, "Язык: Русский", "Language: English");
             }
-            constexpr int kFilterCount = static_cast<int>(gtasa::CollectibleType::Count) + 2;
+            constexpr int kPoiRow = static_cast<int>(gtasa::CollectibleType::Count);
+            constexpr int kPoiCategoryFirstRow = kPoiRow + 1;
+            constexpr int kModeRow = kPoiCategoryFirstRow + static_cast<int>(gtasa::kPoiCategoryCount);
+            constexpr int kFilterCount = kModeRow + 1;
             if (down & HidNpadButton_Up) app.legendIndex = (app.legendIndex + kFilterCount - 1) % kFilterCount;
             if (down & HidNpadButton_Down) app.legendIndex = (app.legendIndex + 1) % kFilterCount;
             if (down & HidNpadButton_A) {
                 if (app.legendIndex < static_cast<int>(gtasa::CollectibleType::Count))
                     app.filters[app.legendIndex] = !app.filters[app.legendIndex];
-                else if (app.legendIndex == static_cast<int>(gtasa::CollectibleType::Count)) {
+                else if (app.legendIndex == kPoiRow) {
                     app.config.showPoi = !app.config.showPoi;
                     app.platform.saveConfig(app.config);
                     if (!app.config.showPoi) app.selectedPoi = -1;
+                } else if (app.legendIndex >= kPoiCategoryFirstRow && app.legendIndex < kModeRow) {
+                    const auto category = static_cast<std::size_t>(app.legendIndex - kPoiCategoryFirstRow);
+                    app.config.poiCategoryFilters[category] = !app.config.poiCategoryFilters[category];
+                    app.platform.saveConfig(app.config);
+                    if (app.selectedPoi >= 0) {
+                        const auto* poi = gtasa::poiInfo(static_cast<std::size_t>(app.selectedPoi));
+                        if (!poi || !isMarkerEnabled(app, *poi)) app.selectedPoi = -1;
+                    }
                 } else {
                     app.config.collectibleViewMode = (app.config.collectibleViewMode + 1) % 3;
                     app.selected = -1;
@@ -1072,6 +1125,9 @@ int main(int, char**) {
                 }
             }
             if (down & HidNpadButton_A) {
+                if ((held & HidNpadButton_ZR) != 0) {
+                    selectNearestMissing(app);
+                } else {
                 const auto [cursorX, cursorY] = collectibleToScreen(app, app.cursorX, app.cursorY);
                 const int previous = app.selected;
                 const int previousPoi = app.selectedPoi;
@@ -1079,6 +1135,7 @@ int main(int, char**) {
                 if (!selectedHit) selectNearest(app, cursorX, cursorY, kControllerHitRadius);
                 if (selectedHit || (app.selected >= 0 && app.selected == previous) ||
                     (app.selectedPoi >= 0 && app.selectedPoi == previousPoi)) openDetails(app, renderer);
+                }
             }
             if (down & HidNpadButton_B) { app.selected = -1; app.selectedPoi = -1; }
 

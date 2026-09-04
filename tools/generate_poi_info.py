@@ -8,6 +8,13 @@ ROOT = Path(__file__).resolve().parents[1]
 INPUT = ROOT / "data" / "poi" / "poi.json"
 OUTPUT = ROOT / "source" / "PoiInfoData.cpp"
 VALID = {"cross_checked_xyz", "representative_2d"}
+POI_CATEGORIES = {
+    "story": "Story",
+    "landmark": "Landmark",
+    "nature": "Nature",
+    "mystery": "Mystery",
+    "business": "Business",
+}
 
 
 def q(value):
@@ -19,13 +26,15 @@ def render(data):
              '#include "PoiInfo.hpp"', "", "namespace gtasa {", "namespace {",
              "const PoiInfo kPoiInfo[] = {"]
     for item in data["items"]:
+        if item.get("category") not in POI_CATEGORIES:
+            raise SystemExit("unknown POI category: %s" % item.get("id"))
         visible = item["coordinate_status"] in VALID
         world = item["world"] or {"x": 0.0, "y": 0.0, "z": 0.0}
         z = world["z"] if world["z"] is not None else 0.0
         representative = item["coordinate_status"] == "representative_2d"
-        lines.append("    {%d, %.6ff, %.6ff, %.6ff, %s, %s, %s, %s, %s, %s, %s}," % (
+        lines.append("    {%d, %.6ff, %.6ff, %.6ff, %s, %s, PoiCategory::%s, %s, %s, %s, %s, %s}," % (
             item["id"], world["x"], world["y"], z, str(visible).lower(), str(representative).lower(),
-            q(item["name_en"]), q(item["name_ru"]), q(item["description_en"]), q(item["description_ru"]),
+            POI_CATEGORIES[item["category"]], q(item["name_en"]), q(item["name_ru"]), q(item["description_en"]), q(item["description_ru"]),
             q(item["image"])))
     lines += ["};", "} // namespace", "",
               "const PoiInfo* poiInfo(std::size_t index) {",

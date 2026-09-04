@@ -14,6 +14,8 @@ audit_by_id = {item["id"]: item for item in audit["items"]}
 if len(audit_by_id) != 80:
     raise SystemExit("POI audit IDs must be unique")
 counts = Counter()
+category_counts = Counter()
+valid_categories = {"story", "landmark", "nature", "mystery", "business"}
 for item in items:
     status, world = item.get("coordinate_status"), item.get("world")
     source = audit_by_id.get(item["id"])
@@ -22,6 +24,9 @@ for item in items:
     if source.get("coordinate_status") != status or source.get("world") != world:
         raise SystemExit("POI/audit coordinate mismatch: %s" % item["id"])
     counts[status] += 1
+    if item.get("category") not in valid_categories:
+        raise SystemExit("unknown POI category: %s" % item["id"])
+    category_counts[item["category"]] += 1
     if status == "cross_checked_xyz":
         if not world or world.get("z") is None or not item.get("coordinate_sources") or not item.get("info_zon_check", {}).get("checked"):
             raise SystemExit("invalid cross_checked_xyz: %s" % item["id"])
@@ -37,3 +42,5 @@ print("cross_checked_xyz=%d representative_2d=%d pending_verification=%d" %
       (counts["cross_checked_xyz"], counts["representative_2d"], counts["pending_verification"]))
 if (counts["cross_checked_xyz"], counts["representative_2d"], counts["pending_verification"]) != (21, 18, 41):
     raise SystemExit("unexpected coordinate-status totals")
+if sum(category_counts.values()) != 80:
+    raise SystemExit("POI categories must classify all 80 records")
