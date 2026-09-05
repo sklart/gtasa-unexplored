@@ -23,13 +23,13 @@ int main() {
         assert(size >= previous && size >= 25 && size <= 42);
         previous = size;
     }
-    assert(poiMarkerSize(0.85f) == 28);
-    assert(poiMarkerSize(1.75f) == 32);
-    assert(poiMarkerSize(8.0f) == 37);
+    assert(poiMarkerSize(0.85f) == 20);
+    assert(poiMarkerSize(1.75f) == 25);
+    assert(poiMarkerSize(8.0f) == 33);
     previous = poiMarkerSize(0.85f);
     for (float zoom = 0.85f; zoom <= 8.0f; zoom += 0.1f) {
         const int size = poiMarkerSize(zoom);
-        assert(size >= previous && size >= 28 && size <= 37);
+        assert(size >= previous && size >= 20 && size <= 33);
         previous = size;
     }
     assert(!exceedsTouchDragThreshold(100.0f, 100.0f, 106.0f, 105.0f));

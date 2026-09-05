@@ -9,7 +9,7 @@ include $(DEVKITPRO)/libnx/switch_rules
 
 APP_TITLE   := GTASA Unexplored
 APP_AUTHOR  := sklart
-APP_VERSION := 0.5.0-rc2
+APP_VERSION := 0.5.0-rc3
 
 TARGET      := gtasa-unexplored
 BUILD       := build

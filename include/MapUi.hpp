@@ -32,10 +32,12 @@ inline int collectibleIconSize(float zoom) {
 }
 
 inline int poiMarkerSize(float zoom) {
-    if (zoom <= 0.85f) return 28;
-    if (zoom < 1.75f) return 28 + static_cast<int>((zoom - 0.85f) * 4.0f / 0.90f + 0.5f);
-    if (zoom >= 8.0f) return 37;
-    return 32 + static_cast<int>((zoom - 1.75f) * 5.0f / 6.25f + 0.5f);
+    // POI art is visually denser than the collectible pictograms.  Keep it
+    // subordinate at a distant view, then grow it smoothly for close reading.
+    if (zoom <= 0.85f) return 20;
+    if (zoom < 1.75f) return 20 + static_cast<int>((zoom - 0.85f) * 5.0f / 0.90f + 0.5f);
+    if (zoom >= 8.0f) return 33;
+    return 25 + static_cast<int>((zoom - 1.75f) * 8.0f / 6.25f + 0.5f);
 }
 
 inline bool markerFullyVisible(int anchorX, int anchorY, int width, int height,

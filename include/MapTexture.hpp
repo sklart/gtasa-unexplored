@@ -33,6 +33,8 @@ public:
     // Projects with precisely the same cropped source rectangle as render().
     bool projectWorldPoint(const MapView& view, const SDL_Rect& dst, float x, float y,
                            int& screenX, int& screenY) const;
+    bool projectWorldPointF(const MapView& view, const SDL_Rect& dst, float x, float y,
+                            float& screenX, float& screenY) const;
     bool screenToWorld(const MapView& view, const SDL_Rect& dst, int screenX, int screenY,
                        float& worldX, float& worldY) const;
     void panByScreenDelta(MapView& view, const SDL_Rect& dst, float dx, float dy) const;

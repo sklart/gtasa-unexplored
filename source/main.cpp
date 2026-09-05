@@ -12,6 +12,7 @@
 #include "NearestCollectible.hpp"
 #include "ObjectList.hpp"
 #include "ObjectListScreen.hpp"
+#include "OverlayUi.hpp"
 #include "Platform.hpp"
 #include "PoiCategories.hpp"
 #include "PoiInfo.hpp"
@@ -304,6 +305,14 @@ std::pair<int, int> collectibleToScreen(const AppState& a, float x, float y) {
     int sx = 0, sy = 0;
     if (a.mapTexture.projectWorldPoint(view, mapRect(a), x, y, sx, sy)) return {sx, sy};
     return worldToScreen(a, x, y);
+}
+
+SDL_FPoint collectibleToScreenF(const AppState& a, float x, float y) {
+    const gtasa::MapView view{a.centerX, a.centerY, a.zoom};
+    float sx = 0.0f, sy = 0.0f;
+    if (a.mapTexture.projectWorldPointF(view, mapRect(a), x, y, sx, sy)) return {sx, sy};
+    const auto [fallbackX, fallbackY] = worldToScreen(a, x, y);
+    return {static_cast<float>(fallbackX), static_cast<float>(fallbackY)};
 }
 
 void drawIconRing(SDL_Renderer* r, int cx, int cy, int radius, SDL_Color c) {
@@ -647,9 +656,18 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
 
     // Controller cursor lives in world space, so it uses the exact same
     // projection as markers and remains usable at a cropped map edge.
-    auto [cx, cy] = collectibleToScreen(a, a.cursorX, a.cursorY);
-    line(r, cx - 8, cy, cx + 8, cy, SDL_Color{220, 220, 220, 170});
-    line(r, cx, cy - 8, cx, cy + 8, SDL_Color{220, 220, 220, 170});
+    const SDL_FPoint cursor = collectibleToScreenF(a, a.cursorX, a.cursorY);
+    // Keep the cursor fully opaque and centred on fractional coordinates.  It
+    // avoids the translucent double-image caused by integer snapping in motion.
+    SDL_SetRenderDrawColor(r, 8, 14, 20, 255);
+    SDL_RenderDrawLineF(r, cursor.x - 9.0f, cursor.y, cursor.x + 9.0f, cursor.y);
+    SDL_RenderDrawLineF(r, cursor.x, cursor.y - 9.0f, cursor.x, cursor.y + 9.0f);
+    SDL_SetRenderDrawColor(r, 235, 247, 255, 255);
+    SDL_RenderDrawLineF(r, cursor.x - 7.0f, cursor.y, cursor.x + 7.0f, cursor.y);
+    SDL_RenderDrawLineF(r, cursor.x, cursor.y - 7.0f, cursor.x, cursor.y + 7.0f);
+    fill(r, SDL_Rect{static_cast<int>(std::lround(cursor.x)) - 2,
+                     static_cast<int>(std::lround(cursor.y)) - 2, 5, 5},
+         SDL_Color{235, 247, 255, 255});
 }
 
 const gtasa::CollectibleInfo* selectedInfo(const AppState& a) {
@@ -736,6 +754,33 @@ void navigateMarker(AppState& a, int direction, bool groupCycle, SDL_Renderer* r
     selectAdjacent(a, direction, renderer);
 }
 
+gtasa::OverlayCloseArea activeOverlayCloseArea(const AppState& a) {
+    if (a.detailOpen) return gtasa::overlayCloseAreaInBounds(66, 38, 1148);
+    if (a.listOpen) return gtasa::overlayCloseAreaInBounds(80, 22, 1120);
+    if (a.legendOpen) return gtasa::overlayCloseAreaInBounds(120, 24, 760);
+    return {};
+}
+
+void drawOverlayClose(SDL_Renderer* r, TextRenderer& text, const gtasa::OverlayCloseArea& area) {
+    SDL_Rect outline{area.x, area.y, area.width, area.height};
+    SDL_SetRenderDrawColor(r, 92, 106, 118, 255);
+    SDL_RenderDrawRect(r, &outline);
+    text.draw("×", area.x + 15, area.y + 5, 26, kColors.text);
+}
+
+void closeActiveOverlay(AppState& a) {
+    switch (gtasa::activeOverlay(a.legendOpen, a.listOpen, a.detailOpen)) {
+        case gtasa::OverlayKind::Details:
+            a.detailOpen = false;
+            a.media.unload();
+            a.poiMedia.unload();
+            break;
+        case gtasa::OverlayKind::ObjectList: a.listOpen = false; break;
+        case gtasa::OverlayKind::Filters: a.legendOpen = false; break;
+        case gtasa::OverlayKind::None: break;
+    }
+}
+
 void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     if (!a.detailOpen) return;
     if (const auto* poi = selectedPoiInfo(a)) {
@@ -743,6 +788,7 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         SDL_Rect card{66, 38, 1148, 644};
         fill(r, card, kColors.bg);
         SDL_SetRenderDrawColor(r, 92, 106, 118, 255); SDL_RenderDrawRect(r, &card);
+        drawOverlayClose(r, text, activeOverlayCloseArea(a));
         drawPoiIcon(r, a.poiIcon, 110, 102, 42);
         text.draw(isRu(a) ? poi->nameRu : poi->nameEn, 145, 60, 28, kColors.text, 800);
         text.draw(gtasa::poiLocationStatus(poi->representative, isRu(a)),
@@ -770,6 +816,7 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     fill(r, card, kColors.bg);
     SDL_SetRenderDrawColor(r, 92, 106, 118, 255);
     SDL_RenderDrawRect(r, &card);
+    drawOverlayClose(r, text, activeOverlayCloseArea(a));
     drawCollectibleIcon(r, a.icons, 110, 83, item.type, 42);
     const std::string title = typeName(a, item.type) + " #" + std::to_string(info->canonicalId);
     text.draw(title, 145, 60, 28, kColors.text);
@@ -841,17 +888,28 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
             text.draw(row.str(), 980, y, 13, kColors.muted, 285);
             y += 16;
         }
+        // The detailed matrix stays readable by giving every type a fixed
+        // column with an icon header instead of compressing five ratios into
+        // an unlabelled sentence.
+        text.draw(tr(a, "Район     T    S    H    O    J", "Region     T    S    H    O    J"),
+                  980, y, 11, kColors.text, 285);
+        const std::array<int, 5> matrixIconX{{1054, 1085, 1116, 1147, 1178}};
+        for (int type = 0; type < static_cast<int>(gtasa::CollectibleType::Count); ++type)
+            drawCollectibleIcon(r, a.icons, matrixIconX[static_cast<std::size_t>(type)], y + 6,
+                                static_cast<gtasa::CollectibleType>(type), 12);
+        y += 15;
         for (std::size_t region = 0; region < gtasa::kSanAndreasRegionCount; ++region) {
             std::ostringstream row;
-            row << gtasa::sanAndreasRegionName(static_cast<gtasa::SanAndreasRegion>(region), isRu(a)) << "  ";
+            const auto name = gtasa::sanAndreasRegionName(static_cast<gtasa::SanAndreasRegion>(region), isRu(a));
+            row << (name.size() > 11 ? name.substr(0, 11) : name) << " ";
             for (std::size_t type = 0; type < static_cast<std::size_t>(gtasa::CollectibleType::Count); ++type) {
-                if (type) row << ' ';
+                if (type) row << "  ";
                 row << a.progressMatrix[region][type].completed << '/' << a.progressMatrix[region][type].total;
             }
             text.draw(row.str(), 980, y, 11, kColors.muted, 285);
-            y += 13;
+            y += 14;
         }
-        y += 4;
+        y += 6;
         if (a.selected >= 0 && a.selected < static_cast<int>(p->objects.size())) {
             const auto& c = p->objects[a.selected];
             const auto* info = collectibleInfoForView(c);
@@ -860,33 +918,34 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
             text.draw(gtasa::formatMapCoordinates(c.x, c.y, c.z), 980, y + 30, 15, kColors.muted, 285);
             text.draw(info ? tr(a, "A — подробности", "A — details")
                            : tr(a, "Карточка недоступна", "Card unavailable"),
-                      980, y + 50, 14, info ? kColors.accent : kColors.warning, 285);
+                      980, y + 49, 14, info ? kColors.accent : kColors.warning, 285);
             if (c.type == gtasa::CollectibleType::StuntJump && c.found) {
                 text.draw(tr(a, "Прыжок уже обнаружен, но не выполнен", "Jump discovered, but not completed"),
-                          980, y + 54, 14, kColors.warning, 285);
+                          980, y + 67, 13, kColors.warning, 285);
             }
         }
         if (const auto* poi = selectedPoiInfo(a)) {
             text.draw(isRu(a) ? poi->nameRu : poi->nameEn, 980, y, 19, kColors.poi, 285);
             text.draw(gtasa::poiLocationStatus(poi->representative, isRu(a)),
                       980, y + 28, 15, kColors.muted, 285);
-            text.draw(tr(a, "A — подробности", "A — details"), 980, y + 48, 14, kColors.accent, 285);
+            text.draw(tr(a, "A — подробности", "A — details"), 980, y + 47, 14, kColors.accent, 285);
         }
     }
 
-    // Keep one control/action pair per line.  The panel has enough vertical
-    // space and this avoids wrapping or visually joining unrelated shortcuts.
-    const int cy = 480;
+    // This lower block is deliberately reserved: dynamic selected-object
+    // content above it can never run into the controls.
+    const int cy = 548;
     text.draw(tr(a, "Управление", "Controls"), 980, cy, 18, kColors.text);
-    text.draw(tr(a, "Стик / touch — карта", "Stick / touch — map"), 980, cy + 26, 14, kColors.muted, 290);
-    text.draw(tr(a, "L/R / щипок — масштаб", "L/R / pinch — zoom"), 980, cy + 45, 14, kColors.muted, 290);
-    text.draw(tr(a, "A — выбрать, L3/R3 — объект", "A — select, L3/R3 — item"), 980, cy + 64, 14, kColors.muted, 290);
-    text.draw(tr(a, "ZR+A — ближайший ненайденный", "ZR+A — nearest missing"), 980, cy + 83, 14, kColors.muted, 290);
-    text.draw(tr(a, "X — фильтры, ZR+X — список", "X — filters, ZR+X — list"), 980, cy + 102, 14, kColors.muted, 290);
-    text.draw(tr(a, "Y — карты, ZR+Y — избранное", "Y — maps, ZR+Y — favorite"), 980, cy + 121, 14, kColors.muted, 290);
-    text.draw(tr(a, "ZL+L3/R3 — группа, ZR+R3 / 2 пальца — панель", "ZL+L3/R3 — group, ZR+R3 / 2 fingers — panel"), 980, cy + 140, 14, kColors.muted, 290);
-    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 159, 14, kColors.muted, 290);
-    if (!a.status.empty()) text.draw(a.status, 980, 690, 13, kColors.warning, 285);
+    text.draw(tr(a, "Стик / touch — карта", "Stick / touch — map"), 980, cy + 24, 13, kColors.muted, 285);
+    text.draw(tr(a, "L/R / щипок — масштаб", "L/R / pinch — zoom"), 980, cy + 41, 13, kColors.muted, 285);
+    text.draw(tr(a, "A — выбрать / подробности", "A — select / details"), 980, cy + 58, 13, kColors.muted, 285);
+    text.draw(tr(a, "L3/R3 — предыдущий / следующий", "L3/R3 — previous / next"), 980, cy + 75, 13, kColors.muted, 285);
+    text.draw(tr(a, "ZR+A — ближайший ненайденный", "ZR+A — nearest missing"), 980, cy + 92, 13, kColors.muted, 285);
+    text.draw(tr(a, "X — фильтры; ZR+X — список", "X — filters; ZR+X — list"), 980, cy + 109, 13, kColors.muted, 285);
+    text.draw(tr(a, "Y — карты; ZR+Y — избранное", "Y — maps; ZR+Y — favorite"), 980, cy + 126, 13, kColors.muted, 285);
+    text.draw(tr(a, "ZL+L3/R3 — группа", "ZL+L3/R3 — group"), 980, cy + 143, 13, kColors.muted, 285);
+    text.draw(tr(a, "ZR+R3 / 2 пальца — панель", "ZR+R3 / 2 fingers — panel"), 980, cy + 160, 13, kColors.muted, 285);
+    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 177, 13, kColors.muted, 285);
 }
 
 void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
@@ -895,6 +954,7 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     fill(r, shade, SDL_Color{11, 14, 17, 245});
     SDL_SetRenderDrawColor(r, 95, 105, 115, 255);
     SDL_RenderDrawRect(r, &shade);
+    drawOverlayClose(r, text, activeOverlayCloseArea(a));
     text.draw(tr(a, "Фильтры карты", "Map filters"), 155, 52, 28, kColors.text);
     text.draw(tr(a, "↑/↓ — выбор, A — включить/выключить, X — закрыть", "↑/↓ select, A toggle, X close"),
               155, 91, 15, kColors.muted, 690);
@@ -971,16 +1031,29 @@ void drawObjectList(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     fill(r, shade, SDL_Color{11, 14, 17, 248});
     SDL_SetRenderDrawColor(r, 95, 105, 115, 255);
     SDL_RenderDrawRect(r, &shade);
+    drawOverlayClose(r, text, activeOverlayCloseArea(a));
     const auto items = currentObjectList(a);
     text.draw(a.routeMode ? tr(a, "Маршрут Missing", "Missing route") : tr(a, "Список объектов", "Object list"), 115, 50, 28, kColors.text);
     std::ostringstream state;
-    state << tr(a, "Сортировка: ", "Sort: ") << objectListSortName(a.listSort, isRu(a))
-          << "   " << tr(a, "Избранное: ", "Favorites: ")
-          << (a.config.favoritesOnly ? tr(a, "только", "only") : tr(a, "все", "all"))
-          << "   " << tr(a, "Объектов: ", "Items: ") << items.size();
+    if (a.routeMode) {
+        const std::string limit = a.routeLimit == 0 ? tr(a, "все", "all") : std::to_string(a.routeLimit);
+        const int current = a.route.empty() ? 0 : gtasa::normalizeRouteIndex(a.routeIndex, static_cast<int>(a.route.size())) + 1;
+        state << tr(a, "Маршрут: ", "Route: ") << limit << " • "
+              << tr(a, "точка ", "stop ") << current << '/' << a.route.size()
+              << "   " << tr(a, "Избранное: ", "Favorites: ")
+              << (a.config.favoritesOnly ? tr(a, "только", "only") : tr(a, "все", "all"));
+    } else {
+        state << tr(a, "Сортировка: ", "Sort: ") << objectListSortName(a.listSort, isRu(a))
+              << "   " << tr(a, "Избранное: ", "Favorites: ")
+              << (a.config.favoritesOnly ? tr(a, "только", "only") : tr(a, "все", "all"))
+              << "   " << tr(a, "Объектов: ", "Items: ") << items.size();
+    }
     text.draw(state.str(), 115, 88, 15, kColors.muted, 1030);
-    text.draw(tr(a, "↑/↓ — выбор, A — перейти, ZR+A — маршрут 5/10/все, Y — избранное, L/R — сортировка, X — избранное, B — закрыть",
-                    "↑/↓ select, A go, ZR+A route 5/10/all, Y favorite, L/R sort, X favorites, B close"),
+    text.draw(a.routeMode
+                  ? tr(a, "↑/↓ — выбор, A — следующая точка, ZR+A — маршрут 5/10/все, Y — избранное, X — избранное, B — закрыть",
+                         "↑/↓ select, A next stop, ZR+A route 5/10/all, Y favorite, X favorites, B close")
+                  : tr(a, "↑/↓ — выбор, A — перейти, ZR+A — маршрут 5/10/все, Y — избранное, L/R — сортировка, X — избранное, B — закрыть",
+                         "↑/↓ select, A go, ZR+A route 5/10/all, Y favorite, L/R sort, X favorites, B close"),
               115, 111, 14, kColors.muted, 1030);
     if (items.empty()) {
         text.draw(tr(a, "Нет объектов с активными фильтрами", "No objects match active filters"),
@@ -1162,18 +1235,27 @@ int main(int, char**) {
     gtasa::TouchGestureState touchGesture;
     Uint32 lastTapTime = 0;
     int lastTapX = 0, lastTapY = 0;
+    std::int64_t overlayCloseTouchId = -1;
     while (running && appletMainLoop()) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) running = false;
-            if (event.type == SDL_FINGERDOWN && !app.legendOpen && !app.listOpen && !app.detailOpen) {
+            if (event.type == SDL_FINGERDOWN) {
                 const int x = static_cast<int>(event.tfinger.x * kScreenW);
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
+                if (gtasa::activeOverlay(app.legendOpen, app.listOpen, app.detailOpen) != gtasa::OverlayKind::None) {
+                    if (gtasa::hitsOverlayClose(activeOverlayCloseArea(app), x, y)) {
+                        overlayCloseTouchId = event.tfinger.fingerId;
+                        closeActiveOverlay(app);
+                    }
+                    continue;
+                }
                 if (insideMap(app, x, y)) {
                     touchGesture.begin(event.tfinger.fingerId, static_cast<float>(x), static_cast<float>(y));
                 }
             }
-            if (event.type == SDL_FINGERMOTION && !app.legendOpen && !app.listOpen && !app.detailOpen) {
+            if (event.type == SDL_FINGERMOTION && event.tfinger.fingerId != overlayCloseTouchId &&
+                !app.legendOpen && !app.listOpen && !app.detailOpen) {
                 const SDL_FPoint point{event.tfinger.x * kScreenW, event.tfinger.y * kScreenH};
                 const auto motion = touchGesture.move(event.tfinger.fingerId, point.x, point.y);
                 if (motion.kind == gtasa::TouchMotion::Kind::Pan && (motion.x != 0.0f || motion.y != 0.0f)) {
@@ -1191,6 +1273,10 @@ int main(int, char**) {
                 }
             }
             if (event.type == SDL_FINGERUP) {
+                if (event.tfinger.fingerId == overlayCloseTouchId) {
+                    overlayCloseTouchId = -1;
+                    continue;
+                }
                 const int x = static_cast<int>(event.tfinger.x * kScreenW);
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
                 const auto ended = touchGesture.end(event.tfinger.fingerId);
@@ -1231,7 +1317,7 @@ int main(int, char**) {
         if (down & HidNpadButton_Plus) running = false;
         const bool groupModifier = (held & HidNpadButton_ZL) != 0;
         if (app.detailOpen) {
-            if (down & HidNpadButton_B) { app.detailOpen = false; app.media.unload(); app.poiMedia.unload(); }
+            if (down & HidNpadButton_B) closeActiveOverlay(app);
             if ((down & HidNpadButton_Y) && (held & HidNpadButton_ZR)) toggleSelectedFavorite(app);
             if (down & HidNpadButton_Up) app.detailScroll = std::max(0, app.detailScroll - 20);
             if (down & HidNpadButton_Down) app.detailScroll = std::min(120, app.detailScroll + 20);
@@ -1243,7 +1329,7 @@ int main(int, char**) {
             auto items = currentObjectList(app);
             if (items.empty()) app.listIndex = 0;
             else app.listIndex = gtasa::clampObjectListIndex(app.listIndex, static_cast<int>(items.size()));
-            if (down & HidNpadButton_B) app.listOpen = false;
+            if (down & HidNpadButton_B) closeActiveOverlay(app);
             if ((down & HidNpadButton_A) && (held & HidNpadButton_ZR)) {
                 if (!app.routeMode) { app.routeMode = true; app.routeLimit = 5; }
                 else if (app.routeLimit == 5) app.routeLimit = 10;
@@ -1257,8 +1343,8 @@ int main(int, char**) {
                 app.listIndex = gtasa::nextObjectListIndex(app.listIndex, static_cast<int>(items.size()), -1);
             if (!items.empty() && (down & HidNpadButton_Down))
                 app.listIndex = gtasa::nextObjectListIndex(app.listIndex, static_cast<int>(items.size()), 1);
-            if (down & HidNpadButton_L) app.listSort = static_cast<gtasa::ObjectListSort>((static_cast<int>(app.listSort) + 3) % 4);
-            if (down & HidNpadButton_R) app.listSort = static_cast<gtasa::ObjectListSort>((static_cast<int>(app.listSort) + 1) % 4);
+            if (!app.routeMode && (down & HidNpadButton_L)) app.listSort = static_cast<gtasa::ObjectListSort>((static_cast<int>(app.listSort) + 3) % 4);
+            if (!app.routeMode && (down & HidNpadButton_R)) app.listSort = static_cast<gtasa::ObjectListSort>((static_cast<int>(app.listSort) + 1) % 4);
             if (down & HidNpadButton_X) {
                 app.config.favoritesOnly = !app.config.favoritesOnly;
                 app.platform.saveConfig(app.config);
@@ -1273,7 +1359,7 @@ int main(int, char**) {
                 if (app.routeMode && !app.route.empty()) app.routeIndex = gtasa::nextRouteIndex(app.routeIndex, static_cast<int>(app.route.size()));
             }
         } else if (app.legendOpen) {
-            if (down & HidNpadButton_X) app.legendOpen = false;
+            if ((down & HidNpadButton_X) || (down & HidNpadButton_B)) closeActiveOverlay(app);
             if (gtasa::shouldToggleLanguage(true, (down & HidNpadButton_ZL) != 0)) {
                 app.config.language = isRu(app) ? "en" : "ru";
                 app.platform.saveConfig(app.config);

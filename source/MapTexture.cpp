@@ -342,6 +342,15 @@ bool MapTexture::render(SDL_Renderer* renderer, const MapView& inputView, const 
 
 bool MapTexture::projectWorldPoint(const MapView& inputView, const SDL_Rect& dst,
                                    float x, float y, int& screenX, int& screenY) const {
+    float projectedX = 0.0f, projectedY = 0.0f;
+    if (!projectWorldPointF(inputView, dst, x, y, projectedX, projectedY)) return false;
+    screenX = static_cast<int>(std::lround(projectedX));
+    screenY = static_cast<int>(std::lround(projectedY));
+    return true;
+}
+
+bool MapTexture::projectWorldPointF(const MapView& inputView, const SDL_Rect& dst,
+                                    float x, float y, float& screenX, float& screenY) const {
     if (!texture_ || width_ <= 0 || height_ <= 0 || dst.w <= 0 || dst.h <= 0) return false;
     const MapEntry calibration = activeCalibration();
     const SourceWindow source = sourceWindow(inputView, width_, height_, calibration, dst);
@@ -349,8 +358,8 @@ bool MapTexture::projectWorldPoint(const MapView& inputView, const SDL_Rect& dst
     if (content.w <= 0 || content.h <= 0) return false;
     const double pointX = (x - calibration.left) * width_ / (calibration.right - calibration.left);
     const double pointY = (calibration.top - y) * height_ / (calibration.top - calibration.bottom);
-    screenX = content.x + static_cast<int>(std::lround((pointX - source.x) * content.w / source.w));
-    screenY = content.y + static_cast<int>(std::lround((pointY - source.y) * content.h / source.h));
+    screenX = static_cast<float>(content.x) + static_cast<float>((pointX - source.x) * content.w / source.w);
+    screenY = static_cast<float>(content.y) + static_cast<float>((pointY - source.y) * content.h / source.h);
     return true;
 }
 
