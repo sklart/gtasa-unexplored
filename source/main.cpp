@@ -900,7 +900,8 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         y += 15;
         for (std::size_t region = 0; region < gtasa::kSanAndreasRegionCount; ++region) {
             std::ostringstream row;
-            const auto name = gtasa::sanAndreasRegionName(static_cast<gtasa::SanAndreasRegion>(region), isRu(a));
+            const std::string name = gtasa::sanAndreasRegionName(
+                static_cast<gtasa::SanAndreasRegion>(region), isRu(a));
             row << (name.size() > 11 ? name.substr(0, 11) : name) << " ";
             for (std::size_t type = 0; type < static_cast<std::size_t>(gtasa::CollectibleType::Count); ++type) {
                 if (type) row << "  ";
