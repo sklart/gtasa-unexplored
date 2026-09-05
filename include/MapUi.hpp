@@ -31,6 +31,7 @@ inline int collectibleIconSize(float zoom) {
     return 28 + static_cast<int>((zoom - 1.75f) * 14.0f / 6.25f + 0.5f);
 }
 
+// Returns the maximum rendered POI height; width is derived from the PNG ratio.
 inline int poiMarkerSize(float zoom) {
     // POI art is visually denser than the collectible pictograms.  Keep it
     // subordinate at a distant view, then grow it smoothly for close reading.

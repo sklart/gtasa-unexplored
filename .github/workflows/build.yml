@@ -52,6 +52,11 @@ jobs:
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
             tests/overlay_ui_tests.cpp -o overlay-ui-tests
           ./overlay-ui-tests
+      - name: Build and run marker identity test
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
+            tests/marker_identity_tests.cpp -o marker-identity-tests
+          ./marker-identity-tests
       - name: Build and run POI category test
         run: |
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
@@ -112,6 +117,9 @@ jobs:
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
             tests/overlay_ui_tests.cpp -o overlay-ui-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./overlay-ui-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
+            tests/marker_identity_tests.cpp -o marker-identity-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./marker-identity-sanitized
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
             tests/collectible_view_tests.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp -o collectible-view-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./collectible-view-sanitized

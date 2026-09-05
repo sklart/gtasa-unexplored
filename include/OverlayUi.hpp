@@ -2,7 +2,7 @@
 
 namespace gtasa {
 
-enum class OverlayKind { None, Filters, ObjectList, Details };
+enum class OverlayKind { None, Filters, ObjectList, Details, RegionProgress };
 
 struct OverlayCloseArea {
     int x{};
@@ -29,6 +29,12 @@ constexpr bool hitsOverlayClose(const OverlayCloseArea& area, int x, int y) {
 constexpr OverlayKind activeOverlay(bool filtersOpen, bool listOpen, bool detailsOpen) {
     return detailsOpen ? OverlayKind::Details : listOpen ? OverlayKind::ObjectList
            : filtersOpen ? OverlayKind::Filters : OverlayKind::None;
+}
+
+constexpr OverlayKind activeOverlay(bool filtersOpen, bool listOpen, bool detailsOpen, bool progressOpen) {
+    const auto foreground = activeOverlay(filtersOpen, listOpen, detailsOpen);
+    return foreground != OverlayKind::None ? foreground
+           : progressOpen ? OverlayKind::RegionProgress : OverlayKind::None;
 }
 
 } // namespace gtasa

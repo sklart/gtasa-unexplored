@@ -19,5 +19,6 @@ int main() {
     assert(activeOverlay(true, false, false) == OverlayKind::Filters);
     assert(activeOverlay(true, true, false) == OverlayKind::ObjectList);
     assert(activeOverlay(true, true, true) == OverlayKind::Details);
+    assert(activeOverlay(false, false, false, true) == OverlayKind::RegionProgress);
     std::cout << "overlay UI tests passed\n";
 }

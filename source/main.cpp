@@ -9,6 +9,7 @@
 #include "MapTexture.hpp"
 #include "MapUi.hpp"
 #include "MarkerSelection.hpp"
+#include "MarkerIdentity.hpp"
 #include "NearestCollectible.hpp"
 #include "ObjectList.hpp"
 #include "ObjectListScreen.hpp"
@@ -189,13 +190,25 @@ struct AppState {
     float cursorY = 0.0f;
     gtasa::CameraOwner cameraOwner = gtasa::CameraOwner::Cursor;
     float zoom = 1.0f;
-    int selected = -1;
-    int selectedPoi = -1;
+    gtasa::MarkerIdentity selectedMarker{};
     bool showPanel = true;
     bool detailOpen = false;
+    bool progressOpen = false;
     int detailScroll = 0;
     std::string status;
 };
+
+int selectedCollectibleIndex(const AppState& a) {
+    return a.selectedMarker.kind == gtasa::MarkerKind::Collectible ? a.selectedMarker.index : -1;
+}
+
+int selectedPoiIndex(const AppState& a) {
+    return a.selectedMarker.kind == gtasa::MarkerKind::Poi ? a.selectedMarker.index : -1;
+}
+
+void selectCollectible(AppState& a, int index) { a.selectedMarker = gtasa::collectibleMarker(index); }
+void selectPoi(AppState& a, int index) { a.selectedMarker = gtasa::poiMarker(index); }
+void clearSelectedMarker(AppState& a) { a.selectedMarker = {}; }
 
 const SDL_Rect& mapRect(const AppState& a) {
     return a.showPanel ? kMapRectWithPanel : kMapRectFull;
@@ -290,6 +303,8 @@ bool insideMap(const AppState& a, int x, int y) {
     const auto rect = mapContentRect(a);
     return x >= rect.x && x < rect.x + rect.w && y >= rect.y && y < rect.y + rect.h;
 }
+
+SDL_Rect regionProgressButtonRect() { return SDL_Rect{1148, 298, 112, 42}; }
 
 std::pair<int, int> worldToScreen(const AppState& a, float x, float y) {
     const auto rect = mapContentRect(a);
@@ -392,16 +407,25 @@ std::pair<int, int> collectibleIconDimensions(const gtasa::CollectibleIcons& ico
     return {w, h};
 }
 
-void drawPoiIcon(SDL_Renderer* r, const gtasa::PoiIcon& icon, int x, int y, int size = 18, bool selected = false) {
+std::pair<int, int> poiIconDimensions(const gtasa::PoiIcon& icon, int maxHeight) {
+    SDL_Texture* texture = icon.texture();
+    int sourceW = 0, sourceH = 0;
+    if (!texture || SDL_QueryTexture(texture, nullptr, nullptr, &sourceW, &sourceH) != 0 ||
+        sourceW <= 0 || sourceH <= 0) return {maxHeight, maxHeight};
+    const int height = std::max(1, maxHeight);
+    return {std::max(1, static_cast<int>(std::lround(height * static_cast<float>(sourceW) / sourceH))), height};
+}
+
+void drawPoiIcon(SDL_Renderer* r, const gtasa::PoiIcon& icon, int x, int y, int maxHeight = 18, bool selected = false) {
     SDL_Texture* texture = icon.texture();
     int sourceW = 0, sourceH = 0;
     if (!texture || SDL_QueryTexture(texture, nullptr, nullptr, &sourceW, &sourceH) != 0 ||
         sourceW <= 0 || sourceH <= 0) return;
-    const int height = std::max(1, static_cast<int>(std::lround(size * static_cast<float>(sourceH) / sourceW)));
-    const SDL_Rect target{x - size / 2, y - height, size, height};
+    const auto [width, height] = poiIconDimensions(icon, maxHeight);
+    const SDL_Rect target{x - width / 2, y - height, width, height};
     if (selected) {
-        const int glowW = std::max(size + 2, static_cast<int>(std::lround(size * 1.10f)));
-        const int glowH = std::max(height + 2, static_cast<int>(std::lround(height * 1.10f)));
+        const int glowW = std::max(width + 2, static_cast<int>(std::lround(width * 1.08f)));
+        const int glowH = std::max(height + 2, static_cast<int>(std::lround(height * 1.08f)));
         const SDL_Rect glow{x - glowW / 2, y - glowH, glowW, glowH};
         SDL_SetTextureColorMod(texture, 255, 245, 190);
         SDL_SetTextureAlphaMod(texture, 110);
@@ -437,10 +461,7 @@ bool isMarkerInteractable(const AppState& a, const gtasa::Collectible& item, int
 bool isMarkerInteractable(const AppState& a, const gtasa::PoiInfo& poi, int* outX = nullptr, int* outY = nullptr) {
     if (!isMarkerEnabled(a, poi)) return false;
     const auto [x, y] = collectibleToScreen(a, poi.x, poi.y);
-    int sourceW = 0, sourceH = 0;
-    if (SDL_Texture* texture = a.poiIcon.texture()) SDL_QueryTexture(texture, nullptr, nullptr, &sourceW, &sourceH);
-    const int width = gtasa::poiMarkerSize(a.zoom);
-    const int height = sourceW > 0 ? static_cast<int>(std::lround(width * static_cast<float>(sourceH) / sourceW)) : width;
+    const auto [width, height] = poiIconDimensions(a.poiIcon, gtasa::poiMarkerSize(a.zoom));
     const auto content = mapContentRect(a);
     if (!gtasa::hasMarkerVisibleThreshold(x, y, width, height, content.x, content.y, content.w, content.h, true)) return false;
     if (outX) *outX = x;
@@ -512,9 +533,9 @@ void toggleSelectedFavorite(AppState& a) {
         const bool added = a.config.favorites.toggle({gtasa::FavoriteKind::Poi, gtasa::CollectibleType::Tag, poi->id});
         a.status = added ? tr(a, "Добавлено в избранное", "Added to favorites")
                          : tr(a, "Удалено из избранного", "Removed from favorites");
-    } else if (const auto* parsed = currentParse(a); parsed && a.selected >= 0 &&
-               a.selected < static_cast<int>(parsed->objects.size())) {
-        const auto& item = parsed->objects[static_cast<std::size_t>(a.selected)];
+    } else if (const auto* parsed = currentParse(a); selectedCollectibleIndex(a) >= 0 &&
+               selectedCollectibleIndex(a) < static_cast<int>(parsed->objects.size())) {
+        const auto& item = parsed->objects[static_cast<std::size_t>(selectedCollectibleIndex(a))];
         if (item.id <= 0) return;
         const bool added = a.config.favorites.toggle({gtasa::FavoriteKind::Collectible, item.type, item.id});
         a.status = added ? tr(a, "Добавлено в избранное", "Added to favorites")
@@ -524,8 +545,8 @@ void toggleSelectedFavorite(AppState& a) {
 }
 
 void focusListItem(AppState& a, const gtasa::ObjectListItem& item) {
-    a.selected = item.kind == gtasa::ObjectListKind::Collectible ? item.sourceIndex : -1;
-    a.selectedPoi = item.kind == gtasa::ObjectListKind::Poi ? item.sourceIndex : -1;
+    if (item.kind == gtasa::ObjectListKind::Collectible) selectCollectible(a, item.sourceIndex);
+    else selectPoi(a, item.sourceIndex);
     a.cursorX = item.x;
     a.cursorY = item.y;
     a.centerX = item.x;
@@ -538,8 +559,7 @@ void focusListItem(AppState& a, const gtasa::ObjectListItem& item) {
 void selectNearest(AppState& a, int px, int py, float maxDist) {
     const auto* p = currentParse(a);
     float best = maxDist * maxDist;
-    int selected = -1;
-    int selectedPoi = -1;
+    gtasa::MarkerIdentity nearest{};
     if (p) {
         for (std::size_t i = 0; i < p->objects.size(); ++i) {
             const auto& c = p->objects[i];
@@ -548,7 +568,7 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
             const float dx = static_cast<float>(sx - px);
             const float dy = static_cast<float>(sy - py);
             const float d2 = dx * dx + dy * dy;
-            if (d2 <= best) { best = d2; selected = static_cast<int>(i); selectedPoi = -1; }
+            if (d2 <= best) { best = d2; nearest = gtasa::collectibleMarker(static_cast<int>(i)); }
         }
     }
     if (a.config.showPoi) {
@@ -559,19 +579,19 @@ void selectNearest(AppState& a, int px, int py, float maxDist) {
             if (!isMarkerInteractable(a, *poi, &sx, &sy)) continue;
             const float dx = static_cast<float>(sx - px), dy = static_cast<float>(sy - py);
             const float d2 = dx * dx + dy * dy;
-            if (d2 <= best) { best = d2; selected = -1; selectedPoi = static_cast<int>(i); }
+            if (d2 <= best) { best = d2; nearest = gtasa::poiMarker(static_cast<int>(i)); }
         }
     }
-    a.selected = selected;
-    a.selectedPoi = selectedPoi;
+    a.selectedMarker = nearest;
 }
 
 bool selectedMarkerScreen(const AppState& a, int& x, int& y) {
     const auto* parsed = currentParse(a);
-    if (parsed && a.selected >= 0 && a.selected < static_cast<int>(parsed->objects.size())) {
-        return isMarkerInteractable(a, parsed->objects[static_cast<std::size_t>(a.selected)], &x, &y);
+    const int collectibleIndex = selectedCollectibleIndex(a);
+    if (parsed && collectibleIndex >= 0 && collectibleIndex < static_cast<int>(parsed->objects.size())) {
+        return isMarkerInteractable(a, parsed->objects[static_cast<std::size_t>(collectibleIndex)], &x, &y);
     }
-    if (const auto* poi = a.selectedPoi >= 0 ? gtasa::poiInfo(static_cast<std::size_t>(a.selectedPoi)) : nullptr) {
+    if (const auto* poi = selectedPoiIndex(a) >= 0 ? gtasa::poiInfo(static_cast<std::size_t>(selectedPoiIndex(a))) : nullptr) {
         return isMarkerInteractable(a, *poi, &x, &y);
     }
     return false;
@@ -598,15 +618,15 @@ bool cycleOverlappingMarkers(AppState& a, int direction) {
         int x = 0, y = 0;
         if (isMarkerInteractable(a, *poi, &x, &y)) points.push_back({-static_cast<int>(i) - 1, static_cast<float>(x), static_cast<float>(y)});
     }
-    const int current = a.selected >= 0 ? a.selected + 1 : (a.selectedPoi >= 0 ? -a.selectedPoi - 1 : 0);
+    const int current = selectedCollectibleIndex(a) >= 0 ? selectedCollectibleIndex(a) + 1
+        : (selectedPoiIndex(a) >= 0 ? -selectedPoiIndex(a) - 1 : 0);
     int next = 0;
     if (!gtasa::cycleOverlappingMarker(points, current, direction, kOverlapGroupRadius, next)) return false;
-    a.selected = next > 0 ? next - 1 : -1;
-    a.selectedPoi = next < 0 ? -next - 1 : -1;
-    if (const auto* parsedAgain = currentParse(a); parsedAgain && a.selected >= 0) {
-        const auto& item = parsedAgain->objects[static_cast<std::size_t>(a.selected)];
+    a.selectedMarker = next > 0 ? gtasa::collectibleMarker(next - 1) : gtasa::poiMarker(-next - 1);
+    if (const auto* parsedAgain = currentParse(a); parsedAgain && selectedCollectibleIndex(a) >= 0) {
+        const auto& item = parsedAgain->objects[static_cast<std::size_t>(selectedCollectibleIndex(a))];
         a.cursorX = item.x; a.cursorY = item.y;
-    } else if (const auto* poi = a.selectedPoi >= 0 ? gtasa::poiInfo(static_cast<std::size_t>(a.selectedPoi)) : nullptr) {
+    } else if (const auto* poi = selectedPoiIndex(a) >= 0 ? gtasa::poiInfo(static_cast<std::size_t>(selectedPoiIndex(a))) : nullptr) {
         a.cursorX = poi->x; a.cursorY = poi->y;
     }
     return true;
@@ -636,7 +656,7 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
             int sx = 0, sy = 0;
             if (!isMarkerInteractable(a, c, &sx, &sy)) continue;
             const int iconSize = gtasa::collectibleIconSize(a.zoom);
-            const bool selected = static_cast<int>(i) == a.selected;
+            const bool selected = static_cast<int>(i) == selectedCollectibleIndex(a);
             const int selectedSize = selected ? static_cast<int>(std::lround(iconSize * 1.18f)) : iconSize;
             const Uint8 alpha = selected ? 255 : (c.completed ? 135 : 255);
             drawCollectibleIcon(r, a.icons, sx, sy, c.type, selectedSize, alpha);
@@ -648,9 +668,9 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
         if (!poi) continue;
         int sx = 0, sy = 0;
         if (!isMarkerInteractable(a, *poi, &sx, &sy)) continue;
-        const bool selected = static_cast<int>(i) == a.selectedPoi;
+        const bool selected = static_cast<int>(i) == selectedPoiIndex(a);
         const int baseIconSize = gtasa::poiMarkerSize(a.zoom);
-        const int iconSize = selected ? static_cast<int>(std::lround(baseIconSize * 1.15f)) : baseIconSize;
+        const int iconSize = selected ? static_cast<int>(std::lround(baseIconSize * 1.12f)) : baseIconSize;
         drawPoiIcon(r, a.poiIcon, sx, sy, iconSize, selected);
     }
 
@@ -672,12 +692,14 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
 
 const gtasa::CollectibleInfo* selectedInfo(const AppState& a) {
     const auto* parsed = currentParse(a);
-    if (!parsed || a.selected < 0 || a.selected >= static_cast<int>(parsed->objects.size())) return nullptr;
-    return collectibleInfoForView(parsed->objects[static_cast<std::size_t>(a.selected)]);
+    const int index = selectedCollectibleIndex(a);
+    if (!parsed || index < 0 || index >= static_cast<int>(parsed->objects.size())) return nullptr;
+    return collectibleInfoForView(parsed->objects[static_cast<std::size_t>(index)]);
 }
 
 const gtasa::PoiInfo* selectedPoiInfo(const AppState& a) {
-    return a.selectedPoi >= 0 ? gtasa::poiInfo(static_cast<std::size_t>(a.selectedPoi)) : nullptr;
+    const int index = selectedPoiIndex(a);
+    return index >= 0 ? gtasa::poiInfo(static_cast<std::size_t>(index)) : nullptr;
 }
 
 void openDetails(AppState& a, SDL_Renderer* renderer) {
@@ -704,8 +726,9 @@ void openDetails(AppState& a, SDL_Renderer* renderer) {
 
 void centerSelectedIfNeeded(AppState& a) {
     const auto* parsed = currentParse(a);
-    if (!parsed || a.selected < 0 || a.selected >= static_cast<int>(parsed->objects.size())) return;
-    const auto& item = parsed->objects[static_cast<std::size_t>(a.selected)];
+    const int index = selectedCollectibleIndex(a);
+    if (!parsed || index < 0 || index >= static_cast<int>(parsed->objects.size())) return;
+    const auto& item = parsed->objects[static_cast<std::size_t>(index)];
     // L3/R3 selection and ordinary cursor-follow share this same world-space
     // zone. A point inside it moves only the cursor; an outside point recentres.
     gtasa::CameraCenter camera{a.centerX, a.centerY};
@@ -720,12 +743,11 @@ void selectAdjacent(AppState& a, int direction, SDL_Renderer* renderer) {
     const auto* parsed = currentParse(a);
     if (!parsed || parsed->objects.empty()) return;
     const int n = static_cast<int>(parsed->objects.size());
-    const int index = gtasa::nextVisibleMarkerIndex(a.selected, n, direction, [&](int candidate) {
+    const int index = gtasa::nextVisibleMarkerIndex(selectedCollectibleIndex(a), n, direction, [&](int candidate) {
         return isMarkerEnabled(a, parsed->objects[static_cast<std::size_t>(candidate)]);
     });
     if (index < 0) return;
-    a.selected = index;
-    a.selectedPoi = -1;
+    selectCollectible(a, index);
     centerSelectedIfNeeded(a);
     if (a.detailOpen) openDetails(a, renderer);
 }
@@ -740,8 +762,7 @@ void selectNearestMissing(AppState& a) {
                          "No missing collectibles match active filters");
         return;
     }
-    a.selected = index;
-    a.selectedPoi = -1;
+    selectCollectible(a, index);
     centerSelectedIfNeeded(a);
     a.status = tr(a, "Выбран ближайший ненайденный объект", "Nearest missing collectible selected");
 }
@@ -758,6 +779,7 @@ gtasa::OverlayCloseArea activeOverlayCloseArea(const AppState& a) {
     if (a.detailOpen) return gtasa::overlayCloseAreaInBounds(66, 38, 1148);
     if (a.listOpen) return gtasa::overlayCloseAreaInBounds(80, 22, 1120);
     if (a.legendOpen) return gtasa::overlayCloseAreaInBounds(120, 24, 760);
+    if (a.progressOpen) return gtasa::overlayCloseAreaInBounds(86, 62, 1108);
     return {};
 }
 
@@ -769,7 +791,7 @@ void drawOverlayClose(SDL_Renderer* r, TextRenderer& text, const gtasa::OverlayC
 }
 
 void closeActiveOverlay(AppState& a) {
-    switch (gtasa::activeOverlay(a.legendOpen, a.listOpen, a.detailOpen)) {
+    switch (gtasa::activeOverlay(a.legendOpen, a.listOpen, a.detailOpen, a.progressOpen)) {
         case gtasa::OverlayKind::Details:
             a.detailOpen = false;
             a.media.unload();
@@ -777,8 +799,55 @@ void closeActiveOverlay(AppState& a) {
             break;
         case gtasa::OverlayKind::ObjectList: a.listOpen = false; break;
         case gtasa::OverlayKind::Filters: a.legendOpen = false; break;
+        case gtasa::OverlayKind::RegionProgress: a.progressOpen = false; break;
         case gtasa::OverlayKind::None: break;
     }
+}
+
+void drawRegionProgressOverlay(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
+    if (!a.progressOpen) return;
+    const SDL_Rect card{86, 62, 1108, 596};
+    fill(r, SDL_Rect{0, 0, kScreenW, kScreenH}, SDL_Color{7, 10, 13, 244});
+    fill(r, card, kColors.bg);
+    SDL_SetRenderDrawColor(r, 95, 105, 115, 255);
+    SDL_RenderDrawRect(r, &card);
+    drawOverlayClose(r, text, activeOverlayCloseArea(a));
+    text.draw(tr(a, "Прогресс по регионам", "Regional progress"), 126, 100, 29, kColors.text);
+    text.draw(tr(a, "Завершено / всего для каждого типа collectibles", "Completed / total for each collectible type"),
+              126, 139, 16, kColors.muted, 800);
+
+    const std::array<int, 5> columns{{402, 532, 662, 792, 922}};
+    const std::array<const char*, 5> shortRu{{"Граффити", "Снимки", "Подковы", "Устрицы", "Прыжки"}};
+    const std::array<const char*, 5> shortEn{{"Tags", "Photos", "Horseshoes", "Oysters", "Jumps"}};
+    text.draw(tr(a, "Регион", "Region"), 126, 198, 18, kColors.text);
+    for (int type = 0; type < static_cast<int>(gtasa::CollectibleType::Count); ++type) {
+        drawCollectibleIcon(r, a.icons, columns[static_cast<std::size_t>(type)], 204,
+                            static_cast<gtasa::CollectibleType>(type), 24);
+        text.draw(isRu(a) ? shortRu[static_cast<std::size_t>(type)] : shortEn[static_cast<std::size_t>(type)],
+                  columns[static_cast<std::size_t>(type)], 226, 14, kColors.muted, 104, true);
+    }
+    text.draw(tr(a, "Итого", "Total"), 1050, 198, 18, kColors.text, 105, true);
+    line(r, 122, 257, 1158, 257, kColors.gridMajor);
+    int y = 278;
+    for (std::size_t region = 0; region < gtasa::kSanAndreasRegionCount; ++region) {
+        const auto regionId = static_cast<gtasa::SanAndreasRegion>(region);
+        text.draw(gtasa::sanAndreasRegionName(regionId, isRu(a)), 126, y, 19, kColors.text, 245);
+        int completed = 0, total = 0;
+        for (int type = 0; type < static_cast<int>(gtasa::CollectibleType::Count); ++type) {
+            const auto& cell = a.progressMatrix[region][static_cast<std::size_t>(type)];
+            completed += cell.completed;
+            total += cell.total;
+            std::ostringstream value;
+            value << cell.completed << '/' << cell.total;
+            text.draw(value.str(), columns[static_cast<std::size_t>(type)], y, 19, kColors.muted, 96, true);
+        }
+        std::ostringstream totalValue;
+        totalValue << completed << '/' << total;
+        text.draw(totalValue.str(), 1050, y, 20, kColors.accent, 105, true);
+        y += 62;
+        line(r, 122, y - 13, 1158, y - 13, kColors.grid);
+    }
+    text.draw(tr(a, "B — назад", "B — back"), 1010, 615, 15, kColors.text, 140);
 }
 
 void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
@@ -809,8 +878,9 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     }
     const auto* parsed = currentParse(a);
     const auto* info = selectedInfo(a);
-    if (!parsed || !info || a.selected < 0) return;
-    const auto& item = parsed->objects[static_cast<std::size_t>(a.selected)];
+    const int selectedIndex = selectedCollectibleIndex(a);
+    if (!parsed || !info || selectedIndex < 0) return;
+    const auto& item = parsed->objects[static_cast<std::size_t>(selectedIndex)];
     fill(r, SDL_Rect{0, 0, kScreenW, kScreenH}, SDL_Color{7, 10, 13, 244});
     SDL_Rect card{66, 38, 1148, 644};
     fill(r, card, kColors.bg);
@@ -877,7 +947,12 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         }
 
         y += 8;
-        text.draw(tr(a, "Прогресс по регионам", "Regional progress"), 980, y, 15, kColors.text, 285);
+        text.draw(tr(a, "Прогресс по регионам", "Regional progress"), 980, y, 15, kColors.text, 160);
+        const SDL_Rect progressButton = regionProgressButtonRect();
+        fill(r, progressButton, SDL_Color{45, 53, 61, 255});
+        SDL_SetRenderDrawColor(r, 95, 105, 115, 255);
+        SDL_RenderDrawRect(r, &progressButton);
+        text.draw(tr(a, "Таблица", "Table"), progressButton.x + 12, progressButton.y + 10, 13, kColors.accent);
         y += 18;
         for (std::size_t i = 0; i < gtasa::kSanAndreasRegionCount; ++i) {
             const auto& stats = a.regionProgress[i];
@@ -888,31 +963,10 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
             text.draw(row.str(), 980, y, 13, kColors.muted, 285);
             y += 16;
         }
-        // The detailed matrix stays readable by giving every type a fixed
-        // column with an icon header instead of compressing five ratios into
-        // an unlabelled sentence.
-        text.draw(tr(a, "Район     T    S    H    O    J", "Region     T    S    H    O    J"),
-                  980, y, 11, kColors.text, 285);
-        const std::array<int, 5> matrixIconX{{1054, 1085, 1116, 1147, 1178}};
-        for (int type = 0; type < static_cast<int>(gtasa::CollectibleType::Count); ++type)
-            drawCollectibleIcon(r, a.icons, matrixIconX[static_cast<std::size_t>(type)], y + 6,
-                                static_cast<gtasa::CollectibleType>(type), 12);
-        y += 15;
-        for (std::size_t region = 0; region < gtasa::kSanAndreasRegionCount; ++region) {
-            std::ostringstream row;
-            const std::string name = gtasa::sanAndreasRegionName(
-                static_cast<gtasa::SanAndreasRegion>(region), isRu(a));
-            row << (name.size() > 11 ? name.substr(0, 11) : name) << " ";
-            for (std::size_t type = 0; type < static_cast<std::size_t>(gtasa::CollectibleType::Count); ++type) {
-                if (type) row << "  ";
-                row << a.progressMatrix[region][type].completed << '/' << a.progressMatrix[region][type].total;
-            }
-            text.draw(row.str(), 980, y, 11, kColors.muted, 285);
-            y += 14;
-        }
-        y += 6;
-        if (a.selected >= 0 && a.selected < static_cast<int>(p->objects.size())) {
-            const auto& c = p->objects[a.selected];
+        y += 8;
+        const int selectedIndex = selectedCollectibleIndex(a);
+        if (selectedIndex >= 0 && selectedIndex < static_cast<int>(p->objects.size())) {
+            const auto& c = p->objects[static_cast<std::size_t>(selectedIndex)];
             const auto* info = collectibleInfoForView(c);
             const std::string id = info ? std::to_string(info->canonicalId) : "?";
             text.draw(typeName(a, c.type) + " #" + id, 980, y, 20, typeColor(c.type));
@@ -935,7 +989,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
 
     // This lower block is deliberately reserved: dynamic selected-object
     // content above it can never run into the controls.
-    const int cy = 548;
+    const int cy = 505;
     text.draw(tr(a, "Управление", "Controls"), 980, cy, 18, kColors.text);
     text.draw(tr(a, "Стик / touch — карта", "Stick / touch — map"), 980, cy + 24, 13, kColors.muted, 285);
     text.draw(tr(a, "L/R / щипок — масштаб", "L/R / pinch — zoom"), 980, cy + 41, 13, kColors.muted, 285);
@@ -946,7 +1000,8 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     text.draw(tr(a, "Y — карты; ZR+Y — избранное", "Y — maps; ZR+Y — favorite"), 980, cy + 126, 13, kColors.muted, 285);
     text.draw(tr(a, "ZL+L3/R3 — группа", "ZL+L3/R3 — group"), 980, cy + 143, 13, kColors.muted, 285);
     text.draw(tr(a, "ZR+R3 / 2 пальца — панель", "ZR+R3 / 2 fingers — panel"), 980, cy + 160, 13, kColors.muted, 285);
-    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 177, 13, kColors.muted, 285);
+    text.draw(tr(a, "ZR+− — прогресс регионов", "ZR+− — regional progress"), 980, cy + 177, 13, kColors.muted, 285);
+    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 194, 13, kColors.muted, 285);
 }
 
 void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
@@ -1130,8 +1185,7 @@ void loadSaves(AppState& a, bool forceProfile) {
     a.parsed.clear();
     a.regionProgress = {};
     a.progressMatrix = {};
-    a.selected = -1;
-    a.selectedPoi = -1;
+    clearSelectedMarker(a);
     a.discovery = a.platform.discoverSaves(a.config, forceProfile);
     if (!a.discovery.ok) {
         a.status = a.discovery.error;
@@ -1183,8 +1237,7 @@ void switchSlot(AppState& a, int delta) {
     if (a.parsed.empty()) return;
     const int n = static_cast<int>(a.parsed.size());
     a.saveIndex = (a.saveIndex + delta + n) % n;
-    a.selected = -1;
-    a.selectedPoi = -1;
+    clearSelectedMarker(a);
     refreshRegionProgress(a);
     if (a.validSaves[a.saveIndex].slot > 0) {
         a.config.preferredSlot = a.validSaves[a.saveIndex].slot;
@@ -1244,11 +1297,18 @@ int main(int, char**) {
             if (event.type == SDL_FINGERDOWN) {
                 const int x = static_cast<int>(event.tfinger.x * kScreenW);
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
-                if (gtasa::activeOverlay(app.legendOpen, app.listOpen, app.detailOpen) != gtasa::OverlayKind::None) {
+                if (gtasa::activeOverlay(app.legendOpen, app.listOpen, app.detailOpen, app.progressOpen) != gtasa::OverlayKind::None) {
                     if (gtasa::hitsOverlayClose(activeOverlayCloseArea(app), x, y)) {
                         overlayCloseTouchId = event.tfinger.fingerId;
                         closeActiveOverlay(app);
                     }
+                    continue;
+                }
+                const SDL_Rect progressTouch{1136, 294, 136, 50};
+                if (app.showPanel && x >= progressTouch.x && x < progressTouch.x + progressTouch.w &&
+                    y >= progressTouch.y && y < progressTouch.y + progressTouch.h) {
+                    app.progressOpen = true;
+                    overlayCloseTouchId = event.tfinger.fingerId;
                     continue;
                 }
                 if (insideMap(app, x, y)) {
@@ -1256,7 +1316,7 @@ int main(int, char**) {
                 }
             }
             if (event.type == SDL_FINGERMOTION && event.tfinger.fingerId != overlayCloseTouchId &&
-                !app.legendOpen && !app.listOpen && !app.detailOpen) {
+                !app.legendOpen && !app.listOpen && !app.detailOpen && !app.progressOpen) {
                 const SDL_FPoint point{event.tfinger.x * kScreenW, event.tfinger.y * kScreenH};
                 const auto motion = touchGesture.move(event.tfinger.fingerId, point.x, point.y);
                 if (motion.kind == gtasa::TouchMotion::Kind::Pan && (motion.x != 0.0f || motion.y != 0.0f)) {
@@ -1282,15 +1342,15 @@ int main(int, char**) {
                 const int y = static_cast<int>(event.tfinger.y * kScreenH);
                 const auto ended = touchGesture.end(event.tfinger.fingerId);
                 const bool singleTap = ended.singleTap;
-                if (singleTap && !app.legendOpen && !app.listOpen && !app.detailOpen && insideMap(app, x, y)) {
+                if (singleTap && !app.legendOpen && !app.listOpen && !app.detailOpen && !app.progressOpen && insideMap(app, x, y)) {
                     const Uint32 now = SDL_GetTicks();
                     const int dx = x - lastTapX, dy = y - lastTapY;
-                    const int previous = app.selected;
-                    const int previousPoi = app.selectedPoi;
+                    const auto previous = app.selectedMarker;
                     const bool selectedHit = selectedMarkerHit(app, x, y, kTouchHitRadius);
                     if (!selectedHit) selectNearest(app, x, y, kTouchHitRadius);
-                    const bool hitMarker = app.selected >= 0 || app.selectedPoi >= 0;
-                    if (selectedHit || (hitMarker && (app.selected == previous || app.selectedPoi == previousPoi))) {
+                    const auto hit = app.selectedMarker;
+                    const bool hitMarker = gtasa::hasMarker(hit);
+                    if (gtasa::markerTapAction(previous, hit) == gtasa::MarkerTapAction::OpenDetails) {
                         // A repeated touch on an already selected marker always
                         // opens its card, including when nearby markers overlap.
                         openDetails(app, renderer);
@@ -1299,7 +1359,7 @@ int main(int, char**) {
                                now - lastTapTime <= 350 && dx * dx + dy * dy <= 900) {
                         // Reserve double-tap reset for genuinely empty map space.
                         app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.cameraOwner = gtasa::CameraOwner::Cursor; app.zoom = 1.0f;
-                        app.selected = -1; app.selectedPoi = -1; lastTapTime = 0;
+                        clearSelectedMarker(app); lastTapTime = 0;
                     } else {
                         lastTapTime = now;
                         lastTapX = x;
@@ -1317,7 +1377,9 @@ int main(int, char**) {
 
         if (down & HidNpadButton_Plus) running = false;
         const bool groupModifier = (held & HidNpadButton_ZL) != 0;
-        if (app.detailOpen) {
+        if (app.progressOpen) {
+            if (down & HidNpadButton_B) closeActiveOverlay(app);
+        } else if (app.detailOpen) {
             if (down & HidNpadButton_B) closeActiveOverlay(app);
             if ((down & HidNpadButton_Y) && (held & HidNpadButton_ZR)) toggleSelectedFavorite(app);
             if (down & HidNpadButton_Up) app.detailScroll = std::max(0, app.detailScroll - 20);
@@ -1381,32 +1443,31 @@ int main(int, char**) {
                     const auto region = static_cast<std::size_t>(app.legendIndex - kRegionFirstRow);
                     app.config.regionFilters[region] = !app.config.regionFilters[region];
                     app.platform.saveConfig(app.config);
-                    app.selected = -1;
-                    app.selectedPoi = -1;
+                    clearSelectedMarker(app);
                 }
                 else if (app.legendIndex == kPoiRow) {
                     app.config.showPoi = !app.config.showPoi;
                     app.platform.saveConfig(app.config);
-                    if (!app.config.showPoi) app.selectedPoi = -1;
+                    if (!app.config.showPoi && selectedPoiIndex(app) >= 0) clearSelectedMarker(app);
                 } else if (app.legendIndex >= kPoiCategoryFirstRow && app.legendIndex < kModeRow) {
                     const auto category = static_cast<std::size_t>(app.legendIndex - kPoiCategoryFirstRow);
                     app.config.poiCategoryFilters[category] = !app.config.poiCategoryFilters[category];
                     app.platform.saveConfig(app.config);
-                    if (app.selectedPoi >= 0) {
-                        const auto* poi = gtasa::poiInfo(static_cast<std::size_t>(app.selectedPoi));
-                        if (!poi || !isMarkerEnabled(app, *poi)) app.selectedPoi = -1;
+                    if (selectedPoiIndex(app) >= 0) {
+                        const auto* poi = gtasa::poiInfo(static_cast<std::size_t>(selectedPoiIndex(app)));
+                        if (!poi || !isMarkerEnabled(app, *poi)) clearSelectedMarker(app);
                     }
                 } else {
                     app.config.collectibleViewMode = (app.config.collectibleViewMode + 1) % 3;
-                    app.selected = -1;
-                    app.selectedPoi = -1;
+                    clearSelectedMarker(app);
                     app.platform.saveConfig(app.config);
                 }
             }
         } else {
             if ((down & HidNpadButton_X) && !(held & HidNpadButton_ZR)) app.legendOpen = true;
             if ((down & HidNpadButton_X) && (held & HidNpadButton_ZR)) { app.listOpen = true; app.listIndex = 0; }
-            if (down & HidNpadButton_Minus) loadSaves(app, true);
+            if ((down & HidNpadButton_Minus) && (held & HidNpadButton_ZR)) app.progressOpen = true;
+            else if (down & HidNpadButton_Minus) loadSaves(app, true);
             if (down & HidNpadButton_Up) app.mapTexture.cycle(renderer, -1, app.status);
             if (down & HidNpadButton_Down) app.mapTexture.cycle(renderer, 1, app.status);
             if (down & HidNpadButton_Left) switchSlot(app, -1);
@@ -1418,7 +1479,7 @@ int main(int, char**) {
                 else navigateMarker(app, 1, gtasa::shouldCycleOverlap(false, groupModifier, true), renderer);
             }
             if ((down & HidNpadButton_Y) && !(held & HidNpadButton_ZR)) {
-                app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.cameraOwner = gtasa::CameraOwner::Cursor; app.zoom = 1.0f; app.selected = -1; app.selectedPoi = -1;
+                app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.cameraOwner = gtasa::CameraOwner::Cursor; app.zoom = 1.0f; clearSelectedMarker(app);
                 if (!app.mapTexture.discoverAndLoad(renderer, app.mapTexture.currentId(), app.status)) {
                     app.mapTexture.loadFallback(renderer, app.status);
                 }
@@ -1429,15 +1490,14 @@ int main(int, char**) {
                     selectNearestMissing(app);
                 } else {
                 const auto [cursorX, cursorY] = collectibleToScreen(app, app.cursorX, app.cursorY);
-                const int previous = app.selected;
-                const int previousPoi = app.selectedPoi;
+                const auto previous = app.selectedMarker;
                 const bool selectedHit = selectedMarkerHit(app, cursorX, cursorY, kControllerHitRadius);
                 if (!selectedHit) selectNearest(app, cursorX, cursorY, kControllerHitRadius);
-                if (selectedHit || (app.selected >= 0 && app.selected == previous) ||
-                    (app.selectedPoi >= 0 && app.selectedPoi == previousPoi)) openDetails(app, renderer);
+                if (gtasa::markerTapAction(previous, app.selectedMarker) == gtasa::MarkerTapAction::OpenDetails)
+                    openDetails(app, renderer);
                 }
             }
-            if (down & HidNpadButton_B) { app.selected = -1; app.selectedPoi = -1; }
+            if (down & HidNpadButton_B) clearSelectedMarker(app);
 
             const float cursorSpeed = 16.0f / app.zoom;
             bool cursorMoved = false;
@@ -1463,6 +1523,7 @@ int main(int, char**) {
         drawLegend(renderer, text, app);
         drawObjectList(renderer, text, app);
         drawDetails(renderer, text, app);
+        drawRegionProgressOverlay(renderer, text, app);
         SDL_RenderPresent(renderer);
     }
 
