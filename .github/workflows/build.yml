@@ -99,6 +99,8 @@ jobs:
           ./filters-ui-tests
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude tests/screens_tests.cpp source/FiltersUi.cpp source/FiltersScreen.cpp source/RouteNavigation.cpp source/ObjectListScreen.cpp -o screens-tests
           ./screens-tests
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude tests/ui_layout_tests.cpp -o ui-layout-tests
+          ./ui-layout-tests
 
   host-sanitizers:
     runs-on: ubuntu-latest
@@ -150,6 +152,8 @@ jobs:
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./filters-ui-sanitized
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude tests/screens_tests.cpp source/FiltersUi.cpp source/FiltersScreen.cpp source/RouteNavigation.cpp source/ObjectListScreen.cpp -o screens-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./screens-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude tests/ui_layout_tests.cpp -o ui-layout-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./ui-layout-sanitized
 
   switch-build:
     runs-on: ubuntu-latest

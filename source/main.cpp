@@ -26,6 +26,7 @@
 #include "RouteNavigation.hpp"
 #include "SaveParser.hpp"
 #include "TouchGesture.hpp"
+#include "UiLayout.hpp"
 
 #include <SDL.h>
 #include <SDL_ttf.h>
@@ -43,11 +44,11 @@
 
 namespace {
 
-constexpr int kScreenW = 1280;
-constexpr int kScreenH = 720;
-constexpr SDL_Rect kMapRectWithPanel{0, 0, 955, 720};
+constexpr int kScreenW = gtasa::kUiScreenWidth;
+constexpr int kScreenH = gtasa::kUiScreenHeight;
+constexpr SDL_Rect kMapRectWithPanel{0, 0, kScreenW - gtasa::kUiPanelWidth, kScreenH};
 constexpr SDL_Rect kMapRectFull{0, 0, kScreenW, kScreenH};
-constexpr SDL_Rect kPanelRect{955, 0, 325, 720};
+constexpr SDL_Rect kPanelRect{kScreenW - gtasa::kUiPanelWidth, 0, gtasa::kUiPanelWidth, kScreenH};
 constexpr float kWorldHalf = 3000.0f;
 constexpr float kTouchHitRadius = 48.0f;
 constexpr float kControllerHitRadius = 32.0f;
@@ -131,6 +132,30 @@ public:
         int w = 0, h = 0;
         TTF_SizeUTF8(font, text.c_str(), &w, &h);
         return w;
+    }
+
+    int height(const std::string& value, int size, int maxWidth = 0) {
+        TTF_Font* font = getFont(size);
+        if (!font || value.empty()) return 0;
+        const SDL_Color measureColor{255, 255, 255, 255};
+        SDL_Surface* surface = maxWidth > 0
+            ? TTF_RenderUTF8_Blended_Wrapped(font, value.c_str(), measureColor, static_cast<Uint32>(maxWidth))
+            : TTF_RenderUTF8_Blended(font, value.c_str(), measureColor);
+        if (!surface) return 0;
+        const int result = surface->h;
+        SDL_FreeSurface(surface);
+        return result;
+    }
+
+    std::string ellipsize(std::string value, int size, int maxWidth) {
+        if (maxWidth <= 0 || width(value, size) <= maxWidth) return value;
+        const std::string suffix = "…";
+        while (!value.empty()) {
+            value.pop_back();
+            while (!value.empty() && (static_cast<unsigned char>(value.back()) & 0xc0) == 0x80) value.pop_back();
+            if (width(value + suffix, size) <= maxWidth) return value + suffix;
+        }
+        return suffix;
     }
 
 private:
@@ -304,7 +329,11 @@ bool insideMap(const AppState& a, int x, int y) {
     return x >= rect.x && x < rect.x + rect.w && y >= rect.y && y < rect.y + rect.h;
 }
 
-SDL_Rect regionProgressButtonRect() { return SDL_Rect{1148, 298, 112, 42}; }
+SDL_Rect regionProgressButtonRect() {
+    // The rendered button's Y is calculated from measured text in drawPanel;
+    // this is its deliberately generous touch target around that stable block.
+    return SDL_Rect{kPanelRect.x + kPanelRect.w - gtasa::kUiPanelPaddingX - 96, 286, 104, 76};
+}
 
 std::pair<int, int> worldToScreen(const AppState& a, float x, float y) {
     const auto rect = mapContentRect(a);
@@ -648,30 +677,48 @@ void drawMap(SDL_Renderer* r, const AppState& a) {
             line(r, xx1, yy1, xx2, yy2, c);
         }
     }
+    // Kept off by default: map packs vary substantially in brightness.  This
+    // is the single presentation hook for a future user-facing dim setting.
+    constexpr Uint8 kMarkerDimmingAlpha = 0;
+    if (kMarkerDimmingAlpha) fill(r, mapContentRect(a), SDL_Color{8, 12, 16, kMarkerDimmingAlpha});
 
     const auto* p = currentParse(a);
     if (p) {
         for (std::size_t i = 0; i < p->objects.size(); ++i) {
             const auto& c = p->objects[i];
+            if (static_cast<int>(i) == selectedCollectibleIndex(a)) continue;
             int sx = 0, sy = 0;
             if (!isMarkerInteractable(a, c, &sx, &sy)) continue;
             const int iconSize = gtasa::collectibleIconSize(a.zoom);
-            const bool selected = static_cast<int>(i) == selectedCollectibleIndex(a);
-            const int selectedSize = selected ? static_cast<int>(std::lround(iconSize * 1.18f)) : iconSize;
-            const Uint8 alpha = selected ? 255 : (c.completed ? 135 : 255);
-            drawCollectibleIcon(r, a.icons, sx, sy, c.type, selectedSize, alpha);
-            if (selected) drawIconRing(r, sx, sy, selectedSize / 2 + 2, kColors.selected);
+            drawCollectibleIcon(r, a.icons, sx, sy, c.type, iconSize, c.completed ? 135 : 255);
         }
     }
     for (std::size_t i = 0; a.config.showPoi && i < gtasa::poiInfoCount(); ++i) {
         const auto* poi = gtasa::poiInfo(i);
+        if (static_cast<int>(i) == selectedPoiIndex(a)) continue;
         if (!poi) continue;
         int sx = 0, sy = 0;
         if (!isMarkerInteractable(a, *poi, &sx, &sy)) continue;
-        const bool selected = static_cast<int>(i) == selectedPoiIndex(a);
-        const int baseIconSize = gtasa::poiMarkerSize(a.zoom);
-        const int iconSize = selected ? static_cast<int>(std::lround(baseIconSize * 1.12f)) : baseIconSize;
-        drawPoiIcon(r, a.poiIcon, sx, sy, iconSize, selected);
+        drawPoiIcon(r, a.poiIcon, sx, sy, gtasa::poiMarkerSize(a.zoom));
+    }
+    // Draw the identity-selected marker in a dedicated final pass.  It stays
+    // above a mixed collectible/POI overlap group without changing hitboxes.
+    if (p && selectedCollectibleIndex(a) >= 0 && selectedCollectibleIndex(a) < static_cast<int>(p->objects.size())) {
+        const auto& c = p->objects[static_cast<std::size_t>(selectedCollectibleIndex(a))];
+        int sx = 0, sy = 0;
+        if (isMarkerInteractable(a, c, &sx, &sy)) {
+            const int size = static_cast<int>(std::lround(gtasa::collectibleIconSize(a.zoom) * 1.18f));
+            drawCollectibleIcon(r, a.icons, sx, sy, c.type, size, 255);
+            drawIconRing(r, sx, sy, size / 2 + 2, kColors.selected);
+        }
+    }
+    if (selectedPoiIndex(a) >= 0) {
+        const auto* poi = gtasa::poiInfo(static_cast<std::size_t>(selectedPoiIndex(a)));
+        int sx = 0, sy = 0;
+        if (poi && isMarkerInteractable(a, *poi, &sx, &sy)) {
+            const int size = static_cast<int>(std::lround(gtasa::poiMarkerSize(a.zoom) * 1.12f));
+            drawPoiIcon(r, a.poiIcon, sx, sy, size, true);
+        }
     }
 
     // Controller cursor lives in world space, so it uses the exact same
@@ -824,7 +871,7 @@ void drawRegionProgressOverlay(SDL_Renderer* r, TextRenderer& text, const AppSta
         drawCollectibleIcon(r, a.icons, columns[static_cast<std::size_t>(type)], 204,
                             static_cast<gtasa::CollectibleType>(type), 24);
         text.draw(isRu(a) ? shortRu[static_cast<std::size_t>(type)] : shortEn[static_cast<std::size_t>(type)],
-                  columns[static_cast<std::size_t>(type)], 226, 14, kColors.muted, 104, true);
+                  columns[static_cast<std::size_t>(type)], 226, 14, SDL_Color{205, 214, 222, 255}, 104, true);
     }
     text.draw(tr(a, "Итого", "Total"), 1050, 198, 18, kColors.text, 105, true);
     line(r, 122, 257, 1158, 257, kColors.gridMajor);
@@ -837,9 +884,9 @@ void drawRegionProgressOverlay(SDL_Renderer* r, TextRenderer& text, const AppSta
             const auto& cell = a.progressMatrix[region][static_cast<std::size_t>(type)];
             completed += cell.completed;
             total += cell.total;
-            std::ostringstream value;
-            value << cell.completed << '/' << cell.total;
-            text.draw(value.str(), columns[static_cast<std::size_t>(type)], y, 19, kColors.muted, 96, true);
+            const std::string value = cell.total == 0 ? "—" : std::to_string(cell.completed) + "/" + std::to_string(cell.total);
+            text.draw(value, columns[static_cast<std::size_t>(type)], y, 19,
+                      cell.total == 0 ? kColors.gridMajor : kColors.muted, 96, true);
         }
         std::ostringstream totalValue;
         totalValue << completed << '/' << total;
@@ -872,8 +919,9 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         SDL_RenderSetClipRect(r, &textClip);
         text.draw(isRu(a) ? poi->descriptionRu : poi->descriptionEn, 112, 474 - a.detailScroll, 19, kColors.text, 1040);
         SDL_RenderSetClipRect(r, nullptr);
-        text.draw(gtasa::formatMapCoordinates(poi->x, poi->y, poi->z, !poi->representative), 112, 615, 15, kColors.muted);
-        text.draw(tr(a, "B — назад    ↑/↓ — текст", "B — back    ↑/↓ — text"), 835, 646, 15, kColors.text, 360);
+        text.draw(tr(a, "Координаты", "Coordinates"), 112, 610, 13, kColors.gridMajor);
+        text.draw(gtasa::formatMapCoordinates(poi->x, poi->y, poi->z, !poi->representative), 112, 628, 14, kColors.muted);
+        text.draw(tr(a, "B — назад    ↑/↓ — текст", "B — back    ↑/↓ — text"), 835, 642, 15, kColors.text, 360);
         return;
     }
     const auto* parsed = currentParse(a);
@@ -909,99 +957,115 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     SDL_RenderSetClipRect(r, &textClip);
     text.draw(description, 112, 474 - a.detailScroll, 19, kColors.text, 1040);
     SDL_RenderSetClipRect(r, nullptr);
-    text.draw(gtasa::formatMapCoordinates(info->x, info->y, info->z), 112, 615, 15, kColors.muted);
+    text.draw(tr(a, "Координаты", "Coordinates"), 112, 610, 13, kColors.gridMajor);
+    text.draw(gtasa::formatMapCoordinates(info->x, info->y, info->z), 112, 628, 14, kColors.muted);
     text.draw(tr(a, "B — назад    ↑/↓ — текст    L3/R3 — объект    ZL+L3/R3 — группа", "B — back    ↑/↓ — text    L3/R3 — item    ZL+L3/R3 — group"),
-              720, 646, 15, kColors.text, 440);
+              720, 642, 15, kColors.text, 440);
 }
 
 void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     if (!a.showPanel) return;
     fill(r, kPanelRect, kColors.bg);
-    text.draw("GTASA Unexplored", 980, 22, 28, kColors.text);
+    const int x = kPanelRect.x + gtasa::kUiPanelPaddingX;
+    const int right = kPanelRect.x + kPanelRect.w - gtasa::kUiPanelPaddingX;
+    const int contentWidth = right - x;
+    text.draw("GTASA Unexplored", x, gtasa::kUiPanelPaddingY, 28, kColors.text);
     text.draw(tr(a, "San Andreas DE • Switch • read-only", "San Andreas DE • Switch • read-only"),
-              980, 58, 15, kColors.muted, 285);
+              x, 58, 15, kColors.muted, contentWidth);
 
     const auto* p = currentParse(a);
     const auto* save = currentSave(a);
     int y = 98;
     if (!p || !save) {
-        text.draw(tr(a, "Сохранение не загружено", "No save loaded"), 980, y, 20, kColors.warning, 285);
-        text.draw(a.status, 980, y + 38, 16, kColors.muted, 285);
+        text.draw(tr(a, "Сохранение не загружено", "No save loaded"), x, y, 20, kColors.warning, contentWidth);
+        text.draw(a.status, x, y + 38, 16, kColors.muted, contentWidth);
     } else {
         std::ostringstream ss;
         ss << tr(a, "Слот: ", "Slot: ") << (save->slot > 0 ? std::to_string(save->slot) : save->displayName);
-        text.draw(ss.str(), 980, y, 19, kColors.text, 285);
-        text.draw(save->fromBackup ? tr(a, "Локальная копия сохранения", "Local save snapshot")
-                                   : tr(a, "Актуальное сохранение", "Live save"),
-                  980, y + 28, 15, save->fromBackup ? kColors.warning : kColors.muted, 285);
-        y += 66;
+        const std::string slotText = ss.str();
+        text.draw(slotText, x, y, 19, kColors.text, contentWidth);
+        const std::string source = save->fromBackup ? tr(a, "Локальная копия сохранения", "Local save snapshot")
+                                                     : tr(a, "Актуальное сохранение", "Live save");
+        const int sourceY = y + text.height(slotText, 19, contentWidth) + 4;
+        text.draw(source, x, sourceY, 15, save->fromBackup ? kColors.warning : kColors.muted, contentWidth);
+        y = sourceY + text.height(source, 15, contentWidth) + gtasa::kUiSectionGap;
 
+        text.draw(tr(a, "КОЛЛЕКЦИОННЫЕ ОБЪЕКТЫ", "COLLECTIBLES"), x, y, 13, kColors.accent);
+        y += 22;
         for (int i = 0; i < static_cast<int>(gtasa::CollectibleType::Count); ++i) {
             const auto type = static_cast<gtasa::CollectibleType>(i);
-            drawCollectibleIcon(r, a.icons, 987, y + 10, type, 20);
-            std::ostringstream row;
-            row << typeName(a, type) << ": " << completedFor(p->summary, type)
-                << "/" << totalFor(p->summary, type);
-            text.draw(row.str(), 1002, y, 17, a.filters[i] ? kColors.text : kColors.muted, 265);
-            y += 27;
+            drawCollectibleIcon(r, a.icons, x + 9, y + 9, type, 18);
+            const SDL_Color color = a.filters[i] ? kColors.text : kColors.muted;
+            text.draw(typeName(a, type), x + 24, y, 16, color, contentWidth - 92);
+            const std::string value = std::to_string(completedFor(p->summary, type)) + "/" +
+                                      std::to_string(totalFor(p->summary, type));
+            text.draw(value, right - text.width(value, 16), y, 16, color);
+            y += 22 + gtasa::kUiRowGap / 2;
         }
 
-        y += 8;
-        text.draw(tr(a, "Прогресс по регионам", "Regional progress"), 980, y, 15, kColors.text, 160);
-        const SDL_Rect progressButton = regionProgressButtonRect();
-        fill(r, progressButton, SDL_Color{45, 53, 61, 255});
+        y += gtasa::kUiSectionGap;
+        text.draw(tr(a, "РЕГИОНЫ", "REGIONS"), x, y, 13, kColors.accent);
+        const SDL_Rect progressTouch = regionProgressButtonRect();
+        SDL_Rect tableButton{progressTouch.x + 8, y - 4, progressTouch.w - 16, 28};
+        fill(r, tableButton, SDL_Color{45, 53, 61, 255});
         SDL_SetRenderDrawColor(r, 95, 105, 115, 255);
-        SDL_RenderDrawRect(r, &progressButton);
-        text.draw(tr(a, "Таблица", "Table"), progressButton.x + 12, progressButton.y + 10, 13, kColors.accent);
-        y += 18;
+        SDL_RenderDrawRect(r, &tableButton);
+        const std::string tableText = tr(a, "Таблица", "Table");
+        text.draw(tableText, tableButton.x + (tableButton.w - text.width(tableText, 13)) / 2, y + 3, 13, kColors.accent);
+        y += 25 + gtasa::kUiTitleGap;
         for (std::size_t i = 0; i < gtasa::kSanAndreasRegionCount; ++i) {
             const auto& stats = a.regionProgress[i];
-            std::ostringstream row;
-            row << gtasa::sanAndreasRegionName(static_cast<gtasa::SanAndreasRegion>(i), isRu(a)) << ": "
-                << stats.completed << "/" << stats.total;
-            if (stats.completionUnknown) row << " ?";
-            text.draw(row.str(), 980, y, 13, kColors.muted, 285);
-            y += 16;
+            const std::string name = gtasa::sanAndreasRegionName(static_cast<gtasa::SanAndreasRegion>(i), isRu(a));
+            std::string value = std::to_string(stats.completed) + "/" + std::to_string(stats.total);
+            if (stats.completionUnknown) value += " ?";
+            text.draw(name, x, y, 15, kColors.muted, contentWidth - 86);
+            text.draw(value, right - text.width(value, 15), y, 15, kColors.muted);
+            y += std::max(20, text.height(name, 15, contentWidth - 86)) + gtasa::kUiRowGap / 2;
         }
-        y += 8;
+        y += gtasa::kUiSectionGap;
         const int selectedIndex = selectedCollectibleIndex(a);
-        if (selectedIndex >= 0 && selectedIndex < static_cast<int>(p->objects.size())) {
+        if (y < gtasa::kUiSidebarControlsTop - 70 && selectedIndex >= 0 && selectedIndex < static_cast<int>(p->objects.size())) {
             const auto& c = p->objects[static_cast<std::size_t>(selectedIndex)];
             const auto* info = collectibleInfoForView(c);
             const std::string id = info ? std::to_string(info->canonicalId) : "?";
-            text.draw(typeName(a, c.type) + " #" + id, 980, y, 20, typeColor(c.type));
-            text.draw(gtasa::formatMapCoordinates(c.x, c.y, c.z), 980, y + 30, 15, kColors.muted, 285);
+            text.draw(tr(a, "ВЫБРАННЫЙ ОБЪЕКТ", "SELECTED ITEM"), x, y, 13, kColors.accent);
+            y += 22;
+            text.draw(typeName(a, c.type) + " #" + id, x, y, 19, typeColor(c.type), contentWidth);
+            y += 26;
+            text.draw(gtasa::formatMapCoordinates(c.x, c.y, c.z), x, y, 14, kColors.muted, contentWidth);
             text.draw(info ? tr(a, "A — подробности", "A — details")
                            : tr(a, "Карточка недоступна", "Card unavailable"),
-                      980, y + 49, 14, info ? kColors.accent : kColors.warning, 285);
-            if (c.type == gtasa::CollectibleType::StuntJump && c.found) {
-                text.draw(tr(a, "Прыжок уже обнаружен, но не выполнен", "Jump discovered, but not completed"),
-                          980, y + 67, 13, kColors.warning, 285);
-            }
+                      x, y + 22, 14, info ? kColors.accent : kColors.warning, contentWidth);
         }
         if (const auto* poi = selectedPoiInfo(a)) {
-            text.draw(isRu(a) ? poi->nameRu : poi->nameEn, 980, y, 19, kColors.poi, 285);
-            text.draw(gtasa::poiLocationStatus(poi->representative, isRu(a)),
-                      980, y + 28, 15, kColors.muted, 285);
-            text.draw(tr(a, "A — подробности", "A — details"), 980, y + 47, 14, kColors.accent, 285);
+            const std::string name = isRu(a) ? poi->nameRu : poi->nameEn;
+            const int required = 22 + text.height(name, 18, contentWidth) + 3 + 14 + 21 + 14;
+            if (y + required <= gtasa::kUiSidebarControlsTop - 2) {
+            text.draw(tr(a, "ВЫБРАННЫЙ ОБЪЕКТ", "SELECTED ITEM"), x, y, 13, kColors.accent);
+            y += 22;
+            text.draw(name, x, y, 18, kColors.poi, contentWidth);
+            y += text.height(name, 18, contentWidth) + 3;
+            text.draw(gtasa::poiLocationStatus(poi->representative, isRu(a)), x, y, 14, kColors.muted, contentWidth);
+            text.draw(tr(a, "A — подробности", "A — details"), x, y + 21, 14, kColors.accent, contentWidth);
+            }
         }
     }
 
-    // This lower block is deliberately reserved: dynamic selected-object
-    // content above it can never run into the controls.
-    const int cy = 505;
-    text.draw(tr(a, "Управление", "Controls"), 980, cy, 18, kColors.text);
-    text.draw(tr(a, "Стик / touch — карта", "Stick / touch — map"), 980, cy + 24, 13, kColors.muted, 285);
-    text.draw(tr(a, "L/R / щипок — масштаб", "L/R / pinch — zoom"), 980, cy + 41, 13, kColors.muted, 285);
-    text.draw(tr(a, "A — выбрать / подробности", "A — select / details"), 980, cy + 58, 13, kColors.muted, 285);
-    text.draw(tr(a, "L3/R3 — предыдущий / следующий", "L3/R3 — previous / next"), 980, cy + 75, 13, kColors.muted, 285);
-    text.draw(tr(a, "ZR+A — ближайший ненайденный", "ZR+A — nearest missing"), 980, cy + 92, 13, kColors.muted, 285);
-    text.draw(tr(a, "X — фильтры; ZR+X — список", "X — filters; ZR+X — list"), 980, cy + 109, 13, kColors.muted, 285);
-    text.draw(tr(a, "Y — карты; ZR+Y — избранное", "Y — maps; ZR+Y — favorite"), 980, cy + 126, 13, kColors.muted, 285);
-    text.draw(tr(a, "ZL+L3/R3 — группа", "ZL+L3/R3 — group"), 980, cy + 143, 13, kColors.muted, 285);
-    text.draw(tr(a, "ZR+R3 / 2 пальца — панель", "ZR+R3 / 2 fingers — panel"), 980, cy + 160, 13, kColors.muted, 285);
-    text.draw(tr(a, "ZR+− — прогресс регионов", "ZR+− — regional progress"), 980, cy + 177, 13, kColors.muted, 285);
-    text.draw(tr(a, "+ — выход", "+ — exit"), 980, cy + 194, 13, kColors.muted, 285);
+    const int cy = gtasa::kUiSidebarControlsTop;
+    line(r, x, cy - 10, right, cy - 10, kColors.grid);
+    text.draw(tr(a, "УПРАВЛЕНИЕ", "CONTROLS"), x, cy, 13, kColors.accent);
+    const std::array<std::pair<const char*, const char*>, 5> controls{{
+        {"X       Фильтры", "X       Filters"},
+        {"ZR+X    Список", "ZR+X    List"},
+        {"ZR+A    Ближайший", "ZR+A    Nearest"},
+        {"L/R     Масштаб", "L/R     Zoom"},
+        {"+       Выход", "+       Exit"},
+    }};
+    int controlY = cy + 22;
+    for (const auto& control : controls) {
+        text.draw(tr(a, control.first, control.second), x, controlY, 14, kColors.muted, contentWidth);
+        controlY += 21;
+    }
 }
 
 void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
@@ -1014,61 +1078,49 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     text.draw(tr(a, "Фильтры карты", "Map filters"), 155, 52, 28, kColors.text);
     text.draw(tr(a, "↑/↓ — выбор, A — включить/выключить, X — закрыть", "↑/↓ select, A toggle, X close"),
               155, 91, 15, kColors.muted, 690);
-    int y = 120;
-    constexpr int kRegionFirstRow = static_cast<int>(gtasa::CollectibleType::Count);
-    constexpr int kPoiRow = kRegionFirstRow + static_cast<int>(gtasa::kSanAndreasRegionCount);
-    constexpr int kPoiCategoryFirstRow = kPoiRow + 1;
-    constexpr int kModeRow = kPoiCategoryFirstRow + static_cast<int>(gtasa::kPoiCategoryCount);
-    for (int i = 0; i <= kModeRow; ++i) {
-        SDL_Rect row{145, y - 6, 710, 29};
-        if (i == a.legendIndex) fill(r, row, SDL_Color{45, 53, 61, 255});
-        if (i < static_cast<int>(gtasa::CollectibleType::Count)) {
-            drawCollectibleIcon(r, a.icons, 173, y + 10, static_cast<gtasa::CollectibleType>(i), 28);
-            text.draw(typeName(a, static_cast<gtasa::CollectibleType>(i)), 200, y - 2, 20,
-                      a.filters[i] ? kColors.text : kColors.muted);
-        } else if (i >= kRegionFirstRow && i < kPoiRow) {
-            const auto region = static_cast<gtasa::SanAndreasRegion>(i - kRegionFirstRow);
-            const bool enabled = gtasa::regionEnabled(a.config.regionFilters, region);
-            text.draw(gtasa::sanAndreasRegionName(region, isRu(a)), 200, y - 2, 19,
-                      enabled ? kColors.text : kColors.muted);
-        } else if (i == kPoiRow) {
-            drawPoiIcon(r, a.poiIcon, 173, y + 20, 22);
-            text.draw(tr(a, "POI: все категории", "POI: all categories"), 200, y - 2, 20,
-                      a.config.showPoi ? kColors.text : kColors.muted);
-        } else if (i >= kPoiCategoryFirstRow && i < kModeRow) {
-            const auto category = static_cast<gtasa::PoiCategory>(i - kPoiCategoryFirstRow);
-            const bool enabled = gtasa::poiCategoryEnabled(a.config.poiCategoryFilters, category);
-            fill(r, SDL_Rect{164, y + 4, 18, 18}, kColors.poi);
-            text.draw(gtasa::poiCategoryName(category, isRu(a)), 200, y - 2, 20,
-                      enabled ? kColors.text : kColors.muted);
-        } else {
-            const auto mode = collectibleViewMode(a);
-            const std::string label = mode == gtasa::CollectibleViewMode::Missing
-                ? tr(a, "Объекты: не найдены", "Objects: Missing")
-                : mode == gtasa::CollectibleViewMode::Completed
-                    ? tr(a, "Объекты: найдены", "Objects: Completed")
-                    : tr(a, "Объекты: все", "Objects: All");
-            text.draw(label, 205, y - 2, 20, kColors.text);
-            const auto* parsed = currentParse(a);
-            bool unreliable = false;
-            if (parsed) for (const auto type : {gtasa::CollectibleType::Snapshot, gtasa::CollectibleType::Horseshoe,
-                                                 gtasa::CollectibleType::Oyster}) {
-                if (!gtasa::collectibleCategoryHasReliableCompleted(*parsed, type)) { unreliable = true; break; }
-            }
-            if (unreliable && mode != gtasa::CollectibleViewMode::Missing) {
-                text.draw(mode == gtasa::CollectibleViewMode::All
-                              ? tr(a, "Найденные недоступны; показаны точные ненайденные",
-                                      "Completed unavailable; showing exact Missing")
-                              : tr(a, "Найденные недоступны: сопоставление не проверено",
-                                      "Completed unavailable: mapping is unverified"),
-                          200, y + 18, 13, kColors.warning, 640);
-            }
-        }
-        y += 32;
+    const auto layout = gtasa::filtersScreenLayout();
+    auto drawCheck = [&](int row, int y, const std::string& label, bool enabled) {
+        if (row == a.legendIndex) fill(r, SDL_Rect{145, y - 5, 710, 26}, SDL_Color{45, 53, 61, 255});
+        text.draw(enabled ? "✓" : "□", 163, y - 2, 20, enabled ? kColors.accent : kColors.muted);
+        text.draw(label, 197, y - 1, 18, enabled ? kColors.text : kColors.muted, 630);
+    };
+    auto heading = [&](const char* ru, const char* en, int& y) {
+        text.draw(tr(a, ru, en), 155, y, 13, kColors.accent);
+        y += 23;
+    };
+    int y = 121;
+    heading("ПОКАЗЫВАТЬ", "SHOW", y);
+    const auto mode = collectibleViewMode(a);
+    const std::string modeText = mode == gtasa::CollectibleViewMode::Missing ? tr(a, "Не найдено", "Missing")
+        : mode == gtasa::CollectibleViewMode::Completed ? tr(a, "Найдено", "Completed") : tr(a, "Все", "All");
+    drawCheck(layout.modeRow, y, tr(a, "Режим объектов: ", "Object mode: ") + modeText, true);
+    y += 31;
+    heading("КОЛЛЕКЦИОННЫЕ ОБЪЕКТЫ", "COLLECTIBLES", y);
+    for (int i = 0; i < static_cast<int>(gtasa::CollectibleType::Count); ++i) {
+        const int row = layout.collectibleFirst + i;
+        drawCheck(row, y, typeName(a, static_cast<gtasa::CollectibleType>(i)), a.filters[i]);
+        drawCollectibleIcon(r, a.icons, 187, y + 8, static_cast<gtasa::CollectibleType>(i), 19);
+        y += 27;
     }
-    text.draw(tr(a, "POI: Проверено — точное место; Ориентировочно — район или маршрут",
-                    "POI: Verified — exact place; Approximate — area or route"),
-              155, 665, 13, kColors.muted, 690);
+    y += 4;
+    heading("РЕГИОНЫ", "REGIONS", y);
+    for (int i = 0; i < static_cast<int>(gtasa::kSanAndreasRegionCount); ++i) {
+        const auto region = static_cast<gtasa::SanAndreasRegion>(i);
+        drawCheck(layout.regionFirst + i, y, gtasa::sanAndreasRegionName(region, isRu(a)),
+                  gtasa::regionEnabled(a.config.regionFilters, region));
+        y += 27;
+    }
+    y += 4;
+    heading("POI", "POI", y);
+    drawCheck(layout.poiRow, y, tr(a, "Все категории", "All categories"), a.config.showPoi);
+    drawPoiIcon(r, a.poiIcon, 187, y + 15, 18);
+    y += 27;
+    for (int i = 0; i < static_cast<int>(gtasa::kPoiCategoryCount); ++i) {
+        const auto category = static_cast<gtasa::PoiCategory>(i);
+        drawCheck(layout.poiCategoryFirst + i, y, gtasa::poiCategoryName(category, isRu(a)),
+                  gtasa::poiCategoryEnabled(a.config.poiCategoryFilters, category));
+        y += 27;
+    }
 }
 
 const char* objectListSortName(gtasa::ObjectListSort sort, bool russian) {
@@ -1104,7 +1156,7 @@ void drawObjectList(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
               << (a.config.favoritesOnly ? tr(a, "только", "only") : tr(a, "все", "all"))
               << "   " << tr(a, "Объектов: ", "Items: ") << items.size();
     }
-    text.draw(state.str(), 115, 88, 15, kColors.muted, 1030);
+    text.draw(state.str(), 115, 88, 16, kColors.text, 1030);
     text.draw(a.routeMode
                   ? tr(a, "↑/↓ — выбор, A — следующая точка, ZR+A — маршрут 5/10/все, Y — избранное, X — избранное, B — закрыть",
                          "↑/↓ select, A next stop, ZR+A route 5/10/all, Y favorite, X favorites, B close")
@@ -1121,18 +1173,23 @@ void drawObjectList(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         const auto& item = items[static_cast<std::size_t>(start + row)];
         const int y = 148 + row * 34;
         if (start + row == a.listIndex) fill(r, SDL_Rect{105, y - 5, 1070, 29}, SDL_Color{45, 53, 61, 255});
-        std::ostringstream label;
-        label << (item.favorite ? "[F] " : "    ");
+        const SDL_Color rowColor = start + row == a.listIndex ? kColors.text : kColors.muted;
+        const std::string favorite = item.favorite ? "★" : "";
+        text.draw(favorite, 122, y, 16, kColors.warning);
+        std::string name;
+        std::string status;
         if (item.kind == gtasa::ObjectListKind::Collectible) {
-            label << typeName(a, item.collectibleType) << " #" << item.id
-                  << " — " << gtasa::sanAndreasRegionName(item.region, isRu(a))
-                  << " — " << (item.completed ? tr(a, "найден", "completed") : tr(a, "не найден", "missing"));
+            name = typeName(a, item.collectibleType) + " #" + std::to_string(item.id);
+            status = item.completed ? "●" : "○";
         } else {
             const auto* poi = gtasa::poiInfo(static_cast<std::size_t>(item.sourceIndex));
-            label << "POI #" << item.id << " — " << (poi ? (isRu(a) ? poi->nameRu : poi->nameEn) : "?")
-                  << " — " << gtasa::sanAndreasRegionName(item.region, isRu(a));
+            name = poi ? (isRu(a) ? poi->nameRu : poi->nameEn) : "POI #" + std::to_string(item.id);
+            status = "•";
         }
-        text.draw(label.str(), 120, y, 17, start + row == a.listIndex ? kColors.text : kColors.muted, 1040);
+        text.draw(text.ellipsize(name, 17, 470), 150, y, 17, rowColor);
+        text.draw(gtasa::sanAndreasRegionName(item.region, isRu(a)), 650, y, 16, rowColor, 350);
+        text.draw(status, 1118, y, 20, item.kind == gtasa::ObjectListKind::Poi
+                                           ? kColors.poi : (item.completed ? kColors.accent : kColors.warning));
     }
 }
 
@@ -1304,7 +1361,8 @@ int main(int, char**) {
                     }
                     continue;
                 }
-                const SDL_Rect progressTouch{1136, 294, 136, 50};
+                const SDL_Rect button = regionProgressButtonRect();
+                const SDL_Rect progressTouch{button.x - 8, button.y - 8, button.w + 16, button.h + 16};
                 if (app.showPanel && x >= progressTouch.x && x < progressTouch.x + progressTouch.w &&
                     y >= progressTouch.y && y < progressTouch.y + progressTouch.h) {
                     app.progressOpen = true;
@@ -1430,6 +1488,7 @@ int main(int, char**) {
                 app.status = tr(app, "Язык: Русский", "Language: English");
             }
             const auto filterLayout = gtasa::filtersScreenLayout();
+            const int kCollectibleFirstRow = filterLayout.collectibleFirst;
             const int kRegionFirstRow = filterLayout.regionFirst;
             const int kPoiRow = filterLayout.poiRow;
             const int kPoiCategoryFirstRow = filterLayout.poiCategoryFirst;
@@ -1437,8 +1496,12 @@ int main(int, char**) {
             if (down & HidNpadButton_Up) app.legendIndex = gtasa::nextFiltersScreenRow(app.legendIndex, -1);
             if (down & HidNpadButton_Down) app.legendIndex = gtasa::nextFiltersScreenRow(app.legendIndex, 1);
             if (down & HidNpadButton_A) {
-                if (app.legendIndex < static_cast<int>(gtasa::CollectibleType::Count))
-                    app.filters[app.legendIndex] = !app.filters[app.legendIndex];
+                if (app.legendIndex == kModeRow) {
+                    app.config.collectibleViewMode = (app.config.collectibleViewMode + 1) % 3;
+                    clearSelectedMarker(app);
+                    app.platform.saveConfig(app.config);
+                } else if (app.legendIndex >= kCollectibleFirstRow && app.legendIndex < kRegionFirstRow)
+                    app.filters[app.legendIndex - kCollectibleFirstRow] = !app.filters[app.legendIndex - kCollectibleFirstRow];
                 else if (app.legendIndex >= kRegionFirstRow && app.legendIndex < kPoiRow) {
                     const auto region = static_cast<std::size_t>(app.legendIndex - kRegionFirstRow);
                     app.config.regionFilters[region] = !app.config.regionFilters[region];
@@ -1457,10 +1520,6 @@ int main(int, char**) {
                         const auto* poi = gtasa::poiInfo(static_cast<std::size_t>(selectedPoiIndex(app)));
                         if (!poi || !isMarkerEnabled(app, *poi)) clearSelectedMarker(app);
                     }
-                } else {
-                    app.config.collectibleViewMode = (app.config.collectibleViewMode + 1) % 3;
-                    clearSelectedMarker(app);
-                    app.platform.saveConfig(app.config);
                 }
             }
         } else {

@@ -25,8 +25,10 @@ inline bool canResetMapFromDoubleTap(bool isTap, bool hitMarker) {
 }
 
 inline int collectibleIconSize(float zoom) {
-    if (zoom <= 0.85f) return 25;
-    if (zoom < 1.75f) return 25 + static_cast<int>((zoom - 0.85f) * 3.0f / 0.90f + 0.5f);
+    // At a distant view the map stays readable in dense San Fierro and Las
+    // Venturas. Interaction radii deliberately remain independent of art.
+    if (zoom <= 0.85f) return 20;
+    if (zoom < 1.75f) return 20 + static_cast<int>((zoom - 0.85f) * 8.0f / 0.90f + 0.5f);
     if (zoom >= 8.0f) return 42;
     return 28 + static_cast<int>((zoom - 1.75f) * 14.0f / 6.25f + 0.5f);
 }
@@ -35,8 +37,8 @@ inline int collectibleIconSize(float zoom) {
 inline int poiMarkerSize(float zoom) {
     // POI art is visually denser than the collectible pictograms.  Keep it
     // subordinate at a distant view, then grow it smoothly for close reading.
-    if (zoom <= 0.85f) return 20;
-    if (zoom < 1.75f) return 20 + static_cast<int>((zoom - 0.85f) * 5.0f / 0.90f + 0.5f);
+    if (zoom <= 0.85f) return 16;
+    if (zoom < 1.75f) return 16 + static_cast<int>((zoom - 0.85f) * 9.0f / 0.90f + 0.5f);
     if (zoom >= 8.0f) return 33;
     return 25 + static_cast<int>((zoom - 1.75f) * 8.0f / 6.25f + 0.5f);
 }
