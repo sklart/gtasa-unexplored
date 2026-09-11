@@ -19,7 +19,7 @@ struct SaveDiscovery { bool ok{}; std::string error; bool gameRunningOrBusy{}; b
  AccountUid uid{};
 #endif
 };
-class Platform { public: Platform(); ~Platform(); bool initialize(std::string& error); void shutdown(); AppConfig loadConfig() const; bool saveConfig(const AppConfig& cfg) const; SaveDiscovery discoverSaves(const AppConfig& cfg, bool forceProfilePicker); bool backupSave(const SaveEntry& save, const AppConfig& cfg) const; bool exportDiagnostics(const std::string& text) const; void log(const std::string& line) const;
+class Platform { public: Platform(); ~Platform(); bool initialize(std::string& error); void shutdown(); AppConfig loadConfig() const; bool saveConfig(const AppConfig& cfg) const; AppConfig loadConfigFile(const std::string& path) const; bool saveConfigFile(const AppConfig& cfg, const std::string& path) const; SaveDiscovery discoverSaves(const AppConfig& cfg, bool forceProfilePicker); bool backupSave(const SaveEntry& save, const AppConfig& cfg) const; bool exportDiagnostics(const std::string& text) const; void log(const std::string& line) const;
 #ifdef __SWITCH__
  static bool uidValid(const AccountUid& uid); AccountUid requestProfileSelection() const; AccountUid resolveUser(const AppConfig& cfg, bool forceProfilePicker) const; bool userHasTargetSave(AccountUid uid) const; bool mountTargetSave(AccountUid uid, bool readOnly) const; void unmountTargetSave() const;
 #endif

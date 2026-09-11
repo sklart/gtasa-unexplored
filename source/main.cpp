@@ -27,6 +27,7 @@
 #include "SaveParser.hpp"
 #include "TouchGesture.hpp"
 #include "UiLayout.hpp"
+#include "UiStatus.hpp"
 
 #include <SDL.h>
 #include <SDL_ttf.h>
@@ -242,6 +243,11 @@ bool isRu(const AppState& a) { return a.config.language == "ru"; }
 
 std::string tr(const AppState& a, const char* ru, const char* en) {
     return isRu(a) ? ru : en;
+}
+
+std::string localizedSystemStatus(const AppState& a, const std::string& status) {
+    const auto localized = gtasa::localizeSystemStatus(status, isRu(a));
+    return localized.empty() ? status : localized;
 }
 
 void persistCurrentMap(AppState& a) {
@@ -1025,17 +1031,21 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, AppState& a) {
             text.draw(value, right - text.width(value, 15), y, 15, kColors.muted);
             y += std::max(18, text.height(name, 15, contentWidth - 86)) + 1;
         }
-        y += gtasa::kUiSectionGap;
-        text.draw(tr(a, "КАРТА", "MAP"), x, y, 13, kColors.accent);
-        y += 18;
-        const std::string mapName = a.mapTexture.currentName(isRu(a)).empty()
-            ? tr(a, "Встроенная открытая карта", "Built-in open map") : a.mapTexture.currentName(isRu(a));
-        text.draw(mapName, x, y, 16, kColors.text, contentWidth);
-        y += text.height(mapName, 16, contentWidth) + 1;
-        text.draw(tr(a, "↑/↓ — сменить", "↑/↓ — change"), x, y, 13, kColors.muted, contentWidth);
-        y += 19 + gtasa::kUiSectionGap;
         const int selectedIndex = selectedCollectibleIndex(a);
-        if (y < gtasa::kUiSidebarControlsTop - 70 && selectedIndex >= 0 && selectedIndex < static_cast<int>(p->objects.size())) {
+        const auto* selectedPoi = selectedPoiInfo(a);
+        const bool hasSelectedCollectible = selectedIndex >= 0 && selectedIndex < static_cast<int>(p->objects.size());
+        y += gtasa::kUiSectionGap;
+        if (!hasSelectedCollectible && !selectedPoi) {
+            text.draw(tr(a, "КАРТА", "MAP"), x, y, 13, kColors.accent);
+            y += 18;
+            const std::string mapName = a.mapTexture.currentName(isRu(a)).empty()
+                ? tr(a, "Встроенная открытая карта", "Built-in open map") : a.mapTexture.currentName(isRu(a));
+            text.draw(mapName, x, y, 16, kColors.text, contentWidth);
+            y += text.height(mapName, 16, contentWidth) + 1;
+            text.draw(tr(a, "↑/↓ — сменить", "↑/↓ — change"), x, y, 13, kColors.muted, contentWidth);
+            y += 19 + gtasa::kUiSectionGap;
+        }
+        if (hasSelectedCollectible && y < gtasa::kUiSidebarControlsTop - 70) {
             const auto& c = p->objects[static_cast<std::size_t>(selectedIndex)];
             const auto* info = collectibleInfoForView(c);
             const std::string id = info ? std::to_string(info->canonicalId) : "?";
@@ -1053,7 +1063,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, AppState& a) {
                           x, y + 41, 13, kColors.warning, contentWidth);
             }
         }
-        if (const auto* poi = selectedPoiInfo(a)) {
+        if (const auto* poi = selectedPoi) {
             const std::string name = isRu(a) ? poi->nameRu : poi->nameEn;
             const int required = 22 + text.height(name, 18, contentWidth) + 3 + 14 + 21 + 14;
             if (y + required <= gtasa::kUiSidebarControlsTop - 2) {
@@ -1270,7 +1280,7 @@ void loadSaves(AppState& a, bool forceProfile) {
     clearSelectedMarker(a);
     a.discovery = a.platform.discoverSaves(a.config, forceProfile);
     if (!a.discovery.ok) {
-        a.status = a.discovery.error;
+        a.status = localizedSystemStatus(a, a.discovery.error);
         a.platform.log("Save discovery: " + a.status);
         return;
     }
@@ -1360,7 +1370,7 @@ int main(int, char**) {
             app.mapTexture.loadFallback(renderer, mapStatus);
         }
         persistCurrentMap(app);
-        if (app.status.empty() && !mapStatus.empty()) app.status = mapStatus;
+        if (app.status.empty() && !mapStatus.empty()) app.status = localizedSystemStatus(app, mapStatus);
     }
     app.platform.log(diagnosticsText(app));
 
@@ -1553,10 +1563,14 @@ int main(int, char**) {
             if ((down & HidNpadButton_Minus) && (held & HidNpadButton_ZR)) app.progressOpen = true;
             else if (down & HidNpadButton_Minus) loadSaves(app, true);
             if (down & HidNpadButton_Up) {
-                if (app.mapTexture.cycle(renderer, -1, app.status)) persistCurrentMap(app);
+                std::string mapStatus;
+                if (app.mapTexture.cycle(renderer, -1, mapStatus)) persistCurrentMap(app);
+                app.status = localizedSystemStatus(app, mapStatus);
             }
             if (down & HidNpadButton_Down) {
-                if (app.mapTexture.cycle(renderer, 1, app.status)) persistCurrentMap(app);
+                std::string mapStatus;
+                if (app.mapTexture.cycle(renderer, 1, mapStatus)) persistCurrentMap(app);
+                app.status = localizedSystemStatus(app, mapStatus);
             }
             if (down & HidNpadButton_Left) switchSlot(app, -1);
             if (down & HidNpadButton_Right) switchSlot(app, 1);
@@ -1568,9 +1582,11 @@ int main(int, char**) {
             }
             if ((down & HidNpadButton_Y) && !(held & HidNpadButton_ZR)) {
                 app.centerX = 0.0f; app.centerY = 0.0f; app.cursorX = 0.0f; app.cursorY = 0.0f; app.cameraOwner = gtasa::CameraOwner::Cursor; app.zoom = 1.0f; clearSelectedMarker(app);
-                if (!app.mapTexture.discoverAndLoad(renderer, app.mapTexture.currentId(), app.status)) {
-                    app.mapTexture.loadFallback(renderer, app.status);
+                std::string mapStatus;
+                if (!app.mapTexture.discoverAndLoad(renderer, app.mapTexture.currentId(), mapStatus)) {
+                    app.mapTexture.loadFallback(renderer, mapStatus);
                 }
+                app.status = localizedSystemStatus(app, mapStatus);
                 persistCurrentMap(app);
             }
             if ((down & HidNpadButton_Y) && (held & HidNpadButton_ZR)) toggleSelectedFavorite(app);

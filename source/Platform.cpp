@@ -28,6 +28,7 @@ std::string parentDir(const std::string& path) {
 }
 
 bool isRegularFile(const std::string& path, const dirent* ent) {
+    (void)ent;
 #ifdef DT_REG
     if (ent->d_type == DT_REG) return true;
     if (ent->d_type != DT_UNKNOWN) return false;
@@ -37,6 +38,7 @@ bool isRegularFile(const std::string& path, const dirent* ent) {
 }
 
 bool isDirectory(const std::string& path, const dirent* ent) {
+    (void)ent;
 #ifdef DT_DIR
     if (ent->d_type == DT_DIR) return true;
     if (ent->d_type != DT_UNKNOWN) return false;
@@ -87,8 +89,12 @@ void Platform::shutdown() {
 }
 
 AppConfig Platform::loadConfig() const {
+    return loadConfigFile(std::string(kAppDir) + "/config.ini");
+}
+
+AppConfig Platform::loadConfigFile(const std::string& path) const {
     AppConfig cfg;
-    std::ifstream f(std::string(kAppDir) + "/config.ini");
+    std::ifstream f(path);
     std::string line;
     while (std::getline(f, line)) {
         const auto eq = line.find('=');
@@ -119,7 +125,11 @@ AppConfig Platform::loadConfig() const {
 
 bool Platform::saveConfig(const AppConfig& cfg) const {
     ensureDir(kAppDir);
-    std::ofstream f(std::string(kAppDir) + "/config.ini", std::ios::trunc);
+    return saveConfigFile(cfg, std::string(kAppDir) + "/config.ini");
+}
+
+bool Platform::saveConfigFile(const AppConfig& cfg, const std::string& path) const {
+    std::ofstream f(path, std::ios::trunc);
     if (!f) return false;
     f << "language=" << cfg.language << "\n";
     f << "map_id=" << cfg.mapId << "\n";
@@ -243,13 +253,13 @@ SaveDiscovery Platform::discoverSaves(const AppConfig& cfg, bool forceProfilePic
     const AccountUid uid = resolveUser(cfg, forceProfilePicker);
     out.uid = uid;
     if (!uidValid(uid)) {
-        out.error = "Профиль не выбран / No profile selected";
+        out.error = "save.no_profile";
         return out;
     }
 
     const bool hasSave = userHasTargetSave(uid);
     if (!hasSave) {
-        out.error = "Для выбранного профиля нет сохранения GTA San Andreas DE";
+        out.error = "save.no_game_save";
         return out;
     }
 
@@ -295,9 +305,7 @@ SaveDiscovery Platform::discoverSaves(const AppConfig& cfg, bool forceProfilePic
     }), out.saves.end());
 
     if (out.saves.empty()) {
-        out.error = out.usingBackup
-            ? "Игра запущена, а резервной копии сохранения ещё нет. Закройте игру и один раз запустите GTASA Unexplored."
-            : "Не удалось найти файлы сохранения GTA San Andreas DE";
+        out.error = out.usingBackup ? "save.backup_unavailable" : "save.not_found";
         return out;
     }
     out.ok = true;

@@ -47,6 +47,14 @@ jobs:
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
             tests/map_ui_tests.cpp -o map-ui-tests
           ./map-ui-tests
+      - name: Build and run map selection and config persistence tests
+        run: |
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
+            tests/map_selection_tests.cpp -o map-selection-tests
+          ./map-selection-tests
+          g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
+            tests/platform_config_tests.cpp source/Platform.cpp source/Favorites.cpp source/PoiCategories.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp source/PoiInfoData.cpp -o platform-config-tests
+          ./platform-config-tests
       - name: Build and run overlay UI test
         run: |
           g++ -std=c++17 -Wall -Wextra -Werror -Iinclude \
@@ -116,6 +124,12 @@ jobs:
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
             tests/map_ui_tests.cpp -o map-ui-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./map-ui-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
+            tests/map_selection_tests.cpp -o map-selection-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./map-selection-sanitized
+          g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
+            tests/platform_config_tests.cpp source/Platform.cpp source/Favorites.cpp source/PoiCategories.cpp source/RegionFilters.cpp source/RegionProgress.cpp source/CollectibleView.cpp source/CollectibleInfoData.cpp source/PoiInfoData.cpp -o platform-config-sanitized
+          ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./platform-config-sanitized
           g++ -std=c++17 -Wall -Wextra -Werror -fsanitize=address,undefined -fno-omit-frame-pointer -Iinclude \
             tests/overlay_ui_tests.cpp -o overlay-ui-sanitized
           ASAN_OPTIONS=detect_leaks=1 UBSAN_OPTIONS=halt_on_error=1 ./overlay-ui-sanitized

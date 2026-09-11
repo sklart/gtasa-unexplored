@@ -1,4 +1,5 @@
 #include "MapTexture.hpp"
+#include "MapSelection.hpp"
 #include "MapProjection.hpp"
 #include "Platform.hpp"
 #include "fallback_map_bin.h"
@@ -208,10 +209,10 @@ bool MapTexture::discover(std::string& status) {
     const std::string manifestPath = std::string(kAppDir) + "/maps/maps.ini";
     std::string error;
     if (!parseManifest(manifestPath, error)) {
-        status = "Map pack unavailable: " + error;
+        status = "map.pack_unavailable";
         return false;
     }
-    status = "Map pack: " + std::to_string(maps_.size()) + " map(s), " + pack_.projection;
+    status = "map.loaded";
     return true;
 }
 
@@ -245,10 +246,10 @@ bool MapTexture::loadIndex(SDL_Renderer* renderer, int index, std::string& statu
         std::string error;
         if (tryLoad(renderer, maps_[static_cast<std::size_t>(candidate)].path, error)) {
             index_ = candidate;
-            status = "Map: " + maps_[static_cast<std::size_t>(candidate)].id;
+            status = "map.loaded";
             return true;
         }
-        status = "Skipped map " + maps_[static_cast<std::size_t>(candidate)].id + ": " + error;
+        status = "map.no_usable_maps";
     }
     index_ = -1;
     return false;
@@ -257,20 +258,20 @@ bool MapTexture::loadIndex(SDL_Renderer* renderer, int index, std::string& statu
 bool MapTexture::discoverAndLoad(SDL_Renderer* renderer, const std::string& preferredId, std::string& status) {
     unload();
     if (!discover(status)) return false;
-    int preferred = 0;
-    for (std::size_t i = 0; i < maps_.size(); ++i) {
-        if (!preferredId.empty() && maps_[i].id == preferredId) { preferred = static_cast<int>(i); break; }
-    }
+    std::vector<std::string> ids;
+    ids.reserve(maps_.size());
+    for (const auto& map : maps_) ids.push_back(map.id);
+    const int preferred = preferredMapIndex(ids, preferredId);
     return loadIndex(renderer, preferred, status);
 }
 
 bool MapTexture::loadFallback(SDL_Renderer* renderer, std::string& status) {
     SDL_RWops* rw = SDL_RWFromConstMem(fallback_map_bin, static_cast<int>(fallback_map_bin_size));
-    if (!rw) { status = "Built-in map unavailable: " + std::string(SDL_GetError()); return false; }
+    if (!rw) { status = "map.fallback_unavailable"; return false; }
     SDL_Surface* surface = IMG_Load_RW(rw, 1);
-    if (!surface) { status = "Built-in map unavailable: " + std::string(IMG_GetError()); return false; }
+    if (!surface) { status = "map.fallback_unavailable"; return false; }
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-    if (!texture) { status = "Built-in map unavailable: " + std::string(SDL_GetError()); SDL_FreeSurface(surface); return false; }
+    if (!texture) { status = "map.fallback_unavailable"; SDL_FreeSurface(surface); return false; }
     unload();
     texture_ = texture;
     width_ = surface->w;
@@ -278,12 +279,12 @@ bool MapTexture::loadFallback(SDL_Renderer* renderer, std::string& status) {
     fallback_ = true;
     source_ = "embedded Apache-2.0 SVG";
     SDL_FreeSurface(surface);
-    status = "Map: built-in open SVG";
+    status = "map.fallback_loaded";
     return true;
 }
 
 bool MapTexture::cycle(SDL_Renderer* renderer, int delta, std::string& status) {
-    if (maps_.empty()) { status = "No external map pack installed"; return false; }
+    if (maps_.empty()) { status = "map.no_external_pack"; return false; }
     const int n = static_cast<int>(maps_.size());
     const int direction = delta < 0 ? -1 : 1;
     const int start = index_ >= 0 ? index_ : 0;
@@ -292,11 +293,11 @@ bool MapTexture::cycle(SDL_Renderer* renderer, int delta, std::string& status) {
         std::string error;
         if (tryLoad(renderer, maps_[static_cast<std::size_t>(candidate)].path, error)) {
             index_ = candidate;
-            status = "Map: " + maps_[static_cast<std::size_t>(candidate)].id;
+            status = "map.loaded";
             return true;
         }
     }
-    status = "No usable maps in map pack";
+    status = "map.no_usable_maps";
     return false;
 }
 
