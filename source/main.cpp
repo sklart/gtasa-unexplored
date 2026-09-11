@@ -244,6 +244,14 @@ std::string tr(const AppState& a, const char* ru, const char* en) {
     return isRu(a) ? ru : en;
 }
 
+void persistCurrentMap(AppState& a) {
+    const std::string& id = a.mapTexture.currentId();
+    if (gtasa::shouldPersistMapId(a.config.mapId, id)) {
+        a.config.mapId = id;
+        a.platform.saveConfig(a.config);
+    }
+}
+
 SDL_Color typeColor(gtasa::CollectibleType t) {
     switch (t) {
         case gtasa::CollectibleType::Tag: return kColors.tag;
@@ -849,7 +857,7 @@ void drawRegionProgressOverlay(SDL_Renderer* r, TextRenderer& text, const AppSta
     SDL_RenderDrawRect(r, &card);
     drawOverlayClose(r, text, activeOverlayCloseArea(a));
     text.draw(tr(a, "Прогресс по регионам", "Regional progress"), 126, 100, 29, kColors.text);
-    text.draw(tr(a, "Завершено / всего для каждого типа collectibles", "Completed / total for each collectible type"),
+    text.draw(tr(a, "Завершено / всего для каждого типа объектов", "Completed / total for each collectible type"),
               126, 139, 16, kColors.muted, 800);
 
     const std::array<int, 5> columns{{402, 532, 662, 792, 922}};
@@ -901,7 +909,7 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         SDL_Rect imageRect{260, 108, 760, 350};
         if (SDL_Texture* image = a.poiMedia.texture()) SDL_RenderCopy(r, image, nullptr, &imageRect);
         else { fill(r, imageRect, SDL_Color{26, 32, 38, 255});
-               text.draw(a.poiMedia.error().empty() ? tr(a, "Пакет POI не установлен", "POI pack not installed")
+               text.draw(a.poiMedia.error().empty() ? tr(a, "Пакет точек интереса не установлен", "POI pack not installed")
                                                      : tr(a, "Изображение недоступно", "Image unavailable"),
                          640, 300, 20, kColors.muted, 600, true); }
         const SDL_Rect textClip{102, 470, 1070, 134};
@@ -964,7 +972,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, AppState& a) {
     const int right = kPanelRect.x + kPanelRect.w - gtasa::kUiPanelPaddingX;
     const int contentWidth = right - x;
     text.draw("GTASA Unexplored", x, gtasa::kUiPanelPaddingY, 28, kColors.text);
-    text.draw(tr(a, "San Andreas DE • Switch • read-only", "San Andreas DE • Switch • read-only"),
+    text.draw(tr(a, "San Andreas DE • Switch • только чтение", "San Andreas DE • Switch • read-only"),
               x, 58, 15, kColors.muted, contentWidth);
 
     const auto* p = currentParse(a);
@@ -994,7 +1002,7 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, AppState& a) {
             const std::string value = std::to_string(completedFor(p->summary, type)) + "/" +
                                       std::to_string(totalFor(p->summary, type));
             text.draw(value, right - text.width(value, 16), y, 16, color);
-            y += 22 + gtasa::kUiRowGap / 2;
+            y += 22;
         }
 
         y += gtasa::kUiSectionGap;
@@ -1015,9 +1023,17 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, AppState& a) {
             if (stats.completionUnknown) value += " ?";
             text.draw(name, x, y, 15, kColors.muted, contentWidth - 86);
             text.draw(value, right - text.width(value, 15), y, 15, kColors.muted);
-            y += std::max(20, text.height(name, 15, contentWidth - 86)) + gtasa::kUiRowGap / 2;
+            y += std::max(18, text.height(name, 15, contentWidth - 86)) + 1;
         }
         y += gtasa::kUiSectionGap;
+        text.draw(tr(a, "КАРТА", "MAP"), x, y, 13, kColors.accent);
+        y += 18;
+        const std::string mapName = a.mapTexture.currentName(isRu(a)).empty()
+            ? tr(a, "Встроенная открытая карта", "Built-in open map") : a.mapTexture.currentName(isRu(a));
+        text.draw(mapName, x, y, 16, kColors.text, contentWidth);
+        y += text.height(mapName, 16, contentWidth) + 1;
+        text.draw(tr(a, "↑/↓ — сменить", "↑/↓ — change"), x, y, 13, kColors.muted, contentWidth);
+        y += 19 + gtasa::kUiSectionGap;
         const int selectedIndex = selectedCollectibleIndex(a);
         if (y < gtasa::kUiSidebarControlsTop - 70 && selectedIndex >= 0 && selectedIndex < static_cast<int>(p->objects.size())) {
             const auto& c = p->objects[static_cast<std::size_t>(selectedIndex)];
@@ -1031,7 +1047,8 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, AppState& a) {
             text.draw(info ? tr(a, "A — подробности", "A — details")
                            : tr(a, "Карточка недоступна", "Card unavailable"),
                       x, y + 22, 14, info ? kColors.accent : kColors.warning, contentWidth);
-            if (gtasa::shouldShowIncompleteStuntJump(c.type, c.found, c.completed)) {
+            if (gtasa::shouldShowIncompleteStuntJump(c.type, c.found, c.completed) &&
+                y + 58 <= gtasa::kUiSidebarControlsTop - 10) {
                 text.draw(tr(a, "Прыжок обнаружен, но не выполнен", "Jump discovered, but not completed"),
                           x, y + 41, 13, kColors.warning, contentWidth);
             }
@@ -1075,7 +1092,7 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     SDL_RenderDrawRect(r, &shade);
     drawOverlayClose(r, text, activeOverlayCloseArea(a));
     text.draw(tr(a, "Фильтры карты", "Map filters"), 155, 52, 28, kColors.text);
-    text.draw(tr(a, "↑/↓ — выбор, A — включить/выключить, X — закрыть", "↑/↓ select, A toggle, X close"),
+    text.draw(tr(a, "↑/↓ — выбор, A — включить/выключить, ZL — язык, X — закрыть", "↑/↓ select, A toggle, ZL language, X close"),
               155, 91, 15, kColors.muted, 690);
     const auto layout = gtasa::filtersScreenLayout();
     auto drawCheck = [&](int row, int y, const std::string& label, bool enabled) {
@@ -1087,7 +1104,8 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
         text.draw(tr(a, ru, en), 155, y, 13, kColors.accent);
         y += 23;
     };
-    int y = 121;
+    text.draw(tr(a, "Язык: Русский", "Language: English"), 155, 113, 15, kColors.accent);
+    int y = 140;
     heading("ПОКАЗЫВАТЬ", "SHOW", y);
     const auto mode = collectibleViewMode(a);
     const std::string modeText = mode == gtasa::CollectibleViewMode::Missing ? tr(a, "Не найдено", "Missing")
@@ -1137,13 +1155,14 @@ const char* objectListSortName(gtasa::ObjectListSort sort, bool russian) {
 
 void drawObjectList(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     if (!a.listOpen) return;
+    fill(r, SDL_Rect{0, 0, kScreenW, kScreenH}, SDL_Color{7, 10, 13, 225});
     SDL_Rect shade{80, 22, 1120, 676};
     fill(r, shade, SDL_Color{11, 14, 17, 248});
     SDL_SetRenderDrawColor(r, 95, 105, 115, 255);
     SDL_RenderDrawRect(r, &shade);
     drawOverlayClose(r, text, activeOverlayCloseArea(a));
     const auto items = currentObjectList(a);
-    text.draw(a.routeMode ? tr(a, "Маршрут Missing", "Missing route") : tr(a, "Список объектов", "Object list"), 115, 50, 28, kColors.text);
+    text.draw(a.routeMode ? tr(a, "Маршрут ненайденных", "Missing route") : tr(a, "Список объектов", "Object list"), 115, 50, 28, kColors.text);
     std::ostringstream state;
     if (a.routeMode) {
         const std::string limit = a.routeLimit == 0 ? tr(a, "все", "all") : std::to_string(a.routeLimit);
@@ -1167,13 +1186,17 @@ void drawObjectList(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
               115, 111, 14, kColors.muted, 1030);
     if (items.empty()) {
         text.draw(tr(a, "Нет объектов с активными фильтрами", "No objects match active filters"),
-                  115, 160, 19, kColors.warning, 1030);
+                  115, 184, 19, kColors.warning, 1030);
         return;
     }
+    text.draw(tr(a, "ОБЪЕКТ", "ITEM"), 150, 143, 13, kColors.accent);
+    text.draw(tr(a, "РЕГИОН", "REGION"), 650, 143, 13, kColors.accent);
+    text.draw(tr(a, "СТАТУС", "STATUS"), 1085, 143, 13, kColors.accent);
+    line(r, 115, 163, 1155, 163, kColors.grid);
     const int start = std::max(0, std::min(a.listIndex - 7, std::max(0, static_cast<int>(items.size()) - 15)));
     for (int row = 0; row < 15 && start + row < static_cast<int>(items.size()); ++row) {
         const auto& item = items[static_cast<std::size_t>(start + row)];
-        const int y = 148 + row * 34;
+        const int y = 173 + row * 32;
         if (start + row == a.listIndex) fill(r, SDL_Rect{105, y - 5, 1070, 29}, SDL_Color{45, 53, 61, 255});
         const SDL_Color rowColor = start + row == a.listIndex ? kColors.text : kColors.muted;
         const std::string favorite = item.favorite ? "★" : "";
@@ -1333,9 +1356,10 @@ int main(int, char**) {
     }
     {
         std::string mapStatus;
-        if (!app.mapTexture.discoverAndLoad(renderer, "", mapStatus)) {
+        if (!app.mapTexture.discoverAndLoad(renderer, app.config.mapId, mapStatus)) {
             app.mapTexture.loadFallback(renderer, mapStatus);
         }
+        persistCurrentMap(app);
         if (app.status.empty() && !mapStatus.empty()) app.status = mapStatus;
     }
     app.platform.log(diagnosticsText(app));
@@ -1528,8 +1552,12 @@ int main(int, char**) {
             if ((down & HidNpadButton_X) && (held & HidNpadButton_ZR)) { app.listOpen = true; app.listIndex = 0; }
             if ((down & HidNpadButton_Minus) && (held & HidNpadButton_ZR)) app.progressOpen = true;
             else if (down & HidNpadButton_Minus) loadSaves(app, true);
-            if (down & HidNpadButton_Up) app.mapTexture.cycle(renderer, -1, app.status);
-            if (down & HidNpadButton_Down) app.mapTexture.cycle(renderer, 1, app.status);
+            if (down & HidNpadButton_Up) {
+                if (app.mapTexture.cycle(renderer, -1, app.status)) persistCurrentMap(app);
+            }
+            if (down & HidNpadButton_Down) {
+                if (app.mapTexture.cycle(renderer, 1, app.status)) persistCurrentMap(app);
+            }
             if (down & HidNpadButton_Left) switchSlot(app, -1);
             if (down & HidNpadButton_Right) switchSlot(app, 1);
             if (down & HidNpadButton_StickL)
@@ -1543,6 +1571,7 @@ int main(int, char**) {
                 if (!app.mapTexture.discoverAndLoad(renderer, app.mapTexture.currentId(), app.status)) {
                     app.mapTexture.loadFallback(renderer, app.status);
                 }
+                persistCurrentMap(app);
             }
             if ((down & HidNpadButton_Y) && (held & HidNpadButton_ZR)) toggleSelectedFavorite(app);
             if (down & HidNpadButton_A) {

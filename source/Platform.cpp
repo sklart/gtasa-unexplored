@@ -97,6 +97,7 @@ AppConfig Platform::loadConfig() const {
         const auto value = trim(line.substr(eq + 1));
         try {
             if (key == "language" && (value == "ru" || value == "en")) cfg.language = value;
+            else if (key == "map_id") cfg.mapId = value;
             else if (key == "uid0") cfg.uid0 = std::stoull(value, nullptr, 16);
             else if (key == "uid1") cfg.uid1 = std::stoull(value, nullptr, 16);
             else if (key == "slot") cfg.preferredSlot = std::max(1, std::min(10, std::stoi(value)));
@@ -121,6 +122,7 @@ bool Platform::saveConfig(const AppConfig& cfg) const {
     std::ofstream f(std::string(kAppDir) + "/config.ini", std::ios::trunc);
     if (!f) return false;
     f << "language=" << cfg.language << "\n";
+    f << "map_id=" << cfg.mapId << "\n";
     f << "uid0=" << std::hex << cfg.uid0 << "\n";
     f << "uid1=" << std::hex << cfg.uid1 << "\n";
     f << std::dec << "slot=" << cfg.preferredSlot << "\n";

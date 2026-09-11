@@ -49,6 +49,10 @@ inline bool shouldShowIncompleteStuntJump(CollectibleType type, bool found, bool
     return type == CollectibleType::StuntJump && found && !completed;
 }
 
+inline bool shouldPersistMapId(const std::string& savedId, const std::string& currentId) {
+    return !currentId.empty() && savedId != currentId;
+}
+
 inline bool markerFullyVisible(int anchorX, int anchorY, int width, int height,
                                int viewportX, int viewportY, int viewportWidth, int viewportHeight,
                                bool anchorBottom = false) {

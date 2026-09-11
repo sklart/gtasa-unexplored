@@ -62,6 +62,9 @@ int main() {
     assert(shouldShowIncompleteStuntJump(CollectibleType::StuntJump, true, false));
     assert(!shouldShowIncompleteStuntJump(CollectibleType::StuntJump, true, true));
     assert(!shouldShowIncompleteStuntJump(CollectibleType::Tag, true, false));
+    assert(shouldPersistMapId("definitive", "classic"));
+    assert(shouldPersistMapId("", "definitive"));
+    assert(!shouldPersistMapId("definitive", "definitive"));
     // Integration regression: a touch-owned camera must retain its centre on
     // the next frame while the controller cursor is idle.
     const CameraComfortZone comfort{100.0f, 100.0f};
