@@ -10,8 +10,7 @@
 - Подробный прогресс «регион × тип collectible» вынесен в отдельный overlay.
 - Host-tests, ASan/UBSan и devkitA64 Switch build пройдены в GitHub Actions.
 
-> Тест на физическом Nintendo Switch с DE 1.112+ рекомендуется выполнить
-> перед широким распространением.
+> Выпуск дополнительно проверен на физическом Nintendo Switch с DE 1.112+.
 
 ## 0.5.0-rc4
 
