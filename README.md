@@ -2,8 +2,9 @@
 
 Nintendo Switch homebrew-companion для **Grand Theft Auto: San Andreas — The Definitive Edition**. Приложение читает сохранение выбранного пользователя **только для чтения** и показывает на интерактивной карте состояние пяти типов коллекционных объектов.
 
-Текущая версия — **0.5.0-rc4**. Это release candidate: он ещё не проверен на
-физическом Nintendo Switch.
+Текущая версия — **0.5.0**. Финальный выпуск собран и проверен в CI; тест на
+физическом Nintendo Switch с актуальным DE 1.112+ save рекомендуется выполнить
+перед широким распространением.
 
 ## Целевая версия
 
@@ -253,6 +254,6 @@ GitHub Actions сначала запускает host + ASan/UBSan, затем �
 
 ## Статус проверки
 
-Parser, checksum, corrupted-save cases, полный каталог объектов, save-order Tags, map math, map-pack tooling, source invariants и Switch UI syntax проверяются host-тестами. Версия остаётся **hardware RC**, пока конкретный NRO не будет собран devkitA64 и проверен на физическом Nintendo Switch с актуальным DE 1.112+ save.
+Parser, checksum, corrupted-save cases, полный каталог объектов, save-order Tags, map math, map-pack tooling, source invariants и Switch UI syntax проверяются host-тестами. Каждый финальный NRO также собирается devkitA64 в CI; тест на физическом Nintendo Switch с актуальным DE 1.112+ save остаётся рекомендуемой финальной проверкой совместимости.
 
 См. также: [`docs/FORMAT.md`](docs/FORMAT.md), [`docs/COLLECTIBLE_DATA.md`](docs/COLLECTIBLE_DATA.md), [`docs/GAME_MAP.md`](docs/GAME_MAP.md), [`docs/FIRST_SWITCH_TEST.md`](docs/FIRST_SWITCH_TEST.md).
