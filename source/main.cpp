@@ -148,14 +148,8 @@ public:
     }
 
     std::string ellipsize(std::string value, int size, int maxWidth) {
-        if (maxWidth <= 0 || width(value, size) <= maxWidth) return value;
-        const std::string suffix = "…";
-        while (!value.empty()) {
-            value.pop_back();
-            while (!value.empty() && (static_cast<unsigned char>(value.back()) & 0xc0) == 0x80) value.pop_back();
-            if (width(value + suffix, size) <= maxWidth) return value + suffix;
-        }
-        return suffix;
+        return maxWidth <= 0 ? value : gtasa::ellipsizeUtf8(std::move(value),
+            [&](const std::string& candidate) { return width(candidate, size) <= maxWidth; });
     }
 
 private:
@@ -220,6 +214,7 @@ struct AppState {
     bool detailOpen = false;
     bool progressOpen = false;
     int detailScroll = 0;
+    SDL_Rect regionProgressButton{};
     std::string status;
 };
 
@@ -327,12 +322,6 @@ void line(SDL_Renderer* r, int x1, int y1, int x2, int y2, SDL_Color c) {
 bool insideMap(const AppState& a, int x, int y) {
     const auto rect = mapContentRect(a);
     return x >= rect.x && x < rect.x + rect.w && y >= rect.y && y < rect.y + rect.h;
-}
-
-SDL_Rect regionProgressButtonRect() {
-    // The rendered button's Y is calculated from measured text in drawPanel;
-    // this is its deliberately generous touch target around that stable block.
-    return SDL_Rect{kPanelRect.x + kPanelRect.w - gtasa::kUiPanelPaddingX - 96, 286, 104, 76};
 }
 
 std::pair<int, int> worldToScreen(const AppState& a, float x, float y) {
@@ -941,6 +930,10 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     const std::string state = item.completed ? tr(a, "Найдено", "Completed")
         : item.found ? tr(a, "Обнаружено", "Found") : tr(a, "Не найдено", "Missing");
     text.draw(state, 1040, 66, 18, item.completed ? kColors.accent : kColors.warning, 140);
+    if (gtasa::shouldShowIncompleteStuntJump(item.type, item.found, item.completed)) {
+        text.draw(tr(a, "Прыжок обнаружен, но не выполнен", "Jump discovered, but not completed"),
+                  145, 92, 13, kColors.warning, 760);
+    }
 
     SDL_Rect imageRect{260, 108, 760, 350};
     if (SDL_Texture* image = a.media.texture()) {
@@ -963,8 +956,9 @@ void drawDetails(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
               720, 642, 15, kColors.text, 440);
 }
 
-void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
+void drawPanel(SDL_Renderer* r, TextRenderer& text, AppState& a) {
     if (!a.showPanel) return;
+    a.regionProgressButton = {};
     fill(r, kPanelRect, kColors.bg);
     const int x = kPanelRect.x + gtasa::kUiPanelPaddingX;
     const int right = kPanelRect.x + kPanelRect.w - gtasa::kUiPanelPaddingX;
@@ -1005,13 +999,14 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
 
         y += gtasa::kUiSectionGap;
         text.draw(tr(a, "РЕГИОНЫ", "REGIONS"), x, y, 13, kColors.accent);
-        const SDL_Rect progressTouch = regionProgressButtonRect();
-        SDL_Rect tableButton{progressTouch.x + 8, y - 4, progressTouch.w - 16, 28};
-        fill(r, tableButton, SDL_Color{45, 53, 61, 255});
+        const auto button = gtasa::regionTableButtonRect(right, y);
+        a.regionProgressButton = SDL_Rect{button.x, button.y, button.width, button.height};
+        fill(r, a.regionProgressButton, SDL_Color{45, 53, 61, 255});
         SDL_SetRenderDrawColor(r, 95, 105, 115, 255);
-        SDL_RenderDrawRect(r, &tableButton);
+        SDL_RenderDrawRect(r, &a.regionProgressButton);
         const std::string tableText = tr(a, "Таблица", "Table");
-        text.draw(tableText, tableButton.x + (tableButton.w - text.width(tableText, 13)) / 2, y + 3, 13, kColors.accent);
+        text.draw(tableText, a.regionProgressButton.x + (a.regionProgressButton.w - text.width(tableText, 13)) / 2,
+                  y + 3, 13, kColors.accent);
         y += 25 + gtasa::kUiTitleGap;
         for (std::size_t i = 0; i < gtasa::kSanAndreasRegionCount; ++i) {
             const auto& stats = a.regionProgress[i];
@@ -1036,6 +1031,10 @@ void drawPanel(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
             text.draw(info ? tr(a, "A — подробности", "A — details")
                            : tr(a, "Карточка недоступна", "Card unavailable"),
                       x, y + 22, 14, info ? kColors.accent : kColors.warning, contentWidth);
+            if (gtasa::shouldShowIncompleteStuntJump(c.type, c.found, c.completed)) {
+                text.draw(tr(a, "Прыжок обнаружен, но не выполнен", "Jump discovered, but not completed"),
+                          x, y + 41, 13, kColors.warning, contentWidth);
+            }
         }
         if (const auto* poi = selectedPoiInfo(a)) {
             const std::string name = isRu(a) ? poi->nameRu : poi->nameEn;
@@ -1093,7 +1092,10 @@ void drawLegend(SDL_Renderer* r, TextRenderer& text, const AppState& a) {
     const auto mode = collectibleViewMode(a);
     const std::string modeText = mode == gtasa::CollectibleViewMode::Missing ? tr(a, "Не найдено", "Missing")
         : mode == gtasa::CollectibleViewMode::Completed ? tr(a, "Найдено", "Completed") : tr(a, "Все", "All");
-    drawCheck(layout.modeRow, y, tr(a, "Режим объектов: ", "Object mode: ") + modeText, true);
+    if (layout.modeRow == a.legendIndex) fill(r, SDL_Rect{145, y - 5, 710, 26}, SDL_Color{45, 53, 61, 255});
+    text.draw(tr(a, "Режим объектов", "Object mode"), 163, y - 1, 18, kColors.text);
+    const std::string modeControl = "< " + modeText + " >";
+    text.draw(modeControl, 500, y - 1, 18, kColors.accent, 300, true);
     y += 31;
     heading("КОЛЛЕКЦИОННЫЕ ОБЪЕКТЫ", "COLLECTIBLES", y);
     for (int i = 0; i < static_cast<int>(gtasa::CollectibleType::Count); ++i) {
@@ -1361,10 +1363,9 @@ int main(int, char**) {
                     }
                     continue;
                 }
-                const SDL_Rect button = regionProgressButtonRect();
-                const SDL_Rect progressTouch{button.x - 8, button.y - 8, button.w + 16, button.h + 16};
-                if (app.showPanel && x >= progressTouch.x && x < progressTouch.x + progressTouch.w &&
-                    y >= progressTouch.y && y < progressTouch.y + progressTouch.h) {
+                const auto& progressButton = app.regionProgressButton;
+                if (app.showPanel && x >= progressButton.x && x < progressButton.x + progressButton.w &&
+                    y >= progressButton.y && y < progressButton.y + progressButton.h) {
                     app.progressOpen = true;
                     overlayCloseTouchId = event.tfinger.fingerId;
                     continue;
@@ -1497,7 +1498,7 @@ int main(int, char**) {
             if (down & HidNpadButton_Down) app.legendIndex = gtasa::nextFiltersScreenRow(app.legendIndex, 1);
             if (down & HidNpadButton_A) {
                 if (app.legendIndex == kModeRow) {
-                    app.config.collectibleViewMode = (app.config.collectibleViewMode + 1) % 3;
+                    app.config.collectibleViewMode = gtasa::nextCollectibleViewMode(app.config.collectibleViewMode);
                     clearSelectedMarker(app);
                     app.platform.saveConfig(app.config);
                 } else if (app.legendIndex >= kCollectibleFirstRow && app.legendIndex < kRegionFirstRow)

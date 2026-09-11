@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Collectibles.hpp"
+
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
@@ -41,6 +43,10 @@ inline int poiMarkerSize(float zoom) {
     if (zoom < 1.75f) return 16 + static_cast<int>((zoom - 0.85f) * 9.0f / 0.90f + 0.5f);
     if (zoom >= 8.0f) return 33;
     return 25 + static_cast<int>((zoom - 1.75f) * 8.0f / 6.25f + 0.5f);
+}
+
+inline bool shouldShowIncompleteStuntJump(CollectibleType type, bool found, bool completed) {
+    return type == CollectibleType::StuntJump && found && !completed;
 }
 
 inline bool markerFullyVisible(int anchorX, int anchorY, int width, int height,

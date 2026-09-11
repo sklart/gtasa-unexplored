@@ -14,4 +14,5 @@ constexpr FiltersUiLayout filtersUiLayout() {
     return {c, r, p, pc, m, pc + static_cast<int>(kPoiCategoryCount)};
 }
 int nextFilterRow(int current, int direction);
+constexpr int nextCollectibleViewMode(int current) { return (current + 1) % 3; }
 } // namespace gtasa

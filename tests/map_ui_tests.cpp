@@ -59,6 +59,9 @@ int main() {
     assert(std::string(poiLocationStatus(false, false)) == "Verified");
     assert(formatMapCoordinates(1272.24f, 295.25f, 20.14f) == "X 1272.2   Y 295.2   Z 20.1");
     assert(formatMapCoordinates(605.14f, 902.24f, 0.0f, false) == "X 605.1   Y 902.2   Z —");
+    assert(shouldShowIncompleteStuntJump(CollectibleType::StuntJump, true, false));
+    assert(!shouldShowIncompleteStuntJump(CollectibleType::StuntJump, true, true));
+    assert(!shouldShowIncompleteStuntJump(CollectibleType::Tag, true, false));
     // Integration regression: a touch-owned camera must retain its centre on
     // the next frame while the controller cursor is idle.
     const CameraComfortZone comfort{100.0f, 100.0f};
